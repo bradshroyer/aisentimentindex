@@ -1,12 +1,32 @@
 {
   "headlines": [
     {
+      "title": "Apple overhauls its app developer platform with 100 new metrics, more tools",
+      "summary": "Apple is adding 100+ new App Store Connect metrics, giving developers deeper, first-party insights into monetization, subscriptions, and user behavior as it doubles down on its app ecosystem in the AI era.",
+      "url": "https://techcrunch.com/2026/03/25/apple-overhauls-its-app-developer-platform-with-100-new-metrics-more-tools/",
+      "source": "TechCrunch",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T17:28:01.127822+00:00",
+      "score_raw": 0.34,
+      "score": 0.34
+    },
+    {
+      "title": "Bernie Sanders and AOC propose a ban on data center construction",
+      "summary": "Senator Bernie Sanders and Rep. Alexandria Ocasio-Cortez introduced companion legislation to halt construction on new data centers until Congress passes comprehensive AI regulation.",
+      "url": "https://techcrunch.com/2026/03/25/bernie-sanders-and-aoc-propose-a-ban-on-data-center-construction/",
+      "source": "TechCrunch",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T17:28:01.127836+00:00",
+      "score_raw": -0.3818,
+      "score": -0.5318
+    },
+    {
       "title": "Google launches Lyria 3 Pro music generation model",
       "summary": "Google is launching Lyria 3 Pro, an upgraded music model that generates longer, more customizable tracks, as it expands AI music tools across Gemini, enterprise products, and other services.",
       "url": "https://techcrunch.com/2026/03/25/google-launches-lyria-3-pro-music-generation-model/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.098739+00:00",
+      "timestamp": "2026-03-25T17:28:01.127852+00:00",
       "score_raw": 0.1027,
       "score": 0.1027
     },
@@ -16,7 +36,7 @@
       "url": "https://techcrunch.com/2026/03/25/harvey-confirms-11b-valuation-sequoia-triples-down/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.098821+00:00",
+      "timestamp": "2026-03-25T17:28:01.127916+00:00",
       "score_raw": 0.4588,
       "score": 0.4588
     },
@@ -26,7 +46,7 @@
       "url": "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.098828+00:00",
+      "timestamp": "2026-03-25T17:28:01.127922+00:00",
       "score_raw": 0.1761,
       "score": 0.1761
     },
@@ -36,7 +56,7 @@
       "url": "https://techcrunch.com/2026/03/25/meta-launches-new-initiative-to-support-entrepreneurship-drive-ai-adoption/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.098836+00:00",
+      "timestamp": "2026-03-25T17:28:01.127929+00:00",
       "score_raw": 0.4019,
       "score": 0.5519
     },
@@ -46,7 +66,7 @@
       "url": "https://techcrunch.com/2026/03/25/meta-turns-to-ai-to-make-shopping-easier-on-instagram-and-facebook/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.098850+00:00",
+      "timestamp": "2026-03-25T17:28:01.127942+00:00",
       "score_raw": 0.4215,
       "score": 0.4215
     },
@@ -56,7 +76,7 @@
       "url": "https://www.nytimes.com/2026/03/24/technology/openai-shutting-down-sora.html",
       "source": "NYT Technology",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.163072+00:00",
+      "timestamp": "2026-03-25T17:28:01.195750+00:00",
       "score_raw": 0.0,
       "score": 0.0
     },
@@ -66,7 +86,7 @@
       "url": "https://www.nytimes.com/2026/03/18/movies/val-kilmer-ai-movie.html",
       "source": "NYT Technology",
       "date": "2026-03-19",
-      "timestamp": "2026-03-25T17:13:50.163212+00:00",
+      "timestamp": "2026-03-25T17:28:01.195899+00:00",
       "score_raw": -0.8402,
       "score": -0.8402
     },
@@ -76,7 +96,7 @@
       "url": "https://www.nytimes.com/2026/03/18/technology/silicon-valley-anthropic-pentagon.html",
       "source": "NYT Technology",
       "date": "2026-03-18",
-      "timestamp": "2026-03-25T17:13:50.163219+00:00",
+      "timestamp": "2026-03-25T17:28:01.195908+00:00",
       "score_raw": -0.34,
       "score": -0.34
     },
@@ -86,7 +106,7 @@
       "url": "https://www.theverge.com/ai-artificial-intelligence/900425/google-lyria-3-pro-ai-music",
       "source": "The Verge",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.235880+00:00",
+      "timestamp": "2026-03-25T17:28:01.261820+00:00",
       "score_raw": 0.0516,
       "score": 0.0516
     },
@@ -96,7 +116,7 @@
       "url": "https://www.theverge.com/policy/900341/senator-schiff-anthropic-autonomous-weapons-mass-surveillance",
       "source": "The Verge",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.235907+00:00",
+      "timestamp": "2026-03-25T17:28:01.261847+00:00",
       "score_raw": -0.6124,
       "score": -0.8124
     },
@@ -106,7 +126,7 @@
       "url": "https://www.theverge.com/policy/900340/trump-tech-panel-mark-zuckerberg-jensen-huang",
       "source": "The Verge",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.235924+00:00",
+      "timestamp": "2026-03-25T17:28:01.261867+00:00",
       "score_raw": 0.0,
       "score": 0.0
     },
@@ -116,7 +136,7 @@
       "url": "https://arstechnica.com/ai/2026/03/the-end-of-sora-also-means-the-end-of-disneys-1-billion-openai-investment/",
       "source": "Ars Technica",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.318501+00:00",
+      "timestamp": "2026-03-25T17:28:01.530898+00:00",
       "score_raw": -0.4767,
       "score": -0.4767
     },
@@ -126,7 +146,7 @@
       "url": "https://arstechnica.com/ai/2026/03/mozilla-dev-introduces-cq-a-stack-overflow-for-agents/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.318560+00:00",
+      "timestamp": "2026-03-25T17:28:01.530947+00:00",
       "score_raw": -0.5709,
       "score": -0.4209
     },
@@ -136,7 +156,7 @@
       "url": "https://arstechnica.com/ai/2026/03/openai-plans-to-shut-down-sora-just-15-months-after-its-launch/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.318568+00:00",
+      "timestamp": "2026-03-25T17:28:01.530954+00:00",
       "score_raw": 0.0,
       "score": 0.0
     },
@@ -146,19 +166,9 @@
       "url": "https://arstechnica.com/tech-policy/2026/03/trump-made-opposing-government-spying-cool-again-effs-departing-chief-says/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.318573+00:00",
+      "timestamp": "2026-03-25T17:28:01.530960+00:00",
       "score_raw": -0.5106,
       "score": -0.5106
-    },
-    {
-      "title": "Claude Code can now take over your computer to complete tasks",
-      "summary": "But Anthropic urges caution as \"research preview\" safeguards \"aren't absolute.\"",
-      "url": "https://arstechnica.com/ai/2026/03/claude-code-can-now-take-over-your-computer-to-complete-tasks/",
-      "source": "Ars Technica",
-      "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.318619+00:00",
-      "score_raw": 0.4767,
-      "score": 0.4767
     },
     {
       "title": "OpenAI Enters Its Focus Era by Killing Sora",
@@ -166,7 +176,7 @@
       "url": "https://www.wired.com/story/openai-shuts-down-sora-ipo-ai-superapp/",
       "source": "Wired",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.416081+00:00",
+      "timestamp": "2026-03-25T17:28:01.644728+00:00",
       "score_raw": -0.0258,
       "score": -0.0258
     },
@@ -176,7 +186,7 @@
       "url": "https://www.wired.com/story/new-bernie-sanders-ai-safety-bill-would-halt-data-center-construction/",
       "source": "Wired",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.416093+00:00",
+      "timestamp": "2026-03-25T17:28:01.644742+00:00",
       "score_raw": 0.8074,
       "score": 0.8074
     },
@@ -186,7 +196,7 @@
       "url": "https://www.wired.com/story/pentagons-attempt-to-cripple-anthropic-is-troublesome-judge-says/",
       "source": "Wired",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.416186+00:00",
+      "timestamp": "2026-03-25T17:28:01.644832+00:00",
       "score_raw": -0.7184,
       "score": -0.7184
     },
@@ -196,7 +206,7 @@
       "url": "https://www.wired.com/story/chip-design-firm-arm-is-making-its-own-ai-cpu/",
       "source": "Wired",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.416208+00:00",
+      "timestamp": "2026-03-25T17:28:01.644852+00:00",
       "score_raw": 0.4767,
       "score": 0.4767
     },
@@ -206,7 +216,7 @@
       "url": "https://www.wired.com/story/the-big-interview-podcast-chris-hayes/",
       "source": "Wired",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.416228+00:00",
+      "timestamp": "2026-03-25T17:28:01.644882+00:00",
       "score_raw": -0.0516,
       "score": -0.0516
     },
@@ -216,7 +226,7 @@
       "url": "https://www.wired.com/story/project-maven-katrina-manson-book-excerpt/",
       "source": "Wired",
       "date": "2026-03-23",
-      "timestamp": "2026-03-25T17:13:50.416373+00:00",
+      "timestamp": "2026-03-25T17:28:01.645033+00:00",
       "score_raw": 0.5719,
       "score": 0.5719
     },
@@ -226,7 +236,7 @@
       "url": "https://www.wired.com/story/europe-squeeze-power-energy-grid-ai-data-center/",
       "source": "Wired",
       "date": "2026-03-23",
-      "timestamp": "2026-03-25T17:13:50.416394+00:00",
+      "timestamp": "2026-03-25T17:28:01.645054+00:00",
       "score_raw": -0.0258,
       "score": -0.0258
     },
@@ -236,7 +246,7 @@
       "url": "https://www.bbc.com/news/articles/c3w3e467ewqo?at_medium=RSS&at_campaign=rss",
       "source": "BBC Technology",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:50.690321+00:00",
+      "timestamp": "2026-03-25T17:28:01.768946+00:00",
       "score_raw": -0.2263,
       "score": -0.2263
     },
@@ -246,7 +256,7 @@
       "url": "https://www.bbc.com/news/articles/c070e283k8vo?at_medium=RSS&at_campaign=rss",
       "source": "BBC Technology",
       "date": "2026-03-22",
-      "timestamp": "2026-03-25T17:13:50.690348+00:00",
+      "timestamp": "2026-03-25T17:28:01.768979+00:00",
       "score_raw": 0.3818,
       "score": 0.3818
     },
@@ -256,7 +266,7 @@
       "url": "https://www.bbc.com/news/articles/c5y7374x9n4o?at_medium=RSS&at_campaign=rss",
       "source": "BBC Technology",
       "date": "2026-03-20",
-      "timestamp": "2026-03-25T17:13:50.690354+00:00",
+      "timestamp": "2026-03-25T17:28:01.768985+00:00",
       "score_raw": -0.5859,
       "score": -0.5859
     },
@@ -266,7 +276,7 @@
       "url": "https://www.bbc.com/news/articles/c5y9d44jj24o?at_medium=RSS&at_campaign=rss",
       "source": "BBC Technology",
       "date": "2026-03-20",
-      "timestamp": "2026-03-25T17:13:50.690365+00:00",
+      "timestamp": "2026-03-25T17:28:01.768998+00:00",
       "score_raw": -0.936,
       "score": -0.936
     },
@@ -276,7 +286,7 @@
       "url": "https://www.bbc.co.uk/sounds/play/w3ct6zq9?at_medium=RSS&at_campaign=rss",
       "source": "BBC Technology",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:50.690375+00:00",
+      "timestamp": "2026-03-25T17:28:01.769010+00:00",
       "score_raw": 0.4767,
       "score": 0.4767
     },
@@ -286,7 +296,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/24/openai-ai-video-sora",
       "source": "The Guardian",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:51.079879+00:00",
+      "timestamp": "2026-03-25T17:28:02.069999+00:00",
       "score_raw": 0.7964,
       "score": 0.5964
     },
@@ -296,7 +306,7 @@
       "url": "https://www.theguardian.com/us-news/2026/mar/24/anthropic-pentagon-lawsuit",
       "source": "The Guardian",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:51.079928+00:00",
+      "timestamp": "2026-03-25T17:28:02.070040+00:00",
       "score_raw": -0.9378,
       "score": -1.0
     },
@@ -306,7 +316,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/24/elon-musk-grok-ai-lawsuit-baltimore",
       "source": "The Guardian",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:51.079943+00:00",
+      "timestamp": "2026-03-25T17:28:02.070051+00:00",
       "score_raw": -0.987,
       "score": -1.0
     },
@@ -316,7 +326,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/24/silcon-valley-ai-techscape",
       "source": "The Guardian",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:51.079964+00:00",
+      "timestamp": "2026-03-25T17:28:02.070075+00:00",
       "score_raw": -0.8355,
       "score": -1.0
     },
@@ -326,7 +336,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/22/fca-deal-palantir-ai-financial-services-uk",
       "source": "The Guardian",
       "date": "2026-03-22",
-      "timestamp": "2026-03-25T17:13:51.080029+00:00",
+      "timestamp": "2026-03-25T17:28:02.070142+00:00",
       "score_raw": 0.9505,
       "score": 0.9505
     },
@@ -336,7 +346,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/21/fbi-mass-surveillance-data-artificial-intelligence",
       "source": "The Guardian",
       "date": "2026-03-21",
-      "timestamp": "2026-03-25T17:13:51.080038+00:00",
+      "timestamp": "2026-03-25T17:28:02.070151+00:00",
       "score_raw": 0.8285,
       "score": 0.6285
     },
@@ -346,7 +356,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/13/anthropic-pentagon-artificial-intelligence",
       "source": "The Guardian",
       "date": "2026-03-13",
-      "timestamp": "2026-03-25T17:13:51.080051+00:00",
+      "timestamp": "2026-03-25T17:28:02.070161+00:00",
       "score_raw": -0.9771,
       "score": -1.0
     },
@@ -356,7 +366,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/08/billionaires-tech-oligarchs",
       "source": "The Guardian",
       "date": "2026-03-08",
-      "timestamp": "2026-03-25T17:13:51.080061+00:00",
+      "timestamp": "2026-03-25T17:28:02.070172+00:00",
       "score_raw": 0.7717,
       "score": 0.7717
     },
@@ -366,7 +376,7 @@
       "url": "https://www.theguardian.com/global/2026/feb/24/tech-politics-ai-impact-summit-silicon-valley",
       "source": "The Guardian",
       "date": "2026-02-24",
-      "timestamp": "2026-03-25T17:13:51.080317+00:00",
+      "timestamp": "2026-03-25T17:28:02.070431+00:00",
       "score_raw": 0.4767,
       "score": 0.4767
     },
@@ -376,7 +386,7 @@
       "url": "https://www.theguardian.com/world/2026/feb/20/india-delhi-summit-ai-technology-us-economic-growth",
       "source": "The Guardian",
       "date": "2026-02-20",
-      "timestamp": "2026-03-25T17:13:51.080329+00:00",
+      "timestamp": "2026-03-25T17:28:02.070440+00:00",
       "score_raw": 0.9246,
       "score": 0.9246
     },
@@ -386,7 +396,7 @@
       "url": "https://www.theguardian.com/technology/2026/mar/21/atlassian-cuts-layoffs-staff-now-looking-for-work-ai",
       "source": "The Guardian",
       "date": "2026-03-20",
-      "timestamp": "2026-03-25T17:13:51.080470+00:00",
+      "timestamp": "2026-03-25T17:28:02.070581+00:00",
       "score_raw": 0.5574,
       "score": 0.5574
     },
@@ -396,7 +406,7 @@
       "url": "https://www.technologyreview.com/2026/03/25/1134657/battery-company-ai-pivot-ses/",
       "source": "MIT Tech Review",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.194367+00:00",
+      "timestamp": "2026-03-25T17:28:02.196055+00:00",
       "score_raw": -0.7351,
       "score": -0.7351
     },
@@ -406,7 +416,7 @@
       "url": "https://www.technologyreview.com/2026/03/25/1134642/this-startup-wants-to-change-how-mathematicians-do-math/",
       "source": "MIT Tech Review",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.194382+00:00",
+      "timestamp": "2026-03-25T17:28:02.196068+00:00",
       "score_raw": 0.3182,
       "score": 0.4682
     },
@@ -416,7 +426,7 @@
       "url": "https://www.technologyreview.com/2026/03/25/1134636/the-download-reawakening-frozen-brains-and-the-ai-hype-index-returns/",
       "source": "MIT Tech Review",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.194390+00:00",
+      "timestamp": "2026-03-25T17:28:02.196077+00:00",
       "score_raw": 0.0,
       "score": -0.2
     },
@@ -426,7 +436,7 @@
       "url": "https://www.technologyreview.com/2026/03/25/1134571/the-ai-hype-index-ai-goes-to-war/",
       "source": "MIT Tech Review",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.194408+00:00",
+      "timestamp": "2026-03-25T17:28:02.196100+00:00",
       "score_raw": -0.9186,
       "score": -1.0
     },
@@ -436,7 +446,7 @@
       "url": "https://www.technologyreview.com/2026/03/24/1134531/exclusive-ebook-are-we-ready-to-hand-ai-agents-the-keys/",
       "source": "MIT Tech Review",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:51.194415+00:00",
+      "timestamp": "2026-03-25T17:28:02.196108+00:00",
       "score_raw": 0.8936,
       "score": 0.8936
     },
@@ -446,7 +456,7 @@
       "url": "https://www.technologyreview.com/2026/03/24/1134540/the-download-tracing-ai-fueled-delusions-openai-warns-microsoft-risks/",
       "source": "MIT Tech Review",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T17:13:51.194435+00:00",
+      "timestamp": "2026-03-25T17:28:02.196133+00:00",
       "score_raw": 0.0258,
       "score": 0.0258
     },
@@ -456,7 +466,7 @@
       "url": "https://www.technologyreview.com/2026/03/23/1134527/the-hardest-question-to-answer-about-ai-fueled-delusions/",
       "source": "MIT Tech Review",
       "date": "2026-03-23",
-      "timestamp": "2026-03-25T17:13:51.194441+00:00",
+      "timestamp": "2026-03-25T17:28:02.196140+00:00",
       "score_raw": -0.0772,
       "score": -0.0772
     },
@@ -466,9 +476,19 @@
       "url": "https://www.technologyreview.com/2026/03/23/1134509/the-download-animal-welfare-agi-pilled-white-house-unveils-ai-policy/",
       "source": "MIT Tech Review",
       "date": "2026-03-23",
-      "timestamp": "2026-03-25T17:13:51.194447+00:00",
+      "timestamp": "2026-03-25T17:28:02.196147+00:00",
       "score_raw": 0.0,
       "score": 0.0
+    },
+    {
+      "title": "Musk\u2019s xAI \u2018Doubling Down\u2019 on AI Videos After OpenAI Nixes Sora",
+      "summary": "Elon Musk said his artificial intelligence company, xAI, plans to upgrade its AI video generator, seizing on an opening left by rival OpenAI\u2019s decision this week to discontinue its Sora product.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-25/musk-s-xai-doubling-down-on-ai-videos-after-openai-nixes-sora",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T17:28:02.522281+00:00",
+      "score_raw": 0.4767,
+      "score": 0.4767
     },
     {
       "title": "As US Strikes Hit Iran, AI Warfare is Debated At Washington Forum",
@@ -476,7 +496,7 @@
       "url": "https://www.bloomberg.com/news/newsletters/2026-03-25/as-us-strikes-hit-iran-ai-warfare-is-debated-at-washington-forum",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.507901+00:00",
+      "timestamp": "2026-03-25T17:28:02.522289+00:00",
       "score_raw": -0.5719,
       "score": -0.5719
     },
@@ -486,7 +506,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/disney-ceo-s-first-week-marred-by-openai-fortnite-trouble",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.507959+00:00",
+      "timestamp": "2026-03-25T17:28:02.522332+00:00",
       "score_raw": -0.4404,
       "score": -0.4404
     },
@@ -496,7 +516,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/china-restricts-manus-founders-from-leaving-china-ft-says",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.507966+00:00",
+      "timestamp": "2026-03-25T17:28:02.522338+00:00",
       "score_raw": -0.3182,
       "score": -0.4182
     },
@@ -506,7 +526,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/meta-is-cutting-several-hundred-jobs-amid-record-ai-spending",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.507984+00:00",
+      "timestamp": "2026-03-25T17:28:02.522353+00:00",
       "score_raw": -0.25,
       "score": -0.25
     },
@@ -516,7 +536,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/kuaishou-tech-sales-climb-as-ai-monetization-gains-momentum",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508033+00:00",
+      "timestamp": "2026-03-25T17:28:02.522404+00:00",
       "score_raw": 0.7964,
       "score": 0.7964
     },
@@ -526,7 +546,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/legal-ai-startup-harvey-raises-funds-at-11-billion-valuation",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508037+00:00",
+      "timestamp": "2026-03-25T17:28:02.522409+00:00",
       "score_raw": 0.743,
       "score": 0.743
     },
@@ -536,7 +556,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-science-startup-periodic-labs-is-in-deal-talks-at-about-7-billion-valuation",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508043+00:00",
+      "timestamp": "2026-03-25T17:28:02.522414+00:00",
       "score_raw": 0.4939,
       "score": 0.4939
     },
@@ -546,7 +566,7 @@
       "url": "https://www.bloomberg.com/news/videos/2026-03-25/kevin-sheekey-demos-askb-ai-on-bloomberg-terminal-video",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508048+00:00",
+      "timestamp": "2026-03-25T17:28:02.522418+00:00",
       "score_raw": 0.0,
       "score": 0.0
     },
@@ -556,7 +576,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-notetaker-granola-hits-1-5-billion-value-in-125-million-funding",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508053+00:00",
+      "timestamp": "2026-03-25T17:28:02.522423+00:00",
       "score_raw": 0.8074,
       "score": 0.8074
     },
@@ -566,7 +586,7 @@
       "url": "https://www.bloomberg.com/news/newsletters/2026-03-25/ai-tools-are-upending-typical-software-contracts",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508080+00:00",
+      "timestamp": "2026-03-25T17:28:02.522445+00:00",
       "score_raw": -0.6808,
       "score": -0.6808
     },
@@ -576,7 +596,7 @@
       "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-demand-is-shielding-china-s-booming-trade-from-iran-war-shock",
       "source": "Bloomberg",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.508100+00:00",
+      "timestamp": "2026-03-25T17:28:02.522464+00:00",
       "score_raw": -0.9186,
       "score": -0.9186
     },
@@ -586,7 +606,7 @@
       "url": "https://www.zdnet.com/article/how-to-use-ai-on-a-budget-professonals/",
       "source": "ZDNet AI",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.938581+00:00",
+      "timestamp": "2026-03-25T17:28:02.817353+00:00",
       "score_raw": 0.4019,
       "score": 0.4019
     },
@@ -596,7 +616,7 @@
       "url": "https://www.zdnet.com/article/6-reasons-you-should-be-more-tight-lipped-with-your-chatbot/",
       "source": "ZDNet AI",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T17:13:51.938600+00:00",
+      "timestamp": "2026-03-25T17:28:02.817384+00:00",
       "score_raw": -0.1027,
       "score": -0.1027
     }
@@ -607,84 +627,267 @@
       "count": 1,
       "pos": 1,
       "neg": 0,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "The Guardian"
+      ],
+      "by_source": {
+        "The Guardian": {
+          "mean": 0.9246,
+          "count": 1
+        }
+      }
     },
     "2026-02-24": {
       "mean": 0.4767,
       "count": 1,
       "pos": 1,
       "neg": 0,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "The Guardian"
+      ],
+      "by_source": {
+        "The Guardian": {
+          "mean": 0.4767,
+          "count": 1
+        }
+      }
     },
     "2026-03-08": {
       "mean": 0.7717,
       "count": 1,
       "pos": 1,
       "neg": 0,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "The Guardian"
+      ],
+      "by_source": {
+        "The Guardian": {
+          "mean": 0.7717,
+          "count": 1
+        }
+      }
     },
     "2026-03-13": {
       "mean": -1.0,
       "count": 1,
       "pos": 0,
       "neg": 1,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "The Guardian"
+      ],
+      "by_source": {
+        "The Guardian": {
+          "mean": -1.0,
+          "count": 1
+        }
+      }
     },
     "2026-03-18": {
       "mean": -0.34,
       "count": 1,
       "pos": 0,
       "neg": 1,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "NYT Technology"
+      ],
+      "by_source": {
+        "NYT Technology": {
+          "mean": -0.34,
+          "count": 1
+        }
+      }
     },
     "2026-03-19": {
       "mean": -0.8402,
       "count": 1,
       "pos": 0,
       "neg": 1,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "NYT Technology"
+      ],
+      "by_source": {
+        "NYT Technology": {
+          "mean": -0.8402,
+          "count": 1
+        }
+      }
     },
     "2026-03-20": {
       "mean": -0.3215,
       "count": 3,
       "pos": 1,
       "neg": 2,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "BBC Technology",
+        "The Guardian"
+      ],
+      "by_source": {
+        "BBC Technology": {
+          "mean": -0.761,
+          "count": 2
+        },
+        "The Guardian": {
+          "mean": 0.5574,
+          "count": 1
+        }
+      }
     },
     "2026-03-21": {
       "mean": 0.6285,
       "count": 1,
       "pos": 1,
       "neg": 0,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "The Guardian"
+      ],
+      "by_source": {
+        "The Guardian": {
+          "mean": 0.6285,
+          "count": 1
+        }
+      }
     },
     "2026-03-22": {
       "mean": 0.6662,
       "count": 2,
       "pos": 2,
       "neg": 0,
-      "neu": 0
+      "neu": 0,
+      "sources": [
+        "BBC Technology",
+        "The Guardian"
+      ],
+      "by_source": {
+        "BBC Technology": {
+          "mean": 0.3818,
+          "count": 1
+        },
+        "The Guardian": {
+          "mean": 0.9505,
+          "count": 1
+        }
+      }
     },
     "2026-03-23": {
       "mean": 0.1172,
       "count": 4,
       "pos": 1,
       "neg": 1,
-      "neu": 2
+      "neu": 2,
+      "sources": [
+        "MIT Tech Review",
+        "Wired"
+      ],
+      "by_source": {
+        "Wired": {
+          "mean": 0.273,
+          "count": 2
+        },
+        "MIT Tech Review": {
+          "mean": -0.0386,
+          "count": 2
+        }
+      }
     },
     "2026-03-24": {
-      "mean": -0.117,
-      "count": 15,
-      "pos": 5,
+      "mean": -0.1595,
+      "count": 14,
+      "pos": 4,
       "neg": 7,
-      "neu": 3
+      "neu": 3,
+      "sources": [
+        "Ars Technica",
+        "BBC Technology",
+        "MIT Tech Review",
+        "NYT Technology",
+        "The Guardian",
+        "Wired"
+      ],
+      "by_source": {
+        "NYT Technology": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Ars Technica": {
+          "mean": -0.3105,
+          "count": 3
+        },
+        "Wired": {
+          "mean": -0.0978,
+          "count": 3
+        },
+        "BBC Technology": {
+          "mean": 0.4767,
+          "count": 1
+        },
+        "The Guardian": {
+          "mean": -0.6009,
+          "count": 4
+        },
+        "MIT Tech Review": {
+          "mean": 0.4597,
+          "count": 2
+        }
+      }
     },
     "2026-03-25": {
-      "mean": -0.0199,
-      "count": 29,
-      "pos": 13,
-      "neg": 13,
-      "neu": 3
+      "mean": -0.0092,
+      "count": 32,
+      "pos": 15,
+      "neg": 14,
+      "neu": 3,
+      "sources": [
+        "Ars Technica",
+        "BBC Technology",
+        "Bloomberg",
+        "MIT Tech Review",
+        "TechCrunch",
+        "The Verge",
+        "Wired",
+        "ZDNet AI"
+      ],
+      "by_source": {
+        "TechCrunch": {
+          "mean": 0.217,
+          "count": 7
+        },
+        "The Verge": {
+          "mean": -0.2536,
+          "count": 3
+        },
+        "Ars Technica": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Wired": {
+          "mean": 0.3908,
+          "count": 2
+        },
+        "BBC Technology": {
+          "mean": -0.2263,
+          "count": 1
+        },
+        "MIT Tech Review": {
+          "mean": -0.3667,
+          "count": 4
+        },
+        "Bloomberg": {
+          "mean": 0.0031,
+          "count": 12
+        },
+        "ZDNet AI": {
+          "mean": 0.1496,
+          "count": 2
+        }
+      }
     }
   }
 }

@@ -11,6 +11,9 @@
          max-width: 900px; margin: 0 auto; padding: 2rem 1rem; color: #1a1a1a; background: #fafafa; }
   h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
   .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .filter-bar { margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .filter-bar label { font-size: 0.85rem; color: #666; }
+  .filter-bar select { padding: 0.4rem 0.6rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.85rem; background: #fff; }
   .chart-wrap { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 2rem; }
   .stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
   .stat { background: #fff; border-radius: 8px; padding: 1rem 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
@@ -23,57 +26,146 @@
   tr:not(:last-child) td { border-bottom: 1px solid #eee; }
   .pos { color: #16a34a; } .neg { color: #dc2626; } .neu { color: #666; }
   td a { color: #1a1a1a; text-decoration: none; } td a:hover { text-decoration: underline; color: #2563eb; }
+  #showMore { display: block; margin: 1rem auto; padding: 0.5rem 1.5rem; background: #2563eb; color: #fff;
+               border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+  #showMore:hover { background: #1d4ed8; }
   footer { margin-top: 2rem; font-size: 0.75rem; color: #999; text-align: center; }
+  footer summary { cursor: pointer; } footer summary:hover { color: #666; }
+  .source-list { list-style: none; margin-top: 0.5rem; text-align: left; display: inline-block; }
+  .source-list li { padding: 0.15rem 0; font-size: 0.75rem; }
+  .source-list a { color: #2563eb; text-decoration: none; } .source-list a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 <h1>AI Sentiment Index (Media Tone)</h1>
-<p class="subtitle">Tracking how major tech outlets talk about AI &mdash; updated 2026-03-25 17:13 UTC</p>
+<p class="subtitle">Tracking how major tech outlets talk about AI &mdash; updated 2026-03-25 17:28 UTC</p>
+
+<div class="filter-bar">
+  <label for="sourceFilter">Filter by source:</label>
+  <select id="sourceFilter">
+    <option value="All">All Sources</option>
+    <option value="Ars Technica">Ars Technica</option>
+    <option value="BBC Technology">BBC Technology</option>
+    <option value="Bloomberg">Bloomberg</option>
+    <option value="MIT Tech Review">MIT Tech Review</option>
+    <option value="NYT Technology">NYT Technology</option>
+    <option value="TechCrunch">TechCrunch</option>
+    <option value="The Guardian">The Guardian</option>
+    <option value="The Verge">The Verge</option>
+    <option value="Wired">Wired</option>
+    <option value="ZDNet AI">ZDNet AI</option>
+  </select>
+</div>
 
 <div class="chart-wrap">
   <canvas id="chart"></canvas>
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="stat-value">60</div><div class="stat-label">Headlines analyzed</div></div>
-  <div class="stat"><div class="stat-value">12</div><div class="stat-label">Days tracked</div></div>
-  <div class="stat"><div class="stat-value neu">-0.020</div><div class="stat-label">Latest score</div></div>
+  <div class="stat"><div class="stat-value">62</div><div class="stat-label">Headlines analyzed</div></div>
+  <div class="stat"><div class="stat-value">2</div><div class="stat-label">Days tracked</div></div>
+  <div class="stat"><div class="stat-value neu">-0.009</div><div class="stat-label">Latest score</div></div>
 </div>
 
 <h2>Recent Headlines</h2>
 <table>
-<tr><th>Headline</th><th>Source</th><th>Score</th></tr>
-<tr><td><a href="https://www.zdnet.com/article/6-reasons-you-should-be-more-tight-lipped-with-your-chatbot/" target="_blank" rel="noopener">Stop telling AI your secrets - 5 reasons why, and what to do if you already overshared</a></td><td>ZDNet AI</td><td class="neg">-0.103</td></tr>
-<tr><td><a href="https://www.zdnet.com/article/how-to-use-ai-on-a-budget-professonals/" target="_blank" rel="noopener">5 ways to use AI when your budget is tight</a></td><td>ZDNet AI</td><td class="pos">+0.402</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/ai-demand-is-shielding-china-s-booming-trade-from-iran-war-shock" target="_blank" rel="noopener">AI Demand Is Shielding China’s Booming Trade From War Shocks</a></td><td>Bloomberg</td><td class="neg">-0.919</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/newsletters/2026-03-25/ai-tools-are-upending-typical-software-contracts" target="_blank" rel="noopener">AI Has Already Changed Software Contracts: They’re Shorter</a></td><td>Bloomberg</td><td class="neg">-0.681</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/ai-notetaker-granola-hits-1-5-billion-value-in-125-million-funding" target="_blank" rel="noopener">AI Notetaker Granola Hits $1.5 Billion Value in $125 Million Funding</a></td><td>Bloomberg</td><td class="pos">+0.807</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/videos/2026-03-25/kevin-sheekey-demos-askb-ai-on-bloomberg-terminal-video" target="_blank" rel="noopener">Kevin Sheekey Demos ASKB AI on Bloomberg Terminal</a></td><td>Bloomberg</td><td class="neu">+0.000</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/ai-science-startup-periodic-labs-is-in-deal-talks-at-about-7-billion-valuation" target="_blank" rel="noopener">AI Science Startup Periodic Labs Is in Deal Talks at About $7 Billion Valuation</a></td><td>Bloomberg</td><td class="pos">+0.494</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/legal-ai-startup-harvey-raises-funds-at-11-billion-valuation" target="_blank" rel="noopener">Legal AI Startup Harvey Raises Funds at $11 Billion Valuation</a></td><td>Bloomberg</td><td class="pos">+0.743</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/kuaishou-tech-sales-climb-as-ai-monetization-gains-momentum" target="_blank" rel="noopener">Kuaishou Tech Sales Climb as AI Monetization Gains Momentum</a></td><td>Bloomberg</td><td class="pos">+0.796</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/meta-is-cutting-several-hundred-jobs-amid-record-ai-spending" target="_blank" rel="noopener">Meta Is Cutting Several Hundred Jobs Amid Record AI Spending</a></td><td>Bloomberg</td><td class="neg">-0.250</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/china-restricts-manus-founders-from-leaving-china-ft-says" target="_blank" rel="noopener">China Restricts Manus Founders From Leaving China, FT Says</a></td><td>Bloomberg</td><td class="neg">-0.418</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/articles/2026-03-25/disney-ceo-s-first-week-marred-by-openai-fortnite-trouble" target="_blank" rel="noopener">Disney CEO’s First Week Marred by ‘Fortnite,’ OpenAI Woes</a></td><td>Bloomberg</td><td class="neg">-0.440</td></tr>
-<tr><td><a href="https://www.bloomberg.com/news/newsletters/2026-03-25/as-us-strikes-hit-iran-ai-warfare-is-debated-at-washington-forum" target="_blank" rel="noopener">As US Strikes Hit Iran, AI Warfare is Debated At Washington Forum</a></td><td>Bloomberg</td><td class="neg">-0.572</td></tr>
-<tr><td><a href="https://www.technologyreview.com/2026/03/23/1134509/the-download-animal-welfare-agi-pilled-white-house-unveils-ai-policy/" target="_blank" rel="noopener">The Download: animal welfare gets AGI-pilled, and the White House unveils its AI policy</a></td><td>MIT Tech Review</td><td class="neu">+0.000</td></tr>
-<tr><td><a href="https://www.technologyreview.com/2026/03/23/1134527/the-hardest-question-to-answer-about-ai-fueled-delusions/" target="_blank" rel="noopener">The hardest question to answer about AI-fueled delusions</a></td><td>MIT Tech Review</td><td class="neg">-0.077</td></tr>
+<thead><tr><th>Headline</th><th>Source</th><th>Score</th></tr></thead>
+<tbody id="headlineBody"></tbody>
 </table>
+<button id="showMore" style="display:none;">Show more</button>
 
-<footer>Data from 10 sources &middot; Sentiment via VADER + domain adjustments</footer>
+<footer>
+  <details>
+    <summary>Data from 10 sources &middot; Sentiment via VADER + domain adjustments</summary>
+    <ul class="source-list">
+      <li>Ars Technica</li>
+      <li>BBC Technology</li>
+      <li>Bloomberg</li>
+      <li>MIT Tech Review</li>
+      <li>NYT Technology</li>
+      <li>TechCrunch</li>
+      <li>The Guardian</li>
+      <li>The Verge</li>
+      <li>Wired</li>
+      <li>ZDNet AI</li>
+    </ul>
+  </details>
+</footer>
 
 <script>
-const ctx = document.getElementById('chart').getContext('2d');
-const labels = ["2026-02-20", "2026-02-24", "2026-03-08", "2026-03-13", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22", "2026-03-23", "2026-03-24", "2026-03-25"];
-const data = [0.9246, 0.4767, 0.7717, -1.0, -0.34, -0.8402, -0.3215, 0.6285, 0.6662, 0.1172, -0.117, -0.0199];
+const allHeadlines = [{"title": "Stop telling AI your secrets - 5 reasons why, and what to do if you already overshared", "url": "https://www.zdnet.com/article/6-reasons-you-should-be-more-tight-lipped-with-your-chatbot/", "source": "ZDNet AI", "date": "2026-03-25", "score": -0.1027}, {"title": "5 ways to use AI when your budget is tight", "url": "https://www.zdnet.com/article/how-to-use-ai-on-a-budget-professonals/", "source": "ZDNet AI", "date": "2026-03-25", "score": 0.4019}, {"title": "AI Demand Is Shielding China\u2019s Booming Trade From War Shocks", "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-demand-is-shielding-china-s-booming-trade-from-iran-war-shock", "source": "Bloomberg", "date": "2026-03-25", "score": -0.9186}, {"title": "AI Has Already Changed Software Contracts: They\u2019re Shorter", "url": "https://www.bloomberg.com/news/newsletters/2026-03-25/ai-tools-are-upending-typical-software-contracts", "source": "Bloomberg", "date": "2026-03-25", "score": -0.6808}, {"title": "AI Notetaker Granola Hits $1.5 Billion Value in $125 Million Funding", "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-notetaker-granola-hits-1-5-billion-value-in-125-million-funding", "source": "Bloomberg", "date": "2026-03-25", "score": 0.8074}, {"title": "Kevin Sheekey Demos ASKB AI on Bloomberg Terminal", "url": "https://www.bloomberg.com/news/videos/2026-03-25/kevin-sheekey-demos-askb-ai-on-bloomberg-terminal-video", "source": "Bloomberg", "date": "2026-03-25", "score": 0.0}, {"title": "AI Science Startup Periodic Labs Is in Deal Talks at About $7 Billion Valuation", "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-science-startup-periodic-labs-is-in-deal-talks-at-about-7-billion-valuation", "source": "Bloomberg", "date": "2026-03-25", "score": 0.4939}, {"title": "Legal AI Startup Harvey Raises Funds at $11 Billion Valuation", "url": "https://www.bloomberg.com/news/articles/2026-03-25/legal-ai-startup-harvey-raises-funds-at-11-billion-valuation", "source": "Bloomberg", "date": "2026-03-25", "score": 0.743}, {"title": "Kuaishou Tech Sales Climb as AI Monetization Gains Momentum", "url": "https://www.bloomberg.com/news/articles/2026-03-25/kuaishou-tech-sales-climb-as-ai-monetization-gains-momentum", "source": "Bloomberg", "date": "2026-03-25", "score": 0.7964}, {"title": "Meta Is Cutting Several Hundred Jobs Amid Record AI Spending", "url": "https://www.bloomberg.com/news/articles/2026-03-25/meta-is-cutting-several-hundred-jobs-amid-record-ai-spending", "source": "Bloomberg", "date": "2026-03-25", "score": -0.25}, {"title": "China Restricts Manus Founders From Leaving China, FT Says", "url": "https://www.bloomberg.com/news/articles/2026-03-25/china-restricts-manus-founders-from-leaving-china-ft-says", "source": "Bloomberg", "date": "2026-03-25", "score": -0.4182}, {"title": "Disney CEO\u2019s First Week Marred by \u2018Fortnite,\u2019 OpenAI Woes", "url": "https://www.bloomberg.com/news/articles/2026-03-25/disney-ceo-s-first-week-marred-by-openai-fortnite-trouble", "source": "Bloomberg", "date": "2026-03-25", "score": -0.4404}, {"title": "As US Strikes Hit Iran, AI Warfare is Debated At Washington Forum", "url": "https://www.bloomberg.com/news/newsletters/2026-03-25/as-us-strikes-hit-iran-ai-warfare-is-debated-at-washington-forum", "source": "Bloomberg", "date": "2026-03-25", "score": -0.5719}, {"title": "Musk\u2019s xAI \u2018Doubling Down\u2019 on AI Videos After OpenAI Nixes Sora", "url": "https://www.bloomberg.com/news/articles/2026-03-25/musk-s-xai-doubling-down-on-ai-videos-after-openai-nixes-sora", "source": "Bloomberg", "date": "2026-03-25", "score": 0.4767}, {"title": "The Download: animal welfare gets AGI-pilled, and the White House unveils its AI policy", "url": "https://www.technologyreview.com/2026/03/23/1134509/the-download-animal-welfare-agi-pilled-white-house-unveils-ai-policy/", "source": "MIT Tech Review", "date": "2026-03-23", "score": 0.0}, {"title": "The hardest question to answer about AI-fueled delusions", "url": "https://www.technologyreview.com/2026/03/23/1134527/the-hardest-question-to-answer-about-ai-fueled-delusions/", "source": "MIT Tech Review", "date": "2026-03-23", "score": -0.0772}, {"title": "The Download: tracing AI-fueled delusions, and OpenAI admits Microsoft risks", "url": "https://www.technologyreview.com/2026/03/24/1134540/the-download-tracing-ai-fueled-delusions-openai-warns-microsoft-risks/", "source": "MIT Tech Review", "date": "2026-03-24", "score": 0.0258}, {"title": "Exclusive eBook: Are we ready to hand AI agents the keys?", "url": "https://www.technologyreview.com/2026/03/24/1134531/exclusive-ebook-are-we-ready-to-hand-ai-agents-the-keys/", "source": "MIT Tech Review", "date": "2026-03-24", "score": 0.8936}, {"title": "The AI Hype Index: AI goes to war", "url": "https://www.technologyreview.com/2026/03/25/1134571/the-ai-hype-index-ai-goes-to-war/", "source": "MIT Tech Review", "date": "2026-03-25", "score": -1.0}, {"title": "The Download: reawakening frozen brains, and the AI Hype Index returns", "url": "https://www.technologyreview.com/2026/03/25/1134636/the-download-reawakening-frozen-brains-and-the-ai-hype-index-returns/", "source": "MIT Tech Review", "date": "2026-03-25", "score": -0.2}, {"title": "This startup wants to change how mathematicians do math", "url": "https://www.technologyreview.com/2026/03/25/1134642/this-startup-wants-to-change-how-mathematicians-do-math/", "source": "MIT Tech Review", "date": "2026-03-25", "score": 0.4682}, {"title": "Why this battery company is pivoting to AI", "url": "https://www.technologyreview.com/2026/03/25/1134657/battery-company-ai-pivot-ses/", "source": "MIT Tech Review", "date": "2026-03-25", "score": -0.7351}, {"title": "First came the AI \u2018teammates\u2019, then the layoffs: the new reality for Atlassian staff now looking for work", "url": "https://www.theguardian.com/technology/2026/mar/21/atlassian-cuts-layoffs-staff-now-looking-for-work-ai", "source": "The Guardian", "date": "2026-03-20", "score": 0.5574}, {"title": "AI hit: India hungry to harness US tech giants\u2019 technology at Delhi summit", "url": "https://www.theguardian.com/world/2026/feb/20/india-delhi-summit-ai-technology-us-economic-growth", "source": "The Guardian", "date": "2026-02-20", "score": 0.9246}, {"title": "Tech\u2019s politics push at home and abroad", "url": "https://www.theguardian.com/global/2026/feb/24/tech-politics-ai-impact-summit-silicon-valley", "source": "The Guardian", "date": "2026-02-24", "score": 0.4767}, {"title": "Tech oligarchs reshape humanity while billionaires of old seem quaint", "url": "https://www.theguardian.com/technology/2026/mar/08/billionaires-tech-oligarchs", "source": "The Guardian", "date": "2026-03-08", "score": 0.7717}, {"title": "Anthropic-Pentagon battle shows how big tech has reversed course on AI and war", "url": "https://www.theguardian.com/technology/2026/mar/13/anthropic-pentagon-artificial-intelligence", "source": "The Guardian", "date": "2026-03-13", "score": -1.0}, {"title": "How the FBI can conduct mass surveillance \u2013 even without AI", "url": "https://www.theguardian.com/technology/2026/mar/21/fbi-mass-surveillance-data-artificial-intelligence", "source": "The Guardian", "date": "2026-03-21", "score": 0.6285}, {"title": "Campaign groups rail against Palantir, but the UK contracts keep coming", "url": "https://www.theguardian.com/technology/2026/mar/22/fca-deal-palantir-ai-financial-services-uk", "source": "The Guardian", "date": "2026-03-22", "score": 0.9505}, {"title": "Divide between Silicon Valley and ordinary people grows ever larger", "url": "https://www.theguardian.com/technology/2026/mar/24/silcon-valley-ai-techscape", "source": "The Guardian", "date": "2026-03-24", "score": -1.0}, {"title": "Baltimore sues Elon Musk\u2019s AI company over Grok\u2019s fake nude images", "url": "https://www.theguardian.com/technology/2026/mar/24/elon-musk-grok-ai-lawsuit-baltimore", "source": "The Guardian", "date": "2026-03-24", "score": -1.0}, {"title": "Anthropic and Pentagon face off in court over ban on company\u2019s AI model", "url": "https://www.theguardian.com/us-news/2026/mar/24/anthropic-pentagon-lawsuit", "source": "The Guardian", "date": "2026-03-24", "score": -1.0}, {"title": "OpenAI shutters AI video generator Sora in abrupt announcement", "url": "https://www.theguardian.com/technology/2026/mar/24/openai-ai-video-sora", "source": "The Guardian", "date": "2026-03-24", "score": 0.5964}, {"title": "Tech Life", "url": "https://www.bbc.co.uk/sounds/play/w3ct6zq9?at_medium=RSS&at_campaign=rss", "source": "BBC Technology", "date": "2026-03-24", "score": 0.4767}, {"title": "Publisher cancels horror novel's release over AI claims", "url": "https://www.bbc.com/news/articles/c5y9d44jj24o?at_medium=RSS&at_campaign=rss", "source": "BBC Technology", "date": "2026-03-20", "score": -0.936}, {"title": "Luke Littler applies to trademark his face to combat AI fakes", "url": "https://www.bbc.com/news/articles/c5y7374x9n4o?at_medium=RSS&at_campaign=rss", "source": "BBC Technology", "date": "2026-03-20", "score": -0.5859}, {"title": "AI videos of sexualised black women removed from TikTok after BBC investigation", "url": "https://www.bbc.com/news/articles/c070e283k8vo?at_medium=RSS&at_campaign=rss", "source": "BBC Technology", "date": "2026-03-22", "score": 0.3818}, {"title": "OpenAI closes Sora video-making app and cancels $1bn Disney deal", "url": "https://www.bbc.com/news/articles/c3w3e467ewqo?at_medium=RSS&at_campaign=rss", "source": "BBC Technology", "date": "2026-03-25", "score": -0.2263}, {"title": "The AI Race Is Pressuring Utilities to Squeeze More From Europe\u2019s Power Grids", "url": "https://www.wired.com/story/europe-squeeze-power-energy-grid-ai-data-center/", "source": "Wired", "date": "2026-03-23", "score": -0.0258}, {"title": "Meet the Gods of AI Warfare", "url": "https://www.wired.com/story/project-maven-katrina-manson-book-excerpt/", "source": "Wired", "date": "2026-03-23", "score": 0.5719}, {"title": "Chris Hayes Has Some Advice for Keeping Up With the News", "url": "https://www.wired.com/story/the-big-interview-podcast-chris-hayes/", "source": "Wired", "date": "2026-03-24", "score": -0.0516}, {"title": "Arm Is Now Making Its Own Chips", "url": "https://www.wired.com/story/chip-design-firm-arm-is-making-its-own-ai-cpu/", "source": "Wired", "date": "2026-03-24", "score": 0.4767}, {"title": "Pentagon\u2019s \u2018Attempt to Cripple\u2019 Anthropic Is Troubling, Judge Says", "url": "https://www.wired.com/story/pentagons-attempt-to-cripple-anthropic-is-troublesome-judge-says/", "source": "Wired", "date": "2026-03-24", "score": -0.7184}, {"title": "New Bernie Sanders AI Safety Bill Would Halt Data Center Construction", "url": "https://www.wired.com/story/new-bernie-sanders-ai-safety-bill-would-halt-data-center-construction/", "source": "Wired", "date": "2026-03-25", "score": 0.8074}, {"title": "OpenAI Enters Its Focus Era by Killing Sora", "url": "https://www.wired.com/story/openai-shuts-down-sora-ipo-ai-superapp/", "source": "Wired", "date": "2026-03-25", "score": -0.0258}, {"title": "Electronic Frontier Foundation to swap leaders as AI, ICE fights escalate", "url": "https://arstechnica.com/tech-policy/2026/03/trump-made-opposing-government-spying-cool-again-effs-departing-chief-says/", "source": "Ars Technica", "date": "2026-03-24", "score": -0.5106}, {"title": "OpenAI announces plans to shut down its Sora video generator", "url": "https://arstechnica.com/ai/2026/03/openai-plans-to-shut-down-sora-just-15-months-after-its-launch/", "source": "Ars Technica", "date": "2026-03-24", "score": 0.0}, {"title": "Mozilla dev's \"Stack Overflow for agents\" targets a key weakness in coding AI", "url": "https://arstechnica.com/ai/2026/03/mozilla-dev-introduces-cq-a-stack-overflow-for-agents/", "source": "Ars Technica", "date": "2026-03-24", "score": -0.4209}, {"title": "Disney cancels $1 billion OpenAI partnership amid Sora shutdown plans", "url": "https://arstechnica.com/ai/2026/03/the-end-of-sora-also-means-the-end-of-disneys-1-billion-openai-investment/", "source": "Ars Technica", "date": "2026-03-25", "score": -0.4767}, {"title": "Mark Zuckerberg and Jensen Huang are part of Trump\u2019s new \u2018tech panel\u2019", "url": "https://www.theverge.com/policy/900340/trump-tech-panel-mark-zuckerberg-jensen-huang", "source": "The Verge", "date": "2026-03-25", "score": 0.0}, {"title": "Senate Democrats are trying to \u2018codify\u2019 Anthropic&#8217;s red lines on autonomous weapons and mass surveillance", "url": "https://www.theverge.com/policy/900341/senator-schiff-anthropic-autonomous-weapons-mass-surveillance", "source": "The Verge", "date": "2026-03-25", "score": -0.8124}, {"title": "Google Lyria 3 Pro makes longer AI songs", "url": "https://www.theverge.com/ai-artificial-intelligence/900425/google-lyria-3-pro-ai-music", "source": "The Verge", "date": "2026-03-25", "score": 0.0516}, {"title": "Silicon Valley Musters Behind-the-Scenes Support for Anthropic", "url": "https://www.nytimes.com/2026/03/18/technology/silicon-valley-anthropic-pentagon.html", "source": "NYT Technology", "date": "2026-03-18", "score": -0.34}, {"title": "AI Replica of Val Kilmer to Appear in \u2018As Deep as the Grave\u2019", "url": "https://www.nytimes.com/2026/03/18/movies/val-kilmer-ai-movie.html", "source": "NYT Technology", "date": "2026-03-19", "score": -0.8402}, {"title": "OpenAI Is Shutting Down Sora, Its A.I. Video Generator", "url": "https://www.nytimes.com/2026/03/24/technology/openai-shutting-down-sora.html", "source": "NYT Technology", "date": "2026-03-24", "score": 0.0}, {"title": "Meta turns to AI to make shopping easier on Instagram and Facebook", "url": "https://techcrunch.com/2026/03/25/meta-turns-to-ai-to-make-shopping-easier-on-instagram-and-facebook/", "source": "TechCrunch", "date": "2026-03-25", "score": 0.4215}, {"title": "Meta launches new initiative to support entrepreneurship, drive AI adoption", "url": "https://techcrunch.com/2026/03/25/meta-launches-new-initiative-to-support-entrepreneurship-drive-ai-adoption/", "source": "TechCrunch", "date": "2026-03-25", "score": 0.5519}, {"title": "Granola raises $125M, hits $1.5B valuation as it expands from meeting notetaker to enterprise AI app", "url": "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/", "source": "TechCrunch", "date": "2026-03-25", "score": 0.1761}, {"title": "Harvey confirms $11B valuation: Sequoia triples down", "url": "https://techcrunch.com/2026/03/25/harvey-confirms-11b-valuation-sequoia-triples-down/", "source": "TechCrunch", "date": "2026-03-25", "score": 0.4588}, {"title": "Google launches Lyria 3 Pro music generation model", "url": "https://techcrunch.com/2026/03/25/google-launches-lyria-3-pro-music-generation-model/", "source": "TechCrunch", "date": "2026-03-25", "score": 0.1027}, {"title": "Bernie Sanders and AOC propose a ban on data center construction", "url": "https://techcrunch.com/2026/03/25/bernie-sanders-and-aoc-propose-a-ban-on-data-center-construction/", "source": "TechCrunch", "date": "2026-03-25", "score": -0.5318}, {"title": "Apple overhauls its app developer platform with 100 new metrics, more tools", "url": "https://techcrunch.com/2026/03/25/apple-overhauls-its-app-developer-platform-with-100-new-metrics-more-tools/", "source": "TechCrunch", "date": "2026-03-25", "score": 0.34}];
+const dailyScores = {"2026-02-20": {"mean": 0.9246, "count": 1, "sources": ["The Guardian"]}, "2026-02-24": {"mean": 0.4767, "count": 1, "sources": ["The Guardian"]}, "2026-03-08": {"mean": 0.7717, "count": 1, "sources": ["The Guardian"]}, "2026-03-13": {"mean": -1.0, "count": 1, "sources": ["The Guardian"]}, "2026-03-18": {"mean": -0.34, "count": 1, "sources": ["NYT Technology"]}, "2026-03-19": {"mean": -0.8402, "count": 1, "sources": ["NYT Technology"]}, "2026-03-20": {"mean": -0.3215, "count": 3, "sources": ["BBC Technology", "The Guardian"]}, "2026-03-21": {"mean": 0.6285, "count": 1, "sources": ["The Guardian"]}, "2026-03-22": {"mean": 0.6662, "count": 2, "sources": ["BBC Technology", "The Guardian"]}, "2026-03-23": {"mean": 0.1172, "count": 4, "sources": ["MIT Tech Review", "Wired"]}, "2026-03-24": {"mean": -0.1595, "count": 14, "sources": ["Ars Technica", "BBC Technology", "MIT Tech Review", "NYT Technology", "The Guardian", "Wired"]}, "2026-03-25": {"mean": -0.0092, "count": 32, "sources": ["Ars Technica", "BBC Technology", "Bloomberg", "MIT Tech Review", "TechCrunch", "The Verge", "Wired", "ZDNet AI"]}};
+const dailyBySource = {"2026-02-20": {"All": {"mean": 0.9246, "count": 1}, "The Guardian": {"mean": 0.9246, "count": 1}}, "2026-02-24": {"All": {"mean": 0.4767, "count": 1}, "The Guardian": {"mean": 0.4767, "count": 1}}, "2026-03-08": {"All": {"mean": 0.7717, "count": 1}, "The Guardian": {"mean": 0.7717, "count": 1}}, "2026-03-13": {"All": {"mean": -1.0, "count": 1}, "The Guardian": {"mean": -1.0, "count": 1}}, "2026-03-18": {"All": {"mean": -0.34, "count": 1}, "NYT Technology": {"mean": -0.34, "count": 1}}, "2026-03-19": {"All": {"mean": -0.8402, "count": 1}, "NYT Technology": {"mean": -0.8402, "count": 1}}, "2026-03-20": {"All": {"mean": -0.3215, "count": 3}, "BBC Technology": {"mean": -0.761, "count": 2}, "The Guardian": {"mean": 0.5574, "count": 1}}, "2026-03-21": {"All": {"mean": 0.6285, "count": 1}, "The Guardian": {"mean": 0.6285, "count": 1}}, "2026-03-22": {"All": {"mean": 0.6662, "count": 2}, "BBC Technology": {"mean": 0.3818, "count": 1}, "The Guardian": {"mean": 0.9505, "count": 1}}, "2026-03-23": {"All": {"mean": 0.1172, "count": 4}, "Wired": {"mean": 0.273, "count": 2}, "MIT Tech Review": {"mean": -0.0386, "count": 2}}, "2026-03-24": {"All": {"mean": -0.1595, "count": 14}, "NYT Technology": {"mean": 0.0, "count": 1}, "Ars Technica": {"mean": -0.3105, "count": 3}, "Wired": {"mean": -0.0978, "count": 3}, "BBC Technology": {"mean": 0.4767, "count": 1}, "The Guardian": {"mean": -0.6009, "count": 4}, "MIT Tech Review": {"mean": 0.4597, "count": 2}}, "2026-03-25": {"All": {"mean": -0.0092, "count": 32}, "TechCrunch": {"mean": 0.217, "count": 7}, "The Verge": {"mean": -0.2536, "count": 3}, "Ars Technica": {"mean": -0.4767, "count": 1}, "Wired": {"mean": 0.3908, "count": 2}, "BBC Technology": {"mean": -0.2263, "count": 1}, "MIT Tech Review": {"mean": -0.3667, "count": 4}, "Bloomberg": {"mean": 0.0031, "count": 12}, "ZDNet AI": {"mean": 0.1496, "count": 2}}};
+const MIN_SOURCES = 3;
+const PAGE_SIZE = 25;
+let currentPage = 0;
 
-new Chart(ctx, {
+function scoreClass(s) {
+  return s > 0.05 ? 'pos' : (s < -0.05 ? 'neg' : 'neu');
+}
+
+function escapeHtml(t) {
+  const d = document.createElement('div');
+  d.textContent = t;
+  return d.innerHTML;
+}
+
+function renderHeadlines(filtered) {
+  const tbody = document.getElementById('headlineBody');
+  tbody.innerHTML = '';
+  const end = Math.min((currentPage + 1) * PAGE_SIZE, filtered.length);
+  for (let i = 0; i < end; i++) {
+    const h = filtered[i];
+    const cls = scoreClass(h.score);
+    const sign = h.score > 0 ? '+' : '';
+    const title = escapeHtml(h.title);
+    const titleCell = h.url
+      ? '<a href="' + escapeHtml(h.url) + '" target="_blank" rel="noopener">' + title + '</a>'
+      : title;
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + titleCell + '</td><td>' + escapeHtml(h.source) + '</td><td class="' + cls + '">' + sign + h.score.toFixed(3) + '</td>';
+    tbody.appendChild(tr);
+  }
+  document.getElementById('showMore').style.display = end < filtered.length ? 'block' : 'none';
+}
+
+function getFilteredHeadlines() {
+  const src = document.getElementById('sourceFilter').value;
+  return src === 'All' ? allHeadlines : allHeadlines.filter(function(h) { return h.source === src; });
+}
+
+function getChartData(source) {
+  const dates = Object.keys(dailyScores).sort();
+  const filtered = [];
+  for (let i = 0; i < dates.length; i++) {
+    const d = dates[i];
+    if (source === 'All') {
+      if ((dailyScores[d].sources || []).length >= MIN_SOURCES) {
+        filtered.push({ date: d, score: dailyScores[d].mean });
+      }
+    } else {
+      const srcData = (dailyBySource[d] || {})[source];
+      if (srcData) {
+        filtered.push({ date: d, score: srcData.mean });
+      }
+    }
+  }
+  return {
+    labels: filtered.map(function(f) { return f.date; }),
+    scores: filtered.map(function(f) { return f.score; }),
+  };
+}
+
+const ctx = document.getElementById('chart').getContext('2d');
+const initial = getChartData('All');
+
+const chart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels,
+    labels: initial.labels,
     datasets: [{
       label: 'Daily Mean Sentiment',
-      data,
+      data: initial.scores,
       borderColor: '#2563eb',
       backgroundColor: 'rgba(37,99,235,0.08)',
       fill: true,
@@ -86,18 +178,35 @@ new Chart(ctx, {
     responsive: true,
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks: { label: item => 'Score: ' + item.parsed.y.toFixed(3) } }
+      tooltip: { callbacks: { label: function(item) { return 'Score: ' + item.parsed.y.toFixed(3); } } }
     },
     scales: {
       y: {
         min: -1, max: 1,
         title: { display: true, text: 'Sentiment (-1 neg / +1 pos)' },
-        grid: { color: ctx => ctx.tick.value === 0 ? '#666' : '#eee' }
+        grid: { color: function(ctx) { return ctx.tick.value === 0 ? '#666' : '#eee'; } }
       },
       x: { title: { display: true, text: 'Date' } }
     }
   }
 });
+
+document.getElementById('sourceFilter').addEventListener('change', function() {
+  const source = this.value;
+  const chartData = getChartData(source);
+  chart.data.labels = chartData.labels;
+  chart.data.datasets[0].data = chartData.scores;
+  chart.update();
+  currentPage = 0;
+  renderHeadlines(getFilteredHeadlines());
+});
+
+document.getElementById('showMore').addEventListener('click', function() {
+  currentPage++;
+  renderHeadlines(getFilteredHeadlines());
+});
+
+renderHeadlines(allHeadlines);
 </script>
 </body>
 </html>

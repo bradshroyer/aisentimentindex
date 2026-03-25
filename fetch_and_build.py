@@ -61,6 +61,8 @@ CONTEXT_OVERRIDES = {
     "cuts development": 0.25, "eliminates": 0.2, "disrupts": 0.1,
 }
 
+MIN_SOURCES_PER_DAY = 3  # Only chart days with data from this many distinct sources
+
 DATA_FILE = os.path.join(os.path.dirname(__file__) or ".", "data.json")
 HTML_FILE = os.path.join(os.path.dirname(__file__) or ".", "index.html")
 
@@ -165,21 +167,36 @@ def score_headlines(headlines: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def aggregate_daily(headlines: list[dict]) -> dict:
-    by_day: dict[str, list[float]] = {}
+    by_day: dict[str, list[dict]] = {}
     for h in headlines:
-        by_day.setdefault(h["date"], []).append(h["score"])
+        by_day.setdefault(h["date"], []).append(h)
 
     daily = {}
-    for date, scores in sorted(by_day.items()):
+    for date, day_headlines in sorted(by_day.items()):
+        scores = [h["score"] for h in day_headlines]
         pos = sum(1 for s in scores if s > 0.05)
         neg = sum(1 for s in scores if s < -0.05)
         neu = len(scores) - pos - neg
+        sources = sorted(set(h["source"] for h in day_headlines))
+
+        by_source: dict[str, list[float]] = {}
+        for h in day_headlines:
+            by_source.setdefault(h["source"], []).append(h["score"])
+        source_stats = {}
+        for src, src_scores in by_source.items():
+            source_stats[src] = {
+                "mean": round(mean(src_scores), 4),
+                "count": len(src_scores),
+            }
+
         daily[date] = {
             "mean": round(mean(scores), 4),
             "count": len(scores),
             "pos": pos,
             "neg": neg,
             "neu": neu,
+            "sources": sources,
+            "by_source": source_stats,
         }
     return daily
 
@@ -201,6 +218,9 @@ HTML_TEMPLATE = """\
          max-width: 900px; margin: 0 auto; padding: 2rem 1rem; color: #1a1a1a; background: #fafafa; }}
   h1 {{ font-size: 1.6rem; margin-bottom: 0.25rem; }}
   .subtitle {{ color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }}
+  .filter-bar {{ margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }}
+  .filter-bar label {{ font-size: 0.85rem; color: #666; }}
+  .filter-bar select {{ padding: 0.4rem 0.6rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.85rem; background: #fff; }}
   .chart-wrap {{ background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 2rem; }}
   .stats {{ display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }}
   .stat {{ background: #fff; border-radius: 8px; padding: 1rem 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }}
@@ -213,12 +233,27 @@ HTML_TEMPLATE = """\
   tr:not(:last-child) td {{ border-bottom: 1px solid #eee; }}
   .pos {{ color: #16a34a; }} .neg {{ color: #dc2626; }} .neu {{ color: #666; }}
   td a {{ color: #1a1a1a; text-decoration: none; }} td a:hover {{ text-decoration: underline; color: #2563eb; }}
+  #showMore {{ display: block; margin: 1rem auto; padding: 0.5rem 1.5rem; background: #2563eb; color: #fff;
+               border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }}
+  #showMore:hover {{ background: #1d4ed8; }}
   footer {{ margin-top: 2rem; font-size: 0.75rem; color: #999; text-align: center; }}
+  footer summary {{ cursor: pointer; }} footer summary:hover {{ color: #666; }}
+  .source-list {{ list-style: none; margin-top: 0.5rem; text-align: left; display: inline-block; }}
+  .source-list li {{ padding: 0.15rem 0; font-size: 0.75rem; }}
+  .source-list a {{ color: #2563eb; text-decoration: none; }} .source-list a:hover {{ text-decoration: underline; }}
 </style>
 </head>
 <body>
 <h1>AI Sentiment Index (Media Tone)</h1>
 <p class="subtitle">Tracking how major tech outlets talk about AI &mdash; updated {updated}</p>
+
+<div class="filter-bar">
+  <label for="sourceFilter">Filter by source:</label>
+  <select id="sourceFilter">
+    <option value="All">All Sources</option>
+{source_options}
+  </select>
+</div>
 
 <div class="chart-wrap">
   <canvas id="chart"></canvas>
@@ -232,24 +267,94 @@ HTML_TEMPLATE = """\
 
 <h2>Recent Headlines</h2>
 <table>
-<tr><th>Headline</th><th>Source</th><th>Score</th></tr>
-{headline_rows}
+<thead><tr><th>Headline</th><th>Source</th><th>Score</th></tr></thead>
+<tbody id="headlineBody"></tbody>
 </table>
+<button id="showMore" style="display:none;">Show more</button>
 
-<footer>Data from {source_count} sources &middot; Sentiment via VADER + domain adjustments</footer>
+<footer>
+  <details>
+    <summary>Data from {source_count} sources &middot; Sentiment via VADER + domain adjustments</summary>
+    <ul class="source-list">
+{source_list_items}
+    </ul>
+  </details>
+</footer>
 
 <script>
-const ctx = document.getElementById('chart').getContext('2d');
-const labels = {dates_json};
-const data = {scores_json};
+const allHeadlines = {headlines_json};
+const dailyScores = {daily_scores_json};
+const dailyBySource = {daily_by_source_json};
+const MIN_SOURCES = {min_sources};
+const PAGE_SIZE = 25;
+let currentPage = 0;
 
-new Chart(ctx, {{
+function scoreClass(s) {{
+  return s > 0.05 ? 'pos' : (s < -0.05 ? 'neg' : 'neu');
+}}
+
+function escapeHtml(t) {{
+  const d = document.createElement('div');
+  d.textContent = t;
+  return d.innerHTML;
+}}
+
+function renderHeadlines(filtered) {{
+  const tbody = document.getElementById('headlineBody');
+  tbody.innerHTML = '';
+  const end = Math.min((currentPage + 1) * PAGE_SIZE, filtered.length);
+  for (let i = 0; i < end; i++) {{
+    const h = filtered[i];
+    const cls = scoreClass(h.score);
+    const sign = h.score > 0 ? '+' : '';
+    const title = escapeHtml(h.title);
+    const titleCell = h.url
+      ? '<a href="' + escapeHtml(h.url) + '" target="_blank" rel="noopener">' + title + '</a>'
+      : title;
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + titleCell + '</td><td>' + escapeHtml(h.source) + '</td><td class="' + cls + '">' + sign + h.score.toFixed(3) + '</td>';
+    tbody.appendChild(tr);
+  }}
+  document.getElementById('showMore').style.display = end < filtered.length ? 'block' : 'none';
+}}
+
+function getFilteredHeadlines() {{
+  const src = document.getElementById('sourceFilter').value;
+  return src === 'All' ? allHeadlines : allHeadlines.filter(function(h) {{ return h.source === src; }});
+}}
+
+function getChartData(source) {{
+  const dates = Object.keys(dailyScores).sort();
+  const filtered = [];
+  for (let i = 0; i < dates.length; i++) {{
+    const d = dates[i];
+    if (source === 'All') {{
+      if ((dailyScores[d].sources || []).length >= MIN_SOURCES) {{
+        filtered.push({{ date: d, score: dailyScores[d].mean }});
+      }}
+    }} else {{
+      const srcData = (dailyBySource[d] || {{}})[source];
+      if (srcData) {{
+        filtered.push({{ date: d, score: srcData.mean }});
+      }}
+    }}
+  }}
+  return {{
+    labels: filtered.map(function(f) {{ return f.date; }}),
+    scores: filtered.map(function(f) {{ return f.score; }}),
+  }};
+}}
+
+const ctx = document.getElementById('chart').getContext('2d');
+const initial = getChartData('All');
+
+const chart = new Chart(ctx, {{
   type: 'line',
   data: {{
-    labels,
+    labels: initial.labels,
     datasets: [{{
       label: 'Daily Mean Sentiment',
-      data,
+      data: initial.scores,
       borderColor: '#2563eb',
       backgroundColor: 'rgba(37,99,235,0.08)',
       fill: true,
@@ -262,18 +367,35 @@ new Chart(ctx, {{
     responsive: true,
     plugins: {{
       legend: {{ display: false }},
-      tooltip: {{ callbacks: {{ label: item => 'Score: ' + item.parsed.y.toFixed(3) }} }}
+      tooltip: {{ callbacks: {{ label: function(item) {{ return 'Score: ' + item.parsed.y.toFixed(3); }} }} }}
     }},
     scales: {{
       y: {{
         min: -1, max: 1,
         title: {{ display: true, text: 'Sentiment (-1 neg / +1 pos)' }},
-        grid: {{ color: ctx => ctx.tick.value === 0 ? '#666' : '#eee' }}
+        grid: {{ color: function(ctx) {{ return ctx.tick.value === 0 ? '#666' : '#eee'; }} }}
       }},
       x: {{ title: {{ display: true, text: 'Date' }} }}
     }}
   }}
 }});
+
+document.getElementById('sourceFilter').addEventListener('change', function() {{
+  const source = this.value;
+  const chartData = getChartData(source);
+  chart.data.labels = chartData.labels;
+  chart.data.datasets[0].data = chartData.scores;
+  chart.update();
+  currentPage = 0;
+  renderHeadlines(getFilteredHeadlines());
+}});
+
+document.getElementById('showMore').addEventListener('click', function() {{
+  currentPage++;
+  renderHeadlines(getFilteredHeadlines());
+}});
+
+renderHeadlines(allHeadlines);
 </script>
 </body>
 </html>"""
@@ -281,32 +403,68 @@ new Chart(ctx, {{
 
 def generate_html(data: dict) -> None:
     daily = data["daily_scores"]
-    dates = sorted(daily.keys())
-    scores = [daily[d]["mean"] for d in dates]
+    all_dates = sorted(daily.keys())
 
-    total = sum(daily[d]["count"] for d in dates) if dates else 0
-    current = scores[-1] if scores else 0
+    # Chart data filtered by minimum source threshold
+    chart_dates = [d for d in all_dates if len(daily[d].get("sources", [])) >= MIN_SOURCES_PER_DAY]
+    chart_scores = [daily[d]["mean"] for d in chart_dates]
+
+    total = sum(daily[d]["count"] for d in all_dates) if all_dates else 0
+    current = chart_scores[-1] if chart_scores else 0
     current_class = "pos" if current > 0.05 else ("neg" if current < -0.05 else "neu")
 
-    recent = sorted(data["headlines"], key=lambda h: h["timestamp"], reverse=True)[:15]
-    rows = []
-    for h in recent:
-        sc = h["score"]
-        cls = "pos" if sc > 0.05 else ("neg" if sc < -0.05 else "neu")
-        link = h.get("url", "")
-        title_cell = f'<a href="{link}" target="_blank" rel="noopener">{h["title"]}</a>' if link else h["title"]
-        rows.append(f'<tr><td>{title_cell}</td><td>{h["source"]}</td><td class="{cls}">{sc:+.3f}</td></tr>')
+    # All headlines for client-side rendering
+    all_headlines = sorted(data["headlines"], key=lambda h: h["timestamp"], reverse=True)
+    headlines_for_js = [
+        {"title": h["title"], "url": h.get("url", ""), "source": h["source"],
+         "date": h["date"], "score": h["score"]}
+        for h in all_headlines
+    ]
+
+    # Per-day per-source breakdown for JS chart filtering
+    daily_by_source = {}
+    for date in all_dates:
+        entry = daily[date]
+        day_data = {"All": {"mean": entry["mean"], "count": entry["count"]}}
+        for src, stats in entry.get("by_source", {}).items():
+            day_data[src] = stats
+        daily_by_source[date] = day_data
+
+    # Daily scores for JS (with source lists for threshold filtering)
+    daily_scores_for_js = {
+        d: {"mean": daily[d]["mean"], "count": daily[d]["count"],
+            "sources": daily[d].get("sources", [])}
+        for d in all_dates
+    }
+
+    # Source dropdown options
+    source_names = sorted(RSS_FEEDS.keys())
+    source_options = "\n".join(f'    <option value="{name}">{name}</option>' for name in source_names)
+
+    # Footer source list
+    source_items = []
+    for name in sorted(RSS_FEEDS.keys()):
+        url = RSS_FEEDS[name]
+        source_items.append(f'      <li>{name}</li>')
+    source_list_items = "\n".join(source_items)
+
+    # Sanitize JSON to prevent </script> injection
+    def safe_json(obj):
+        return json.dumps(obj).replace("</", "<\\/")
 
     html = HTML_TEMPLATE.format(
         updated=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         total_headlines=total,
-        days_tracked=len(dates),
+        days_tracked=len(chart_dates),
         current_score=f"{current:+.3f}",
         current_class=current_class,
-        headline_rows="\n".join(rows),
-        dates_json=json.dumps(dates),
-        scores_json=json.dumps(scores),
+        source_options=source_options,
+        headlines_json=safe_json(headlines_for_js),
+        daily_scores_json=safe_json(daily_scores_for_js),
+        daily_by_source_json=safe_json(daily_by_source),
+        min_sources=MIN_SOURCES_PER_DAY,
         source_count=len(RSS_FEEDS),
+        source_list_items=source_list_items,
     )
 
     with open(HTML_FILE, "w") as f:
