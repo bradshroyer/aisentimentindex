@@ -10,6 +10,16 @@ from datetime import datetime, timezone
 
 import requests
 
+# Load .env file if present (so API key persists across runs)
+_env_path = os.path.join(os.path.dirname(__file__) or ".", ".env")
+if os.path.exists(_env_path):
+    with open(_env_path) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _key, _val = _line.split("=", 1)
+                os.environ.setdefault(_key.strip(), _val.strip())
+
 # Import shared functions from fetch_and_build
 sys.path.insert(0, os.path.dirname(__file__) or ".")
 from fetch_and_build import (
