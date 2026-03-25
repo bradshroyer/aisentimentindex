@@ -52,7 +52,11 @@ NEGATIVE_BOOSTS = {
     "hype": -0.2, "bubble": -0.25, "overhyped": -0.3,
     "threat": -0.15, "replace jobs": -0.2, "job loss": -0.25,
     "surveillance": -0.2, "lawsuit": -0.2, "sued": -0.2,
-    "ban": -0.15, "restrict": -0.1, "existential risk": -0.3,
+    "ban": -0.15, "restrict": -0.1,
+    "existential risk": -0.35, "existential crisis": -0.35,
+    "existential threat": -0.35, "extinction": -0.35,
+    "catastrophic": -0.3, "apocalyp": -0.3, "doomsday": -0.3,
+    "superintelligence": -0.15,
     "hallucinate": -0.15, "hallucination": -0.15, "bias": -0.15,
 }
 # Action verbs VADER reads as negative but are positive in tech context
@@ -125,6 +129,7 @@ def fetch_headlines() -> list[dict]:
                         "source": source,
                         "date": parse_date(entry),
                         "timestamp": datetime.now(timezone.utc).isoformat(),
+                        "backfill": False,
                     })
         except Exception as e:
             print(f"Warning: failed to fetch {source}: {e}")
@@ -189,6 +194,10 @@ def aggregate_daily(headlines: list[dict]) -> dict:
                 "count": len(src_scores),
             }
 
+        # Track backfill vs live
+        live_scores = [h["score"] for h in day_headlines if not h.get("backfill")]
+        backfill_scores = [h["score"] for h in day_headlines if h.get("backfill")]
+
         daily[date] = {
             "mean": round(mean(scores), 4),
             "count": len(scores),
@@ -197,6 +206,10 @@ def aggregate_daily(headlines: list[dict]) -> dict:
             "neu": neu,
             "sources": sources,
             "by_source": source_stats,
+            "live_count": len(live_scores),
+            "live_mean": round(mean(live_scores), 4) if live_scores else None,
+            "backfill_count": len(backfill_scores),
+            "backfill_mean": round(mean(backfill_scores), 4) if backfill_scores else None,
         }
     return daily
 
@@ -233,6 +246,7 @@ HTML_TEMPLATE = """\
   tr:not(:last-child) td {{ border-bottom: 1px solid #eee; }}
   .pos {{ color: #16a34a; }} .neg {{ color: #dc2626; }} .neu {{ color: #666; }}
   td a {{ color: #1a1a1a; text-decoration: none; }} td a:hover {{ text-decoration: underline; color: #2563eb; }}
+  .backfill-tag {{ font-size: 0.7rem; color: #999; background: #f0f0f0; padding: 0.1rem 0.35rem; border-radius: 3px; margin-left: 0.4rem; }}
   #showMore {{ display: block; margin: 1rem auto; padding: 0.5rem 1.5rem; background: #2563eb; color: #fff;
                border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }}
   #showMore:hover {{ background: #1d4ed8; }}
@@ -311,8 +325,9 @@ function renderHeadlines(filtered) {{
     const titleCell = h.url
       ? '<a href="' + escapeHtml(h.url) + '" target="_blank" rel="noopener">' + title + '</a>'
       : title;
+    const tag = h.backfill ? '<span class="backfill-tag">backfill</span>' : '';
     const tr = document.createElement('tr');
-    tr.innerHTML = '<td>' + titleCell + '</td><td>' + escapeHtml(h.source) + '</td><td class="' + cls + '">' + sign + h.score.toFixed(3) + '</td>';
+    tr.innerHTML = '<td>' + titleCell + tag + '</td><td>' + escapeHtml(h.source) + '</td><td class="' + cls + '">' + sign + h.score.toFixed(3) + '</td>';
     tbody.appendChild(tr);
   }}
   document.getElementById('showMore').style.display = end < filtered.length ? 'block' : 'none';
@@ -325,24 +340,28 @@ function getFilteredHeadlines() {{
 
 function getChartData(source) {{
   const dates = Object.keys(dailyScores).sort();
-  const filtered = [];
+  const allDates = [];
+  const liveData = [];
+  const backfillData = [];
   for (let i = 0; i < dates.length; i++) {{
     const d = dates[i];
+    const ds = dailyScores[d];
     if (source === 'All') {{
-      if ((dailyScores[d].sources || []).length >= MIN_SOURCES) {{
-        filtered.push({{ date: d, score: dailyScores[d].mean }});
+      if ((ds.sources || []).length >= MIN_SOURCES) {{
+        allDates.push(d);
+        liveData.push(ds.live_mean);
+        backfillData.push(ds.backfill_mean);
       }}
     }} else {{
       const srcData = (dailyBySource[d] || {{}})[source];
       if (srcData) {{
-        filtered.push({{ date: d, score: srcData.mean }});
+        allDates.push(d);
+        liveData.push(ds.live_mean);
+        backfillData.push(ds.backfill_mean);
       }}
     }}
   }}
-  return {{
-    labels: filtered.map(function(f) {{ return f.date; }}),
-    scores: filtered.map(function(f) {{ return f.score; }}),
-  }};
+  return {{ labels: allDates, live: liveData, backfill: backfillData }};
 }}
 
 const ctx = document.getElementById('chart').getContext('2d');
@@ -352,22 +371,37 @@ const chart = new Chart(ctx, {{
   type: 'line',
   data: {{
     labels: initial.labels,
-    datasets: [{{
-      label: 'Daily Mean Sentiment',
-      data: initial.scores,
-      borderColor: '#2563eb',
-      backgroundColor: 'rgba(37,99,235,0.08)',
-      fill: true,
-      tension: 0.3,
-      pointRadius: 4,
-      pointHoverRadius: 6,
-    }}]
+    datasets: [
+      {{
+        label: 'Live (RSS)',
+        data: initial.live,
+        borderColor: '#2563eb',
+        backgroundColor: 'rgba(37,99,235,0.08)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        spanGaps: true,
+      }},
+      {{
+        label: 'Backfill (Historical)',
+        data: initial.backfill,
+        borderColor: '#9ca3af',
+        borderDash: [6, 3],
+        backgroundColor: 'rgba(156,163,175,0.06)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        spanGaps: true,
+      }}
+    ]
   }},
   options: {{
     responsive: true,
     plugins: {{
-      legend: {{ display: false }},
-      tooltip: {{ callbacks: {{ label: function(item) {{ return 'Score: ' + item.parsed.y.toFixed(3); }} }} }}
+      legend: {{ display: true, position: 'top', labels: {{ usePointStyle: true, boxWidth: 8, font: {{ size: 11 }} }} }},
+      tooltip: {{ callbacks: {{ label: function(item) {{ return item.dataset.label + ': ' + item.parsed.y.toFixed(3); }} }} }}
     }},
     scales: {{
       y: {{
@@ -384,7 +418,8 @@ document.getElementById('sourceFilter').addEventListener('change', function() {{
   const source = this.value;
   const chartData = getChartData(source);
   chart.data.labels = chartData.labels;
-  chart.data.datasets[0].data = chartData.scores;
+  chart.data.datasets[0].data = chartData.live;
+  chart.data.datasets[1].data = chartData.backfill;
   chart.update();
   currentPage = 0;
   renderHeadlines(getFilteredHeadlines());
@@ -417,7 +452,7 @@ def generate_html(data: dict) -> None:
     all_headlines = sorted(data["headlines"], key=lambda h: h["timestamp"], reverse=True)
     headlines_for_js = [
         {"title": h["title"], "url": h.get("url", ""), "source": h["source"],
-         "date": h["date"], "score": h["score"]}
+         "date": h["date"], "score": h["score"], "backfill": h.get("backfill", False)}
         for h in all_headlines
     ]
 
@@ -433,7 +468,9 @@ def generate_html(data: dict) -> None:
     # Daily scores for JS (with source lists for threshold filtering)
     daily_scores_for_js = {
         d: {"mean": daily[d]["mean"], "count": daily[d]["count"],
-            "sources": daily[d].get("sources", [])}
+            "sources": daily[d].get("sources", []),
+            "live_mean": daily[d].get("live_mean"),
+            "backfill_mean": daily[d].get("backfill_mean")}
         for d in all_dates
     }
 
