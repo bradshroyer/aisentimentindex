@@ -133,7 +133,6 @@ def fetch_headlines() -> list[dict]:
                         "source": source,
                         "date": parse_date(entry),
                         "timestamp": datetime.now(timezone.utc).isoformat(),
-                        "backfill": False,
                     })
         except Exception as e:
             print(f"Warning: failed to fetch {source}: {e}")
@@ -198,12 +197,6 @@ def aggregate_daily(headlines: list[dict]) -> dict:
                 "count": len(src_scores),
             }
 
-        # Track backfill vs live
-        live_headlines = [h for h in day_headlines if not h.get("backfill")]
-        live_scores = [h["score"] for h in live_headlines]
-        live_sources = sorted(set(h["source"] for h in live_headlines))
-        backfill_scores = [h["score"] for h in day_headlines if h.get("backfill")]
-
         daily[date] = {
             "mean": round(mean(scores), 4),
             "count": len(scores),
@@ -212,11 +205,6 @@ def aggregate_daily(headlines: list[dict]) -> dict:
             "neu": neu,
             "sources": sources,
             "by_source": source_stats,
-            "live_count": len(live_scores),
-            "live_mean": round(mean(live_scores), 4) if live_scores else None,
-            "live_sources": live_sources,
-            "backfill_count": len(backfill_scores),
-            "backfill_mean": round(mean(backfill_scores), 4) if backfill_scores else None,
         }
     return daily
 
@@ -259,7 +247,6 @@ HTML_TEMPLATE = """\
   tr:not(:last-child) td {{ border-bottom: 1px solid #eee; }}
   .pos {{ color: #16a34a; }} .neg {{ color: #dc2626; }} .neu {{ color: #666; }}
   td a {{ color: #1a1a1a; text-decoration: none; }} td a:hover {{ text-decoration: underline; color: #2563eb; }}
-  .backfill-tag {{ font-size: 0.7rem; color: #999; background: #f0f0f0; padding: 0.1rem 0.35rem; border-radius: 3px; margin-left: 0.4rem; }}
   #showMore {{ display: block; margin: 1rem auto; padding: 0.5rem 1.5rem; background: #2563eb; color: #fff;
                border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }}
   #showMore:hover {{ background: #1d4ed8; }}
@@ -268,14 +255,6 @@ HTML_TEMPLATE = """\
   .source-list {{ list-style: none; margin-top: 0.5rem; text-align: left; display: inline-block; }}
   .source-list li {{ padding: 0.15rem 0; font-size: 0.75rem; }}
   .source-list a {{ color: #2563eb; text-decoration: none; }} .source-list a:hover {{ text-decoration: underline; }}
-  .toggle-wrap {{ display: flex; align-items: center; gap: 0.4rem; margin-left: 1rem; }}
-  .toggle-wrap input {{ appearance: none; -webkit-appearance: none; width: 36px; height: 20px; background: #ddd; border-radius: 10px;
-                        position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }}
-  .toggle-wrap input:checked {{ background: #2563eb; }}
-  .toggle-wrap input::after {{ content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
-                               background: #fff; border-radius: 50%; transition: transform 0.2s; }}
-  .toggle-wrap input:checked::after {{ transform: translateX(16px); }}
-  .toggle-wrap label {{ font-size: 0.8rem; color: #888; cursor: pointer; white-space: nowrap; }}
 </style>
 </head>
 <body>
@@ -288,10 +267,6 @@ HTML_TEMPLATE = """\
     <option value="All">All Sources</option>
 {source_options}
   </select>
-  <div class="toggle-wrap">
-    <input type="checkbox" id="backfillToggle">
-    <label for="backfillToggle">Show historical</label>
-  </div>
   <div class="range-bar">
     <button class="range-btn" data-days="7">1W</button>
     <button class="range-btn active" data-days="30">1M</button>
@@ -333,11 +308,9 @@ const allHeadlines = {headlines_json};
 const dailyScores = {daily_scores_json};
 const dailyBySource = {daily_by_source_json};
 const MIN_SOURCES = {min_sources};
-const LIVE_START_DATE = '{live_start_date}';
 const PAGE_SIZE = 25;
 let currentPage = 0;
 let currentRange = 30;
-let showBackfill = false;
 
 function scoreClass(s) {{
   return s > 0.05 ? 'pos' : (s < -0.05 ? 'neg' : 'neu');
@@ -361,9 +334,8 @@ function renderHeadlines(filtered) {{
     const titleCell = h.url
       ? '<a href="' + escapeHtml(h.url) + '" target="_blank" rel="noopener">' + title + '</a>'
       : title;
-    const tag = h.backfill ? '<span class="backfill-tag">backfill</span>' : '';
     const tr = document.createElement('tr');
-    tr.innerHTML = '<td>' + titleCell + tag + '</td><td>' + escapeHtml(h.source) + '</td><td class="' + cls + '">' + sign + h.score.toFixed(3) + '</td>';
+    tr.innerHTML = '<td>' + titleCell + '</td><td>' + escapeHtml(h.source) + '</td><td class="' + cls + '">' + sign + h.score.toFixed(3) + '</td>';
     tbody.appendChild(tr);
   }}
   document.getElementById('showMore').style.display = end < filtered.length ? 'block' : 'none';
@@ -371,18 +343,13 @@ function renderHeadlines(filtered) {{
 
 function getFilteredHeadlines() {{
   const src = document.getElementById('sourceFilter').value;
-  let filtered = src === 'All' ? allHeadlines : allHeadlines.filter(function(h) {{ return h.source === src; }});
-  if (!showBackfill) {{
-    filtered = filtered.filter(function(h) {{ return !h.backfill; }});
-  }}
-  return filtered;
+  return src === 'All' ? allHeadlines : allHeadlines.filter(function(h) {{ return h.source === src; }});
 }}
 
 function getChartData(source, rangeDays) {{
   const dates = Object.keys(dailyScores).sort();
   const allDates = [];
-  const liveData = [];
-  const backfillData = [];
+  const sentimentData = [];
   const countData = [];
   for (let i = 0; i < dates.length; i++) {{
     const d = dates[i];
@@ -390,16 +357,14 @@ function getChartData(source, rangeDays) {{
     if (source === 'All') {{
       if ((ds.sources || []).length >= MIN_SOURCES) {{
         allDates.push(d);
-        liveData.push(LIVE_START_DATE && d >= LIVE_START_DATE ? ds.live_mean : null);
-        backfillData.push(showBackfill ? ds.backfill_mean : null);
+        sentimentData.push(ds.mean);
         countData.push(ds.count || 0);
       }}
     }} else {{
       const srcData = (dailyBySource[d] || {{}})[source];
       if (srcData) {{
         allDates.push(d);
-        liveData.push(LIVE_START_DATE && d >= LIVE_START_DATE ? ds.live_mean : null);
-        backfillData.push(showBackfill ? ds.backfill_mean : null);
+        sentimentData.push(srcData.mean);
         countData.push(srcData.count || 0);
       }}
     }}
@@ -413,13 +378,12 @@ function getChartData(source, rangeDays) {{
     if (startIdx > 0) {{
       return {{
         labels: allDates.slice(startIdx),
-        live: liveData.slice(startIdx),
-        backfill: backfillData.slice(startIdx),
+        sentiment: sentimentData.slice(startIdx),
         counts: countData.slice(startIdx)
       }};
     }}
   }}
-  return {{ labels: allDates, live: liveData, backfill: backfillData, counts: countData }};
+  return {{ labels: allDates, sentiment: sentimentData, counts: countData }};
 }}
 
 const ctx = document.getElementById('chart').getContext('2d');
@@ -441,28 +405,14 @@ const chart = new Chart(ctx, {{
         order: 2,
       }},
       {{
-        label: 'Live (RSS)',
-        data: initial.live,
+        label: 'Sentiment',
+        data: initial.sentiment,
         borderColor: '#2563eb',
         backgroundColor: 'rgba(37,99,235,0.08)',
         fill: true,
         tension: 0.3,
         pointRadius: 4,
         pointHoverRadius: 6,
-        spanGaps: true,
-        yAxisID: 'y',
-        order: 1,
-      }},
-      {{
-        label: 'Backfill (Historical)',
-        data: initial.backfill,
-        borderColor: '#9ca3af',
-        borderDash: [6, 3],
-        backgroundColor: 'rgba(156,163,175,0.06)',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 3,
-        pointHoverRadius: 5,
         spanGaps: true,
         yAxisID: 'y',
         order: 1,
@@ -502,17 +452,9 @@ function updateChart() {{
   const chartData = getChartData(source, currentRange);
   chart.data.labels = chartData.labels;
   chart.data.datasets[0].data = chartData.counts;
-  chart.data.datasets[1].data = chartData.live;
-  chart.data.datasets[2].data = chartData.backfill;
+  chart.data.datasets[1].data = chartData.sentiment;
   chart.update();
 }}
-
-document.getElementById('backfillToggle').addEventListener('change', function() {{
-  showBackfill = this.checked;
-  updateChart();
-  currentPage = 0;
-  renderHeadlines(getFilteredHeadlines());
-}});
 
 document.getElementById('sourceFilter').addEventListener('change', function() {{
   updateChart();
@@ -556,7 +498,7 @@ def generate_html(data: dict) -> None:
     all_headlines = sorted(data["headlines"], key=lambda h: h["timestamp"], reverse=True)
     headlines_for_js = [
         {"title": h["title"], "url": h.get("url", ""), "source": h["source"],
-         "date": h["date"], "score": h["score"], "backfill": h.get("backfill", False)}
+         "date": h["date"], "score": h["score"]}
         for h in all_headlines
     ]
 
@@ -572,18 +514,9 @@ def generate_html(data: dict) -> None:
     # Daily scores for JS (with source lists for threshold filtering)
     daily_scores_for_js = {
         d: {"mean": daily[d]["mean"], "count": daily[d]["count"],
-            "sources": daily[d].get("sources", []),
-            "live_mean": daily[d].get("live_mean"),
-            "backfill_mean": daily[d].get("backfill_mean")}
+            "sources": daily[d].get("sources", [])}
         for d in all_dates
     }
-
-    # Compute live start date: first day all RSS sources have been seen
-    seen_sources: dict[str, str] = {}
-    for h in sorted(data["headlines"], key=lambda x: x["date"]):
-        if not h.get("backfill") and h["source"] not in seen_sources:
-            seen_sources[h["source"]] = h["date"]
-    live_start_date = max(seen_sources.values()) if len(seen_sources) >= len(RSS_FEEDS) else ""
 
     # Source dropdown options
     source_names = sorted(RSS_FEEDS.keys())
@@ -611,7 +544,6 @@ def generate_html(data: dict) -> None:
         daily_scores_json=safe_json(daily_scores_for_js),
         daily_by_source_json=safe_json(daily_by_source),
         min_sources=MIN_SOURCES_PER_DAY,
-        live_start_date=live_start_date,
         source_count=len(RSS_FEEDS),
         source_list_items=source_list_items,
     )
