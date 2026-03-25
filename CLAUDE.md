@@ -28,7 +28,7 @@ Scores title + summary together (not just title) for better context.
 ### Chart
 - Blue line = daily mean sentiment score
 - Gray bars = headline volume
-- MIN_SOURCES_PER_DAY = 3: chart only shows days with data from 3+ distinct sources
+- DATA_START_DATE = "2026-03-25": all data before this date is excluded
 
 ### Client-side interactivity
 All filtering/pagination runs in the browser (no server):

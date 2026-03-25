@@ -69,7 +69,7 @@ CONTEXT_OVERRIDES = {
     "cuts development": 0.25, "eliminates": 0.2, "disrupts": 0.1,
 }
 
-MIN_SOURCES_PER_DAY = 10  # Only chart days with data from this many distinct sources
+DATA_START_DATE = "2026-03-25"  # Project start date — ignore data before this
 
 DATA_FILE = os.path.join(os.path.dirname(__file__) or ".", "data.json")
 HTML_FILE = os.path.join(os.path.dirname(__file__) or ".", "index.html")
@@ -125,13 +125,16 @@ def fetch_headlines() -> list[dict]:
                     continue
                 seen_titles.add(title)
                 summary = strip_html(entry.get("summary", ""))
+                date = parse_date(entry)
+                if date < DATA_START_DATE:
+                    continue
                 if is_ai_related(title, summary):
                     results.append({
                         "title": title,
                         "summary": summary,
                         "url": entry.get("link", ""),
                         "source": source,
-                        "date": parse_date(entry),
+                        "date": date,
                         "timestamp": datetime.now(timezone.utc).isoformat(),
                     })
         except Exception as e:
@@ -307,7 +310,6 @@ HTML_TEMPLATE = """\
 const allHeadlines = {headlines_json};
 const dailyScores = {daily_scores_json};
 const dailyBySource = {daily_by_source_json};
-const MIN_SOURCES = {min_sources};
 const PAGE_SIZE = 25;
 let currentPage = 0;
 let currentRange = 30;
@@ -355,11 +357,9 @@ function getChartData(source, rangeDays) {{
     const d = dates[i];
     const ds = dailyScores[d];
     if (source === 'All') {{
-      if ((ds.sources || []).length >= MIN_SOURCES) {{
-        allDates.push(d);
-        sentimentData.push(ds.mean);
-        countData.push(ds.count || 0);
-      }}
+      allDates.push(d);
+      sentimentData.push(ds.mean);
+      countData.push(ds.count || 0);
     }} else {{
       const srcData = (dailyBySource[d] || {{}})[source];
       if (srcData) {{
@@ -486,12 +486,9 @@ def generate_html(data: dict) -> None:
     daily = data["daily_scores"]
     all_dates = sorted(daily.keys())
 
-    # Chart data filtered by minimum source threshold
-    chart_dates = [d for d in all_dates if len(daily[d].get("sources", [])) >= MIN_SOURCES_PER_DAY]
-    chart_scores = [daily[d]["mean"] for d in chart_dates]
-
     total = sum(daily[d]["count"] for d in all_dates) if all_dates else 0
-    current = chart_scores[-1] if chart_scores else 0
+    scores = [daily[d]["mean"] for d in all_dates]
+    current = scores[-1] if scores else 0
     current_class = "pos" if current > 0.05 else ("neg" if current < -0.05 else "neu")
 
     # All headlines for client-side rendering
@@ -536,14 +533,13 @@ def generate_html(data: dict) -> None:
     html = HTML_TEMPLATE.format(
         updated=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         total_headlines=total,
-        days_tracked=len(chart_dates),
+        days_tracked=len(all_dates),
         current_score=f"{current:+.3f}",
         current_class=current_class,
         source_options=source_options,
         headlines_json=safe_json(headlines_for_js),
         daily_scores_json=safe_json(daily_scores_for_js),
         daily_by_source_json=safe_json(daily_by_source),
-        min_sources=MIN_SOURCES_PER_DAY,
         source_count=len(RSS_FEEDS),
         source_list_items=source_list_items,
     )
