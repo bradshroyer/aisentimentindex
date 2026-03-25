@@ -3,6 +3,7 @@
 
 import json
 import os
+import re
 import time
 from datetime import datetime, timezone
 from statistics import mean
@@ -20,6 +21,11 @@ RSS_FEEDS = {
     "The Verge": "https://www.theverge.com/rss/index.xml",
     "Ars Technica": "https://feeds.arstechnica.com/arstechnica/index",
     "Wired": "https://www.wired.com/feed/rss",
+    "BBC Technology": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+    "The Guardian": "https://www.theguardian.com/technology/rss",
+    "MIT Tech Review": "https://www.technologyreview.com/feed/",
+    "Bloomberg": "https://feeds.bloomberg.com/technology/news.rss",
+    "ZDNet AI": "https://www.zdnet.com/topic/artificial-intelligence/rss.xml",
 }
 
 AI_KEYWORDS = [
@@ -33,6 +39,28 @@ AI_KEYWORDS = [
     "foundation model", "transformer model",
 ]
 
+# Domain-specific terms that VADER consistently misscores in tech/AI context.
+# Each value is added to VADER's compound score, then clamped to [-1, 1].
+POSITIVE_BOOSTS = {
+    "breakthrough": 0.3, "discovery": 0.25, "innovation": 0.2,
+    "enables": 0.2, "empower": 0.2, "revolutioniz": 0.2,
+    "adoption": 0.15, "advance": 0.15, "improve": 0.15,
+    "boost": 0.15, "transform": 0.15, "solve": 0.15,
+    "open source": 0.1, "open-source": 0.1,
+}
+NEGATIVE_BOOSTS = {
+    "hype": -0.2, "bubble": -0.25, "overhyped": -0.3,
+    "threat": -0.15, "replace jobs": -0.2, "job loss": -0.25,
+    "surveillance": -0.2, "lawsuit": -0.2, "sued": -0.2,
+    "ban": -0.15, "restrict": -0.1, "existential risk": -0.3,
+    "hallucinate": -0.15, "hallucination": -0.15, "bias": -0.15,
+}
+# Action verbs VADER reads as negative but are positive in tech context
+CONTEXT_OVERRIDES = {
+    "cuts cost": 0.25, "cuts time": 0.25, "cut cost": 0.25,
+    "cuts development": 0.25, "eliminates": 0.2, "disrupts": 0.1,
+}
+
 DATA_FILE = os.path.join(os.path.dirname(__file__) or ".", "data.json")
 HTML_FILE = os.path.join(os.path.dirname(__file__) or ".", "index.html")
 
@@ -40,8 +68,12 @@ HTML_FILE = os.path.join(os.path.dirname(__file__) or ".", "index.html")
 # Helpers
 # ---------------------------------------------------------------------------
 
-def is_ai_related(title: str) -> bool:
-    t = f" {title.lower()} "
+def strip_html(text: str) -> str:
+    return re.sub(r"<[^>]+>", "", text).strip()
+
+
+def is_ai_related(title: str, summary: str = "") -> bool:
+    t = f" {title.lower()} {summary.lower()} "
     return any(kw in t for kw in AI_KEYWORDS)
 
 
@@ -82,9 +114,11 @@ def fetch_headlines() -> list[dict]:
                 if not title or title in seen_titles:
                     continue
                 seen_titles.add(title)
-                if is_ai_related(title):
+                summary = strip_html(entry.get("summary", ""))
+                if is_ai_related(title, summary):
                     results.append({
                         "title": title,
+                        "summary": summary,
                         "url": entry.get("link", ""),
                         "source": source,
                         "date": parse_date(entry),
@@ -98,10 +132,32 @@ def fetch_headlines() -> list[dict]:
 # Sentiment
 # ---------------------------------------------------------------------------
 
+def domain_adjust(text: str, base_score: float) -> float:
+    """Adjust VADER score for AI/tech domain terms it consistently misscores."""
+    t = text.lower()
+    adjustment = 0.0
+    for term, boost in POSITIVE_BOOSTS.items():
+        if term in t:
+            adjustment += boost
+    for term, boost in NEGATIVE_BOOSTS.items():
+        if term in t:
+            adjustment += boost  # boost is already negative
+    for term, boost in CONTEXT_OVERRIDES.items():
+        if term in t:
+            adjustment += boost
+    adjusted = base_score + adjustment
+    return max(-1.0, min(1.0, adjusted))
+
+
 def score_headlines(headlines: list[dict]) -> list[dict]:
     analyzer = SentimentIntensityAnalyzer()
     for h in headlines:
-        h["score"] = round(analyzer.polarity_scores(h["title"])["compound"], 4)
+        text = h["title"]
+        if h.get("summary"):
+            text = f"{text}. {h['summary']}"
+        base = analyzer.polarity_scores(text)["compound"]
+        h["score_raw"] = round(base, 4)
+        h["score"] = round(domain_adjust(text, base), 4)
     return headlines
 
 # ---------------------------------------------------------------------------
@@ -180,7 +236,7 @@ HTML_TEMPLATE = """\
 {headline_rows}
 </table>
 
-<footer>Data from TechCrunch, NYT, The Verge, Ars Technica, Wired &middot; Sentiment via VADER</footer>
+<footer>Data from {source_count} sources &middot; Sentiment via VADER + domain adjustments</footer>
 
 <script>
 const ctx = document.getElementById('chart').getContext('2d');
@@ -250,6 +306,7 @@ def generate_html(data: dict) -> None:
         headline_rows="\n".join(rows),
         dates_json=json.dumps(dates),
         scores_json=json.dumps(scores),
+        source_count=len(RSS_FEEDS),
     )
 
     with open(HTML_FILE, "w") as f:
