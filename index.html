@@ -22,12 +22,13 @@
   th { background: #f5f5f5; font-weight: 600; }
   tr:not(:last-child) td { border-bottom: 1px solid #eee; }
   .pos { color: #16a34a; } .neg { color: #dc2626; } .neu { color: #666; }
+  td a { color: #1a1a1a; text-decoration: none; } td a:hover { text-decoration: underline; color: #2563eb; }
   footer { margin-top: 2rem; font-size: 0.75rem; color: #999; text-align: center; }
 </style>
 </head>
 <body>
 <h1>AI Sentiment Index (Media Tone)</h1>
-<p class="subtitle">Tracking how major tech outlets talk about AI &mdash; updated 2026-03-25 16:53 UTC</p>
+<p class="subtitle">Tracking how major tech outlets talk about AI &mdash; updated 2026-03-25 17:02 UTC</p>
 
 <div class="chart-wrap">
   <canvas id="chart"></canvas>
@@ -42,21 +43,21 @@
 <h2>Recent Headlines</h2>
 <table>
 <tr><th>Headline</th><th>Source</th><th>Score</th></tr>
-<tr><td>The AI Race Is Pressuring Utilities to Squeeze More From Europe’s Power Grids</td><td>Wired</td><td class="neg">-0.340</td></tr>
-<tr><td>Meet the Gods of AI Warfare</td><td>Wired</td><td class="neg">-0.296</td></tr>
-<tr><td>Pentagon’s ‘Attempt to Cripple’ Anthropic Is Troubling, Judge Says</td><td>Wired</td><td class="neg">-0.542</td></tr>
-<tr><td>New Bernie Sanders AI Safety Bill Would Halt Data Center Construction</td><td>Wired</td><td class="pos">+0.421</td></tr>
-<tr><td>OpenAI Enters Its Focus Era by Killing Sora</td><td>Wired</td><td class="neg">-0.660</td></tr>
-<tr><td>Claude Code can now take over your computer to complete tasks</td><td>Ars Technica</td><td class="neu">+0.000</td></tr>
-<tr><td>Electronic Frontier Foundation to swap leaders as AI, ICE fights escalate</td><td>Ars Technica</td><td class="neg">-0.402</td></tr>
-<tr><td>OpenAI announces plans to shut down its Sora video generator</td><td>Ars Technica</td><td class="neu">+0.000</td></tr>
-<tr><td>Mozilla dev's "Stack Overflow for agents" targets a key weakness in coding AI</td><td>Ars Technica</td><td class="neg">-0.421</td></tr>
-<tr><td>Disney cancels $1 billion OpenAI partnership amid Sora shutdown plans</td><td>Ars Technica</td><td class="neg">-0.226</td></tr>
-<tr><td>Senate Democrats are trying to ‘codify’ Anthropic&#8217;s red lines on autonomous weapons and mass surveillance</td><td>The Verge</td><td class="neg">-0.440</td></tr>
-<tr><td>Google Lyria 3 Pro makes longer AI songs</td><td>The Verge</td><td class="neu">+0.000</td></tr>
-<tr><td>Silicon Valley Musters Behind-the-Scenes Support for Anthropic</td><td>NYT Technology</td><td class="pos">+0.402</td></tr>
-<tr><td>AI Replica of Val Kilmer to Appear in ‘As Deep as the Grave’</td><td>NYT Technology</td><td class="neu">+0.000</td></tr>
-<tr><td>OpenAI Is Shutting Down Sora, Its A.I. Video Generator</td><td>NYT Technology</td><td class="neu">+0.000</td></tr>
+<tr><td><a href="https://www.wired.com/story/europe-squeeze-power-energy-grid-ai-data-center/" target="_blank" rel="noopener">The AI Race Is Pressuring Utilities to Squeeze More From Europe’s Power Grids</a></td><td>Wired</td><td class="neg">-0.340</td></tr>
+<tr><td><a href="https://www.wired.com/story/project-maven-katrina-manson-book-excerpt/" target="_blank" rel="noopener">Meet the Gods of AI Warfare</a></td><td>Wired</td><td class="neg">-0.296</td></tr>
+<tr><td><a href="https://www.wired.com/story/pentagons-attempt-to-cripple-anthropic-is-troublesome-judge-says/" target="_blank" rel="noopener">Pentagon’s ‘Attempt to Cripple’ Anthropic Is Troubling, Judge Says</a></td><td>Wired</td><td class="neg">-0.542</td></tr>
+<tr><td><a href="https://www.wired.com/story/new-bernie-sanders-ai-safety-bill-would-halt-data-center-construction/" target="_blank" rel="noopener">New Bernie Sanders AI Safety Bill Would Halt Data Center Construction</a></td><td>Wired</td><td class="pos">+0.421</td></tr>
+<tr><td><a href="https://www.wired.com/story/openai-shuts-down-sora-ipo-ai-superapp/" target="_blank" rel="noopener">OpenAI Enters Its Focus Era by Killing Sora</a></td><td>Wired</td><td class="neg">-0.660</td></tr>
+<tr><td><a href="https://arstechnica.com/ai/2026/03/claude-code-can-now-take-over-your-computer-to-complete-tasks/" target="_blank" rel="noopener">Claude Code can now take over your computer to complete tasks</a></td><td>Ars Technica</td><td class="neu">+0.000</td></tr>
+<tr><td><a href="https://arstechnica.com/tech-policy/2026/03/trump-made-opposing-government-spying-cool-again-effs-departing-chief-says/" target="_blank" rel="noopener">Electronic Frontier Foundation to swap leaders as AI, ICE fights escalate</a></td><td>Ars Technica</td><td class="neg">-0.402</td></tr>
+<tr><td><a href="https://arstechnica.com/ai/2026/03/openai-plans-to-shut-down-sora-just-15-months-after-its-launch/" target="_blank" rel="noopener">OpenAI announces plans to shut down its Sora video generator</a></td><td>Ars Technica</td><td class="neu">+0.000</td></tr>
+<tr><td><a href="https://arstechnica.com/ai/2026/03/mozilla-dev-introduces-cq-a-stack-overflow-for-agents/" target="_blank" rel="noopener">Mozilla dev's "Stack Overflow for agents" targets a key weakness in coding AI</a></td><td>Ars Technica</td><td class="neg">-0.421</td></tr>
+<tr><td><a href="https://arstechnica.com/ai/2026/03/the-end-of-sora-also-means-the-end-of-disneys-1-billion-openai-investment/" target="_blank" rel="noopener">Disney cancels $1 billion OpenAI partnership amid Sora shutdown plans</a></td><td>Ars Technica</td><td class="neg">-0.226</td></tr>
+<tr><td><a href="https://www.theverge.com/policy/900341/senator-schiff-anthropic-autonomous-weapons-mass-surveillance" target="_blank" rel="noopener">Senate Democrats are trying to ‘codify’ Anthropic&#8217;s red lines on autonomous weapons and mass surveillance</a></td><td>The Verge</td><td class="neg">-0.440</td></tr>
+<tr><td><a href="https://www.theverge.com/ai-artificial-intelligence/900425/google-lyria-3-pro-ai-music" target="_blank" rel="noopener">Google Lyria 3 Pro makes longer AI songs</a></td><td>The Verge</td><td class="neu">+0.000</td></tr>
+<tr><td><a href="https://www.nytimes.com/2026/03/18/technology/silicon-valley-anthropic-pentagon.html" target="_blank" rel="noopener">Silicon Valley Musters Behind-the-Scenes Support for Anthropic</a></td><td>NYT Technology</td><td class="pos">+0.402</td></tr>
+<tr><td><a href="https://www.nytimes.com/2026/03/18/movies/val-kilmer-ai-movie.html" target="_blank" rel="noopener">AI Replica of Val Kilmer to Appear in ‘As Deep as the Grave’</a></td><td>NYT Technology</td><td class="neu">+0.000</td></tr>
+<tr><td><a href="https://www.nytimes.com/2026/03/24/technology/openai-shutting-down-sora.html" target="_blank" rel="noopener">OpenAI Is Shutting Down Sora, Its A.I. Video Generator</a></td><td>NYT Technology</td><td class="neu">+0.000</td></tr>
 </table>
 
 <footer>Data from TechCrunch, NYT, The Verge, Ars Technica, Wired &middot; Sentiment via VADER</footer>

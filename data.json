@@ -2,128 +2,146 @@
   "headlines": [
     {
       "title": "Granola raises $125M, hits $1.5B valuation as it expands from meeting notetaker to enterprise AI app",
+      "url": "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.173304+00:00",
+      "timestamp": "2026-03-25T17:02:01.273680+00:00",
       "score": 0.1027
     },
     {
       "title": "Meta launches new initiative to support entrepreneurship, drive AI adoption",
+      "url": "https://techcrunch.com/2026/03/25/meta-launches-new-initiative-to-support-entrepreneurship-drive-ai-adoption/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.173314+00:00",
+      "timestamp": "2026-03-25T17:02:01.273690+00:00",
       "score": 0.4019
     },
     {
       "title": "Meta turns to AI to make shopping easier on Instagram and Facebook",
+      "url": "https://techcrunch.com/2026/03/25/meta-turns-to-ai-to-make-shopping-easier-on-instagram-and-facebook/",
       "source": "TechCrunch",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.173322+00:00",
+      "timestamp": "2026-03-25T17:02:01.273698+00:00",
       "score": 0.4215
     },
     {
       "title": "OpenAI Is Shutting Down Sora, Its A.I. Video Generator",
+      "url": "https://www.nytimes.com/2026/03/24/technology/openai-shutting-down-sora.html",
       "source": "NYT Technology",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T16:52:49.575271+00:00",
+      "timestamp": "2026-03-25T17:02:01.340565+00:00",
       "score": 0.0
     },
     {
       "title": "AI Replica of Val Kilmer to Appear in \u2018As Deep as the Grave\u2019",
+      "url": "https://www.nytimes.com/2026/03/18/movies/val-kilmer-ai-movie.html",
       "source": "NYT Technology",
       "date": "2026-03-19",
-      "timestamp": "2026-03-25T16:52:49.575342+00:00",
+      "timestamp": "2026-03-25T17:02:01.340625+00:00",
       "score": 0.0
     },
     {
       "title": "Silicon Valley Musters Behind-the-Scenes Support for Anthropic",
+      "url": "https://www.nytimes.com/2026/03/18/technology/silicon-valley-anthropic-pentagon.html",
       "source": "NYT Technology",
       "date": "2026-03-18",
-      "timestamp": "2026-03-25T16:52:49.575347+00:00",
+      "timestamp": "2026-03-25T17:02:01.340632+00:00",
       "score": 0.4019
     },
     {
       "title": "Google Lyria 3 Pro makes longer AI songs",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/900425/google-lyria-3-pro-ai-music",
       "source": "The Verge",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.644834+00:00",
+      "timestamp": "2026-03-25T17:02:01.406287+00:00",
       "score": 0.0
     },
     {
       "title": "Senate Democrats are trying to \u2018codify\u2019 Anthropic&#8217;s red lines on autonomous weapons and mass surveillance",
+      "url": "https://www.theverge.com/policy/900341/senator-schiff-anthropic-autonomous-weapons-mass-surveillance",
       "source": "The Verge",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.644852+00:00",
+      "timestamp": "2026-03-25T17:02:01.406301+00:00",
       "score": -0.4404
     },
     {
       "title": "Disney cancels $1 billion OpenAI partnership amid Sora shutdown plans",
+      "url": "https://arstechnica.com/ai/2026/03/the-end-of-sora-also-means-the-end-of-disneys-1-billion-openai-investment/",
       "source": "Ars Technica",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.728544+00:00",
+      "timestamp": "2026-03-25T17:02:01.488016+00:00",
       "score": -0.2263
     },
     {
       "title": "Mozilla dev's \"Stack Overflow for agents\" targets a key weakness in coding AI",
+      "url": "https://arstechnica.com/ai/2026/03/mozilla-dev-introduces-cq-a-stack-overflow-for-agents/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T16:52:49.728574+00:00",
+      "timestamp": "2026-03-25T17:02:01.488045+00:00",
       "score": -0.4215
     },
     {
       "title": "OpenAI announces plans to shut down its Sora video generator",
+      "url": "https://arstechnica.com/ai/2026/03/openai-plans-to-shut-down-sora-just-15-months-after-its-launch/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T16:52:49.728579+00:00",
+      "timestamp": "2026-03-25T17:02:01.488050+00:00",
       "score": 0.0
     },
     {
       "title": "Electronic Frontier Foundation to swap leaders as AI, ICE fights escalate",
+      "url": "https://arstechnica.com/tech-policy/2026/03/trump-made-opposing-government-spying-cool-again-effs-departing-chief-says/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T16:52:49.728582+00:00",
+      "timestamp": "2026-03-25T17:02:01.488054+00:00",
       "score": -0.4019
     },
     {
       "title": "Claude Code can now take over your computer to complete tasks",
+      "url": "https://arstechnica.com/ai/2026/03/claude-code-can-now-take-over-your-computer-to-complete-tasks/",
       "source": "Ars Technica",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T16:52:49.728607+00:00",
+      "timestamp": "2026-03-25T17:02:01.488078+00:00",
       "score": 0.0
     },
     {
       "title": "OpenAI Enters Its Focus Era by Killing Sora",
+      "url": "https://www.wired.com/story/openai-shuts-down-sora-ipo-ai-superapp/",
       "source": "Wired",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.831930+00:00",
+      "timestamp": "2026-03-25T17:02:01.605511+00:00",
       "score": -0.6597
     },
     {
       "title": "New Bernie Sanders AI Safety Bill Would Halt Data Center Construction",
+      "url": "https://www.wired.com/story/new-bernie-sanders-ai-safety-bill-would-halt-data-center-construction/",
       "source": "Wired",
       "date": "2026-03-25",
-      "timestamp": "2026-03-25T16:52:49.831938+00:00",
+      "timestamp": "2026-03-25T17:02:01.605521+00:00",
       "score": 0.4215
     },
     {
       "title": "Pentagon\u2019s \u2018Attempt to Cripple\u2019 Anthropic Is Troubling, Judge Says",
+      "url": "https://www.wired.com/story/pentagons-attempt-to-cripple-anthropic-is-troublesome-judge-says/",
       "source": "Wired",
       "date": "2026-03-24",
-      "timestamp": "2026-03-25T16:52:49.831978+00:00",
+      "timestamp": "2026-03-25T17:02:01.605560+00:00",
       "score": -0.5423
     },
     {
       "title": "Meet the Gods of AI Warfare",
+      "url": "https://www.wired.com/story/project-maven-katrina-manson-book-excerpt/",
       "source": "Wired",
       "date": "2026-03-23",
-      "timestamp": "2026-03-25T16:52:49.832063+00:00",
+      "timestamp": "2026-03-25T17:02:01.605663+00:00",
       "score": -0.296
     },
     {
       "title": "The AI Race Is Pressuring Utilities to Squeeze More From Europe\u2019s Power Grids",
+      "url": "https://www.wired.com/story/europe-squeeze-power-energy-grid-ai-data-center/",
       "source": "Wired",
       "date": "2026-03-23",
-      "timestamp": "2026-03-25T16:52:49.832073+00:00",
+      "timestamp": "2026-03-25T17:02:01.605674+00:00",
       "score": -0.34
     }
   ],

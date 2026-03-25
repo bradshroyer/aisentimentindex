@@ -85,6 +85,7 @@ def fetch_headlines() -> list[dict]:
                 if is_ai_related(title):
                     results.append({
                         "title": title,
+                        "url": entry.get("link", ""),
                         "source": source,
                         "date": parse_date(entry),
                         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -155,6 +156,7 @@ HTML_TEMPLATE = """\
   th {{ background: #f5f5f5; font-weight: 600; }}
   tr:not(:last-child) td {{ border-bottom: 1px solid #eee; }}
   .pos {{ color: #16a34a; }} .neg {{ color: #dc2626; }} .neu {{ color: #666; }}
+  td a {{ color: #1a1a1a; text-decoration: none; }} td a:hover {{ text-decoration: underline; color: #2563eb; }}
   footer {{ margin-top: 2rem; font-size: 0.75rem; color: #999; text-align: center; }}
 </style>
 </head>
@@ -235,7 +237,9 @@ def generate_html(data: dict) -> None:
     for h in recent:
         sc = h["score"]
         cls = "pos" if sc > 0.05 else ("neg" if sc < -0.05 else "neu")
-        rows.append(f'<tr><td>{h["title"]}</td><td>{h["source"]}</td><td class="{cls}">{sc:+.3f}</td></tr>')
+        link = h.get("url", "")
+        title_cell = f'<a href="{link}" target="_blank" rel="noopener">{h["title"]}</a>' if link else h["title"]
+        rows.append(f'<tr><td>{title_cell}</td><td>{h["source"]}</td><td class="{cls}">{sc:+.3f}</td></tr>')
 
     html = HTML_TEMPLATE.format(
         updated=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
