@@ -659,9 +659,3786 @@
       "backfill": false,
       "score_raw": -0.1027,
       "score": -0.1027
+    },
+    {
+      "title": "Police : Decorated soldier uses AI in Tesla attack outside Trump hotel",
+      "summary": "",
+      "url": "https://www.wesh.com/article/soldier-ai-tesla-attack-trump-hotel/63363721",
+      "source": "Wesh (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4767,
+      "score": -0.4767
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wmot.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wmot (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI Gold Rush and a Billion - Dollar Bet on the Future",
+      "summary": "",
+      "url": "https://www.bankinfosecurity.com/ai-gold-rush-billion-dollar-bet-on-future-a-27230",
+      "source": "Bankinfosecurity (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Panasonic teams up with Anthropic , aims for 30 % of sales from AI",
+      "summary": "",
+      "url": "https://www.businesstimes.com.sg/companies-markets/telcos-media-tech/panasonic-teams-anthropic-aims-30-sales-ai",
+      "source": "Businesstimes (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Online holiday shopping soars to record high amid rise of AI shopping assistants , Adobe data shows",
+      "summary": "",
+      "url": "https://www.centralmoinfo.com/syndicated-article/?id=1600418",
+      "source": "Centralmoinfo (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.wthr.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Wthr (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Scientists using AI to help driverless vehicles go the extra mile",
+      "summary": "",
+      "url": "https://www.suncommercial.com/brazil_times/news/national/article_5805e8fa-7bf5-50df-a0c9-37f600411fd0.html",
+      "source": "Suncommercial (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "FDA Warns of Cyber Risks in Guidance for AI - Enabled Devices",
+      "summary": "",
+      "url": "https://www.bankinfosecurity.com/fda-warns-cyber-risks-in-guidance-for-ai-enabled-devices-a-27236",
+      "source": "Bankinfosecurity (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.3612,
+      "score": -0.3612
+    },
+    {
+      "title": "Nvidia AI to Boost Development of Autonomous Vehicle Tech",
+      "summary": "",
+      "url": "https://biztoc.com/x/1eb05769a77a2712",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.5519
+    },
+    {
+      "title": "Man who exploded Cybertruck used generative AI , police say",
+      "summary": "",
+      "url": "https://www.thetimes-tribune.com/2025/01/07/tesla-cybertruck-explosion-trump-hotel/",
+      "source": "Thetimes-Tribune (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wglt.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wglt (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Green Beret who exploded Cybertruck in Las Vegas used AI to plan blast",
+      "summary": "",
+      "url": "https://edition.cnn.com/2025/01/07/us/las-vegas-cybertruck-explosion-livelsberger/",
+      "source": "Edition (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Anthropic expected to reach $60B valuation after funding deal : WSJ",
+      "summary": "",
+      "url": "https://cointelegraph.com/news/anthropic-billion-valuation-funding-deal",
+      "source": "Cointelegraph (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0258,
+      "score": 0.0258
+    },
+    {
+      "title": "Las Vegas Cybertruck explosion suspect used ChatGPT to plan attack : Police",
+      "summary": "",
+      "url": "https://www.wmay.com/2025/01/07/las-vegas-cybertruck-explosion-suspect-used-chatgpt-to-plan-attack-police/",
+      "source": "Wmay (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.6486,
+      "score": -0.6486
+    },
+    {
+      "title": "Nvidia CEO Jensen Huang , under pressure of AI hype , unveils new product lineup at CES 2025",
+      "summary": "",
+      "url": "https://www.oregonlive.com/silicon-forest/2025/01/nvidia-ceo-jensen-huang-under-pressure-of-ai-hype-unveils-new-product-lineup-at-ces-2025.html",
+      "source": "Oregonlive (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.296,
+      "score": -0.496
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.richmond-news.com/world-news/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say-10044081",
+      "source": "Richmond-News (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.richmond-news.com/world-news/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say-10044082",
+      "source": "Richmond-News (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Matthew Livelsberger Used Generative AI in Planning Truck Blast : Police",
+      "summary": "",
+      "url": "https://biztoc.com/x/1bd93d0bcb5c13db",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://nbc24.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Nbc24 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.kbia.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Kbia (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Anthropic In Talks To Raise Funding At $60 Billion Value",
+      "summary": "",
+      "url": "https://todayheadline.co/anthropic-talks-raise-funding-60-185938318-html/",
+      "source": "Todayheadline (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.34,
+      "score": 0.34
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.wokv.com/news/man-who-exploded/USKOI4VJEBCBFNRRP2HI7OSSR4/",
+      "source": "Wokv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://krcrtv.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Krcrtv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.thv11.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Thv11 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.kiro7.com/news/man-who-exploded/USKOI4VJEBCBFNRRP2HI7OSSR4/",
+      "source": "Kiro7 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://bakersfieldnow.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Bakersfieldnow (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.wbir.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Wbir (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.southcarolinapublicradio.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Southcarolinapublicradio (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man used ChatGPT to plan Las Vegas Cybertruck blast",
+      "summary": "",
+      "url": "https://www.yahoo.com/news/man-used-chatgpt-plan-las-220827002.html",
+      "source": "Yahoo (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.ksut.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Ksut (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://kval.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Kval (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Dr Borgen on the Strengths and Limitations of AI in Oncology Practice",
+      "summary": "",
+      "url": "https://www.onclive.com/view/dr-borgen-on-the-strengths-and-limitations-of-ai-in-oncology-practice",
+      "source": "Onclive (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://toronto.citynews.ca/2025/01/07/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "Toronto (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Police : Matthew Livelsberger used AI to plan Cybertruck explosion at Trump hotel in Las Vegas - Las Vegas Sun News",
+      "summary": "",
+      "url": "https://lasvegassun.com/news/2025/jan/07/police-matthew-livelsberger-used-ai-to-plan-cybert/",
+      "source": "Lasvegassun (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Microsoft announces $3 bil AI investment in India",
+      "summary": "",
+      "url": "https://japantoday.com/category/tech/microsoft-announces-3-bn-ai-investment-in-india",
+      "source": "Japantoday (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Nvidia gives select developers early access to Omniverse Cloud Sensor RTX , enabling smarter autonomous machines with generative AI , via APIs supporting sensors",
+      "summary": "",
+      "url": "https://biztoc.com/x/b768158a7db64c82",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7096,
+      "score": 0.7096
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wxpr.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wxpr (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Scientists using AI to help driverless vehicles go the extra mile",
+      "summary": "",
+      "url": "https://www.sanfordherald.com/news/national/scientists-using-ai-to-help-driverless-vehicles-go-the-extra-mile/article_a60eaddc-6e99-5c8c-a4ab-a12be5a77bee.html",
+      "source": "Sanfordherald (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.click2houston.com/news/national/2025/01/07/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "Click2Houston (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.belfasttelegraph.co.uk/news/world-news/man-who-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/a1096289990.html",
+      "source": "Belfasttelegraph (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.ottumwacourier.com/news/national_news/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police/article_21ed7eca-3782-5b47-84a1-12197adb7b6d.html",
+      "source": "Ottumwacourier (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://kpic.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Kpic (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "http://www.expressnews.com/news/article/man-who-exploded-tesla-cybertruck-outside-trump-20020981.php",
+      "source": "Expressnews (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Anthropic Eyes $2 Billion Raise at a Staggering $60 Billion Valuation",
+      "summary": "",
+      "url": "https://wallstreetpit.com/122222-anthropic-eyes-2-billion-raise-at-a-staggering-60-billion-valuation/",
+      "source": "Wallstreetpit (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://krcrtv.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Krcrtv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.khou.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Khou (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://kval.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Kval (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://bakersfieldnow.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Bakersfieldnow (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.wkyc.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Wkyc (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI attacks now a bigger risk than endpoint threats",
+      "summary": "",
+      "url": "https://www.scworld.com/news/ai-attacks-now-a-bigger-risk-than-endpoint-threats",
+      "source": "Scworld (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": -0.7783,
+      "score": -0.9283
+    },
+    {
+      "title": "Las Vegas news : Tesla Cybertruck explosion suspect Matthew Livelsberger used ChatGPT for attack at Trump Tower hotel , police say",
+      "summary": "",
+      "url": "https://abc7chicago.com/post/las-vegas-news-tesla-cybertruck-explosion-suspect-matthew-livelsberger-used-chatgpt-attack-trump-tower-hotel-police-say/15773080/",
+      "source": "Abc7Chicago (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": -0.6486,
+      "score": -0.6486
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.theargus.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Theargus (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.13wmaz.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "13Wmaz (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://local21news.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Local21News (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://local21news.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Local21News (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wprl.org/npr-news/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wprl (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Scientists using AI to help driverless vehicles go the extra mile",
+      "summary": "",
+      "url": "https://www.mtdemocrat.com/news/national/scientists-using-ai-to-help-driverless-vehicles-go-the-extra-mile/article_3e9ef607-fe64-59d4-a2df-0a5d06e52d01.html",
+      "source": "Mtdemocrat (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Apple AI feature rewords scam messages , make them look legit",
+      "summary": "",
+      "url": "https://www.crikey.com.au/2025/01/08/apple-new-artificial-intelligence-rewords-scam-messages-look-legitimate/",
+      "source": "Crikey (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": -0.5719,
+      "score": -0.5719
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://wtov9.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Wtov9 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://cbs2iowa.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Cbs2Iowa (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://wtov9.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Wtov9 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://nbcmontana.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Nbcmontana (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.impartialreporter.com/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Impartialreporter (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://thebusinessjournal.com/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "Thebusinessjournal (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.warringtonguardian.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Warringtonguardian (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.kunr.org/u-s-headlines/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Kunr (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.mynspr.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Mynspr (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI detects ovarian cancer better than human doctors : Study",
+      "summary": "",
+      "url": "https://www.newsnationnow.com/health/ai-detects-ovarian-cancer-human-doctors-study/",
+      "source": "Newsnationnow (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": -0.3612,
+      "score": -0.3612
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.thereminder.ca/world-news/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say-10044081",
+      "source": "Thereminder (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://keprtv.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Keprtv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Bangkok Post - Bid to create 7 . 5 - fold growth in local AI firms",
+      "summary": "",
+      "url": "https://www.bangkokpost.com/business/general/2935257/bid-to-create-7-5-fold-growth-in-local-ai-firms",
+      "source": "Bangkokpost (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5719,
+      "score": 0.4219
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.hillingdontimes.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Hillingdontimes (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.burnhamandhighbridgeweeklynews.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Burnhamandhighbridgeweeklynews (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier who exploded Tesla Cybertruck outside Trump hotel  used generative AI to plan attack",
+      "summary": "",
+      "url": "https://www.iwradio.co.uk/news/sky-news/soldier-who-exploded-tesla-cybertruck-outside-trump-hotel-used-generative-ai-to-plan-attack/",
+      "source": "Iwradio (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4767,
+      "score": -0.4767
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wfae.org/united-states-world/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wfae (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.stalbansreview.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Stalbansreview (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.kilburntimes.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Kilburntimes (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.thereminder.ca/world-news/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say-10044082",
+      "source": "Thereminder (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://keprtv.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Keprtv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.irvinetimes.com/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Irvinetimes (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Meta first foray into AI character profiles went about as well as youd expect",
+      "summary": "",
+      "url": "https://www.pocket-lint.com/meta-deleting-ai-characters/",
+      "source": "Pocket-Lint (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2732,
+      "score": 0.2732
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.timesandstar.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Timesandstar (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.kagstv.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Kagstv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.chesterstandard.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Chesterstandard (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://cbs2iowa.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Cbs2Iowa (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.apr.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Apr (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://nbcmontana.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Nbcmontana (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.nwemail.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Nwemail (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Meta hosts AI chatbots of  Hitler ,  Jesus Christ , Taylor Swift",
+      "summary": "",
+      "url": "https://www.nbcnews.com/tech/social-media/meta-user-made-ai-chatbots-include-hitler-jesus-christ-rcna186206",
+      "source": "Nbcnews (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2023,
+      "score": 0.2023
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.wdbo.com/news/man-who-exploded/USKOI4VJEBCBFNRRP2HI7OSSR4/",
+      "source": "Wdbo (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.yorkpress.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Yorkpress (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.krcu.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Krcu (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.countytimes.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Countytimes (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://13wham.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "13Wham (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Scientists using AI to help driverless vehicles go the extra mile",
+      "summary": "",
+      "url": "https://www.thedigitalcourier.com/news/national/scientists-using-ai-to-help-driverless-vehicles-go-the-extra-mile/article_debf6491-fd40-56b9-8e76-c780d14e44d4.html",
+      "source": "Thedigitalcourier (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "FDA Warns of Cyber Risks in Guidance for AI - Enabled Devices",
+      "summary": "",
+      "url": "https://www.govinfosecurity.com/fda-warns-cyber-risks-in-guidance-for-ai-enabled-devices-a-27236",
+      "source": "Govinfosecurity (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": -0.3612,
+      "score": -0.3612
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.wsbradio.com/news/man-who-exploded/USKOI4VJEBCBFNRRP2HI7OSSR4/",
+      "source": "Wsbradio (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://katv.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Katv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.thetottenhamindependent.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Thetottenhamindependent (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Matthew Livelsberger Used Generative AI in Planning Truck Blast : Police",
+      "summary": "",
+      "url": "https://www.newsweek.com/matthew-livelsberger-used-generative-ai-planning-truck-blast-police-2011358",
+      "source": "Newsweek (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.swindonadvertiser.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Swindonadvertiser (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.kyuk.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Kyuk (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.wvnews.com/jacksonnewsnewsfeed/us/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police/article_a2c78023-73aa-57a0-b5ed-5f5202bbe810.html",
+      "source": "Wvnews (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://freerepublic.com/focus/f-news/4288659/posts",
+      "source": "Freerepublic (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier who exploded Tesla Cybertruck outside Trump hotel  used generative AI to plan attack",
+      "summary": "",
+      "url": "https://news.sky.com/story/soldier-who-exploded-tesla-cybertruck-outside-trump-hotel-used-generative-ai-to-plan-attack-13285254",
+      "source": "News (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4767,
+      "score": -0.4767
+    },
+    {
+      "title": "AI Gold Rush and a Billion - Dollar Bet on the Future",
+      "summary": "",
+      "url": "https://www.govinfosecurity.com/ai-gold-rush-billion-dollar-bet-on-future-a-27230",
+      "source": "Govinfosecurity (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck outside Trump hotel used ChatGPT to help plan attack",
+      "summary": "",
+      "url": "https://www.scmp.com/news/world/united-states-canada/article/3293822/man-who-exploded-cybertruck-outside-trump-hotel-used-chatgpt-help-plan-attack",
+      "source": "Scmp (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": -0.1027,
+      "score": -0.1027
+    },
+    {
+      "title": "For engineers , AI anticipation continues in 2025",
+      "summary": "",
+      "url": "https://www.engineering.com/for-engineers-ai-anticipation-continues-in-2025/",
+      "source": "Engineering (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1027,
+      "score": 0.1027
+    },
+    {
+      "title": "Online holiday shopping soars to record high amid rise of AI shopping assistants , Adobe data shows",
+      "summary": "",
+      "url": "https://www.mymoinfo.com/syndicated-article/?id=1600418",
+      "source": "Mymoinfo (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.dudleynews.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Dudleynews (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.aspenpublicradio.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Aspenpublicradio (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://katv.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Katv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://abc3340.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Abc3340 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://abc3340.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Abc3340 (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://fox23maine.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Fox23Maine (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://13wham.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "13Wham (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.news-gazette.com/news/nation-world/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police/article_17f56cb1-b296-5000-9274-0d31ee61b03f.html",
+      "source": "News-Gazette (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.ledburyreporter.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Ledburyreporter (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Meta hosts AI chatbots imitating  Hitler ,  Jesus Christ  and Taylor Swift",
+      "summary": "",
+      "url": "https://www.yahoo.com/news/meta-hosts-ai-chatbots-imitating-232532092.html",
+      "source": "Yahoo (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2023,
+      "score": 0.2023
+    },
+    {
+      "title": "Las Vegas Cybertruck explosion suspect used ChatGPT to plan attack : Police",
+      "summary": "",
+      "url": "https://kxel.com/2025/01/07/las-vegas-cybertruck-explosion-suspect-used-chatgpt-to-plan-attack-police/",
+      "source": "Kxel (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": -0.6486,
+      "score": -0.6486
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.wwltv.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Wwltv (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.ksat.com/news/national/2025/01/07/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "Ksat (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wutc.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wutc (GDELT)",
+      "date": "2025-01-08",
+      "timestamp": "2025-01-08T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.keighleynews.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Keighleynews (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://triblive.com/news/world/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "Triblive (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier who exploded Cybertruck in Las Vegas used ChatGPT to plan attack",
+      "summary": "",
+      "url": "https://www.theguardian.com/us-news/2025/jan/07/las-vegas-cybertruck-explosion-chatgpt",
+      "source": "Theguardian (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4767,
+      "score": -0.4767
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.hppr.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Hppr (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://cbs6albany.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Cbs6Albany (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Las Vegas Cybertruck explosion suspect used ChatGPT to plan attack : Police",
+      "summary": "",
+      "url": "https://wlec.com/us-news/las-vegas-cybertruck-explosion-suspect-used-chatgpt-to-plan-attack-police/",
+      "source": "Wlec (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.6486,
+      "score": -0.6486
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.kawc.org/npr-news/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Kawc (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Tessell excels in AI & cloud database solutions , 2024",
+      "summary": "",
+      "url": "https://itbrief.co.nz/story/tessell-excels-in-ai-cloud-database-solutions-2024",
+      "source": "Itbrief (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.6369,
+      "score": 0.6369
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.whas11.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Whas11 (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "http://www.houstonchronicle.com/news/article/man-who-exploded-tesla-cybertruck-outside-trump-20020981.php",
+      "source": "Houstonchronicle (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Predicting the progression of autoimmune disease with AI",
+      "summary": "",
+      "url": "https://www.sciencedaily.com/releases/2025/01/250107161826.htm",
+      "source": "Sciencedaily (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.southwalesguardian.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Southwalesguardian (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Smart food drying techniques with AI enhance produ",
+      "summary": "",
+      "url": "https://www.newswise.com/articles/smart-food-drying-techniques-with-ai-enhance-product-quality-and-efficiency",
+      "source": "Newswise (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.krmg.com/news/man-who-exploded/USKOI4VJEBCBFNRRP2HI7OSSR4/",
+      "source": "Krmg (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.leighjournal.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Leighjournal (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck used generative AI , police say",
+      "summary": "",
+      "url": "https://www.sandiegouniontribune.com/2025/01/07/tesla-cybertruck-explosion-trump-hotel/",
+      "source": "Sandiegouniontribune (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://cbs6albany.com/news/nation-world/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "Cbs6Albany (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.wfmz.com/news/ap/ap-national/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police/article_10434e53-4a3a-54dc-9f9a-0085e0f19488.html",
+      "source": "Wfmz (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.kuaf.com/npr-news/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Kuaf (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Colorado soldier who blew up Cybertruck used generative AI , police say",
+      "summary": "",
+      "url": "https://www.denverpost.com/2025/01/07/cybertruck-explosion-ai-chatgpt-trump-hotel-vegas/",
+      "source": "Denverpost (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.thisisoxfordshire.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Thisisoxfordshire (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Anthropic in Talks to Raise Funding at $60 Billion Value",
+      "summary": "",
+      "url": "https://www.bnnbloomberg.ca/business/technology/2025/01/07/anthropic-in-talks-to-raise-funding-at-60-billion-value/",
+      "source": "Bnnbloomberg (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.34,
+      "score": 0.34
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck used generative AI , police say \u2013 NBC10 Philadelphia",
+      "summary": "",
+      "url": "https://www.nbcphiladelphia.com/news/national-international/man-who-exploded-tesla-cybertruck-trump-hotel-used-generative-ai/4071395/",
+      "source": "Nbcphiladelphia (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.tahlequahdailypress.com/natlnewsap/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police/article_25be8db7-0ad7-5b28-8572-ad5e8098e3cd.html",
+      "source": "Tahlequahdailypress (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.kpcw.org/npr-top-stories/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Kpcw (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Cybertruck bomber used generative AI to plan attack",
+      "summary": "",
+      "url": "https://www.batemansbaypost.com.au/story/8861534/cybertruck-bomber-used-generative-ai-to-plan-attack/?cs=14264",
+      "source": "Batemansbaypost (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4767,
+      "score": -0.4767
+    },
+    {
+      "title": "Green Beret who exploded Cybertruck in Las Vegas used AI to plan blast",
+      "summary": "",
+      "url": "https://www.cnn.com/2025/01/07/us/las-vegas-cybertruck-explosion-livelsberger/",
+      "source": "Cnn (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.wirralglobe.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Wirralglobe (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.dailygazette.com/hv360/ap/national/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police/article_38068bb3-9674-5c42-b850-8aa40b144cf7.html",
+      "source": "Dailygazette (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.sthelensstar.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Sthelensstar (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck used generative AI , police say",
+      "summary": "",
+      "url": "https://www.standardspeaker.com/2025/01/07/tesla-cybertruck-explosion-trump-hotel/",
+      "source": "Standardspeaker (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.krvs.org/npr-news/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Krvs (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla truck outside Trump hotel used generative AI , police say",
+      "summary": "",
+      "url": "https://www.readingchronicle.co.uk/news/national/24840696.man-exploded-tesla-truck-outside-trump-hotel-used-generative-ai-police-say/",
+      "source": "Readingchronicle (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wncw.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wncw (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://news3lv.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "News3Lv (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Artificial intelligence engineers compute their way to the top of LinkedIn job list",
+      "summary": "",
+      "url": "https://wfxl.com/news/nation-world/ai-makes-its-mark-in-linkedins-jobs-on-the-rise-report-artificial-intelligence-job-market-workplace-trends-technology",
+      "source": "Wfxl (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Man who exploded Cybertruck used generative AI , police say",
+      "summary": "",
+      "url": "https://www.reporterherald.com/2025/01/07/tesla-cybertruck-explosion-trump-hotel/",
+      "source": "Reporterherald (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Smart food drying techniques with AI enhance produ",
+      "summary": "",
+      "url": "https://www.newswise.com/articles/smart-food-drying-techniques-with-ai-enhance-product-quality-and-efficiency/?ad2f=1&aid=821915",
+      "source": "Newswise (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.clickorlando.com/news/national/2025/01/07/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "Clickorlando (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "What the Tech ? Consumer Electronics Show : How artificial intelligence is taking over Vegas and the world",
+      "summary": "",
+      "url": "https://www.wfmz.com/features/what-the-tech/what-the-tech-consumer-electronics-show-how-artificial-intelligence-is-taking-over-vegas-and-the/article_971daaae-cd33-11ef-84af-374d93bc9545.html",
+      "source": "Wfmz (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Driver used ChatGPT to plan Cybertruck explosion at Trump Hotel in Las Vegas",
+      "summary": "",
+      "url": "https://news3lv.com/news/local/las-vegas-police-new-update-cybertruck-explosion-investigation-matthew-livelsberger-lvmpd-fbi-atf-trump-international-hotel-crime-colorado-nevada",
+      "source": "News3Lv (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Cybertruck in Las Vegas used ChatGPT in planning , police say",
+      "summary": "",
+      "url": "https://www.wsiu.org/2025-01-07/man-who-exploded-cybertruck-in-las-vegas-used-chatgpt-in-planning-police-say",
+      "source": "Wsiu (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Man who exploded Tesla Cybertruck outside Trump hotel in Las Vegas used generative AI , police say",
+      "summary": "",
+      "url": "https://www.news4jax.com/news/national/2025/01/07/man-who-exploded-tesla-cybertruck-outside-trump-hotel-in-las-vegas-used-generative-ai-police-say/",
+      "source": "News4Jax (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Soldier used AI to plot Tesla explosion outside Trump hotel in Vegas",
+      "summary": "",
+      "url": "https://www.wnep.com/article/news/nation-world/tesla-cybertruck-explosion-las-vegas-chatgpt/507-6c583199-1fa3-4f79-bc20-7b55c694bfaa",
+      "source": "Wnep (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Police : Decorated soldier uses AI in Tesla attack outside Trump hotel",
+      "summary": "",
+      "url": "https://www.kcra.com/article/soldier-ai-tesla-attack-trump-hotel/63363721",
+      "source": "Kcra (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4767,
+      "score": -0.4767
+    },
+    {
+      "title": "Scientists using AI to help driverless vehicles go the extra mile",
+      "summary": "",
+      "url": "https://www.douglas-budget.com/news/national/article_c4956e5c-63b7-56fd-8efa-b7f6b0864f3d.html",
+      "source": "Douglas-Budget (GDELT)",
+      "date": "2025-01-07",
+      "timestamp": "2025-01-07T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Biden signs ambitious order to bolster energy resources for AI data centers",
+      "summary": "",
+      "url": "https://www.dailyitem.com/wire/biden-signs-ambitious-order-to-bolster-energy-resources-for-ai-data-centers/article_3c2b7509-acb8-51c5-a1d8-0f67a5b62d8f.html",
+      "source": "Dailyitem (GDELT)",
+      "date": "2025-01-15",
+      "timestamp": "2025-01-15T00:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.6369,
+      "score": 0.6369
+    },
+    {
+      "title": "French woman scammed out of $1 . 2M by AI - generated Brad Pitt",
+      "summary": "",
+      "url": "https://torontosun.com/news/world/french-woman-scammed-out-of-1-2-million-by-ai-generated-brad-pitt",
+      "source": "Torontosun (GDELT)",
+      "date": "2025-01-15",
+      "timestamp": "2025-01-15T00:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI in BFSI Market is expected to generate a huge demand by 2026",
+      "summary": "",
+      "url": "https://eturbonews.com/ai-in-bfsi-market-is-expected-to-generate-a-huge-demand-by-2026/",
+      "source": "Eturbonews (GDELT)",
+      "date": "2025-01-15",
+      "timestamp": "2025-01-15T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2023,
+      "score": 0.2023
+    },
+    {
+      "title": "Jorie AI Partners with CHAMPS Group Purchasing to Expand Impact and Support Healthcare Providers",
+      "summary": "",
+      "url": "https://www.saltlakecitysun.com/news/274943382/jorie-ai-partners-with-champs-group-purchasing-to-expand-impact-and-support-healthcare-providers",
+      "source": "Saltlakecitysun (GDELT)",
+      "date": "2025-01-15",
+      "timestamp": "2025-01-15T00:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.8192,
+      "score": 0.8192
+    },
+    {
+      "title": "AI can redefine healthcare",
+      "summary": "",
+      "url": "https://www.financialexpress.com/opinion/ai-can-redefine-healthcare/3715318/",
+      "source": "Financialexpress (GDELT)",
+      "date": "2025-01-15",
+      "timestamp": "2025-01-15T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Biden takes big step for the future of AI with ambitious executive order",
+      "summary": "",
+      "url": "https://neworleanscitybusiness.com/blog/2025/01/14/biden-takes-big-step-for-the-future-of-ai-with-ambitious-executive-order/",
+      "source": "Neworleanscitybusiness (GDELT)",
+      "date": "2025-01-15",
+      "timestamp": "2025-01-15T00:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Amplified by AI Tools , API Attacks Hit 55 % of IT Teams",
+      "summary": "",
+      "url": "https://www.govinfosecurity.com/amplified-by-ai-tools-api-attacks-hit-55-teams-a-27284",
+      "source": "Govinfosecurity (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4404,
+      "score": -0.4404
+    },
+    {
+      "title": "Relm Insurance launches AI suite of products",
+      "summary": "",
+      "url": "https://www.royalgazette.com/reinsurance/business/article/20250114/relm-insurance-launches-ai-suite-of-products/",
+      "source": "Royalgazette (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T23:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "BIS Outlines Rules Framework for Advanced AI Models , Chips Distribution",
+      "summary": "",
+      "url": "https://executivegov.com/2025/01/bis-chips-ai-models-distribution-regulations/",
+      "source": "Executivegov (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.25,
+      "score": 0.4
+    },
+    {
+      "title": "AI Disclosures Under the Spotlight : SEC Expectations for Year - End Filings | Baker Donelson",
+      "summary": "",
+      "url": "https://www.jdsupra.com/legalnews/ai-disclosures-under-the-spotlight-sec-1783439/",
+      "source": "Jdsupra (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "USPTO Presents AI Strategy as AI Patent Applications Soar by 33 %",
+      "summary": "",
+      "url": "https://ipwatchdog.com/2025/01/14/uspto-presents-ai-strategy-ai-patent-applications-soar-33/id=185085/",
+      "source": "Ipwatchdog (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Moderna Noubar Afeyan : AI could solve climate change",
+      "summary": "",
+      "url": "https://www.bostonglobe.com/2025/01/14/business/ai-moderna-cofounder-noubar-afeyan-flagship/",
+      "source": "Bostonglobe (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2023,
+      "score": 0.3523
+    },
+    {
+      "title": "AI Startups : A Metaverse Firm Snags $3 Billion as Anthropic Rises",
+      "summary": "",
+      "url": "https://biztoc.com/x/bcf04a7fba72b212",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Claive Roadmap 2025 : Driving the Future of Confidential Computing and AI on Secret Network",
+      "summary": "",
+      "url": "https://www.tmcnet.com/usubmit/2025/01/14/10131486.htm",
+      "source": "Tmcnet (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI revolutionising the demand for human skills at work",
+      "summary": "",
+      "url": "https://itbrief.co.nz/story/ai-revolutionising-the-demand-for-human-skills-at-work",
+      "source": "Itbrief (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": -0.128,
+      "score": -0.128
+    },
+    {
+      "title": "Artificial Intelligence ( AI ) everywhere : remedy is to consolidate - Opinion",
+      "summary": "",
+      "url": "https://www.brecorder.com/news/40342709/artificial-intelligence-ai-everywhere-remedy-is-to-consolidate",
+      "source": "Brecorder (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "A look at Vatican City new artificial intelligence law",
+      "summary": "",
+      "url": "https://www.catholicnewsagency.com/news/261551/a-look-at-vatican-citys-new-artificial-intelligence-law",
+      "source": "Catholicnewsagency (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "QT Imaging : January 14 , 2025 QT Imaging Holdings Introduces Machine Learning - Enabled Image Interpolation Algorithm to Substantially Reduce Scan Time",
+      "summary": "",
+      "url": "https://www.marketscreener.com/quote/stock/QT-IMAGING-HOLDINGS-INC-166784388/news/QT-Imaging-January-14-2025-QT-Imaging-Holdings-Introduces-Machine-Learning-Enabled-Image-Interpol-48759579/",
+      "source": "Marketscreener (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7944,
+      "score": 0.7944
+    },
+    {
+      "title": "Amazon Hits Snags in Revamping Alexa Into Agentic AI",
+      "summary": "",
+      "url": "https://biztoc.com/x/7e8b9724adbac475",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1779,
+      "score": 0.1779
+    },
+    {
+      "title": "Biden takes big step for the future of AI with ambitious executive order",
+      "summary": "",
+      "url": "https://www.dailyherald.com/20250114/business/biden-takes-big-step-for-the-future-of-ai-with-ambitious-executive-order/",
+      "source": "Dailyherald (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Biden takes big step for the future of AI with ambitious executive order \u2013 Winnipeg Free Press",
+      "summary": "",
+      "url": "https://www.winnipegfreepress.com/arts-and-life/life/sci-tech/2025/01/14/biden-signs-executive-order-aimed-at-growing-ai-infrastructure-in-the-us",
+      "source": "Winnipegfreepress (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7506,
+      "score": 0.7506
+    },
+    {
+      "title": "OpenAI  Blueprint  Calls on US to  Act Big  on AI",
+      "summary": "",
+      "url": "https://biztoc.com/x/22fedc933da376a1",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Biden signs executive order aimed at growing AI infrastructure in the US",
+      "summary": "",
+      "url": "https://www.eastbaytimes.com/2025/01/14/biden-executive-ai-infrastructure/",
+      "source": "Eastbaytimes (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1779,
+      "score": 0.1779
+    },
+    {
+      "title": "Baker Hughes Stock : AI - Fueled Energy Play Has This Edge Over The Nvidias Of The World",
+      "summary": "",
+      "url": "https://www.investors.com/research/breakout-stocks-technical-analysis/baker-hughes-stock-bkr-artificial-intelligence/",
+      "source": "Investors (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.5423,
+      "score": 0.5423
+    },
+    {
+      "title": "Enterprise AI Turkey Summit 2025 | Biometric Update",
+      "summary": "",
+      "url": "https://www.biometricupdate.com/202501/enterprise-ai-turkey-summit-2025",
+      "source": "Biometricupdate (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Japan courts ASEAN on AI tech to check China influence",
+      "summary": "",
+      "url": "https://biztoc.com/x/49ce43266d2c6452",
+      "source": "Biztoc (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "For healthy hearing , timing matters : Neuroscientists use AI to explore real - world auditory processing",
+      "summary": "",
+      "url": "https://medicalxpress.com/news/2025-01-healthy-neuroscientists-ai-explore-real.html",
+      "source": "Medicalxpress (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4215,
+      "score": 0.4215
+    },
+    {
+      "title": "AI and the 2024 Election Part III : Many Uses and Minor Impacts",
+      "summary": "",
+      "url": "https://www.rstreet.org/commentary/ai-and-the-2024-election-part-iii-many-uses-and-minor-impacts/",
+      "source": "Rstreet (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Supermicro Empowers AI - driven Capabilities for Enterprise , Retail , and Edge Server Solutions",
+      "summary": "",
+      "url": "https://www.marketscreener.com/quote/stock/SUPER-MICRO-COMPUTER-INC-45456111/news/Supermicro-Empowers-AI-driven-Capabilities-for-Enterprise-Retail-and-Edge-Server-Solutions-48759123/",
+      "source": "Marketscreener (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1779,
+      "score": 0.3779
+    },
+    {
+      "title": "AI is Transforming Packaging Manufacturing",
+      "summary": "",
+      "url": "https://www.packworld.com/trends/digital-transformation/article/22930562/ai-is-transforming-packaging-manufacturing",
+      "source": "Packworld (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.15
+    },
+    {
+      "title": "Four challenges with ERP vendor - led AI roadmaps and how to solve them",
+      "summary": "",
+      "url": "https://www.cio.com/article/3802587/four-challenges-with-erp-vendor-led-ai-roadmaps-and-how-to-solve-them.html",
+      "source": "Cio (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2732,
+      "score": 0.4232
+    },
+    {
+      "title": "The Prompt : OpenAI Is Trying To Make ChatGPT A  Helpful AI Companion",
+      "summary": "",
+      "url": "https://www.forbes.com/sites/rashishrivastava/2025/01/14/the-prompt-openai-is-trying-to-make-chatgpt-a-helpful-ai-companion/",
+      "source": "Forbes (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4215,
+      "score": 0.4215
+    },
+    {
+      "title": "Apple joins consortium to develop next - gen AI data center technology - Xinhua",
+      "summary": "",
+      "url": "https://english.news.cn/northamerica/20250115/898c5d7b97624df182e6fba81f08538b/c.html",
+      "source": "English (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Jorie AI Partners with CHAMPS Group Purchasing to Expand Impact and Support Healthcare Providers",
+      "summary": "",
+      "url": "https://www.tennesseedaily.com/news/274943382/jorie-ai-partners-with-champs-group-purchasing-to-expand-impact-and-support-healthcare-providers",
+      "source": "Tennesseedaily (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.8192,
+      "score": 0.8192
+    },
+    {
+      "title": "AI Will Change the Nature of Data Center Builds in 2025",
+      "summary": "",
+      "url": "https://www.datacenterknowledge.com:443/build-design/ai-will-change-the-nature-of-data-center-builds-in-2025",
+      "source": "Datacenterknowledge (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "American Bazaar to showcase AI startups at  InnovateAI 2025",
+      "summary": "",
+      "url": "https://americanbazaaronline.com/2025/01/14/american-bazaar-to-host-startup-bazaar-innovateai-2025-in-dmv-on-jan-31458313/",
+      "source": "Americanbazaaronline (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Jorie AI Partners with CHAMPS Group Purchasing to Expand Impact and Support Healthcare Providers",
+      "summary": "",
+      "url": "https://www.finanznachrichten.de/nachrichten-2025-01/64290564-jorie-ai-partners-with-champs-group-purchasing-to-expand-impact-and-support-healthcare-providers-200.htm",
+      "source": "Finanznachrichten (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.8192,
+      "score": 0.8192
+    },
+    {
+      "title": "Google Cloud Launches AI Solutions to Revolutionize Retail",
+      "summary": "",
+      "url": "https://smallbiztrends.com/google-cloud-ai-solutions-retailers/",
+      "source": "Smallbiztrends (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1779,
+      "score": 0.3779
+    },
+    {
+      "title": "Biden admin to intensify restrictions on China access to AI chips",
+      "summary": "",
+      "url": "https://americanbazaaronline.com/2025/01/14/biden-administration-to-intensify-restrictions-on-chinas-access-to-ai-chips458336/",
+      "source": "Americanbazaaronline (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": -0.1
+    },
+    {
+      "title": "Biden orders Energy , Defense Departments to Lease Sites for AI Data Centers",
+      "summary": "",
+      "url": "https://www.datacenterknowledge.com:443/ai-data-centers/biden-orders-energy-defense-departments-to-lease-sites-for-ai-data-centers",
+      "source": "Datacenterknowledge (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.3818,
+      "score": 0.3818
+    },
+    {
+      "title": "Cisco Wants To Own Back - End Infrastructure For AI Datacenters",
+      "summary": "",
+      "url": "https://www.forbes.com/sites/patrickmoorhead/2025/01/14/cisco-wants-to-own-back-end-infrastructure-for-ai-datacenters/",
+      "source": "Forbes (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T22:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "What to expect from AI in 2025 : transformative trends and impacts",
+      "summary": "",
+      "url": "https://marketbusinessnews.com/whatexpect-ai-2025-transformative-trends-impacts/427244/",
+      "source": "Marketbusinessnews (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.15
+    },
+    {
+      "title": "OpenAI Unveils Vision for U . S . AI Leadership : Key Policies to Drive Innovation and Safety",
+      "summary": "",
+      "url": "https://www.eweek.com/news/openai-unveils-vision-for-u-s-ai-leadership-key-policies-to-drive-innovation-and-safety/",
+      "source": "Eweek (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7506,
+      "score": 0.9506
+    },
+    {
+      "title": "One in four advisers plan to use AI systems in 2025 \u2013 Mortgage Strategy",
+      "summary": "",
+      "url": "https://www.mortgagestrategy.co.uk/news/one-in-four-advisers-plan-to-use-ai-systems-in-2025/",
+      "source": "Mortgagestrategy (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Copilot Review : Is Microsoft AI Really A Game - Changer ?",
+      "summary": "",
+      "url": "https://www.greenbot.com/copilot-review/",
+      "source": "Greenbot (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Super Micro Computer , Inc .: Supermicro Empowers AI - driven Capabilities for Enterprise , Retail , and Edge Server Solutions",
+      "summary": "",
+      "url": "https://www.finanznachrichten.de/nachrichten-2025-01/64290384-super-micro-computer-inc-supermicro-empowers-ai-driven-capabilities-for-enterprise-retail-and-edge-server-solutions-008.htm",
+      "source": "Finanznachrichten (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.6808,
+      "score": 0.8808
+    },
+    {
+      "title": "Apple joins AI hardware standards consortium to improve server performance - Current Mac Hardware Discussions on AppleInsider Forums",
+      "summary": "",
+      "url": "https://forums.appleinsider.com/discussion/238899",
+      "source": "Forums (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4404,
+      "score": 0.5904
+    },
+    {
+      "title": "ChatGPT Isnt Responsible For the LA Wildfires , But It Isnt Helping",
+      "summary": "",
+      "url": "https://www.pcmag.com/opinions/chatgpt-isnt-responsible-for-the-la-wildfires-but-it-isnt-helping",
+      "source": "Pcmag (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:15:00+00:00",
+      "backfill": true,
+      "score_raw": -0.424,
+      "score": -0.424
+    },
+    {
+      "title": "Penguin Solutions ( PENG ) Partners with SK Telecom & SK hynix on $200M AI Data Center Deal",
+      "summary": "",
+      "url": "https://www.insidermonkey.com/blog/penguin-solutions-peng-partners-with-sk-telecom-sk-hynix-on-200m-ai-data-center-deal-1423491/",
+      "source": "Insidermonkey (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1779,
+      "score": 0.1779
+    },
+    {
+      "title": "Genea - Musings : Ask AI :  What tasks did a female perform as a housewife in the 1890s ?",
+      "summary": "",
+      "url": "https://www.geneamusings.com/2025/01/ask-ai-what-tasks-did-female-perform-as.html",
+      "source": "Geneamusings (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Biden signed AI legislation aimed at building infrastructures on a large scale",
+      "summary": "",
+      "url": "https://news.am/eng/news/861504.html",
+      "source": "News (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Prototek Launches AI - Powered CNC Instant Quote Platform",
+      "summary": "",
+      "url": "https://www.mbtmag.com/artificial-intelligence/news/22930496/prototek-launches-aipowered-cnc-instant-quote-platform",
+      "source": "Mbtmag (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Okonjo - Iweala urges Africa to harness AI for development National Accord Newspaper",
+      "summary": "",
+      "url": "https://www.nationalaccordnewspaper.com/okonjo-iweala-urges-africa-to-harness-ai-for-development/",
+      "source": "Nationalaccordnewspaper (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Relm unveils artificial intelligence products",
+      "summary": "",
+      "url": "https://www.businessinsurance.com/relm-unveils-artificial-intelligence-products/",
+      "source": "Businessinsurance (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Biden signs executive order aimed at growing AI infrastructure in the US",
+      "summary": "",
+      "url": "https://www.carolinacoastonline.com/national/article_4c11db3c-d28f-11ef-99e4-6b0d8fc2f1f9.html",
+      "source": "Carolinacoastonline (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.1779,
+      "score": 0.1779
+    },
+    {
+      "title": "Can AI get you into college ? Admissions expert says think again",
+      "summary": "",
+      "url": "http://thejerseytomatopress.com/premium/stacker/stories/can-ai-get-you-into-college-admissions-expert-says-think-again,118666",
+      "source": "Thejerseytomatopress (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "As technology evolves , it becomes harder to tell  real  AI from marketing",
+      "summary": "",
+      "url": "https://www.tucsonsentinel.com/nationworld/report/011425_ai_tech/as-technology-evolves-it-becomes-harder-tell-real-ai-from-marketing/",
+      "source": "Tucsonsentinel (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "81 % of CDP users gain competitive edge in AI initiatives , Tealium research shows",
+      "summary": "",
+      "url": "http://koreabizwire.com/81-of-cdp-users-gain-competitive-edge-in-ai-initiatives-tealium-research-shows/303683",
+      "source": "Koreabizwire (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.6249,
+      "score": 0.6249
+    },
+    {
+      "title": "6 things banks look for in gen AI models and companies",
+      "summary": "",
+      "url": "https://www.americanbanker.com/news/6-things-banks-look-for-in-gen-ai-models-and-companies",
+      "source": "Americanbanker (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T21:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": -0.15
+    },
+    {
+      "title": "Biden issues second AI action during final week in office with executive order fast - tracking US infrastructure",
+      "summary": "",
+      "url": "https://www.yahoo.com/news/biden-issues-second-ai-action-173327328.html",
+      "source": "Yahoo (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Biden Uses Last - Minute AI Executive Order To Force More Green Energy Onto The Grid",
+      "summary": "",
+      "url": "https://dailycaller.com/2025/01/14/joe-biden-signs-artificial-intelligence-green-energy-executive-order/",
+      "source": "Dailycaller (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.3353,
+      "score": 0.3353
+    },
+    {
+      "title": "Can AI get you into college ? Admissions expert says think again",
+      "summary": "",
+      "url": "http://www.morningsun.net/premium/stacker/stories/can-ai-get-you-into-college-admissions-expert-says-think-again,171700",
+      "source": "Morningsun (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI innovation unlocks non - surgical way to detect brain cancer spread",
+      "summary": "",
+      "url": "https://medicalxpress.com/news/2025-01-ai-surgical-brain-cancer.html",
+      "source": "Medicalxpress (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:30:00+00:00",
+      "backfill": true,
+      "score_raw": -0.4215,
+      "score": -0.2215
+    },
+    {
+      "title": "Elon Musk questions  suicide  of ChatGPT whistleblower",
+      "summary": "",
+      "url": "https://www.dailymail.co.uk/news/article-14284587/elon-musk-questions-openai-whistleblower-suchir-balaji-suicide.html",
+      "source": "Dailymail (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:30:00+00:00",
+      "backfill": true,
+      "score_raw": -0.6705,
+      "score": -0.6705
+    },
+    {
+      "title": "Nigerian online population shows strong enthusiasm for AI - New Google / Ipsos survey",
+      "summary": "",
+      "url": "https://theeagleonline.com.ng/nigerian-online-population-shows-strong-enthusiasm-for-ai-new-google-ipsos-survey/",
+      "source": "Theeagleonline (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:30:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7351,
+      "score": 0.7351
+    },
+    {
+      "title": "Apple joins consortium to develop next - gen AI data center technology",
+      "summary": "",
+      "url": "https://www.thestar.com.my/news/world/2025/01/15/apple-joins-consortium-to-develop-next-gen-ai-data-center-technology",
+      "source": "Thestar (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:15:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "A New AI - Powered Practice Management Platform With Flexible Deployment Options",
+      "summary": "",
+      "url": "https://abovethelaw.com/2025/01/a-new-ai-powered-practice-management-platform-with-flexible-deployment-options/",
+      "source": "Abovethelaw (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.2263,
+      "score": 0.2263
+    },
+    {
+      "title": "The united kingdom government wants to unleash AI huge potential . While welcome , we need to carefully consider the risks",
+      "summary": "",
+      "url": "https://theconversation.com/the-uk-government-wants-to-unleash-ais-huge-potential-while-welcome-we-need-to-carefully-consider-the-risks-247395",
+      "source": "Theconversation (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7579,
+      "score": 0.7579
+    },
+    {
+      "title": "GENERATIVE AI ANNOUNCES PROPOSED AMENDMENTS TO CERTAIN OUTSTANDING WARRANTS",
+      "summary": "",
+      "url": "https://www.newswire.ca/news-releases/generative-ai-announces-proposed-amendments-to-certain-outstanding-warrants-808160022.html",
+      "source": "Newswire (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T20:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.7269,
+      "score": 0.7269
+    },
+    {
+      "title": "Joe Biden takes a big step for the future of AI with ambitious executive order",
+      "summary": "",
+      "url": "https://www.theglobeandmail.com/business/technology/science/article-joe-biden-takes-a-big-step-for-the-future-of-ai-with-ambitious/",
+      "source": "Theglobeandmail (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T19:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "British novelists criticise government over AI  theft  | Artificial intelligence ( AI )",
+      "summary": "",
+      "url": "https://www.theguardian.com/technology/2025/jan/14/british-novelists-criticise-government-over-ai-theft",
+      "source": "Theguardian (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T19:00:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0516,
+      "score": 0.0516
+    },
+    {
+      "title": "Revolutionary AI Technology Paves Non - Invasive Path for Detecting Brain",
+      "summary": "",
+      "url": "https://scienmag.com/revolutionary-ai-technology-paves-non-invasive-path-for-detecting-brain-cancer-metastasis/",
+      "source": "Scienmag (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T18:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Exclusive : Century Heath , Nira Medical partner to provide AI - curated EHR data",
+      "summary": "",
+      "url": "https://www.mobihealthnews.com/news/exclusive-century-heath-nira-medical-partner-provide-ai-curated-ehr-data",
+      "source": "Mobihealthnews (GDELT)",
+      "date": "2025-01-14",
+      "timestamp": "2025-01-14T18:45:00+00:00",
+      "backfill": true,
+      "score_raw": 0.128,
+      "score": 0.128
     }
   ],
   "daily_scores": {
+    "2025-01-07": {
+      "mean": 0.0517,
+      "count": 46,
+      "pos": 9,
+      "neg": 4,
+      "neu": 33,
+      "sources": [
+        "Batemansbaypost (GDELT)",
+        "Bnnbloomberg (GDELT)",
+        "Cbs6Albany (GDELT)",
+        "Clickorlando (GDELT)",
+        "Cnn (GDELT)",
+        "Dailygazette (GDELT)",
+        "Denverpost (GDELT)",
+        "Douglas-Budget (GDELT)",
+        "Houstonchronicle (GDELT)",
+        "Hppr (GDELT)",
+        "Itbrief (GDELT)",
+        "Kawc (GDELT)",
+        "Kcra (GDELT)",
+        "Keighleynews (GDELT)",
+        "Kpcw (GDELT)",
+        "Krmg (GDELT)",
+        "Krvs (GDELT)",
+        "Kuaf (GDELT)",
+        "Leighjournal (GDELT)",
+        "Nbcphiladelphia (GDELT)",
+        "News3Lv (GDELT)",
+        "News4Jax (GDELT)",
+        "Newswise (GDELT)",
+        "Readingchronicle (GDELT)",
+        "Reporterherald (GDELT)",
+        "Sandiegouniontribune (GDELT)",
+        "Sciencedaily (GDELT)",
+        "Southwalesguardian (GDELT)",
+        "Standardspeaker (GDELT)",
+        "Sthelensstar (GDELT)",
+        "Tahlequahdailypress (GDELT)",
+        "Theguardian (GDELT)",
+        "Thisisoxfordshire (GDELT)",
+        "Triblive (GDELT)",
+        "Wfmz (GDELT)",
+        "Wfxl (GDELT)",
+        "Whas11 (GDELT)",
+        "Wirralglobe (GDELT)",
+        "Wlec (GDELT)",
+        "Wncw (GDELT)",
+        "Wnep (GDELT)",
+        "Wsiu (GDELT)"
+      ],
+      "by_source": {
+        "Keighleynews (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Triblive (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Theguardian (GDELT)": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Hppr (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Cbs6Albany (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Wlec (GDELT)": {
+          "mean": -0.6486,
+          "count": 1
+        },
+        "Kawc (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Itbrief (GDELT)": {
+          "mean": 0.6369,
+          "count": 1
+        },
+        "Whas11 (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Houstonchronicle (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Sciencedaily (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Southwalesguardian (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Newswise (GDELT)": {
+          "mean": 0.4019,
+          "count": 2
+        },
+        "Krmg (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Leighjournal (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Sandiegouniontribune (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wfmz (GDELT)": {
+          "mean": 0.2384,
+          "count": 2
+        },
+        "Kuaf (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Denverpost (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Thisisoxfordshire (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Bnnbloomberg (GDELT)": {
+          "mean": 0.34,
+          "count": 1
+        },
+        "Nbcphiladelphia (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Tahlequahdailypress (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kpcw (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Batemansbaypost (GDELT)": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Cnn (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wirralglobe (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Dailygazette (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Sthelensstar (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Standardspeaker (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Krvs (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Readingchronicle (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wncw (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "News3Lv (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Wfxl (GDELT)": {
+          "mean": 0.5994,
+          "count": 1
+        },
+        "Reporterherald (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Clickorlando (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wsiu (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "News4Jax (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wnep (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kcra (GDELT)": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Douglas-Budget (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        }
+      },
+      "live_count": 0,
+      "live_mean": null,
+      "backfill_count": 46,
+      "backfill_mean": 0.0517
+    },
+    "2025-01-08": {
+      "mean": 0.0559,
+      "count": 123,
+      "pos": 28,
+      "neg": 13,
+      "neu": 82,
+      "sources": [
+        "13Wham (GDELT)",
+        "13Wmaz (GDELT)",
+        "Abc3340 (GDELT)",
+        "Abc7Chicago (GDELT)",
+        "Apr (GDELT)",
+        "Aspenpublicradio (GDELT)",
+        "Bakersfieldnow (GDELT)",
+        "Bangkokpost (GDELT)",
+        "Bankinfosecurity (GDELT)",
+        "Belfasttelegraph (GDELT)",
+        "Biztoc (GDELT)",
+        "Burnhamandhighbridgeweeklynews (GDELT)",
+        "Businesstimes (GDELT)",
+        "Cbs2Iowa (GDELT)",
+        "Centralmoinfo (GDELT)",
+        "Chesterstandard (GDELT)",
+        "Click2Houston (GDELT)",
+        "Cointelegraph (GDELT)",
+        "Countytimes (GDELT)",
+        "Crikey (GDELT)",
+        "Dudleynews (GDELT)",
+        "Edition (GDELT)",
+        "Engineering (GDELT)",
+        "Expressnews (GDELT)",
+        "Fox23Maine (GDELT)",
+        "Freerepublic (GDELT)",
+        "Govinfosecurity (GDELT)",
+        "Hillingdontimes (GDELT)",
+        "Impartialreporter (GDELT)",
+        "Irvinetimes (GDELT)",
+        "Iwradio (GDELT)",
+        "Japantoday (GDELT)",
+        "Kagstv (GDELT)",
+        "Katv (GDELT)",
+        "Kbia (GDELT)",
+        "Keprtv (GDELT)",
+        "Khou (GDELT)",
+        "Kilburntimes (GDELT)",
+        "Kiro7 (GDELT)",
+        "Kpic (GDELT)",
+        "Krcrtv (GDELT)",
+        "Krcu (GDELT)",
+        "Ksat (GDELT)",
+        "Ksut (GDELT)",
+        "Kunr (GDELT)",
+        "Kval (GDELT)",
+        "Kxel (GDELT)",
+        "Kyuk (GDELT)",
+        "Lasvegassun (GDELT)",
+        "Ledburyreporter (GDELT)",
+        "Local21News (GDELT)",
+        "Mtdemocrat (GDELT)",
+        "Mymoinfo (GDELT)",
+        "Mynspr (GDELT)",
+        "Nbc24 (GDELT)",
+        "Nbcmontana (GDELT)",
+        "Nbcnews (GDELT)",
+        "News (GDELT)",
+        "News-Gazette (GDELT)",
+        "Newsnationnow (GDELT)",
+        "Newsweek (GDELT)",
+        "Nwemail (GDELT)",
+        "Onclive (GDELT)",
+        "Oregonlive (GDELT)",
+        "Ottumwacourier (GDELT)",
+        "Pocket-Lint (GDELT)",
+        "Richmond-News (GDELT)",
+        "Sanfordherald (GDELT)",
+        "Scmp (GDELT)",
+        "Scworld (GDELT)",
+        "Southcarolinapublicradio (GDELT)",
+        "Stalbansreview (GDELT)",
+        "Suncommercial (GDELT)",
+        "Swindonadvertiser (GDELT)",
+        "Theargus (GDELT)",
+        "Thebusinessjournal (GDELT)",
+        "Thedigitalcourier (GDELT)",
+        "Thereminder (GDELT)",
+        "Thetimes-Tribune (GDELT)",
+        "Thetottenhamindependent (GDELT)",
+        "Thv11 (GDELT)",
+        "Timesandstar (GDELT)",
+        "Todayheadline (GDELT)",
+        "Toronto (GDELT)",
+        "Wallstreetpit (GDELT)",
+        "Warringtonguardian (GDELT)",
+        "Wbir (GDELT)",
+        "Wdbo (GDELT)",
+        "Wesh (GDELT)",
+        "Wfae (GDELT)",
+        "Wglt (GDELT)",
+        "Wkyc (GDELT)",
+        "Wmay (GDELT)",
+        "Wmot (GDELT)",
+        "Wokv (GDELT)",
+        "Wprl (GDELT)",
+        "Wsbradio (GDELT)",
+        "Wthr (GDELT)",
+        "Wtov9 (GDELT)",
+        "Wutc (GDELT)",
+        "Wvnews (GDELT)",
+        "Wwltv (GDELT)",
+        "Wxpr (GDELT)",
+        "Yahoo (GDELT)",
+        "Yorkpress (GDELT)"
+      ],
+      "by_source": {
+        "Wesh (GDELT)": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Wmot (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Bankinfosecurity (GDELT)": {
+          "mean": -0.1806,
+          "count": 2
+        },
+        "Businesstimes (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Centralmoinfo (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Wthr (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Suncommercial (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Biztoc (GDELT)": {
+          "mean": 0.4205,
+          "count": 3
+        },
+        "Thetimes-Tribune (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wglt (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Edition (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Cointelegraph (GDELT)": {
+          "mean": 0.0258,
+          "count": 1
+        },
+        "Wmay (GDELT)": {
+          "mean": -0.6486,
+          "count": 1
+        },
+        "Oregonlive (GDELT)": {
+          "mean": -0.496,
+          "count": 1
+        },
+        "Richmond-News (GDELT)": {
+          "mean": 0.0,
+          "count": 2
+        },
+        "Nbc24 (GDELT)": {
+          "mean": 0.5994,
+          "count": 1
+        },
+        "Kbia (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Todayheadline (GDELT)": {
+          "mean": 0.34,
+          "count": 1
+        },
+        "Wokv (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Krcrtv (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Thv11 (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kiro7 (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Bakersfieldnow (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Wbir (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Southcarolinapublicradio (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Yahoo (GDELT)": {
+          "mean": 0.1012,
+          "count": 2
+        },
+        "Ksut (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kval (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Onclive (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Toronto (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Lasvegassun (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Japantoday (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wxpr (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Sanfordherald (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Click2Houston (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Belfasttelegraph (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Ottumwacourier (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kpic (GDELT)": {
+          "mean": 0.5994,
+          "count": 1
+        },
+        "Expressnews (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wallstreetpit (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Khou (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wkyc (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Scworld (GDELT)": {
+          "mean": -0.9283,
+          "count": 1
+        },
+        "Abc7Chicago (GDELT)": {
+          "mean": -0.6486,
+          "count": 1
+        },
+        "Theargus (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "13Wmaz (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Local21News (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Wprl (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Mtdemocrat (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Crikey (GDELT)": {
+          "mean": -0.5719,
+          "count": 1
+        },
+        "Wtov9 (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Cbs2Iowa (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Nbcmontana (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Impartialreporter (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Thebusinessjournal (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Warringtonguardian (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kunr (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Mynspr (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Newsnationnow (GDELT)": {
+          "mean": -0.3612,
+          "count": 1
+        },
+        "Thereminder (GDELT)": {
+          "mean": 0.0,
+          "count": 2
+        },
+        "Keprtv (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Bangkokpost (GDELT)": {
+          "mean": 0.4219,
+          "count": 1
+        },
+        "Hillingdontimes (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Burnhamandhighbridgeweeklynews (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Iwradio (GDELT)": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Wfae (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Stalbansreview (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kilburntimes (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Irvinetimes (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Pocket-Lint (GDELT)": {
+          "mean": 0.2732,
+          "count": 1
+        },
+        "Timesandstar (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kagstv (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Chesterstandard (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Apr (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Nwemail (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Nbcnews (GDELT)": {
+          "mean": 0.2023,
+          "count": 1
+        },
+        "Wdbo (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Yorkpress (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Krcu (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Countytimes (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "13Wham (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Thedigitalcourier (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Govinfosecurity (GDELT)": {
+          "mean": -0.1806,
+          "count": 2
+        },
+        "Wsbradio (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Katv (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Thetottenhamindependent (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Newsweek (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Swindonadvertiser (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kyuk (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wvnews (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Freerepublic (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "News (GDELT)": {
+          "mean": -0.4767,
+          "count": 1
+        },
+        "Scmp (GDELT)": {
+          "mean": -0.1027,
+          "count": 1
+        },
+        "Engineering (GDELT)": {
+          "mean": 0.1027,
+          "count": 1
+        },
+        "Mymoinfo (GDELT)": {
+          "mean": 0.4019,
+          "count": 1
+        },
+        "Dudleynews (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Aspenpublicradio (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Abc3340 (GDELT)": {
+          "mean": 0.2997,
+          "count": 2
+        },
+        "Fox23Maine (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "News-Gazette (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Ledburyreporter (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Kxel (GDELT)": {
+          "mean": -0.6486,
+          "count": 1
+        },
+        "Wwltv (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Ksat (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Wutc (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        }
+      },
+      "live_count": 0,
+      "live_mean": null,
+      "backfill_count": 123,
+      "backfill_mean": 0.0559
+    },
+    "2025-01-14": {
+      "mean": 0.2112,
+      "count": 67,
+      "pos": 35,
+      "neg": 7,
+      "neu": 25,
+      "sources": [
+        "Abovethelaw (GDELT)",
+        "Americanbanker (GDELT)",
+        "Americanbazaaronline (GDELT)",
+        "Biometricupdate (GDELT)",
+        "Biztoc (GDELT)",
+        "Bostonglobe (GDELT)",
+        "Brecorder (GDELT)",
+        "Businessinsurance (GDELT)",
+        "Carolinacoastonline (GDELT)",
+        "Catholicnewsagency (GDELT)",
+        "Cio (GDELT)",
+        "Dailycaller (GDELT)",
+        "Dailyherald (GDELT)",
+        "Dailymail (GDELT)",
+        "Datacenterknowledge (GDELT)",
+        "Eastbaytimes (GDELT)",
+        "English (GDELT)",
+        "Eweek (GDELT)",
+        "Executivegov (GDELT)",
+        "Finanznachrichten (GDELT)",
+        "Forbes (GDELT)",
+        "Forums (GDELT)",
+        "Geneamusings (GDELT)",
+        "Govinfosecurity (GDELT)",
+        "Greenbot (GDELT)",
+        "Insidermonkey (GDELT)",
+        "Investors (GDELT)",
+        "Ipwatchdog (GDELT)",
+        "Itbrief (GDELT)",
+        "Jdsupra (GDELT)",
+        "Koreabizwire (GDELT)",
+        "Marketbusinessnews (GDELT)",
+        "Marketscreener (GDELT)",
+        "Mbtmag (GDELT)",
+        "Medicalxpress (GDELT)",
+        "Mobihealthnews (GDELT)",
+        "Morningsun (GDELT)",
+        "Mortgagestrategy (GDELT)",
+        "Nationalaccordnewspaper (GDELT)",
+        "News (GDELT)",
+        "Newswire (GDELT)",
+        "Packworld (GDELT)",
+        "Pcmag (GDELT)",
+        "Royalgazette (GDELT)",
+        "Rstreet (GDELT)",
+        "Scienmag (GDELT)",
+        "Smallbiztrends (GDELT)",
+        "Tennesseedaily (GDELT)",
+        "Theconversation (GDELT)",
+        "Theeagleonline (GDELT)",
+        "Theglobeandmail (GDELT)",
+        "Theguardian (GDELT)",
+        "Thejerseytomatopress (GDELT)",
+        "Thestar (GDELT)",
+        "Tmcnet (GDELT)",
+        "Tucsonsentinel (GDELT)",
+        "Winnipegfreepress (GDELT)",
+        "Yahoo (GDELT)"
+      ],
+      "by_source": {
+        "Govinfosecurity (GDELT)": {
+          "mean": -0.4404,
+          "count": 1
+        },
+        "Royalgazette (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Executivegov (GDELT)": {
+          "mean": 0.4,
+          "count": 1
+        },
+        "Jdsupra (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Ipwatchdog (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Bostonglobe (GDELT)": {
+          "mean": 0.3523,
+          "count": 1
+        },
+        "Biztoc (GDELT)": {
+          "mean": 0.0445,
+          "count": 4
+        },
+        "Tmcnet (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Itbrief (GDELT)": {
+          "mean": -0.128,
+          "count": 1
+        },
+        "Brecorder (GDELT)": {
+          "mean": 0.4767,
+          "count": 1
+        },
+        "Catholicnewsagency (GDELT)": {
+          "mean": 0.4767,
+          "count": 1
+        },
+        "Marketscreener (GDELT)": {
+          "mean": 0.5861,
+          "count": 2
+        },
+        "Dailyherald (GDELT)": {
+          "mean": 0.4767,
+          "count": 1
+        },
+        "Winnipegfreepress (GDELT)": {
+          "mean": 0.7506,
+          "count": 1
+        },
+        "Eastbaytimes (GDELT)": {
+          "mean": 0.1779,
+          "count": 1
+        },
+        "Investors (GDELT)": {
+          "mean": 0.5423,
+          "count": 1
+        },
+        "Biometricupdate (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Medicalxpress (GDELT)": {
+          "mean": 0.1,
+          "count": 2
+        },
+        "Rstreet (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Packworld (GDELT)": {
+          "mean": 0.15,
+          "count": 1
+        },
+        "Cio (GDELT)": {
+          "mean": 0.4232,
+          "count": 1
+        },
+        "Forbes (GDELT)": {
+          "mean": 0.2107,
+          "count": 2
+        },
+        "English (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Tennesseedaily (GDELT)": {
+          "mean": 0.8192,
+          "count": 1
+        },
+        "Datacenterknowledge (GDELT)": {
+          "mean": 0.1909,
+          "count": 2
+        },
+        "Americanbazaaronline (GDELT)": {
+          "mean": -0.05,
+          "count": 2
+        },
+        "Finanznachrichten (GDELT)": {
+          "mean": 0.85,
+          "count": 2
+        },
+        "Smallbiztrends (GDELT)": {
+          "mean": 0.3779,
+          "count": 1
+        },
+        "Marketbusinessnews (GDELT)": {
+          "mean": 0.15,
+          "count": 1
+        },
+        "Eweek (GDELT)": {
+          "mean": 0.9506,
+          "count": 1
+        },
+        "Mortgagestrategy (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Greenbot (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Forums (GDELT)": {
+          "mean": 0.5904,
+          "count": 1
+        },
+        "Pcmag (GDELT)": {
+          "mean": -0.424,
+          "count": 1
+        },
+        "Insidermonkey (GDELT)": {
+          "mean": 0.1779,
+          "count": 1
+        },
+        "Geneamusings (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "News (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Mbtmag (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Nationalaccordnewspaper (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Businessinsurance (GDELT)": {
+          "mean": 0.4767,
+          "count": 1
+        },
+        "Carolinacoastonline (GDELT)": {
+          "mean": 0.1779,
+          "count": 1
+        },
+        "Thejerseytomatopress (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Tucsonsentinel (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Koreabizwire (GDELT)": {
+          "mean": 0.6249,
+          "count": 1
+        },
+        "Americanbanker (GDELT)": {
+          "mean": -0.15,
+          "count": 1
+        },
+        "Yahoo (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Dailycaller (GDELT)": {
+          "mean": 0.3353,
+          "count": 1
+        },
+        "Morningsun (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Dailymail (GDELT)": {
+          "mean": -0.6705,
+          "count": 1
+        },
+        "Theeagleonline (GDELT)": {
+          "mean": 0.7351,
+          "count": 1
+        },
+        "Thestar (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Abovethelaw (GDELT)": {
+          "mean": 0.2263,
+          "count": 1
+        },
+        "Theconversation (GDELT)": {
+          "mean": 0.7579,
+          "count": 1
+        },
+        "Newswire (GDELT)": {
+          "mean": 0.7269,
+          "count": 1
+        },
+        "Theglobeandmail (GDELT)": {
+          "mean": 0.4767,
+          "count": 1
+        },
+        "Theguardian (GDELT)": {
+          "mean": 0.0516,
+          "count": 1
+        },
+        "Scienmag (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Mobihealthnews (GDELT)": {
+          "mean": 0.128,
+          "count": 1
+        }
+      },
+      "live_count": 0,
+      "live_mean": null,
+      "backfill_count": 67,
+      "backfill_mean": 0.2112
+    },
+    "2025-01-15": {
+      "mean": 0.3558,
+      "count": 6,
+      "pos": 4,
+      "neg": 0,
+      "neu": 2,
+      "sources": [
+        "Dailyitem (GDELT)",
+        "Eturbonews (GDELT)",
+        "Financialexpress (GDELT)",
+        "Neworleanscitybusiness (GDELT)",
+        "Saltlakecitysun (GDELT)",
+        "Torontosun (GDELT)"
+      ],
+      "by_source": {
+        "Dailyitem (GDELT)": {
+          "mean": 0.6369,
+          "count": 1
+        },
+        "Torontosun (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Eturbonews (GDELT)": {
+          "mean": 0.2023,
+          "count": 1
+        },
+        "Saltlakecitysun (GDELT)": {
+          "mean": 0.8192,
+          "count": 1
+        },
+        "Financialexpress (GDELT)": {
+          "mean": 0.0,
+          "count": 1
+        },
+        "Neworleanscitybusiness (GDELT)": {
+          "mean": 0.4767,
+          "count": 1
+        }
+      },
+      "live_count": 0,
+      "live_mean": null,
+      "backfill_count": 6,
+      "backfill_mean": 0.3558
+    },
     "2026-02-20": {
       "mean": 0.9246,
       "count": 1,
