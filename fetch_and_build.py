@@ -69,7 +69,7 @@ CONTEXT_OVERRIDES = {
     "cuts development": 0.25, "eliminates": 0.2, "disrupts": 0.1,
 }
 
-MIN_SOURCES_PER_DAY = 3  # Only chart days with data from this many distinct sources
+MIN_SOURCES_PER_DAY = 10  # Only chart days with data from this many distinct sources
 
 DATA_FILE = os.path.join(os.path.dirname(__file__) or ".", "data.json")
 HTML_FILE = os.path.join(os.path.dirname(__file__) or ".", "index.html")
