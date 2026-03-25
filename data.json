@@ -3321,6 +3321,127 @@
       "backfill": true,
       "score_raw": 0.128,
       "score": 0.128
+    },
+    {
+      "title": "Melania Trump wants a robot to homeschool your child",
+      "summary": "The first lady sees AI and robotics playing a prominent role in the future of American education.",
+      "url": "https://techcrunch.com/2026/03/25/melania-trump-wants-a-robot-to-homeschool-your-child/",
+      "source": "TechCrunch",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:51.880852+00:00",
+      "backfill": false,
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Meta Lays Off 700 Employees, While Rewarding Top Executives",
+      "summary": "The jobs cuts and a new stock program for executives come as Meta continues to shift its focus to artificial intelligence.",
+      "url": "https://www.nytimes.com/2026/03/25/technology/meta-layoffs-ai-executives.html",
+      "source": "NYT Technology",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:52.127532+00:00",
+      "backfill": false,
+      "score_raw": 0.7269,
+      "score": 0.7269
+    },
+    {
+      "title": "Disney\u2019s big bets on the metaverse and AI slop aren\u2019t going so well",
+      "summary": "Less than a week into his tenure as Disney's newly-appointed CEO, Josh D'Amaro is already dealing with two separate crises that have cast a shadow over the company's future plans. OpenAI is shutting down its Sora image-generation program just months after Disney announced a $1 billion dollar collaboration to bake the tech into Disney Plus. [&#8230;]",
+      "url": "https://www.theverge.com/streaming/900837/disney-open-ai-sora-epic-fortnite-metaverse",
+      "source": "The Verge",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:52.365121+00:00",
+      "backfill": false,
+      "score_raw": 0.4101,
+      "score": 0.4101
+    },
+    {
+      "title": "Google's TurboQuant AI-compression algorithm can reduce LLM memory usage by 6x",
+      "summary": "TurboQuant makes AI models more efficient but doesn't reduce output quality like other methods.",
+      "url": "https://arstechnica.com/ai/2026/03/google-says-new-turboquant-compression-can-lower-ai-memory-usage-without-sacrificing-quality/",
+      "source": "Ars Technica",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:52.553171+00:00",
+      "backfill": false,
+      "score_raw": 0.6482,
+      "score": 0.6482
+    },
+    {
+      "title": "There\u2019s Something Very Dark About a Lot of Those Viral AI Fruit Videos",
+      "summary": "With female AI fruit being fart-shamed and even sexually assaulted, there\u2019s a misogynistic undercurrent to the fruit slop microdramas, even as they appear to be cultivating genuine fans.",
+      "url": "https://www.wired.com/story/theres-something-very-dark-about-a-lot-of-those-viral-ai-fruit-videos/",
+      "source": "Wired",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:52.813772+00:00",
+      "backfill": false,
+      "score_raw": -0.5267,
+      "score": -0.5267
+    },
+    {
+      "title": "SpaceX Could File an IPO By End of the Week | Bloomberg Tech 3/25/2026",
+      "summary": "Bloomberg\u2019s Caroline Hyde and Ed Ludlow discuss Arm\u2019s plans to sell its own chips for the first time, with Meta as the first major customer. Plus, space stocks climb after reports that SpaceX aims to file a prospectus for its mega IPO before the end of March. And, Kleiner Perkins partner Ilya Fushman discusses the firm\u2019s largest raise ever to back AI bets. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-25/bloomberg-tech-3-25-2026-video",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:54.309062+00:00",
+      "backfill": false,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Kleiner Perkins Raises $3.5 Billion to Back AI Boom",
+      "summary": "Kleiner Perkins has raised $3.5 billion to make bets on AI startups and current portfolio companies innovating across autonomy, transportation, professional services, and space. Kleiner Perkins partner Ilya Fushman joins Caroline Hyde and Ed Ludlow on \u201cBloomberg Tech.\u201d (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-25/kleiner-perkins-raises-3-5-billion-to-back-ai-boom-video",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:54.309083+00:00",
+      "backfill": false,
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI Doomer\u2019s New Warning: Market Is Wrong to Ditch Rate-Cut Bets",
+      "summary": "A little over a month after James van Geelen sent stocks into a tailspin with his dystopian account of a post-AI economic collapse, he\u2019s wagering that another fear-fueled selloff &mdash; this time, in the bond market &mdash; has run too far.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-25/ai-doomer-s-new-warning-market-is-wrong-to-ditch-rate-cut-bets",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:54.309095+00:00",
+      "backfill": false,
+      "score_raw": -0.8271,
+      "score": -0.8271
+    },
+    {
+      "title": "Virginia Rep. Calls for Spreading AI Build-Out Across the Country",
+      "summary": "Senator Bernie Sanders and Congresswoman Alexandria Ocasio-Cortez plan to introduce legislation that would impose a moratorium on new AI data centers, following growing pushback on their impact on energy prices. Representative Suhas Subramanyam, a Democrat from Virginia, home to one of the largest concentrations of data centers in the country, discusses what approach he thinks the country should take to the AI build-out. He speaks with Caroline Hyde and Ed Ludlow on \u201cBloomberg Tech.\u201d (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-25/virginia-rep-calls-for-spreading-ai-build-out-across-us-video",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:54.309127+00:00",
+      "backfill": false,
+      "score_raw": 0.1531,
+      "score": 0.1531
+    },
+    {
+      "title": "Why AI Won\u2019t Be the End of Hollywood",
+      "summary": "Disruption hurts. But Bloomberg Opinion columnist Parmy Olson has reason for cautious optimism about AI and Hollywood. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-25/opinion-why-ai-won-t-be-the-end-of-hollywood-video",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:54.309135+00:00",
+      "backfill": false,
+      "score_raw": 0.3291,
+      "score": 0.3291
+    },
+    {
+      "title": "Kevin Sheekey Demos ASKB AI on Bloomberg Terminal (Video)",
+      "summary": "",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-25/kevin-sheekey-demos-askb-ai-on-bloomberg-terminal-video",
+      "source": "Bloomberg",
+      "date": "2026-03-25",
+      "timestamp": "2026-03-25T20:33:54.309144+00:00",
+      "backfill": false,
+      "score_raw": 0.0,
+      "score": 0.0
     }
   ],
   "daily_scores": {
@@ -4700,16 +4821,17 @@
       "backfill_mean": null
     },
     "2026-03-25": {
-      "mean": -0.0095,
-      "count": 31,
-      "pos": 15,
-      "neg": 14,
-      "neu": 2,
+      "mean": 0.0261,
+      "count": 42,
+      "pos": 21,
+      "neg": 16,
+      "neu": 5,
       "sources": [
         "Ars Technica",
         "BBC Technology",
         "Bloomberg",
         "MIT Tech Review",
+        "NYT Technology",
         "TechCrunch",
         "The Verge",
         "Wired",
@@ -4717,20 +4839,20 @@
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": 0.217,
-          "count": 7
+          "mean": 0.2495,
+          "count": 8
         },
         "The Verge": {
-          "mean": -0.3804,
-          "count": 2
+          "mean": -0.1169,
+          "count": 3
         },
         "Ars Technica": {
-          "mean": -0.4767,
-          "count": 1
+          "mean": 0.0857,
+          "count": 2
         },
         "Wired": {
-          "mean": 0.3908,
-          "count": 2
+          "mean": 0.085,
+          "count": 3
         },
         "BBC Technology": {
           "mean": -0.2263,
@@ -4741,16 +4863,20 @@
           "count": 4
         },
         "Bloomberg": {
-          "mean": 0.0031,
-          "count": 12
+          "mean": -0.0171,
+          "count": 18
         },
         "ZDNet AI": {
           "mean": 0.1496,
           "count": 2
+        },
+        "NYT Technology": {
+          "mean": 0.7269,
+          "count": 1
         }
       },
-      "live_count": 31,
-      "live_mean": -0.0095,
+      "live_count": 42,
+      "live_mean": 0.0261,
       "backfill_count": 0,
       "backfill_mean": null
     }
