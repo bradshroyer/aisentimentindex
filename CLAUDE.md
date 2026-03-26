@@ -10,7 +10,7 @@ Live: https://bradshroyer.github.io/aisentimentindex/
 fetch_and_build.py  → fetches 14 RSS feeds, scores sentiment, generates index.html
 data.json           → all headlines + daily aggregated scores (auto-generated)
 index.html          → static page with Chart.js chart (auto-generated)
-.github/workflows/update.yml → runs fetch_and_build.py at 8am + 8pm UTC
+.github/workflows/update.yml → runs fetch_and_build.py every 6h (2am, 8am, 2pm, 8pm UTC)
 ```
 
 Cost: $0/month. Public GitHub repo, GitHub Pages, GitHub Actions free tier, no paid APIs.

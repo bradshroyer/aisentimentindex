@@ -2,7 +2,7 @@ name: Update AI Sentiment Index
 
 on:
   schedule:
-    - cron: '0 8,20 * * *'  # Twice daily at 8am and 8pm UTC
+    - cron: '0 2,8,14,20 * * *'  # Every 6 hours at 2am, 8am, 2pm, 8pm UTC
   workflow_dispatch:          # Manual trigger
 
 permissions:
