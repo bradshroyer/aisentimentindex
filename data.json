@@ -689,6 +689,436 @@
       "timestamp": "2026-03-26T08:48:34.891860+00:00",
       "score_raw": 0.7346,
       "score": 0.8846
+    },
+    {
+      "title": "OpenAI abandons yet another side quest: ChatGPT\u2019s erotic mode",
+      "summary": "It's only the latest of several side projects that the AI startup has ditched over the past week.",
+      "url": "https://techcrunch.com/2026/03/26/openai-abandons-yet-another-side-quest-chatgpts-erotic-mode/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641157+00:00",
+      "score_raw": -0.3182,
+      "score": -0.4682
+    },
+    {
+      "title": "Defense startup Shield AI lands $12.7B valuation, up 140%, after US Air Force deal",
+      "summary": "In one year, Shield AI's value has leaped 140%. This after it won a contract to be the software provider to Anduril's Fury fighter jet for the U.S. Air Force.",
+      "url": "https://techcrunch.com/2026/03/26/defense-startup-shield-ai-lands-12-7b-valuation-up-140-after-u-s-air-force-deal/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641196+00:00",
+      "score_raw": 0.5423,
+      "score": 0.5423
+    },
+    {
+      "title": "Silicon Valley\u2019s two biggest dramas have intersected: LiteLLM and Delve",
+      "summary": "LiteLLM offers an AI open source project used by millions that was infected by credential harvesting malware.",
+      "url": "https://techcrunch.com/2026/03/26/delve-did-the-security-compliance-on-litellm-an-ai-project-hit-by-malware/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641239+00:00",
+      "score_raw": -0.4939,
+      "score": -0.3939
+    },
+    {
+      "title": "ByteDance\u2019s new AI video generation model, Dreamina Seedance 2.0, comes to CapCut",
+      "summary": "The new model in CapCut will have built-in protections for making video from real faces or unauthorized intellectual property.",
+      "url": "https://techcrunch.com/2026/03/26/bytedances-new-ai-video-generation-model-dreamina-seedance-2-0-comes-to-capcut/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641249+00:00",
+      "score_raw": 0.5106,
+      "score": 0.5106
+    },
+    {
+      "title": "Conntour raises $7M from General Catalyst, YC to build an AI search engine for security video systems",
+      "summary": "Conntour uses AI models to let security teams query camera feeds using natural language to find any object, person, or situation.",
+      "url": "https://techcrunch.com/2026/03/26/conntour-raises-7m-from-general-catalyst-yc-to-build-an-ai-search-engine-for-security-video-systems/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641291+00:00",
+      "score_raw": 0.743,
+      "score": 0.743
+    },
+    {
+      "title": "WhatsApp can now draft AI-generated responses based on your conversations",
+      "summary": "The Meta-owned messaging platform is also launching a way to free up space, the ability to touch up photos with Meta AI, and more.",
+      "url": "https://techcrunch.com/2026/03/26/whatsapp-can-now-draft-ai-generated-responses-based-on-your-conversations/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641311+00:00",
+      "score_raw": 0.6808,
+      "score": 0.6808
+    },
+    {
+      "title": "A \u2018pound of flesh\u2019 from data centers: One senator\u2019s answer to AI job losses",
+      "summary": "Fears of AI-driven job loss are growing fast, and they\u2019re fueling backlash against data centers. Sen. Mark Warner suggests taxing them to help workers survive the transition.",
+      "url": "https://techcrunch.com/2026/03/26/a-pound-of-flesh-from-data-centers-one-senators-answer-to-ai-job-losses/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641326+00:00",
+      "score_raw": -0.5267,
+      "score": -0.7767
+    },
+    {
+      "title": "Mistral releases a new open source model for speech generation",
+      "summary": "The model, which lets enterprises build voice agents for sales and customer engagement, puts Mistral in direct competition with the likes of ElevenLabs, Deepgram, and OpenAI.",
+      "url": "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.641336+00:00",
+      "score_raw": 0.7003,
+      "score": 0.8003
+    },
+    {
+      "title": "Shield AI, a Start-Up Making Military Drones, Raises $2 Billion",
+      "summary": "The company, which develops autonomous military technology, also plans to buy a maker of simulation software as interest in next-generation defense soars.",
+      "url": "https://www.nytimes.com/2026/03/26/business/dealbook/shield-ai-drones-aechelon-fund-raising.html",
+      "source": "NYT Technology",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.737231+00:00",
+      "score_raw": 0.5423,
+      "score": 0.5423
+    },
+    {
+      "title": "In \u2018The AI Doc,\u2019 Sam Altman and Dario Amodei Go on the Record",
+      "summary": "\u201cThe AI Doc: Or How I Became an Apocaloptimist\u201d tries to cover so much that it ends up being more confusing than clarifying, but parts are fascinating.",
+      "url": "https://www.nytimes.com/2026/03/26/movies/the-ai-doc-movie-anthropic-openai-claude-chatgpt.html",
+      "source": "NYT Technology",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.737242+00:00",
+      "score_raw": 0.6314,
+      "score": 0.6314
+    },
+    {
+      "title": "Google&#8217;s &#8216;live&#8217; AI search assistant can handle conversations in dozens more languages",
+      "summary": "Google is expanding access to Search Live, a feature that lets you search for information using your voice and camera. The AI search assistant is now available in more than 200 countries and territories, as well as dozens of languages, according to an announcement on Thursday. Search Live rolled out broadly in the US last [&#8230;]",
+      "url": "https://www.theverge.com/tech/901816/google-search-live-ai-assistant-expansion",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.828514+00:00",
+      "score_raw": 0.2732,
+      "score": 0.2732
+    },
+    {
+      "title": "Meta gets ready to launch two new Ray-Ban AI glasses",
+      "summary": "This is Lowpass by Janko Roettgers, a newsletter on the ever-evolving intersection of tech and entertainment, syndicated just for The Verge subscribers once a week. Meta and its AI glasses hardware partner EssilorLuxottica are getting ready to launch the next generation of their Ray-Ban AI glasses. That's according to a series of FCC filings for [&#8230;]",
+      "url": "https://www.theverge.com/column/901314/meta-new-ray-ban-ai-glasses",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.828609+00:00",
+      "score_raw": 0.7783,
+      "score": 0.6283
+    },
+    {
+      "title": "Wikipedia bans AI-generated articles",
+      "summary": "Wikipedia will no longer allow editors to write or rewrite articles using AI. The update, which was added to Wikipedia's guidelines late last week, cites the tendency for AI-written articles to violate \"several of Wikipedia's core content policies\" as the reason for the ban. The change applies to the English version of Wikipedia and will [&#8230;]",
+      "url": "https://www.theverge.com/tech/901461/wikipedia-ai-generated-article-ban",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:12.828640+00:00",
+      "score_raw": -0.8647,
+      "score": -1.0
+    },
+    {
+      "title": "Study: Sycophantic AI can undermine human judgment",
+      "summary": "Subjects who interacted with AI tools were more likely to think they were right, less likely to resolve conflicts.",
+      "url": "https://arstechnica.com/science/2026/03/study-sycophantic-ai-can-undermine-human-judgment/",
+      "source": "Ars Technica",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.038842+00:00",
+      "score_raw": -0.3535,
+      "score": -0.2035
+    },
+    {
+      "title": "The debut of Gemini 3.1 Flash Live could make it harder to know if you're talking to a robot",
+      "summary": "Google's new conversational audio AI is rolling out in search, Gemini, and developer tools today.",
+      "url": "https://arstechnica.com/ai/2026/03/the-debut-of-gemini-3-1-flash-live-could-make-it-harder-to-know-if-youre-talking-to-a-robot/",
+      "source": "Ars Technica",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.038859+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "OpenAI \u201cindefinitely\u201d shelves plans for erotic ChatGPT",
+      "summary": "Some staff reportedly questioned how sexy ChatGPT benefits humanity.",
+      "url": "https://arstechnica.com/tech-policy/2026/03/chatgpt-wont-talk-dirty-any-time-soon-as-sexy-mode-turns-off-investors-report-says/",
+      "source": "Ars Technica",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.038881+00:00",
+      "score_raw": 0.6808,
+      "score": 0.6808
+    },
+    {
+      "title": "Meet the Tech Reporters Using AI to Help Write and Edit Their Stories",
+      "summary": "Independent writers are using AI agents all throughout their reporting process. What\u2019s the value of a human journalist, anyway?",
+      "url": "https://www.wired.com/story/tech-reporters-using-ai-write-edit-stories/",
+      "source": "Wired",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.148757+00:00",
+      "score_raw": 0.6249,
+      "score": 0.6249
+    },
+    {
+      "title": "\u2018She\u2019s Never Going to Age\u2019: Porn Stars Are Embracing AI Clones to Stay Forever Young",
+      "summary": "AI companion platforms like OhChat and SinfulX are offering adult creators digital twins, who are always at their peak and stay monetizing.",
+      "url": "https://www.wired.com/story/shes-never-going-to-age-porn-stars-are-embracing-ai-clones-to-stay-forever-young/",
+      "source": "Wired",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.148884+00:00",
+      "score_raw": 0.3612,
+      "score": 0.3612
+    },
+    {
+      "title": "Creator of AI actor Tilly Norwood says she received death threats over project",
+      "summary": "Eline van der Velden says she developed her \u2018digital twin\u2019 to provoke discussion but backlash from some has been worse than expectedThe creator of the AI actor Tilly Norwood has said she received death threats after a global backlash against the project, and said she developed it to \u201cprovoke thoughts and discussion\u201d about the impact of AI in the entertainment world.Eline van der Velden caused anger and panic in Hollywood and beyond last year after she said talent agents had been interested in signing her creation. Prominent actors and acting unions immediately condemned the idea. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/26/tilly-norwood-ai-actor-creator-backlash-death-threats",
+      "source": "The Guardian",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.445801+00:00",
+      "score_raw": -0.9531,
+      "score": -1.0
+    },
+    {
+      "title": "Marriage over, \u20ac100,000 down the drain: the AI users whose lives were wrecked by delusion",
+      "summary": "One minute, Dennis Biesma was playing with a chatbot; the next, he was convinced his sentient friend would make him a fortune. He\u2019s just one of many people who lost control after an AI encounterTowards the end of 2024, Dennis Biesma decided to check out ChatGPT. The Amsterdam-based IT consultant had just ended a contract early. \u201cI had some time, so I thought: let\u2019s have a look at this new technology everyone is talking about,\u201d he says. \u201cVery quickly, I became fascinated.\u201dBiesma has asked himself why he was vulnerable to what came next. He was nearing 50. His adult daughter had left home, his wife went out to work and, in his field, the shift since Covid to working from home had left him feeling \u201ca&nbsp;little isolated\u201d. He smoked a bit of cannabis some evenings to \u201cchill\u201d, but had done so for years with no ill effects. He had never experienced a mental illness. Yet within months of downloading ChatGPT, Biesma had sunk \u20ac100,000 (about \u00a383,000) into a business startup based on a delusion, been hospitalised three times and tried to kill himself. Continue reading...",
+      "url": "https://www.theguardian.com/lifeandstyle/2026/mar/26/ai-chatbot-users-lives-wrecked-by-delusion",
+      "source": "The Guardian",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.445967+00:00",
+      "score_raw": -0.7651,
+      "score": -0.7651
+    },
+    {
+      "title": "The Download: a battery pivot to AI, and rewriting math",
+      "summary": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Why this battery company is pivoting to AI&#160; Qichao Hu&#160;doesn\u2019t&#160;mince words about the state of the battery industry. \u201cAlmost every&#160;Western battery company has either died or is going to die.&#160;It\u2019s&#160;kind of&#8230;",
+      "url": "https://www.technologyreview.com/2026/03/26/1134697/the-download-battery-ai-pivot-new-ai-tool-math/",
+      "source": "MIT Tech Review",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.559742+00:00",
+      "score_raw": -0.5574,
+      "score": -0.5574
+    },
+    {
+      "title": "The snow gods: How a couple of ski bums built the internet\u2019s best weather app",
+      "summary": "The best snow-forecasting app for skiers and snowboarders isn\u2019t from any of the federally funded weather services. Nor from any of the big-name brands. It\u2019s an independent app startup that leverages government data, its own AI models, and decades of alpine-life experience to offer better snow (and soon avalanche) predictions than anything else out there.&#8230;",
+      "url": "https://www.technologyreview.com/2026/03/26/1134470/the-snow-gods-how-a-couple-of-ski-bums-built-the-internets-best-weather-app/",
+      "source": "MIT Tech Review",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.559766+00:00",
+      "score_raw": 0.9062,
+      "score": 0.9062
+    },
+    {
+      "title": "Chip Selloff Deepens After Google Touts Memory Breakthrough",
+      "summary": "Memory chip stocks extended their losses on Thursday after Alphabet Inc.\u2019s Google publicized research on a new algorithm that could allow more efficient use of the storage needed for artificial intelligence development.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/memory-stock-boom-seen-resilient-to-threat-from-new-google-tech",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792376+00:00",
+      "score_raw": 0.6478,
+      "score": 0.9478
+    },
+    {
+      "title": "Chip Security Bill Advances in House After Super Micro Case",
+      "summary": "A House panel advanced legislation that would require the Commerce Department to demand chipmakers do more to keep AI technology from being smuggled to China, an effort that\u2019s gained new urgency after last week\u2019s indictment of a Super Micro Computer Inc. co-founder for allegedly diverting Nvidia Corp. processors to Chinese buyers.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/chip-security-bill-advances-in-house-following-super-micro-case",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792431+00:00",
+      "score_raw": 0.8957,
+      "score": 1.0
+    },
+    {
+      "title": "OpenClaw Creator Says US Can Learn From China\u2019s AI Adoption",
+      "summary": "While the AI tool has taken off in China, the reaction in the US has been more mixed",
+      "url": "https://www.bloomberg.com/news/newsletters/2026-03-26/openclaw-creator-says-us-can-learn-from-china-s-ai-adoption",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792476+00:00",
+      "score_raw": 0.0,
+      "score": 0.15
+    },
+    {
+      "title": "Meta Increases Investment in El Paso Data Center to $10 Billion",
+      "summary": "Meta Platforms Inc. will spend more than $10 billion to develop a data center in El Paso, Texas, a jump from prior projections and the latest in a series of major investments focused on the infrastructure needed to support its artificial intelligence ambitions.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792525+00:00",
+      "score_raw": 0.8261,
+      "score": 0.8261
+    },
+    {
+      "title": "Apple Plans to Open Up Siri to Rival AI Assistants in iOS 27 Update",
+      "summary": "Apple Inc. plans to open Siri to outside artificial intelligence assistants, a major move aimed at bolstering the iPhone as an AI platform.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792538+00:00",
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Trump Tech Adviser Sees Path to AI Bill That Even Democrats Like",
+      "summary": "White House adviser David Sacks said Congress could pass bipartisan artificial intelligence legislation within months, a move that would fulfill President Donald Trump\u2019s pledge to create a national playbook for regulating the emerging technology.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/congress-could-pass-ai-standard-in-months-key-trump-aide-says",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792555+00:00",
+      "score_raw": 0.8625,
+      "score": 0.8625
+    },
+    {
+      "title": "European PE Giant Permira Looks to Buy Beaten Up Software Loans",
+      "summary": "Permira, the \u20ac85 billion ($98 billion) global private equity firm which lends to technology companies, is finding opportunity in software loans battered by fears of AI disruption.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/european-pe-giant-permira-looks-to-buy-beaten-up-software-loans",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792603+00:00",
+      "score_raw": -0.6486,
+      "score": -0.6486
+    },
+    {
+      "title": "Chip Selloff Deepens After Google Memory Touts Breakthrough",
+      "summary": "Bloomberg's Mandeep Singh joins Scarlet Fu on \"Bloomberg Markets.\" Memory chip stocks extended their losses on Thursday after Alphabet Inc.\u2019s Google publicized research on a new algorithm that could allow more efficient use of the storage needed for artificial intelligence development. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-26/chip-selloff-deepens-after-google-memory-breakthrough-video",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792622+00:00",
+      "score_raw": -0.1045,
+      "score": 0.1955
+    },
+    {
+      "title": "BNP Paribas Set to Roll Out AI Companion for All Staff",
+      "summary": "BNP Paribas SA is set to deploy an artificial intelligence companion for all staff as Chief Executive Officer Jean-Laurent Bonnafe bets the technology can lower costs across the bank.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/bnp-paribas-set-to-roll-out-ai-companion-for-all-staff",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792800+00:00",
+      "score_raw": 0.2263,
+      "score": 0.0763
+    },
+    {
+      "title": "Meta and Google Found Liable; Corebridge and Equitable Merge; Pony AI Swings to Profit",
+      "summary": "Today's biggest winners and losers in the stock market.\n\nOn this episode of Stock Movers:\n\n- Corebridge Financial and Equitable Holdings to combine in an all-stock merger, valuing the combined company at approximately $22 billion.\n\n- Meta Platforms Inc. and Alphabet Inc.\u2019s Google must pay damages to a 20-year-old woman who said her addiction to social media caused her mental health struggles, a jury concluded in a landmark decision that could signal hefty risks for the companies as they fight thousands of similar claims.\n\n- Pony AI Inc. delivered its first profitable quarter ever, bolstered by a windfall from an early investment, rather than its main robotaxi business. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-26/stock-movers-google-equitable-pony-ai-video",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792912+00:00",
+      "score_raw": -0.3182,
+      "score": -0.3182
+    },
+    {
+      "title": "Defense Startup Shield AI Nabs $2 Billion at $12.7 Billion Value",
+      "summary": "Shield AI has raised $2 billion at a valuation of $12.7 billion, more than doubling its value from a year ago, underscoring investor demand for defense technology and artificial intelligence.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/defense-startup-shield-ai-nabs-2-billion-at-12-7-billion-value",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.792982+00:00",
+      "score_raw": 0.8126,
+      "score": 0.8126
+    },
+    {
+      "title": "MetaX\u2019s Sales More Than Double on Chinese AI Chip Demand",
+      "summary": "MetaX Integrated Circuits Shanghai Co.\u2019s full-year revenue more than doubled, driven by robust domestic artificial intelligence demand while Nvidia Corp. is squeezed out of the Chinese market.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/metax-s-sales-more-than-double-on-chinese-ai-chip-demand",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:13.793005+00:00",
+      "score_raw": 0.5423,
+      "score": 0.5423
+    },
+    {
+      "title": "Intercom's new post-trained Fin Apex 1.0 beats GPT-5.4 and Claude Sonnet 4.6 at customer service resolutions",
+      "summary": "Intercom is taking an unusual gamble for a legacy software company: building its own AI model.The 15-year-old massive customer service platform announced Fin Apex 1.0 on Thursday, a small, purpose-built AI model that the company claims outperforms leading frontier models from OpenAI and Anthropic on the metrics that matter most for customer support. The model powers Intercom&#x27;s existing Fin AI agent, which already handles over two million customer conversations weekly.According to benchmarks shared with VentureBeat, Fin Apex 1.0 achieves a 73.1% resolution rate\u2014the percentage of customer issues fully resolved without human intervention\u2014compared to 71.1% for both GPT-5.4 and Claude Opus 4.5, and 69.6% for Claude Sonnet 4.6. That roughly 2 percentage point margin may sound modest, but it&#x27;s wider than the typical gap between successive generations of frontier models.&quot;If you&#x27;re running large service operations at scale and you&#x27;ve got 10 million customers or a billion dollars in revenue, a delta of 2% or 3% is a really large amount of customers and interactions and revenue,&quot; Intercom CEO Eoghan McCabe told VentureBeat in a video call interview earlier this week.The model also shows significant improvements in speed and accuracy. Fin Apex delivers responses in 3.7 seconds\u20140.6 seconds faster than the next-fastest competitor\u2014and demonstrates a 65% reduction in hallucinations compared to Claude Sonnet 4.6. Perhaps most striking for enterprise buyers: it runs at roughly one-fifth the cost of using frontier models directly, and is included in Intercom&#x27;s existing &quot;per-outcome&quot;-based pricing structure for its existing customer plans.What&#x27;s the base model? Does it even matter?But there&#x27;s a catch. When asked to specify which base model Apex was built on\u2014and its parameter size\u2014Intercom declined.&quot;We&#x27;re not sharing the base model we used for Apex 1.0\u2014for competitive reasons and also because we plan to switch base models over time,&quot; a company spokesperson told VentureBeat. The company would only confirm that the model is &quot;in the size of hundreds of billions of parameters.&quot;For comparison, Meta&#x27;s Llama 3.1 ranges from 8 billion to 405 billion parameters, and larger frontier models like GPT-5.4 are suspected to be in the trillions.Whether Apex&#x27;s performance claims hold up against that context\u2014or whether the benchmarks reflect optimizations possible only in narrow, domain-specific applications\u2014remains an open question.Intercom says it learned from the backlash AI coding startup Cursor faced when critics accused the coding assistant of burying the fact that its Composer 2 model was built on fine-tuned open-weights models rather than proprietary technology. But the lesson Intercom drew may not satisfy skeptics: the company is transparent that it used an open-weights base, just not which one.&quot;We are very transparent that we have&quot; used an open-weights model, the spokesperson said. Yet declining to name the model while claiming transparency is a contradiction that will likely draw scrutiny\u2014particularly as more companies tout &quot;proprietary&quot; AI that amounts to post-trained open-source foundations.Post-training as the new frontierIntercom&#x27;s argument is that the base model simply doesn&#x27;t matter much anymore.&quot;Pre-training is kind of a commodity now,&quot; McCabe said. &quot;The frontier, if you will, is actually in post-training. Post-training is the hard part. You need proprietary data. You need proprietary sources of truth.&quot;The company post-trained its chosen foundation using years of proprietary customer service data accumulated through Fin, which now resolves 2 million customer queries per week. That process involved more than just feeding transcripts into a model. Intercom built reinforcement learning systems grounded in real resolution outcomes, teaching the model what successful customer service actually looks like\u2014the appropriate tone, judgment calls, conversational structure, and critically, how to recognize when an issue is truly resolved versus when a customer is still frustrated.&quot;The generic models are trained on generic data on the internet. The specific models are trained on hyper-specific domain data,&quot; McCabe explained. &quot;It stands to reason therefore that the intelligence of the generic models is generic, and the intelligence of the specific models is domain-specific and therefore operates in a far superior way for that use case.&quot;If McCabe is right that the magic is entirely in post-training, the reluctance to name the base becomes harder to justify. If the foundation is truly interchangeable, what competitive advantage does secrecy protect?A $100 million bet paying offThe announcement comes as Intercom&#x27;s AI-first pivot appears to be working. Fin is approaching $100 million in annual recurring revenue and growing at 3.5x, making it the fastest-growing segment of the company&#x27;s $400 million ARR business. Fin is projected to represent half of Intercom&#x27;s total revenue early next year.That trajectory represents a remarkable turnaround. When Fin launched, its resolution rate was just 23%. Today it averages 67% across customers, with some large enterprise deployments seeing rates as high as 75%.To make this happen, Intercom grew its AI team from roughly 6 researchers to 60 over the past three years\u2014a significant investment for a company that McCabe admits was &quot;in a really bad place&quot; before its AI pivot. The average growth rate for public software companies sits around 11%; Intercom expects to hit 37% growth this year.&quot;We&#x27;re by far the first in the category to train our own model,&quot; McCabe said. &quot;There&#x27;s no one else that&#x27;s going to have this for a year or more.&quot;The speciation and specialization of AIMcCabe&#x27;s thesis aligns with a broader trend that Andrej Karpathy, former AI leader at Tesla and OpenAI, recently described as the &quot;speciation&quot; of AI models\u2014a proliferation of specialized systems optimized for narrow tasks rather than general intelligence.Customer service, McCabe argues, is uniquely suited for this approach. It&#x27;s one of only two or three enterprise AI use cases that have found genuine economic traction so far, alongside coding assistants and potentially legal AI. That&#x27;s attracted over a billion dollars in venture funding to competitors like Decagon and Sierra\u2014and made the space, in McCabe&#x27;s words, &quot;ruthlessly competitive.&quot;The question is whether domain-specific models represent a durable advantage or a temporary arbitrage that frontier labs will eventually close. McCabe believes the labs face structural limitations.&quot;Maybe the future is that Anthropic has a big offering of many different specialized models. Maybe that&#x27;s what it looks like,&quot; he said. &quot;But the reality is that I don&#x27;t think the generic models are going to be able to keep up with the domain-specific models right now.&quot;Beyond efficiency to experienceEarly enterprise AI adoption focused heavily on cost reduction\u2014replacing expensive human agents with cheaper automated ones. But McCabe sees the conversation shifting toward experience quality.&quot;Originally it was like, &#x27;Holy shit, we can actually do this for so much cheaper.&#x27; And now they&#x27;re thinking, &#x27;Wait, no, we can give customers a far better experience,&#x27;&quot; he said.The vision extends beyond simple query resolution. McCabe imagines AI agents that function as consultants\u2014a shoe retailer&#x27;s bot that doesn&#x27;t just answer shipping questions but offers styling advice and shows customers how different options might look on them.&quot;Customer service has always been pretty shit,&quot; McCabe said bluntly. &quot;Even the very best brands, you&#x27;re left waiting on a call, you&#x27;re bounced around different departments. There&#x27;s an opportunity now to provide truly perfect customer experience.&quot;Pricing and availabilityFor existing Fin customers, the upgrade to Apex comes at no additional cost. Intercom confirmed that customer pricing remains unchanged\u2014users continue to pay per outcome as before, at $0.99 per resolved interaction, and automatically benefit from the new model.Apex is not available as a standalone model or through an external API. It is accessible only through Fin, meaning businesses cannot license the model independently or integrate it into their own products. That constraint may limit Intercom&#x27;s ability to monetize the model beyond its existing customer base\u2014but it also keeps the technology proprietary in a practical sense, regardless of what the underlying base model turns out to be.What&#x27;s nextIntercom plans to expand Fin beyond customer service into sales and marketing\u2014positioning it as a direct competitor to Salesforce&#x27;s Agentforce vision, which aims to provide AI agents across the customer lifecycle.For the broader SaaS industry, Intercom&#x27;s move raises uncomfortable questions. If a 15-year-old customer service company can build a model that outperforms OpenAI and Anthropic in its domain, what does that mean for vendors still relying on generic API calls? And if &quot;post-training is the new frontier,&quot; as McCabe insists, will companies claiming breakthroughs face pressure to show their work\u2014or continue hiding behind competitive secrecy while touting transparency?McCabe&#x27;s answer to the first question, laid out in a recent LinkedIn post, is stark: &quot;If you can&#x27;t become an agent company, your CRUD app business has a diminishing future.&quot;The answer to the second remains to be seen.",
+      "url": "https://venturebeat.com/technology/intercoms-new-post-trained-fin-apex-1-0-beats-gpt-5-4-and-claude-sonnet-4-6",
+      "source": "VentureBeat AI",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:14.271427+00:00",
+      "score_raw": 0.9981,
+      "score": 1.0
+    },
+    {
+      "title": "Mistral AI just released a text-to-speech model it says beats ElevenLabs \u2014 and it's giving away the weights for free",
+      "summary": "The enterprise voice AI market is in the middle of a land grab. ElevenLabs and IBM announced a collaboration just this week to bring premium voice capabilities into IBM&#x27;s watsonx Orchestrate platform. Google Cloud has been expanding its Chirp 3 HD voices. OpenAI continues to iterate on its own speech synthesis. And the market underpinning all of this activity is enormous \u2014 voice AI crossed $22 billion globally in 2026, with the voice AI agents segment alone projected to reach $47.5 billion by 2034, according to industry estimates.On Thursday morning, Mistral AI entered that fight with a fundamentally different proposition. The Paris-based AI startup released Voxtral TTS, what it calls the first frontier-quality, open-weight text-to-speech model designed specifically for enterprise use. Where every major competitor in the space operates a proprietary, API-first business \u2014 enterprises rent the voice, they don&#x27;t own it \u2014 Mistral is releasing the full model weights, inviting companies to download Voxtral TTS, run it on their own servers or even on a smartphone, and never send a single audio frame to a third party.It is a bet that the future of enterprise voice AI will not be shaped by whoever builds the best-sounding model, but by whoever gives companies the most control over it. And it arrives at a moment when Mistral, valued at $13.8 billion after a $2 billion Series C round led by Dutch chipmaker ASML last September, has been aggressively assembling the building blocks of a complete, enterprise-owned AI stack \u2014 from its Forge customization platform announced at Nvidia GTC earlier this month, to its AI Studio production infrastructure, to the Voxtral Transcribe speech-to-text model released just weeks ago.Voxtral TTS is the output layer that completes that picture, giving enterprises a speech-to-speech pipeline they can run end-to-end without relying on any external provider.&quot;We see audio as a big bet and as a critical and maybe the only future interface with all the AI models,&quot; Pierre Stock, Mistral&#x27;s vice president of science and the first employee hired at the company, said in an exclusive interview with VentureBeat. &quot;This is something customers have been asking for.&quot;A 3-billion-parameter model that fits on a laptop and runs six times faster than real-time speechThe technical specifications of Voxtral TTS read like a deliberate inversion of industry norms. Where most frontier TTS models are large and resource-intensive, Mistral built its model to be roughly three times smaller than what it calls the industry standard for comparable quality.The architecture comprises three components: a 3.4-billion-parameter transformer decoder backbone, a 390-million-parameter flow-matching acoustic transformer, and a 300-million-parameter neural audio codec that Mistral developed in-house. The system is built on top of Ministral 3B, the same pretrained backbone that powers the company&#x27;s Voxtral Transcribe model \u2014 a design choice that Stock described as emblematic of Mistral&#x27;s culture of efficiency and artifact reuse.In practice, the model achieves a time-to-first-audio of 90 milliseconds for a typical input and generates speech at approximately six times real-time speed. When quantized for inference, it requires roughly three gigabytes of RAM. Stock confirmed it can run on any laptop or smartphone, and even on older hardware it still operates in real time.&quot;It&#x27;s a 3B model, so it can basically run on any laptop or any smartphone,&quot; Stock told VentureBeat. &quot;If you quantize it to infer, it&#x27;s actually three gigabytes of RAM. And you can run it on super old chips \u2014 it&#x27;s still going to be real time.&quot;The model supports nine languages \u2014 English, French, German, Spanish, Dutch, Portuguese, Italian, Hindi, and Arabic \u2014 and can adapt to a custom voice with as little as five seconds of reference audio. Perhaps more remarkably, it demonstrates zero-shot cross-lingual voice adaptation without explicit training for that task.Stock illustrated this with a personal example: he can feed the model 10 seconds of his own French-accented voice, type a prompt in German, and the model will generate German speech that sounds like him \u2014 complete with his natural accent and vocal characteristics. For enterprises operating across borders, this capability unlocks cascaded speech-to-speech translation that preserves speaker identity, a feature that has obvious applications in customer support, sales, and internal communications for multinational organizations.Human evaluators preferred Voxtral over ElevenLabs nearly 70 percent of the time on voice customizationMistral is not being coy about which competitor it intends to displace. In human evaluations conducted by the company, Voxtral TTS achieved a 62.8 percent listener preference rate against ElevenLabs Flash v2.5 on flagship voices and a 69.9 percent preference rate in voice customization tasks. Mistral also claims the model performs at parity with ElevenLabs v3 \u2014 the company&#x27;s premium, higher-latency tier \u2014 on emotional expressiveness, while maintaining similar latency to the much faster Flash model.The evaluation methodology involved a comparative side-by-side test across all nine supported languages. Using two recognizable voices in their native dialects for each language, three annotators performed preference tests on naturalness, accent adherence, and acoustic similarity to the original reference. Mistral says Voxtral TTS widened the quality gap to ElevenLabs v2.5 Flash especially in zero-shot multilingual custom voice settings, highlighting what the company calls the &quot;instant customizability&quot; of the model.ElevenLabs remains widely regarded as the benchmark for raw voice quality. Its Eleven v3 model has been described by multiple independent reviewers as the gold standard for emotionally nuanced AI speech. But ElevenLabs operates as a closed platform with tiered subscription pricing that scales from around $5 per month at the starter level to over $1,300 per month for business plans. It does not release model weights.Mistral&#x27;s pitch is that enterprises shouldn&#x27;t have to choose between quality and control \u2014 and that at scale, the economics of an open-weight model are dramatically more favorable.&quot;What we want to underline is that we&#x27;re faster and cheaper as well \u2014 and open source,&quot; Stock told VentureBeat. &quot;When something is open source and cheap, people adopt it and people build on it.&quot;He framed the cost argument in terms that resonate with CTOs managing AI budgets: &quot;AI is a transformative technology, but it has a cost. When you want to scale and have impact on a large business, that cost matters. And what we allow is to scale seamlessly while minimizing the cost and maximizing the accuracy.&quot;Why Mistral thinks enterprises will want to own their voice AI rather than rent itTo understand why Mistral is entering text-to-speech now, you have to understand the broader strategic architecture the company has been building for the past year. While OpenAI and Anthropic have captured the imagination of consumers, Mistral has quietly assembled what may be the most comprehensive enterprise AI platform in Europe \u2014 and increasingly, globally.CEO Arthur Mensch has said the company is on track to surpass $1 billion in annual recurring revenue this year, according to TechCrunch&#x27;s reporting on the Forge launch. The Financial Times has reported that Mistral&#x27;s annualized revenue run rate surged from $20 million to over $400 million within a single year. That growth has been powered by more than 100 major enterprise customers and a consistent thesis: companies should own their AI infrastructure, not rent it.Voxtral TTS is the latest expression of that thesis, applied to what may be the most sensitive category of enterprise data there is. Voice recordings capture not just words but emotion, identity, and intent. They carry legal, regulatory, and reputational weight that text data often does not. For industries like financial services, healthcare, and government \u2014 all key Mistral verticals \u2014 sending voice data to a third-party API introduces risks that many compliance teams are unwilling to accept.Stock made the data sovereignty argument forcefully. &quot;Since the models are open weights, we have no trouble and no problem actually giving the weights to the enterprise and helping them customize the models,&quot; he said. &quot;We don&#x27;t see the weights anymore. We don&#x27;t see the data. We see nothing. And you are fully controlled.&quot;That message has particular resonance in Europe, where concern about technological dependence on American cloud providers has intensified throughout 2026. The EU currently sources more than 80 percent of its digital services from foreign providers, most of them American. Mistral has positioned itself as the answer to that anxiety \u2014 the only European frontier AI developer with the scale and technical capability to offer a credible alternative.Voice agents are the enterprise use case that makes Mistral&#x27;s full AI stack click into placeVoxtral TTS is the final piece in a pipeline Mistral has been methodically assembling. Voxtral Transcribe handles speech-to-text. Mistral&#x27;s language models \u2014 from Mistral Small to Mistral Large \u2014 provide the reasoning layer. Forge allows enterprises to customize any of these models on their own data. AI Studio provides the production infrastructure for observability, governance, and deployment. And Mistral Compute offers the underlying GPU resources.Together, these pieces form what Stock described as a &quot;full AI stack, fully controllable and customizable&quot; for the enterprise. Voice agents \u2014 AI systems that can listen to a customer, understand what they need, reason about the answer, and respond in natural-sounding speech \u2014 are the use case that ties all of these layers together.The applications Mistral envisions span customer support, where voice agents can route and resolve queries with brand-appropriate speech; sales and marketing, where a single voice can work across markets through cross-lingual emulation; real-time translation for cross-border operations; and even interactive storytelling and game design, where emotion-steering can control tone and personality.Stock was most animated when discussing how Voxtral TTS fits into the broader agentic AI trend that has dominated enterprise technology discussions in 2026. &quot;We are totally building for a world in which audio is a natural interface, in particular for agents to which you can delegate work \u2014 extensions of yourself,&quot; he said. He described a scenario in which a user starts planning a vacation on a computer, commutes to work, and then picks up the workflow on a phone simply by asking for an update by voice.&quot;To make that happen, you need a model you can trust, you need a model that&#x27;s super efficient and super cheap to run \u2014 otherwise you won&#x27;t use it for long \u2014 and you need a model that sounds super conversational and that you can interrupt at any time,&quot; Stock said.That emphasis on interruptibility and real-time responsiveness reflects a broader insight about voice interfaces that distinguishes them from text. A chatbot can take two or three seconds to respond without breaking the user experience. A voice agent cannot. The 90-millisecond time-to-first-audio that Voxtral TTS achieves is not just a benchmark number \u2014 it is the threshold between a voice interaction that feels natural and one that feels robotic.Mistral&#x27;s open-weight approach aligns with a broader industry shift that even Nvidia is backingMistral&#x27;s decision to release Voxtral TTS with open weights is consistent with a movement that has been gathering momentum across the AI industry. At Nvidia GTC earlier this month, Nvidia CEO Jensen Huang declared that &quot;proprietary versus open is not a thing \u2014 it&#x27;s proprietary and open.&quot; Nvidia announced the Nemotron Coalition, a first-of-its-kind collaboration of model builders working to advance open frontier-level foundation models, with Mistral as a founding member. The first project from that coalition will be a base model codeveloped by Mistral AI and Nvidia.For Mistral, open weights serve a dual commercial purpose. They drive adoption \u2014 developers and enterprises can experiment without friction or commitment \u2014 while the company monetizes through its platform services, customization offerings, and managed infrastructure. The model is available to test in Mistral Studio and through the company&#x27;s API, but the strategic play is to become embedded in enterprise voice pipelines as an owned asset, not a metered service.This mirrors the playbook that worked for Mistral&#x27;s language models. As Mensch told CNBC in February, &quot;AI is making us able to develop software at the speed of light,&quot; predicting that &quot;more than half of what&#x27;s currently being bought by IT in terms of SaaS is going to shift to AI.&quot; He described a &quot;replatforming&quot; taking place across enterprise technology, with businesses looking to replace legacy software systems with AI-native alternatives. An open-weight voice model that enterprises can customize and deploy on their own terms fits naturally into that narrative.Mistral signals that end-to-end audio AI is where the company is headed nextWhen asked what comes after Voxtral TTS, Stock outlined two directions. The first is expanding language and dialect support, with particular attention to cultural nuance. &quot;It&#x27;s not the same to speak French in Paris than to speak French in Canada, in Montreal,&quot; he said. &quot;We want to respect both cultures, and we want our models to perform in both contexts with all the cultural specifics.&quot;The second direction is more ambitious: a fully end-to-end audio model that doesn&#x27;t just generate speech from text but understands the complete spectrum of human vocal communication.&quot;We convey some meaning with the words we speak,&quot; Stock said. &quot;We actually convey way more with the intonation, the rhythm, and how we say it. When people talk about end-to-end audio, that&#x27;s what they mean \u2014 the model is able to pick up that you&#x27;re in a hurry, for instance, and will go for the fastest answer. The model will know that you&#x27;re joyful today and crack a joke. It&#x27;s super adaptive to you, and that&#x27;s where we want to go.&quot;That vision \u2014 an AI that speaks naturally, listens with nuance, responds with emotional intelligence, and runs on a model small enough to fit in your pocket \u2014 is the frontier every major AI lab is racing toward. For now, Voxtral TTS gives Mistral a foundation to build on and enterprises a question they haven&#x27;t had to answer before: if you could own your voice AI stack outright, at lower cost and with competitive quality, why would you keep renting someone else&#x27;s?",
+      "url": "https://venturebeat.com/orchestration/mistral-ai-just-released-a-text-to-speech-model-it-says-beats-elevenlabs-and",
+      "source": "VentureBeat AI",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:14.271673+00:00",
+      "score_raw": 0.9991,
+      "score": 1.0
+    },
+    {
+      "title": "The consequential AI work that actually moves the needle for enterprises",
+      "summary": "Presented by OutSystems After two years of flashy AI demos, rushed agent prototypes, and breathless predictions, enterprise technology leaders are striking a more pragmatic tone in 2026. In a recent webinar hosted by OutSystems, a panel of software executives and enterprise practitioners made the case that the most consequential AI work happening now is focused on the practical matters of governance, orchestration, and iteration, along with integrating agents into the systems they&#x27;ve spent decades building.Enterprise leaders are increasingly focused on fundamentals. The priority is using new AI technologies to accelerate productivity, improve delivery, and produce measurable business results.Three elements shape this work:The move from AI agent prototypes to agentic systems that deliver measurable ROI in productionThe growing role of enterprise platforms in governing, orchestrating, and scaling AI agents safelyThe rise of the generalist developer and enterprise architect as the most valuable technical profiles in an era of AI-generated codeAgainst this backdrop, the panel discussed governance frameworks, the economics of enterprise AI, and the limits of large language models without orchestration. The conversation ultimately turned to how leading organizations are building multi-agent systems grounded in existing enterprise data and workflows.Agents in the real world Enabling agents to work in production across the enterprise is best accomplished with a unified platform that handles development, iteration, and deployment. And that&#x27;swhere capabilities like the Agent Workbench in the OutSystems platform matter, said Rajkiran Vajreshwari, senior manager of app development at Thermo Fisher Scientific. It provides the infrastructure to learn, iterate, and govern agents at scale.His team at Thermo Fisher has moved away from single-task AI assistants in customer service to building a coordinated team of specialized agents using the workbench. When a support case arrives, a triage assistant classifies the request and dynamically routes it to the right specialist agent, whether that\u2019s an intent and priority agent, a product context agent, a troubleshooting agent, or a compliance agent.&quot;We don\u2019t have to think about what will work and how. It\u2019s all pre-built,&quot; he explained. &quot;Each agent has a narrow role and clear guardrails. They stay accurate and auditable.\u201dGoverning the risks of shadow AIA new category of risk emerges when AI makes it possible for anyone in a company to generate production-level code without IT oversight. Basically, this is ungoverned shadow AI. These homegrown products are prone to hallucinations, data leakage, policy violations, model drift, and agents taking actions that were never formally approved.To get ahead of the risk, leading organizations need to do three things, said Luis Blando, CPTO of OutSystems. &quot;Give users guardrails. They\u2019re going to use AI whether you like it or not. Companies that seem to be getting ahead are using AI to govern AI across their full portfolio,\u201d he explained. \u201cThat is the difference between shadow AI chaos and enterprise-grade scale.\u201dEric Kavanagh, CEO of The Bloor Group, noted that governance requires a layered set of disciplines that includes securing data, monitoring models for drift, and making deliberate choices about where AI connects to existing business processes.\u201cCompanies don\u2019t have to be manually creating these controls,&quot; he added. &quot;A lot of those guardrails and levers are baked in to platforms like OutSystems.\u201dWhy the real orchestration challenge is models vs. platformsMuch of the early excitement around enterprise AI focused on selecting the right large language model. Now the harder challenge, and far more durable source of value, is orchestration. This includes routing tasks, coordinating workflows, governing execution, and integrating AI into existing enterprise systems.Scott Finkle, VP of development at McConkey Auction Group, noted that LLMs, however impressive, are pieces of complex workflows, not final solutions. Organizations should be ready to hot-swap between Gemini, ChatGPT, Claude, and whatever emerges next without having to rebuild the agentic system around it. A platform with orchestration capabilities makes that possible. It manages the lifecycle, provides visibility, and ensures processes execute reliably, even as AI handles the reasoning layer on top.\u201cThe AI and the models change, the workflows can change, but the orchestration remains the same,&quot; Finkle said. &quot;That\u2019s how we\u2019re going to extract value out of AI.\u201dThe economics of enterprise AI investingSecurity, compliance, governance, and platform-level AI capabilities will all command greater investment in 2026, particularly as AI moves into core workflows like finance and supply chain. Enterprises should favor incremental wins rather than expect big, immediate gains.\u201cWe\u2019re focusing on base hits,&quot; Finkle said. &quot;The way it counts is by getting something into production and having it make an impact. Big investments in pilot projects that don\u2019t make it into production don\u2019t save any money. It\u2019s not going to happen overnight, but over time I think we\u2019ll see tremendous savings.\u201dThere&#x27;s still a split in how enterprises are approaching AI transformation. Some start from scratch and reimagine every process. Others, especially those with billions of dollars in existing infrastructure depreciating in-house, want AI to integrate with their systems. They want agentic systems to reuse data, APIs, and proven processes while speeding up delivery. The agent platform approach serves both camps, but particularly the latter. Organizations can deploy agents where they add clear value while preserving the integrity of established, deterministic workflows.The rise of the enterprise architect and the generalist developerAs AI accelerates code generation, bottlenecks in software delivery are dissolving. In its place is a premium on systems thinking. This is the ability to understand the broader enterprise architecture, decompose complex business problems, and reason about how AI integrates with existing infrastructure. Kavanagh pointed to enterprise architects specifically as the professionals best positioned to capitalize on this moment.\u201cWe\u2019re entering a very interesting age of the generalist,&quot; he explained. &quot;The better you know your enterprise architecture and your business architecture and how those things align, the better off you\u2019re going to be. \u201d\u201cThe result is faster delivery with fewer interruptions and fewer bugs,&quot; Kavanaugh said. &quot;You can focus on the non-repetitive tasks. It\u2019s a benefit to the developer, to the business, and to the whole IT organization.\u201dCatch the entire webinar here.Sponsored articles are content produced by a company that is either paying for the post or has a business relationship with VentureBeat, and they\u2019re always clearly marked. For more information, contact sales@venturebeat.com.",
+      "url": "https://venturebeat.com/orchestration/the-consequential-ai-work-that-actually-moves-the-needle-for-enterprises",
+      "source": "VentureBeat AI",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:14.271830+00:00",
+      "score_raw": 0.9973,
+      "score": 1.0
+    },
+    {
+      "title": "Meta boosts investment in West Texas AI data center by over sixfold to $10 billion",
+      "summary": "Meta is increasing investment at a data center in El Paso, Texas, to $10 billion from $1.5 billion, as the company ramps up spending on AI infrastructure.",
+      "url": "https://www.cnbc.com/2026/03/26/meta-to-spend-10-billion-on-ai-data-center-in-el-paso-1gw-by-2028.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:15.028089+00:00",
+      "score_raw": 0.3182,
+      "score": 0.4682
+    },
+    {
+      "title": "Major outgoing CEOs are citing AI as a factor in their decisions to step down",
+      "summary": "Coca-Cola CEO James Quincey and former Walmart CEO Doug McMillon have told CNBC that the next wave of artificial intelligence is a reason for their departures.",
+      "url": "https://www.cnbc.com/2026/03/26/coca-cola-james-quincey-walmart-doug-mcmillon-artificial-intelligence-step-down.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:15.028126+00:00",
+      "score_raw": 0.6801,
+      "score": 0.6801
+    },
+    {
+      "title": "AI and bots have officially taken over the internet, report finds",
+      "summary": "HUMAN Security's State of AI Traffic report found that bots have eclipsed human users, with automated traffic growing eight times faster than human activity.",
+      "url": "https://www.cnbc.com/2026/03/26/ai-bots-humans-internet.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:15.028146+00:00",
+      "score_raw": 0.1779,
+      "score": 0.1779
+    },
+    {
+      "title": "A Google AI breakthrough is pressuring memory chip stocks from Samsung to Micron",
+      "summary": "SK Hynix, Samsung and Micron shares fell as investors fear fewer memory chips may be required in the future.",
+      "url": "https://www.cnbc.com/2026/03/26/google-ai-turboquant-memory-chip-stocks-samsung-micron.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:15.028176+00:00",
+      "score_raw": -0.5267,
+      "score": -0.2267
+    },
+    {
+      "title": "Meet Figure AI: The company behind the humanoid robot hosted by Melania Trump",
+      "summary": "The White House hosted its first humanoid robot guest, with first lady Melania Trump appearing alongside a robot from startup Figure AI.",
+      "url": "https://www.cnbc.com/2026/03/26/figure-ai-the-robotics-company-hosted-by-melania-trump.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:15.028185+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Roblox is changing online safety with AI",
+      "summary": "Roblox launches a real-time AI moderation system to detect harmful content by analyzing avatars, text and environments together across its platform.",
+      "url": "https://www.foxnews.com/tech/roblox-changing-online-safety-ai",
+      "source": "Fox News Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-26T20:28:15.427522+00:00",
+      "score_raw": 0.4215,
+      "score": 0.4215
     }
   ],
   "daily_scores": {
@@ -764,33 +1194,68 @@
       }
     },
     "2026-03-26": {
-      "mean": 0.3683,
-      "count": 8,
-      "pos": 4,
-      "neg": 1,
-      "neu": 3,
+      "mean": 0.2971,
+      "count": 51,
+      "pos": 34,
+      "neg": 12,
+      "neu": 5,
       "sources": [
+        "Ars Technica",
         "Bloomberg",
+        "CNBC Tech",
+        "Fox News Tech",
+        "MIT Tech Review",
+        "NYT Technology",
         "TechCrunch",
         "The Guardian",
-        "The Verge"
+        "The Verge",
+        "VentureBeat AI",
+        "Wired"
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": -0.0512,
-          "count": 2
+          "mean": 0.1536,
+          "count": 10
         },
         "The Verge": {
-          "mean": 0.0,
-          "count": 1
+          "mean": -0.0246,
+          "count": 4
         },
         "The Guardian": {
-          "mean": 0.6271,
-          "count": 1
+          "mean": -0.3793,
+          "count": 3
         },
         "Bloomberg": {
-          "mean": 0.6055,
-          "count": 4
+          "mean": 0.4591,
+          "count": 16
+        },
+        "NYT Technology": {
+          "mean": 0.5868,
+          "count": 2
+        },
+        "Ars Technica": {
+          "mean": 0.1591,
+          "count": 3
+        },
+        "Wired": {
+          "mean": 0.493,
+          "count": 2
+        },
+        "MIT Tech Review": {
+          "mean": 0.1744,
+          "count": 2
+        },
+        "VentureBeat AI": {
+          "mean": 1.0,
+          "count": 3
+        },
+        "CNBC Tech": {
+          "mean": 0.2199,
+          "count": 5
+        },
+        "Fox News Tech": {
+          "mean": 0.4215,
+          "count": 1
         }
       }
     }
