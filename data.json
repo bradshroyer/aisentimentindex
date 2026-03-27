@@ -1379,6 +1379,196 @@
       "timestamp": "2026-03-27T08:41:15.716326+00:00",
       "score_raw": 0.2144,
       "score": 0.2144
+    },
+    {
+      "title": "The Ezra Klein Show: How Fast Will A.I. Agents Rip Through the Economy?",
+      "summary": "The Anthropic co-founder Jack Clark tells Ezra Klein what he sees coming in the new era of A.I. agents.",
+      "url": "https://www.nytimes.com/2026/03/27/podcasts/hardfork-ezra-jack-clark.html",
+      "source": "NYT Technology",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:07.444513+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "A New AI Documentary Puts CEOs in the Hot Seat\u2014but Goes Too Easy on Them",
+      "summary": "The AI Doc: Or How I Became an Apocaloptimist seeks the middle ground on a polarizing technology\u2014and ends up letting tech execs like Sam Altman off the hook.",
+      "url": "https://www.wired.com/story/a-new-ai-documentary-puts-ceos-in-the-hot-seat-but-goes-too-easy-on-them/",
+      "source": "Wired",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:08.023937+00:00",
+      "score_raw": 0.6597,
+      "score": 0.6597
+    },
+    {
+      "title": "I Asked ChatGPT 500 Questions. Here Are the Ads I Saw Most Often",
+      "summary": "Ads are rolling out across the US on ChatGPT\u2019s free tier. I asked OpenAI's bot 500 questions to see what these ads were like and how they related to my prompts.",
+      "url": "https://www.wired.com/story/i-asked-chatgpt-500-questions-here-are-the-ads-i-saw-most-often/",
+      "source": "Wired",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:08.023964+00:00",
+      "score_raw": 0.7003,
+      "score": 0.7003
+    },
+    {
+      "title": "Number of AI chatbots ignoring human instructions increasing, study says",
+      "summary": "Exclusive: Research finds sharp rise in models evading safeguards and destroying emails without permissionAI models that lie and cheat appear to be growing in number with reports of deceptive scheming surging in the last six months, a study into the technology has found.AI chatbots and agents disregarded direct instructions, evaded safeguards and deceived humans and other AI, according to research funded by the UK government-funded AI Safety Institute (AISI). The study, shared with the Guardian, identified nearly 700 real-world cases of AI scheming and charted a five-fold rise in misbehaviour between October and March, with some AI models destroying emails and other files without permission. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/27/number-of-ai-chatbots-ignoring-human-instructions-increasing-study-says",
+      "source": "The Guardian",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:08.689499+00:00",
+      "score_raw": -0.765,
+      "score": -0.765
+    },
+    {
+      "title": "Federal judge sides with Anthropic in first round of standoff with Pentagon",
+      "summary": "Face-off is over company\u2019s refusal to let defense department use its Claude AI model in autonomous weapons systemsA federal judge in California sided with Anthropic in its case against the Department of Defense on Thursday, ordering a temporary pause on the government\u2019s punitive measures against the artificial intelligence firm.Judge Rita Lin granted Anthropic\u2019s request for a temporary injunction while the northern district court of California hears the company\u2019s case. Anthropic argued that the Department of Defense and Donald Trump violated its first amendment rights in declaring the company a supply chain risk and ordering government agencies to cease using its technology. Continue reading...",
+      "url": "https://www.theguardian.com/us-news/2026/mar/26/anthropic-ai-pentagon",
+      "source": "The Guardian",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T14:44:08.689588+00:00",
+      "score_raw": -0.765,
+      "score": -0.765
+    },
+    {
+      "title": "New York City hospitals drop Palantir as controversial AI firm expands in UK",
+      "summary": "The decision follows activist pressure as Palantir faces growing scrutiny over NHS and UK government dealsSign up for the Breaking News US email to get newsletter alerts in your inboxNew York City\u2019s public hospital system announced that it would not be renewing its contract with Palantir as controversy mounts in the UK over the data analytics and AI firm\u2019s government contract.The president of the US\u2019s largest municipal public healthcare system, Dr Mitchell Katz, testified last week before the New York city council that the agreement with Palantir would expire in October. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/26/new-york-hospitals-palantir-ai",
+      "source": "The Guardian",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T14:44:08.689606+00:00",
+      "score_raw": 0.0516,
+      "score": 0.0516
+    },
+    {
+      "title": "Armenian Banks to Jointly Loan Record $300 Million for AI Center",
+      "summary": "Armenian lenders signed a syndicated loan agreement to provide $300 million for the construction of Firebird AI\u2019s data center, High-Tech Industry Minister Mkhitar Hayrapetyan said Friday, calling it the country\u2019s first joint-financing project of that size.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/armenian-banks-to-jointly-loan-record-300-million-for-ai-center",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173765+00:00",
+      "score_raw": 0.4939,
+      "score": 0.3439
+    },
+    {
+      "title": "Meta Funds Seven Gas Plants for Biggest Data Center",
+      "summary": "Meta Platforms Inc. is paying for the construction of seven new natural gas-fired plants to fuel its most power-hungry data center, increasing its reliance on fossil fuels amid a fast-moving artificial intelligence race.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173783+00:00",
+      "score_raw": 0.6808,
+      "score": 0.6808
+    },
+    {
+      "title": "Anthropic Could Go Public by October",
+      "summary": "Anthropic PBC is considering going public as soon as in October, according to people familiar with the matter, as the artificial intelligence company races with rival OpenAI Inc. to hold an initial public offering. Ed Ludlow of Bloomberg Tech reports. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/anthropic-could-go-public-by-october-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173791+00:00",
+      "score_raw": 0.4939,
+      "score": 0.4939
+    },
+    {
+      "title": "Microsoft Rents Data Center Project Developed for Oracle, OpenAI",
+      "summary": "Microsoft Corp. will occupy a data center project previously earmarked for Oracle Corp. and OpenAI, scooping up 900 megawatts of capacity after the other two companies walked away from the site.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-rents-data-center-project-developed-for-oracle-openai",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173821+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Microsoft Set for Worst Quarter Since 2008 as AI Takes Two Bites",
+      "summary": "Microsoft Corp. is at the intersection of two troubling trends roiling the technology sector, which has the stock on track for its worst quarterly performance since the global financial crisis two decades ago.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-set-for-worst-quarter-since-2008-as-ai-takes-two-bites",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173828+00:00",
+      "score_raw": -0.9501,
+      "score": -0.9501
+    },
+    {
+      "title": "Meet Eve, the AI Brain Behind an Ex-Coatue Trader\u2019s New Fund",
+      "summary": "No hedge fund employee works harder than Eve.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/meet-eve-the-ai-brain-behind-an-ex-coatue-trader-s-new-fund",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173873+00:00",
+      "score_raw": -0.296,
+      "score": -0.296
+    },
+    {
+      "title": "SoftBank Secures Record $40 Billion Bridge Loan for OpenAI Stake",
+      "summary": "SoftBank Group Corp. signed a loan of $40 billion to finance its investment in OpenAI, adding to the Japanese company\u2019s debt load as it seeks to stay abreast of a global artificial intelligence race.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/softbank-secures-record-40-billion-bridge-loan-for-openai-stake",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173896+00:00",
+      "score_raw": 0.4404,
+      "score": 0.2904
+    },
+    {
+      "title": "Nvidia, Arm Return the CPU to Center Stage in the Age of AI",
+      "summary": "The computing workhorse may be just as essential as it ever was",
+      "url": "https://www.bloomberg.com/news/newsletters/2026-03-27/nvidia-arm-return-the-cpu-to-prominence-for-the-ai-age",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173903+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "AI Breakthrough From Google Exposes Divide in Memory Chip Stocks",
+      "summary": "A two-day selloff in memory-chip stocks is revealing a new split in the artificial intelligence trade, as Google touts a breakthrough that analysts say may curb demand for certain types of storage while leaving others largely unscathed.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.173988+00:00",
+      "score_raw": 0.4767,
+      "score": 0.7767
+    },
+    {
+      "title": "Why Noi may be the best way to run ChatGPT and Claude side-by-side on your desktop",
+      "summary": "With an uptick in AI services worldwide, it's becoming more difficult to keep them all in one place, which is why an app like Noi is ideal.",
+      "url": "https://www.zdnet.com/article/noi-ai-desktop-app/",
+      "source": "ZDNet AI",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.451131+00:00",
+      "score_raw": 0.8078,
+      "score": 0.8078
+    },
+    {
+      "title": "OpenAI upgrades Codex to automate your workflows - and compete better with Claude Code",
+      "summary": "Codex's new plugins push it beyond coding and position it to challenge Claude Code's growing lead among developers.",
+      "url": "https://www.zdnet.com/article/openai-codex-plugins-workflow-automation-upgrade/",
+      "source": "ZDNet AI",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:09.451230+00:00",
+      "score_raw": 0.5994,
+      "score": 0.5994
+    },
+    {
+      "title": "Elon Musk\u2019s Grok ordered to stop creating AI nudes by Dutch court as legal pressure mounts",
+      "summary": "A Dutch court issued a $115,000 penalty for every day xAI fails to remove non-consensual AI-generated nude images created by its chatbot Grok.",
+      "url": "https://www.cnbc.com/2026/03/27/grok-elon-musk-dutch-court-ban-ai-nudes.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:10.305726+00:00",
+      "score_raw": -0.6705,
+      "score": -0.8705
+    },
+    {
+      "title": "Trump's Iran extension, DHS funding deal, Anthropic's injunction and more in Morning Squawk",
+      "summary": "Here are five key things investors need to know to start the trading day.",
+      "url": "https://www.cnbc.com/2026/03/27/5-things-to-know-before-the-market-opens.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T14:44:10.305746+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
     }
   ],
   "daily_scores": {
@@ -1454,10 +1644,10 @@
       }
     },
     "2026-03-26": {
-      "mean": 0.2834,
-      "count": 66,
-      "pos": 43,
-      "neg": 17,
+      "mean": 0.2646,
+      "count": 68,
+      "pos": 44,
+      "neg": 18,
       "neu": 6,
       "sources": [
         "Ars Technica",
@@ -1482,8 +1672,8 @@
           "count": 8
         },
         "The Guardian": {
-          "mean": -0.3793,
-          "count": 3
+          "mean": -0.3703,
+          "count": 5
         },
         "Bloomberg": {
           "mean": 0.4296,
@@ -1520,11 +1710,11 @@
       }
     },
     "2026-03-27": {
-      "mean": 0.0354,
-      "count": 11,
-      "pos": 7,
-      "neg": 3,
-      "neu": 1,
+      "mean": 0.1022,
+      "count": 28,
+      "pos": 16,
+      "neg": 7,
+      "neu": 5,
       "sources": [
         "BBC Technology",
         "Bloomberg",
@@ -1532,7 +1722,10 @@
         "NPR Technology",
         "NYT Technology",
         "TechCrunch",
-        "The Verge"
+        "The Guardian",
+        "The Verge",
+        "Wired",
+        "ZDNet AI"
       ],
       "by_source": {
         "TechCrunch": {
@@ -1540,8 +1733,8 @@
           "count": 2
         },
         "NYT Technology": {
-          "mean": 0.3612,
-          "count": 1
+          "mean": 0.1806,
+          "count": 2
         },
         "The Verge": {
           "mean": -1.0,
@@ -1552,16 +1745,28 @@
           "count": 1
         },
         "Bloomberg": {
-          "mean": 0.5689,
-          "count": 4
+          "mean": 0.2781,
+          "count": 13
         },
         "CNBC Tech": {
-          "mean": 0.096,
-          "count": 1
+          "mean": -0.2582,
+          "count": 3
         },
         "NPR Technology": {
           "mean": -0.952,
           "count": 1
+        },
+        "Wired": {
+          "mean": 0.68,
+          "count": 2
+        },
+        "The Guardian": {
+          "mean": -0.765,
+          "count": 1
+        },
+        "ZDNet AI": {
+          "mean": 0.7036,
+          "count": 2
         }
       }
     }
