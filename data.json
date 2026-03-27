@@ -1119,6 +1119,246 @@
       "timestamp": "2026-03-26T20:28:15.427522+00:00",
       "score_raw": 0.4215,
       "score": 0.4215
+    },
+    {
+      "title": "David Sacks is done as AI czar \u2014 here\u2019s what he\u2019s doing instead",
+      "summary": "Sacks will be much further from power center in Washington than since the outset of this second Trump administration.",
+      "url": "https://techcrunch.com/2026/03/26/david-sacks-is-done-as-ai-czar-heres-what-hes-doing-instead/",
+      "source": "TechCrunch",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:14.531347+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Anthropic wins injunction against Trump administration over Defense Department saga",
+      "summary": "A federal judge has ordered that the Trump administration rescind recent restrictions it placed on the AI company.",
+      "url": "https://techcrunch.com/2026/03/26/anthropic-wins-injunction-against-trump-administration-over-defense-department-saga/",
+      "source": "TechCrunch",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:14.531368+00:00",
+      "score_raw": 0.6369,
+      "score": 0.5369
+    },
+    {
+      "title": "You can now transfer your chats and personal information from other chatbots directly into Gemini",
+      "summary": "Google is launching \"switching tools\" that, just as it sounds, will make it easier for users of other chatbots to switch to Gemini.",
+      "url": "https://techcrunch.com/2026/03/26/you-can-now-transfer-your-chats-and-personal-information-from-other-chatbots-directly-into-gemini/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:14.531381+00:00",
+      "score_raw": 0.4215,
+      "score": 0.4215
+    },
+    {
+      "title": "Wikipedia cracks down on the use of AI in article writing",
+      "summary": "The site, whose policies are subject to change, has struggled with the issue of AI-generated writing.",
+      "url": "https://techcrunch.com/2026/03/26/wikipedia-cracks-down-on-the-use-of-ai-in-article-writing/",
+      "source": "TechCrunch",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:14.531389+00:00",
+      "score_raw": -0.34,
+      "score": -0.34
+    },
+    {
+      "title": "Judge Stays Pentagon\u2019s Labeling of Anthropic as \u2018Supply Chain Risk\u2019",
+      "summary": "The decision is an early victory for the artificial intelligence company in a rancorous legal battle with the Department of Defense.",
+      "url": "https://www.nytimes.com/2026/03/26/technology/anthropic-pentagon-risk-injunction.html",
+      "source": "NYT Technology",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:14.942199+00:00",
+      "score_raw": 0.3612,
+      "score": 0.3612
+    },
+    {
+      "title": "Judge sides with Anthropic to temporarily block the Pentagon&#8217;s ban",
+      "summary": "After Anthropic's weeks-long standoff with the Pentagon, the company won one milestone: A judge granted Anthropic a preliminary injunction in its lawsuit, which sought to reverse its government blacklisting while the judicial process plays out. \"The Department of War's records show that it designated Anthropic as a supply chain risk because of its 'hostile manner [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/902149/anthropic-dod-pentagon-lawsuit-supply-chain-risk-injunction",
+      "source": "The Verge",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:15.066649+00:00",
+      "score_raw": -0.6597,
+      "score": -1.0
+    },
+    {
+      "title": "David Sacks is no longer the White House AI and Crypto Czar",
+      "summary": "David Sacks, the venture capitalist and tech billionaire who'd become Silicon Valley's primary advocate inside the White House and a key architect of its aggressive AI policy initiatives, revealed on Thursday that he was no longer a special government employee - and therefore no longer President Donald Trump's Special Advisor on AI and Crypto. Sacks' [&#8230;]",
+      "url": "https://www.theverge.com/policy/902140/david-sacks-out-ai-crypto-czar",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:15.066689+00:00",
+      "score_raw": -0.2023,
+      "score": -0.2023
+    },
+    {
+      "title": "Google is making it easier to import another AI\u2019s memory into Gemini",
+      "summary": "After Anthropic updated its tool for copying another AI's memory into Claude earlier this month, Google Gemini is rolling out new \"Import Memory\" and \"Import Chat History\" features on desktop that can help users quickly copy over everything their current AI already knows about them. To use the \"Import Memory\" tool, users copy and paste [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/902085/google-gemini-import-memory-chat-history",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:15.066742+00:00",
+      "score_raw": 0.6705,
+      "score": 0.6705
+    },
+    {
+      "title": "Apple will reportedly allow other AI chatbots to plug into Siri",
+      "summary": "Apple's iOS 27 update will allow users to choose the AI chatbot they want to link with Siri. That's according to a report from Bloomberg's Mark Gurman, who says third-party chatbots downloaded from the App Store, like Google's Gemini or Anthropic's Claude, will be able to fetch replies for Siri - similar to how the [&#8230;]",
+      "url": "https://www.theverge.com/tech/902048/apple-siri-ai-chatbot-update-ios-27",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:15.066750+00:00",
+      "score_raw": 0.6808,
+      "score": 0.6808
+    },
+    {
+      "title": "Apple\u2019s AI Playlist Playground is bad at music",
+      "summary": "Apple Music: \"What do you want to hear?\" Me: \"Atmospheric instrumental black metal to write to.\" Apple Music: \"Here's three metal songs with vocals, a field recording, an ambient electronic track, and a piece of doom jazz.\" I am skeptical of AI's ability to serve up the music I want to begin with, but even [&#8230;]",
+      "url": "https://www.theverge.com/report/902005/apple-ai-playlist-playground-bad-at-music",
+      "source": "The Verge",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:15.066778+00:00",
+      "score_raw": -0.4215,
+      "score": -0.4215
+    },
+    {
+      "title": "Anthropic Supply-Chain-Risk Designation Halted by Judge",
+      "summary": "A judge temporarily blocked the Trump administration\u2019s designation, clearing the way for Anthropic to keep doing business without the label starting next week.",
+      "url": "https://www.wired.com/story/anthropic-supply-chain-risk-designation-injunction/",
+      "source": "Wired",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:15.405579+00:00",
+      "score_raw": -0.2732,
+      "score": -0.2732
+    },
+    {
+      "title": "Judge rejects Pentagon's attempt to 'cripple' Anthropic",
+      "summary": "A federal judge told the government it could not immediately enforce a ban on Anthropic\u2019s tools.",
+      "url": "https://www.bbc.com/news/articles/cvg4p02lvd0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:15.597860+00:00",
+      "score_raw": -0.7783,
+      "score": -0.9283
+    },
+    {
+      "title": "Pony AI CEO: Middle East Market Remains a Priority",
+      "summary": "Pony AI has reported its first profitable quarter. Founder and CEO James Peng says the company plans to expand its robotaxi business both domestically and overseas, citing strong demand. Peng adds that the Middle East remains a key priority market for Pony AI. He spoke exclusively on \"Bloomberg: The China Show.\" (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:16.802160+00:00",
+      "score_raw": 0.7906,
+      "score": 0.7906
+    },
+    {
+      "title": "Pony AI Breaks Even, Aims to Launch Robotaxis in 20 Cities",
+      "summary": "Pony AI Inc. delivered its first ever profitable quarter, bolstered by a windfall from an early investment rather than its main robotaxi business.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/pony-ai-swings-to-profit-aims-to-launch-robotaxis-in-20-cities",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:16.802191+00:00",
+      "score_raw": 0.4404,
+      "score": 0.4404
+    },
+    {
+      "title": "Claude AI Maker Anthropic Considers IPO as Soon as October",
+      "summary": "Anthropic PBC is considering going public as soon as in October, according to people familiar with the matter, as the artificial intelligence company races with rival OpenAI Inc. to hold an initial public offering.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:16.802210+00:00",
+      "score_raw": 0.4939,
+      "score": 0.4939
+    },
+    {
+      "title": "Anthropic Wins Court Order Pausing Trump Ban on AI Tool",
+      "summary": "Anthropic PBC won a court order blocking a Trump administration ban on government use of the company\u2019s artificial intelligence technology, after the Claude chatbot maker argued the move could cost it billions in lost revenue.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:16.802264+00:00",
+      "score_raw": -0.4767,
+      "score": -0.6267
+    },
+    {
+      "title": "Antitrust Agencies Should Be Wary of AI Scrutiny, Official Says",
+      "summary": "The market for artificial intelligence is competitive, evolving rapidly, and antitrust enforcers should be wary of intervening, a senior White House official said.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/antitrust-agencies-should-be-wary-of-ai-scrutiny-official-says",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:16.802314+00:00",
+      "score_raw": 0.5859,
+      "score": 0.5859
+    },
+    {
+      "title": "Jury Finds Meta, Google Liable for Addiction | Bloomberg Tech 3/26/2026",
+      "summary": "Bloomberg\u2019s Caroline Hyde and Ed Ludlow discuss the jury verdict holding Google and Meta liable for a young woman\u2019s social media addiction. Plus, the case in California was just the start of thousands of similar cases that could lead to impacts on the businesses of social media companies. And Google researchers tout a new compression technique for LLMs and vector search engines, sending shares of memory and storage companies lower. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-26/bloomberg-tech-3-26-2026-video",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:16.802363+00:00",
+      "score_raw": 0.0258,
+      "score": 0.0258
+    },
+    {
+      "title": "Apple Gives iPhone Designers Rare Bonuses to Fight AI Firm Poaching",
+      "summary": "Apple Inc. awarded rare bonuses to iPhone hardware designers this week, aiming to stem a wave of departures to AI startups like OpenAI that are building their own devices.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:16.802371+00:00",
+      "score_raw": 0.8689,
+      "score": 0.8689
+    },
+    {
+      "title": "Google Gemini Adds Tool to Make It Easier to Switch From ChatGPT",
+      "summary": "Google released new tools for its Gemini artificial intelligence assistant that will let users upload chat history and context from other AI apps, a move to lure users from rivals like OpenAI\u2019s ChatGPT and Anthropic PBC\u2019s Claude.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt",
+      "source": "Bloomberg",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:16.802387+00:00",
+      "score_raw": 0.8126,
+      "score": 0.8126
+    },
+    {
+      "title": "Anthropic wins preliminary injunction in DOD fight as judge cites 'First Amendment retaliation'",
+      "summary": "A federal judge in San Francisco granted Anthropic's request for a preliminary injunction in its lawsuit against the Trump administration.",
+      "url": "https://www.cnbc.com/2026/03/26/anthropic-pentagon-dod-claude-court-ruling.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:17.800614+00:00",
+      "score_raw": 0.296,
+      "score": 0.096
+    },
+    {
+      "title": "OpenAI ads pilot tops $100 million in annualized revenue in under 2 months",
+      "summary": "OpenAI's nascent ads business has surpassed $100 million in annual recurring revenue less than two months after launching its pilot in the U.S.",
+      "url": "https://www.cnbc.com/2026/03/26/openai-ads-pilot-tops-100-million-in-arr-in-under-2-months.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:17.800635+00:00",
+      "score_raw": 0.5106,
+      "score": 0.5106
+    },
+    {
+      "title": "David Sacks says his time as Trump's crypto and AI czar has ended",
+      "summary": "The venture capitalist said he will still be a part of the White House's Technology committee and will help push Trump's AI plan forward.",
+      "url": "https://www.cnbc.com/2026/03/26/david-sacks-trump-crypto-ai-czar.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-26",
+      "timestamp": "2026-03-27T04:27:17.800654+00:00",
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Judge temporarily blocks Trump administration's Anthropic ban",
+      "summary": "The order briefly stops the government from labeling tech company Anthropic a \"supply chain risk,\" calling that \"classic First Amendment retaliation.\"",
+      "url": "https://www.npr.org/2026/03/26/nx-s1-5762971/judge-temporarily-blocks-anthropic-ban",
+      "source": "NPR Technology",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T04:27:17.958965+00:00",
+      "score_raw": -0.802,
+      "score": -0.952
     }
   ],
   "daily_scores": {
@@ -1194,11 +1434,11 @@
       }
     },
     "2026-03-26": {
-      "mean": 0.2971,
-      "count": 51,
-      "pos": 34,
-      "neg": 12,
-      "neu": 5,
+      "mean": 0.2834,
+      "count": 66,
+      "pos": 43,
+      "neg": 17,
+      "neu": 6,
       "sources": [
         "Ars Technica",
         "Bloomberg",
@@ -1214,20 +1454,20 @@
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": 0.1536,
-          "count": 10
+          "mean": 0.1348,
+          "count": 12
         },
         "The Verge": {
-          "mean": -0.0246,
-          "count": 4
+          "mean": 0.0786,
+          "count": 8
         },
         "The Guardian": {
           "mean": -0.3793,
           "count": 3
         },
         "Bloomberg": {
-          "mean": 0.4591,
-          "count": 16
+          "mean": 0.4296,
+          "count": 22
         },
         "NYT Technology": {
           "mean": 0.5868,
@@ -1238,8 +1478,8 @@
           "count": 3
         },
         "Wired": {
-          "mean": 0.493,
-          "count": 2
+          "mean": 0.2376,
+          "count": 3
         },
         "MIT Tech Review": {
           "mean": 0.1744,
@@ -1250,11 +1490,57 @@
           "count": 3
         },
         "CNBC Tech": {
-          "mean": 0.2199,
-          "count": 5
+          "mean": 0.2874,
+          "count": 7
         },
         "Fox News Tech": {
           "mean": 0.4215,
+          "count": 1
+        }
+      }
+    },
+    "2026-03-27": {
+      "mean": -0.0669,
+      "count": 9,
+      "pos": 5,
+      "neg": 3,
+      "neu": 1,
+      "sources": [
+        "BBC Technology",
+        "Bloomberg",
+        "CNBC Tech",
+        "NPR Technology",
+        "NYT Technology",
+        "TechCrunch",
+        "The Verge"
+      ],
+      "by_source": {
+        "TechCrunch": {
+          "mean": 0.2685,
+          "count": 2
+        },
+        "NYT Technology": {
+          "mean": 0.3612,
+          "count": 1
+        },
+        "The Verge": {
+          "mean": -1.0,
+          "count": 1
+        },
+        "BBC Technology": {
+          "mean": -0.9283,
+          "count": 1
+        },
+        "Bloomberg": {
+          "mean": 0.6422,
+          "count": 2
+        },
+        "CNBC Tech": {
+          "mean": 0.096,
+          "count": 1
+        },
+        "NPR Technology": {
+          "mean": -0.952,
           "count": 1
         }
       }
