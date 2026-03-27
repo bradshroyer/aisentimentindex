@@ -1569,6 +1569,186 @@
       "timestamp": "2026-03-27T14:44:10.305746+00:00",
       "score_raw": 0.0,
       "score": 0.0
+    },
+    {
+      "title": "OpenAI shuts down Sora while Meta gets shut out in court",
+      "summary": "When an 82-year-old Kentucky woman was&#160;offered $26 million&#160;from an AI company that wanted to build a data center on her land, she said no. Sure, that same company can try to rezone&#160;2,000 acres&#160;nearby anyway, but as AI infrastructure stretches further into the real world,&#160;the real world is starting to push back.&#160; That tension is everywhere [&#8230;]",
+      "url": "https://techcrunch.com/video/openai-shuts-down-sora-while-meta-gets-shut-out-in-court/",
+      "source": "TechCrunch",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:50.603237+00:00",
+      "score_raw": -0.3182,
+      "score": -0.3182
+    },
+    {
+      "title": "The latest in data centers, AI, and energy",
+      "summary": "Massive new data centers are the physical foundation for tech companies\u2019 hopes and dreams for AI. But the rush to expand warehouses full of energy-hungry servers has also kicked up fights across the world over their impact on power grids, utility bills, nearby communities, and the environment.&#160; From audacious plans to launch data centers into [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/902546/data-centers-ai-energy-power-grids-controversy",
+      "source": "The Verge",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:50.812135+00:00",
+      "score_raw": 0.4854,
+      "score": 0.4854
+    },
+    {
+      "title": "Apple Still Plans to Sell iPhones When It Turns 100",
+      "summary": "As the tech giant turns 50, WIRED spoke to executives about how they plan to win in the AI era.",
+      "url": "https://www.wired.com/story/apple-50-year-anniversary-artificial-intelligence-iphone/",
+      "source": "Wired",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:51.128946+00:00",
+      "score_raw": 0.5859,
+      "score": 0.5859
+    },
+    {
+      "title": "The Latest AI Documentary Asks: Just How Scared Should We Be?",
+      "summary": "The AI Doc: Or How I Became an Apocaloptimist seeks the middle ground on a polarizing technology\u2014and ends up letting tech execs like Sam Altman off the hook.",
+      "url": "https://www.wired.com/story/a-new-ai-documentary-puts-ceos-in-the-hot-seat-but-goes-too-easy-on-them/",
+      "source": "Wired",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:51.129020+00:00",
+      "score_raw": -0.1027,
+      "score": -0.1027
+    },
+    {
+      "title": "Wikipedia bans AI-generated content in its online encyclopedia",
+      "summary": "Ban includes two exceptions: AI can still be used for translations, and to make minor copy editsWikipedia has banned the use of artificial intelligence in the generation or rewriting of content for its voluminous online encyclopedia.In a recent policy change, Wikipedia said that the use of large language models (or LLMs) \u201coften violates\u201d its core principles and will not be allowed. The English language version of Wikipedia has more than 7.1m articles. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/27/wikipedia-bans-ai",
+      "source": "The Guardian",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:51.780906+00:00",
+      "score_raw": -0.5423,
+      "score": -0.6923
+    },
+    {
+      "title": "Meta Funds Gas Plants to Power Mega Louisiana Data Center | Bloomberg Tech 3/27/2026",
+      "summary": "Bloomberg\u2019s Ed Ludlow discusses the impact of the Iran war on markets as the Nasdaq 100 falls into correction territory and Big Tech stocks slide. Plus, Meta is set to fund the construction of seven new natural gas-fired energy plants to fuel its Hyperion data center in Louisiana. And, Anthropic is said to be looking to IPO as soon as October. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/bloomberg-tech-3-27-2026-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110622+00:00",
+      "score_raw": -0.0772,
+      "score": -0.2772
+    },
+    {
+      "title": "AI Race With China Links Tech, Government Leaders",
+      "summary": "Michelle Giuda, CEO of the Krach Institute for Tech Diplomacy at Purdue, says the key to getting out in front of China in the AI race will be relying on US allies to support the American tech stack around the world. Giuda speaks with Ed Ludlow on \u201cBloomberg Tech.\u201d (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/ai-race-with-china-links-tech-government-leaders-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110670+00:00",
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Apple Goes Chatbot Agnostic in New AI Strategy",
+      "summary": "Apple plans to open Siri to outside artificial intelligence assistants, a major move aimed at bolstering the iPhone as an AI platform. Bloomberg\u2019s Mark Gurman discusses what\u2019s driving the move with Ed Ludlow on \u201cBloomberg Tech.\u201d (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/apple-goes-chatbot-agnostic-in-new-ai-strategy-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110694+00:00",
+      "score_raw": 0.4767,
+      "score": 0.4767
+    },
+    {
+      "title": "Calls for National AI Regulation Grow",
+      "summary": "An over-regulatory approach to agentic workflows could be short-sighted, says Joe Scheidler, CEO and co-founder of Helios, which builds AI operating systems for public-private sector interaction. Scheidler, a former White House and US State Department advisor, joins Ed Ludlow on \u201cBloomberg Tech.\u201d (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/calls-for-national-ai-regulation-grow-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110754+00:00",
+      "score_raw": -0.296,
+      "score": -0.296
+    },
+    {
+      "title": "Meta Funds Seven Gas Plants to Power Data Center",
+      "summary": "Meta is paying for the construction of seven new natural gas-fired plants to fuel its most power-hungry data center in rural Louisiana as it competes in the artificial intelligence race. Bloomberg\u2019s Riley Griffin discusses Meta\u2019s plans with Ed Ludlow on \u201cBloomberg Tech.\u201d (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/meta-funds-seven-gas-plants-to-power-data-center-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110784+00:00",
+      "score_raw": 0.6808,
+      "score": 0.6808
+    },
+    {
+      "title": "Fed's Paulson Says AI Gains Uncertain, Iran War Creating New Risks",
+      "summary": "Federal Reserve Bank of Philadelphia President Anna Paulson says the war in Iran has created new risks to inflation and growth. Speaking during an event at the San Francisco Fed, Paulson also says there are no signs the labor market is contributing to inflation pressures. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-27/fed-s-paulson-ai-gains-uncertain-war-creating-risks-video",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110802+00:00",
+      "score_raw": -0.8591,
+      "score": -1.0
+    },
+    {
+      "title": "Meta Funds Seven Gas Plants to Power Biggest Data Center",
+      "summary": "Meta Platforms Inc. is paying for the construction of seven new natural gas-fired plants to fuel its most power-hungry data center, increasing its reliance on fossil fuels amid a fast-moving artificial intelligence race.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110846+00:00",
+      "score_raw": 0.6808,
+      "score": 0.6808
+    },
+    {
+      "title": "Microsoft Set for Worst Quarter Since 2008 as AI Fears Converge",
+      "summary": "Microsoft Corp. is at the intersection of two troubling trends roiling the technology sector, which has the stock on track for its worst quarterly performance since the global financial crisis two decades ago.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-set-for-worst-quarter-since-2008-as-ai-takes-two-bites",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.110935+00:00",
+      "score_raw": -0.9618,
+      "score": -0.9618
+    },
+    {
+      "title": "Gemini just made it super easy for you to switch from ChatGPT\u00a0 - here's how",
+      "summary": "Gemini will now let you transfer your memories, chat history, and preferences from another AI so you don't have to start from scratch.",
+      "url": "https://www.zdnet.com/article/switching-to-googles-gemini-from-another-ai-is-now-much-easier-heres-how/",
+      "source": "ZDNet AI",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.261404+00:00",
+      "score_raw": 0.7783,
+      "score": 0.7783
+    },
+    {
+      "title": "IndexCache, a new sparse attention optimizer, delivers 1.82x faster inference on long-context AI models",
+      "summary": "Processing 200,000 tokens through a large language model is expensive and slow: the longer the context, the faster the costs spiral. Researchers at Tsinghua University and Z.ai have built a technique called IndexCache that cuts up to 75% of the redundant computation in sparse attention models, delivering up to 1.82x faster time-to-first-token and 1.48x faster generation throughput at that context length.The technique applies to models using the DeepSeek Sparse Attention architecture, including the latest DeepSeek and GLM families. It can help enterprises provide faster user experiences for production-scale, long-context models, a capability already proven in preliminary tests on the 744-billion-parameter GLM-5 model.The DSA bottleneckLarge language models rely on the self-attention mechanism, a process where the model computes the relationship between every token in its context and all the preceding ones to predict the next token.However, self-attention has a severe limitation. Its computational complexity scales quadratically with sequence length. For applications requiring extended context windows (e.g., large document processing, multi-step agentic workflows, or long chain-of-thought reasoning), this quadratic scaling leads to sluggish inference speeds and significant compute and memory costs.Sparse attention offers a principled solution to this scaling problem. Instead of calculating the relationship between every token and all preceding ones, sparse attention optimizes the process by having each query select and attend to only the most relevant subset of tokens.DeepSeek Sparse Attention (DSA) is a highly efficient implementation of this concept, first introduced in DeepSeek-V3.2. To determine which tokens matter most, DSA introduces a lightweight &quot;lightning indexer module&quot; at every layer of the model. This indexer scores all preceding tokens and selects a small batch for the main core attention mechanism to process. By doing this, DSA slashes the heavy core attention computation from quadratic to linear, dramatically speeding up the model while preserving output quality.But the researchers identified a lingering flaw: the DSA indexer itself still operates at a quadratic complexity at every single layer. Even though the indexer is computationally cheaper than the main attention process, as context lengths grow, the time the model spends running these indexers skyrockets. This severely slows down the model, especially during the initial &quot;prefill&quot; stage where the prompt is first processed.Caching attention with IndexCacheTo solve the indexer bottleneck, the research team discovered a crucial characteristic of how DSA models process data. The subset of important tokens an indexer selects remains remarkably stable as data moves through consecutive transformer layers. Empirical tests on DSA models revealed that adjacent layers share between 70% and 100% of their selected tokens.To capitalize on this cross-layer redundancy, the researchers developed IndexCache. The technique partitions the model\u2019s layers into two categories. A small number of full (F) layers retain their indexers, actively scoring the tokens and choosing the most important ones to cache. The rest of the layers become shared (S), performing no indexing and reusing the cached indices from the nearest preceding F layer.During inference, the model simply checks the layer type. If it reaches an F layer, it calculates and caches fresh indices. If it is an S layer, it skips the math and copies the cached data.There is a wide range of optimization techniques that try to address the attention bottleneck by compressing the KV cache, where the computed attention values are stored. Instead of shrinking the memory footprint like standard KV cache compression, IndexCache attacks the compute bottleneck.\u00a0\u201cIndexCache is not a traditional KV cache compression or sharing technique,\u201d Yushi Bai, co-author of the paper, told VentureBeat. \u201cIt eliminates this redundancy by reusing indices across layers, thereby reducing computation rather than just memory footprint. It is complementary to existing approaches and can be combined with them.\u201dThe researchers developed two deployment approaches for IndexCache. (It is worth noting that IndexCache only applies to models that use the DSA architecture, such as the latest DeepSeek models and the latest family of GLM models.)For developers working with off-the-shelf DSA models where retraining is unfeasible or too expensive, they created a training-free method relying on a \u201cgreedy layer selection\u201d algorithm. By running a small calibration dataset through the model, this algorithm automatically determines the optimal placement of F and S layers without any weight updates. Empirical evidence shows that the greedy algorithm can safely remove 75% of the indexers while matching the downstream performance of the original model.For teams pre-training or heavily fine-tuning their own foundation models, the researchers propose a training-aware version that optimizes the network parameters to natively support cross-layer sharing. This approach introduces a \u201cmulti-layer distillation loss\u201d during training. It forces each retained indexer to learn how to select a consensus subset of tokens that will be highly relevant for all the subsequent layers it serves.Real-world speedups on production modelsTo test the impact of IndexCache, the researchers applied it to the 30-billion-parameter GLM-4.7 Flash model and compared it against the standard baseline.At a 200K context length, removing 75% of the indexers slashed the prefill latency from 19.5 seconds down to just 10.7 seconds, delivering a 1.82x speedup. The researchers note these speedups are expected to be even greater in longer contexts.During the decoding phase, where the model generates its response, IndexCache boosted per-request throughput from 58 tokens per second to 86 tokens per second at the 200K context mark, yielding a 1.48x speedup. When the server&#x27;s memory is fully saturated with requests, total decode throughput jumped by up to 51%.For enterprise teams, these efficiency gains translate directly into cost savings. \u201cIn terms of ROI, IndexCache provides consistent benefits across scenarios, but the gains are most noticeable in long-context workloads such as RAG, document analysis, and agentic pipelines,\u201d Bai said. \u201cIn these cases, we observe at least an approximate 20% reduction in deployment cost and similar improvements in user-perceived latency.\u201d He added that for very short-context tasks, the benefits hover around 5%.Remarkably, these efficiency gains did not compromise reasoning capabilities. Using the training-free approach to eliminate 75% of indexers, the 30B model matched the original baseline&#x27;s average score on long-context benchmarks, scoring 49.9 against the original 50.2. On the highly complex AIME 2025 math reasoning benchmark, the optimized model actually outperformed the original baseline, scoring 92.6 compared to 91.0.The team also ran preliminary experiments on the production-scale 744-billion-parameter GLM-5 model. They found that eliminating 75% of its indexers with the training-free method yielded at least a 1.3x speedup on contexts over 100K tokens. At the same time, the model maintained a nearly identical quality average on long-context tasks.Getting IndexCache into productionFor development teams wanting to implement the training-free approach today, the process is straightforward but requires careful setup. While the greedy search algorithm automatically finds the optimal layer configuration, the quality of that configuration depends on the data it processes.\u201cWe recommend using domain-specific data as a calibration set so that the discovered layer-sharing pattern aligns with real workloads,\u201d Bai said.Once calibrated, the optimization is highly accessible for production environments. Open-source patches are already available on GitHub for major serving engines. \u201cIntegration is relatively straightforward \u2014 developers can apply the patch to existing inference stacks, such as vLLM or SGLang, and enable IndexCache with minimal configuration changes,\u201d Bai said.While IndexCache provides an immediate fix for today\u2019s compute bottlenecks, its underlying philosophy points to a broader shift in how the AI industry will approach model design.\u201cFuture foundation models will likely be architected with downstream inference constraints in mind from the beginning,\u201d Bai concluded. \u201cThis means designs that are not only scalable in terms of model size, but also optimized for real-world throughput and latency, rather than treating these as post-hoc concerns.\u201d",
+      "url": "https://venturebeat.com/technology/indexcache-a-new-sparse-attention-optimizer-delivers-1-82x-faster-inference",
+      "source": "VentureBeat AI",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.518480+00:00",
+      "score_raw": 0.9958,
+      "score": 1.0
+    },
+    {
+      "title": "Epstein victims sue Google and the Trump administration over alleged disclosure of personal information",
+      "summary": "A lawsuit filed in Northern California alleges that Google's AI features generated contact information for Epstein victims.",
+      "url": "https://www.cnbc.com/2026/03/27/jeffrey-epstein-victims-sue-trump-administration-google.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.706216+00:00",
+      "score_raw": -0.6705,
+      "score": -0.8705
+    },
+    {
+      "title": "Cybersecurity stocks fall on report Anthropic is testing a powerful new model",
+      "summary": "The cybersecurity sector has slumped this year on fears that new AI will massively disrupt their business models.",
+      "url": "https://www.cnbc.com/2026/03/27/anthropic-cybersecurity-stocks-ai-mythos.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:52.706246+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Fox News AI Newsletter: Family turns down $26M from AI giant to keep farmland",
+      "summary": "The Fox News AI Newsletter gives readers the latest AI technology advancements, covering the challenges and opportunities AI presents.",
+      "url": "https://www.foxnews.com/tech/ai-newsletter-family-turns-down-26m-from-ai-giant-keep-farmland",
+      "source": "Fox News Tech",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-27T20:28:53.151305+00:00",
+      "score_raw": 0.4404,
+      "score": 0.5904
     }
   ],
   "daily_scores": {
@@ -1710,63 +1890,73 @@
       }
     },
     "2026-03-27": {
-      "mean": 0.1022,
-      "count": 28,
-      "pos": 16,
-      "neg": 7,
-      "neu": 5,
+      "mean": 0.0874,
+      "count": 46,
+      "pos": 25,
+      "neg": 15,
+      "neu": 6,
       "sources": [
         "BBC Technology",
         "Bloomberg",
         "CNBC Tech",
+        "Fox News Tech",
         "NPR Technology",
         "NYT Technology",
         "TechCrunch",
         "The Guardian",
         "The Verge",
+        "VentureBeat AI",
         "Wired",
         "ZDNet AI"
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": 0.2685,
-          "count": 2
+          "mean": 0.0729,
+          "count": 3
         },
         "NYT Technology": {
           "mean": 0.1806,
           "count": 2
         },
         "The Verge": {
-          "mean": -1.0,
-          "count": 1
+          "mean": -0.2573,
+          "count": 2
         },
         "BBC Technology": {
           "mean": -0.9283,
           "count": 1
         },
         "Bloomberg": {
-          "mean": 0.2781,
-          "count": 13
+          "mean": 0.1581,
+          "count": 21
         },
         "CNBC Tech": {
-          "mean": -0.2582,
-          "count": 3
+          "mean": -0.329,
+          "count": 5
         },
         "NPR Technology": {
           "mean": -0.952,
           "count": 1
         },
         "Wired": {
-          "mean": 0.68,
-          "count": 2
+          "mean": 0.4608,
+          "count": 4
         },
         "The Guardian": {
-          "mean": -0.765,
-          "count": 1
+          "mean": -0.7287,
+          "count": 2
         },
         "ZDNet AI": {
-          "mean": 0.7036,
-          "count": 2
+          "mean": 0.7285,
+          "count": 3
+        },
+        "VentureBeat AI": {
+          "mean": 1.0,
+          "count": 1
+        },
+        "Fox News Tech": {
+          "mean": 0.5904,
+          "count": 1
         }
       }
     }
