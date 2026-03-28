@@ -1749,6 +1749,76 @@
       "timestamp": "2026-03-27T20:28:53.151305+00:00",
       "score_raw": 0.4404,
       "score": 0.5904
+    },
+    {
+      "title": "Why SoftBank\u2019s new $40B loan points to a 2026 OpenAI IPO",
+      "summary": "Wall Street giants JPMorgan and Goldman Sachs are extending a 12-month, unsecured loan to the Japanese conglomerate.",
+      "url": "https://techcrunch.com/2026/03/27/why-softbanks-new-40b-loan-points-to-a-2026-openai-ipo/",
+      "source": "TechCrunch",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:17.901835+00:00",
+      "score_raw": -0.3818,
+      "score": -0.5318
+    },
+    {
+      "title": "With new plugins feature, OpenAI officially takes Codex beyond coding",
+      "summary": "Things are moving fast, and competitors have offered something similar for a while.",
+      "url": "https://arstechnica.com/ai/2026/03/openai-brings-plugins-to-codex-closing-some-of-the-gap-with-claude-code/",
+      "source": "Ars Technica",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:18.628101+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Hegseth, Trump had no authority to order Anthropic to be blacklisted, judge says",
+      "summary": "\u201cI don\u2019t know\u201d: Department of War fails to justify blacklisting Anthropic.",
+      "url": "https://arstechnica.com/tech-policy/2026/03/hegseth-trump-had-no-authority-to-order-anthropic-to-be-blacklisted-judge-says/",
+      "source": "Ars Technica",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:18.628155+00:00",
+      "score_raw": -0.7859,
+      "score": -0.7859
+    },
+    {
+      "title": "AI Research Is Getting Harder to Separate From Geopolitics",
+      "summary": "A policy change announced by NeurIPS, the world\u2019s leading AI research conference, drew widespread backlash from Chinese researchers this week and then was quickly reversed.",
+      "url": "https://www.wired.com/story/made-in-china-ai-research-is-starting-to-split-along-geopolitical-lines/",
+      "source": "Wired",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:18.766343+00:00",
+      "score_raw": 0.0,
+      "score": 0.0
+    },
+    {
+      "title": "Meta to Launch New AI Glasses Aimed at Prescription Wearers",
+      "summary": "Meta Platforms Inc. plans to debut two new Ray-Ban smart glasses models next week intended for prescription wearers.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/meta-to-launch-new-ai-glasses-aimed-at-prescription-wearers",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:20.184792+00:00",
+      "score_raw": 0.4019,
+      "score": 0.2519
+    },
+    {
+      "title": "AI Robotics Lab in Talks to Raise $1 Billion at $11\u00a0Billion Valuation",
+      "summary": "Physical Intelligence, a two-year-old robotics\u00a0startup founded by AI academics and former Google DeepMind researchers, is discussing a new funding round\u00a0of about $1 billion that would bring the company\u2019s\u00a0valuation to more than $11 billion including dollars raised, according to people familiar with the matter.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-27/ex-deepmind-staffers-robotics-startup-in-talks-for-11-billion-valuation",
+      "source": "Bloomberg",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:20.184935+00:00",
+      "score_raw": 0.4939,
+      "score": 0.4939
+    },
+    {
+      "title": "This massive 8TB WD-Black SSD is 67% off at Best Buy right now",
+      "summary": "The AI industry is driving up RAM and SSD prices, but we found a great deal on the WD Black SN850P right now.",
+      "url": "https://www.zdnet.com/article/wd-black-sn850p-ssd-best-buy-deal-amazon-spring-sale-2026/",
+      "source": "ZDNet AI",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T04:11:20.515498+00:00",
+      "score_raw": 0.9468,
+      "score": 0.9468
     }
   ],
   "daily_scores": {
@@ -1890,12 +1960,13 @@
       }
     },
     "2026-03-27": {
-      "mean": 0.0874,
-      "count": 46,
-      "pos": 25,
-      "neg": 15,
-      "neu": 6,
+      "mean": 0.083,
+      "count": 53,
+      "pos": 28,
+      "neg": 17,
+      "neu": 8,
       "sources": [
+        "Ars Technica",
         "BBC Technology",
         "Bloomberg",
         "CNBC Tech",
@@ -1911,8 +1982,8 @@
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": 0.0729,
-          "count": 3
+          "mean": -0.0783,
+          "count": 4
         },
         "NYT Technology": {
           "mean": 0.1806,
@@ -1927,8 +1998,8 @@
           "count": 1
         },
         "Bloomberg": {
-          "mean": 0.1581,
-          "count": 21
+          "mean": 0.1768,
+          "count": 23
         },
         "CNBC Tech": {
           "mean": -0.329,
@@ -1939,16 +2010,16 @@
           "count": 1
         },
         "Wired": {
-          "mean": 0.4608,
-          "count": 4
+          "mean": 0.3686,
+          "count": 5
         },
         "The Guardian": {
           "mean": -0.7287,
           "count": 2
         },
         "ZDNet AI": {
-          "mean": 0.7285,
-          "count": 3
+          "mean": 0.7831,
+          "count": 4
         },
         "VentureBeat AI": {
           "mean": 1.0,
@@ -1957,6 +2028,10 @@
         "Fox News Tech": {
           "mean": 0.5904,
           "count": 1
+        },
+        "Ars Technica": {
+          "mean": -0.393,
+          "count": 2
         }
       }
     }
