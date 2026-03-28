@@ -1859,6 +1859,96 @@
       "timestamp": "2026-03-28T08:28:42.136811+00:00",
       "score_raw": -0.1027,
       "score": -0.2527
+    },
+    {
+      "title": "Anthropic\u2019s Claude popularity with paying consumers is skyrocketing",
+      "summary": "Estimates for total Claude consumer users are all over the map (we've seen figures ranging from 18 million to 30 million). Anthropic hasn't disclosed this data, but a spokesperson did tell TechCrunch that Claude paid subscriptions have more than doubled this year.",
+      "url": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/",
+      "source": "TechCrunch",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:31.618971+00:00",
+      "score_raw": 0.2617,
+      "score": 0.2617
+    },
+    {
+      "title": "TikTok&#8217;s policy for AI ads isn&#8217;t working",
+      "summary": "I've been struggling to tell whether the ads appearing in my TikTok feeds have been made with generative AI tools. As someone who spends a great deal of time scrutinizing images and videos for the usual \"tells\" that something was synthetically generated, some of the promotions I've seen have definitely sparked suspicion. For several weeks, [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/900400/tiktok-ai-ads-labels-samsung-disclosure",
+      "source": "The Verge",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:31.974509+00:00",
+      "score_raw": 0.34,
+      "score": 0.34
+    },
+    {
+      "title": "Why OpenAI killed Sora",
+      "summary": "On Tuesday morning, everything was business as usual at OpenAI. By the end of the day, the company had announced that it would scrap its video-generation app, Sora, and reverse plans for video generation inside ChatGPT; it would wind down a $1 billion Disney deal; it would shuffle the role of a high-level executive; and [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/902368/openai-sora-dead-ai-video-generation-competition",
+      "source": "The Verge",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:31.974587+00:00",
+      "score_raw": -0.6705,
+      "score": -0.6705
+    },
+    {
+      "title": "\u2018Our assumptions are broken\u2019: how fraudulent church data revealed AI\u2019s threat to polling",
+      "summary": "Experts say paid participants are using automated tools to generate unreliable survey responses at scaleIf you had been keeping tabs on the news about church attendance in Britain lately, you would be forgiven for thinking the country was in the midst of a Christian revival.Stories of swelling congregations, filled with young people returning to the flock, spurred on by everything from social media to a rise in bible sales appeared to be confirmed by a 2024 report from the Bible Society. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/28/how-fraudulent-church-data-revealed-ais-threat-to-polling",
+      "source": "The Guardian",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:32.998289+00:00",
+      "score_raw": -0.6124,
+      "score": -0.7624
+    },
+    {
+      "title": "\u2018They feel true\u2019: political deepfakes are growing in influence \u2013 even if people know they aren\u2019t real",
+      "summary": "AI images of people \u2013 such as women in military contexts \u2013 are making money and serving as propaganda, researchers sayOnline content creators are not just building fake images and videos of prominent public figures, they are also fabricating people and using them in military contexts, which can make them money and even serve as effective propaganda, according to artificial intelligence researchers.Some of these online avatars are sexualized images of women wearing camouflage garb that have generated a significant audience and helped create an idealized image of political figures like Donald Trump, even if the viewer knows the content is not real, according to experts. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/28/military-deepfakes-ai-propaganda-money",
+      "source": "The Guardian",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:32.998315+00:00",
+      "score_raw": 0.9428,
+      "score": 0.9428
+    },
+    {
+      "title": "Sony to hike PS5 prices by $100 as AI and Iran war push up memory chip costs",
+      "summary": "Updated prices of PlayStation 5 consoles to go into effect on 2 April as electronics makers face rising cost pressuresSony is raising global prices of its PlayStation 5 consoles, including a $100 increase in the US, marking its second hike in less than a year as the entertainment giant grapples with rising costs of key components such as memory chips.The tech industry\u2019s race to build out artificial intelligence infrastructure has pushed memory makers to favor higher-margin datacenter chips, tightening supply for consumer devices like the ones Sony sells. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/27/sony-playstation-5-price-hike-ai-iran-war",
+      "source": "The Guardian",
+      "date": "2026-03-27",
+      "timestamp": "2026-03-28T14:24:32.998363+00:00",
+      "score_raw": 0.8176,
+      "score": 0.8176
+    },
+    {
+      "title": "Actors Union Is Bargaining for \u2018Tilly Tax\u2019 On AI Film Characters",
+      "summary": "As adoption of artificial intelligence in the US outpaces efforts to regulate it, organized labor is providing an important check on how the technology gets used, according to the head of the Hollywood actors\u2019 union.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-28/sag-aftra-actors-union-bargaining-for-tilly-tax-on-ai-film-characters",
+      "source": "Bloomberg",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:33.428436+00:00",
+      "score_raw": 0.5994,
+      "score": 0.7494
+    },
+    {
+      "title": "AI Schism Grips Washington as Tech, Labor Vie for Upper Hand",
+      "summary": "At a historic auditorium in Washington this week, Silicon Valley executives, Trump administration officials and members of Congress gathered in a sea of button-down shirts to extol the virtues of artificial intelligence.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-28/ai-schism-grips-washington-as-tech-labor-vie-for-upper-hand",
+      "source": "Bloomberg",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:33.428453+00:00",
+      "score_raw": 0.8316,
+      "score": 0.8316
+    },
+    {
+      "title": "The Iran war is defense tech's chance to shine, but few systems and weapons are ready",
+      "summary": "Palmer Luckey's Anduril, software AI company Palantir and Elon Musk's SpaceX are getting the lion's share of defense tech dollars from the Pentagon.",
+      "url": "https://www.cnbc.com/2026/03/28/iran-war-defense-tech-drones-trump-hegseth.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T14:24:34.101854+00:00",
+      "score_raw": 0.1901,
+      "score": 0.1901
     }
   ],
   "daily_scores": {
@@ -2000,9 +2090,9 @@
       }
     },
     "2026-03-27": {
-      "mean": 0.083,
-      "count": 53,
-      "pos": 28,
+      "mean": 0.0966,
+      "count": 54,
+      "pos": 29,
       "neg": 17,
       "neu": 8,
       "sources": [
@@ -2054,8 +2144,8 @@
           "count": 5
         },
         "The Guardian": {
-          "mean": -0.7287,
-          "count": 2
+          "mean": -0.2132,
+          "count": 3
         },
         "ZDNet AI": {
           "mean": 0.7831,
@@ -2076,13 +2166,17 @@
       }
     },
     "2026-03-28": {
-      "mean": -0.3834,
-      "count": 4,
-      "pos": 1,
-      "neg": 3,
+      "mean": 0.0291,
+      "count": 12,
+      "pos": 7,
+      "neg": 5,
       "neu": 0,
       "sources": [
         "Bloomberg",
+        "CNBC Tech",
+        "TechCrunch",
+        "The Guardian",
+        "The Verge",
         "Wired"
       ],
       "by_source": {
@@ -2091,8 +2185,24 @@
           "count": 1
         },
         "Bloomberg": {
-          "mean": -0.6259,
-          "count": 3
+          "mean": -0.0593,
+          "count": 5
+        },
+        "TechCrunch": {
+          "mean": 0.2617,
+          "count": 1
+        },
+        "The Verge": {
+          "mean": -0.1652,
+          "count": 2
+        },
+        "The Guardian": {
+          "mean": 0.0902,
+          "count": 2
+        },
+        "CNBC Tech": {
+          "mean": 0.1901,
+          "count": 1
         }
       }
     }
