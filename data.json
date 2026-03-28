@@ -1819,6 +1819,46 @@
       "timestamp": "2026-03-28T04:11:20.515498+00:00",
       "score_raw": 0.9468,
       "score": 0.9468
+    },
+    {
+      "title": "Meta Quest Promo Codes: $50 Off | March 2026",
+      "summary": "Experience cutting-edge VR and save up to 20% with coupons for the latest games, Meta Quest 3, Ray-Ban AI glasses, and more deals.",
+      "url": "https://www.wired.com/story/meta-quest-promo-code/",
+      "source": "Wired",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T08:28:40.952369+00:00",
+      "score_raw": 0.4939,
+      "score": 0.3439
+    },
+    {
+      "title": "Anthropic, the Pentagon, and the Future of Autonomous Weapons",
+      "summary": "How AI will reshape warfare.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-28/anthropic-s-fight-with-us-military-over-future-of-autonomous-weapons",
+      "source": "Bloomberg",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T08:28:42.136776+00:00",
+      "score_raw": -0.6249,
+      "score": -0.6249
+    },
+    {
+      "title": "Odd Lots: AI and the Future of Autonomous Weapons (Podcast)",
+      "summary": "The last big story right before the war in Iran started was the collapse in the relationship between the Pentagon and Anthropic, with the latter objecting to any potential use of its models in either fully autonomous weapons or domestic surveillance. Of course, this story immediately become more relevant with the start of the war, and the reporting that Anthropic\u2019s technology was in fact utilized at the start of hostilities. But what does that mean? How are these models used? And what would a fu",
+      "url": "https://www.bloomberg.com/news/audio/2026-03-28/odd-lots-ai-and-the-future-of-autonomous-weapons-podcast",
+      "source": "Bloomberg",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T08:28:42.136800+00:00",
+      "score_raw": -0.962,
+      "score": -1.0
+    },
+    {
+      "title": "Goldman\u2019s New Adviser Rishi Sunak Urges Small Firms to Adopt AI",
+      "summary": "Goldman Sachs Group Inc.\u2019s bankers gathered at a library in Birmingham this week to guide small UK businesses on scaling up in artificial intelligence &mdash; and to warn them of the risks of ignoring the new technology.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-28/goldman-s-new-adviser-rishi-sunak-urges-small-firms-to-adopt-ai",
+      "source": "Bloomberg",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-28T08:28:42.136811+00:00",
+      "score_raw": -0.1027,
+      "score": -0.2527
     }
   ],
   "daily_scores": {
@@ -2032,6 +2072,27 @@
         "Ars Technica": {
           "mean": -0.393,
           "count": 2
+        }
+      }
+    },
+    "2026-03-28": {
+      "mean": -0.3834,
+      "count": 4,
+      "pos": 1,
+      "neg": 3,
+      "neu": 0,
+      "sources": [
+        "Bloomberg",
+        "Wired"
+      ],
+      "by_source": {
+        "Wired": {
+          "mean": 0.3439,
+          "count": 1
+        },
+        "Bloomberg": {
+          "mean": -0.6259,
+          "count": 3
         }
       }
     }
