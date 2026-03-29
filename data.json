@@ -2019,6 +2019,56 @@
       "timestamp": "2026-03-29T04:30:19.351656+00:00",
       "score_raw": -0.1779,
       "score": -0.1779
+    },
+    {
+      "title": "Amazon\u2019s Big Spring Sale is a great time to get a fancy, AI-powered bird feeder",
+      "summary": "Bird feeders have come a long way since their inception in the early 1900s. These days, it\u2019s not all that surprising to see feeders kitted out with cameras and solar roofs, two marquee features you\u2019ll find on feeders from both BirdBuddy and Netvue. And while modern hoppers can command a pretty penny, Amazon\u2019s Big Spring [&#8230;]",
+      "url": "https://www.theverge.com/gadgets/902829/birdbuddy-netvue-smart-bird-feeders-amazon-big-spring-sale-2026-deals",
+      "source": "The Verge",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T14:26:42.304805+00:00",
+      "score_raw": 0.7569,
+      "score": 0.7569
+    },
+    {
+      "title": "\u2018Soon publishers won\u2019t stand a chance\u2019: literary world in struggle to detect AI-written books",
+      "summary": "US release of horror novel Shy Girl cancelled and UK book discontinued after suspected AI use, as publishers feel \u2018cold shiver\u2019Recently, the literary agent Kate Nash started noticing that the submission letters she was receiving from authors were becoming more thorough \u2013 albeit also more formulaic.\u201cI took it as a rise in diligence,\u201d she said. \u201cI thought it was a good thing.\u201d Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/mar/29/ai-written-books-novel-shy-girl-publishers",
+      "source": "The Guardian",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T14:26:43.432650+00:00",
+      "score_raw": -0.6908,
+      "score": -0.6908
+    },
+    {
+      "title": "Two in five Australian GPs use AI scribes to record patient notes \u2013 but do they trade care for convenience?",
+      "summary": "Some doctors argue it allows them to better connect with patients, but advocates warn the AI technology risks the oppositeGet our breaking news email, free app or daily news podcastWhen a patient walks into a GP\u2019s office in Australia today, the doctor may begin with a question: \u201cDo you give consent to use an AI scribe to record our conversation?\u201dThat\u2019s what is supposed to happen, at least. Continue reading...",
+      "url": "https://www.theguardian.com/australia-news/2026/mar/29/doctors-using-ai-for-notes-australia",
+      "source": "The Guardian",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-29T14:26:43.432792+00:00",
+      "score_raw": 0.8738,
+      "score": 0.8738
+    },
+    {
+      "title": "Apple Pivots Its AI Strategy to App Store, Search-Like Platform Approach",
+      "summary": "Also: The company finally kills the Mac Pro.",
+      "url": "https://www.bloomberg.com/news/newsletters/2026-03-29/apple-doubles-down-on-hardware-services-with-revamped-ai-strategy-rare-bonuses-mnbpiwon",
+      "source": "Bloomberg",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T14:26:44.056465+00:00",
+      "score_raw": -0.5423,
+      "score": -0.5423
+    },
+    {
+      "title": "Meta's court losses spell potential trouble for AI research, consumer safety",
+      "summary": "Meta's two courtroom defeats centered on different cases but both involved allegations that the company knew about its products' harms.",
+      "url": "https://www.cnbc.com/2026/03/29/metas-court-losses-spell-trouble-for-ai-research-consumer-safety.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T14:26:45.186707+00:00",
+      "score_raw": -0.775,
+      "score": -0.775
     }
   ],
   "daily_scores": {
@@ -2236,9 +2286,9 @@
       }
     },
     "2026-03-28": {
-      "mean": 0.1466,
-      "count": 17,
-      "pos": 11,
+      "mean": 0.187,
+      "count": 18,
+      "pos": 12,
       "neg": 6,
       "neu": 0,
       "sources": [
@@ -2268,8 +2318,8 @@
           "count": 4
         },
         "The Guardian": {
-          "mean": 0.0902,
-          "count": 2
+          "mean": 0.3514,
+          "count": 3
         },
         "CNBC Tech": {
           "mean": 0.1901,
@@ -2282,18 +2332,38 @@
       }
     },
     "2026-03-29": {
-      "mean": 0.1218,
-      "count": 2,
-      "pos": 1,
-      "neg": 1,
+      "mean": -0.1679,
+      "count": 6,
+      "pos": 2,
+      "neg": 4,
       "neu": 0,
       "sources": [
+        "Bloomberg",
+        "CNBC Tech",
+        "The Guardian",
+        "The Verge",
         "ZDNet AI"
       ],
       "by_source": {
         "ZDNet AI": {
           "mean": 0.1218,
           "count": 2
+        },
+        "The Verge": {
+          "mean": 0.7569,
+          "count": 1
+        },
+        "The Guardian": {
+          "mean": -0.6908,
+          "count": 1
+        },
+        "Bloomberg": {
+          "mean": -0.5423,
+          "count": 1
+        },
+        "CNBC Tech": {
+          "mean": -0.775,
+          "count": 1
         }
       }
     }
