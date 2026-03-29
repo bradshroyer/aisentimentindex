@@ -1979,6 +1979,46 @@
       "timestamp": "2026-03-28T20:19:52.860282+00:00",
       "score_raw": 0.9987,
       "score": 1.0
+    },
+    {
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds",
+      "summary": "Bluesky\u2019s new app Attie uses AI to help people build custom feeds the open social networking protocol atproto.",
+      "url": "https://techcrunch.com/2026/03/28/bluesky-leans-into-ai-with-attie-an-app-for-building-custom-feeds/",
+      "source": "TechCrunch",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-29T04:30:17.558326+00:00",
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Stanford study outlines dangers of asking AI chatbots for personal advice",
+      "summary": "While there\u2019s been plenty of debate about AI sycophancy, a new study by Stanford computer scientists attempts to measure how harmful that tendency might be.",
+      "url": "https://techcrunch.com/2026/03/28/stanford-study-outlines-dangers-of-asking-ai-chatbots-for-personal-advice/",
+      "source": "TechCrunch",
+      "date": "2026-03-28",
+      "timestamp": "2026-03-29T04:30:17.558365+00:00",
+      "score_raw": -0.4939,
+      "score": -0.4939
+    },
+    {
+      "title": "Switching to Claude? Here's how to take your ChatGPT memories with you",
+      "summary": "A new Claude AI feature now lets you copy your memories and preferences from another AI so making the change is easier.",
+      "url": "https://www.zdnet.com/article/switch-to-claude-ai-import-memories-preferences/",
+      "source": "ZDNet AI",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T04:30:19.351639+00:00",
+      "score_raw": 0.4215,
+      "score": 0.4215
+    },
+    {
+      "title": "5 reasons you should be more tight-lipped with your chatbot (and how to fix past mistakes)",
+      "summary": "Your casual conversations with AI chatbots could have some major privacy implications.",
+      "url": "https://www.zdnet.com/article/5-reasons-you-should-be-more-tight-lipped-with-your-chatbot/",
+      "source": "ZDNet AI",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T04:30:19.351656+00:00",
+      "score_raw": -0.1779,
+      "score": -0.1779
     }
   ],
   "daily_scores": {
@@ -2196,10 +2236,10 @@
       }
     },
     "2026-03-28": {
-      "mean": 0.1723,
-      "count": 15,
-      "pos": 10,
-      "neg": 5,
+      "mean": 0.1466,
+      "count": 17,
+      "pos": 11,
+      "neg": 6,
       "neu": 0,
       "sources": [
         "Bloomberg",
@@ -2220,8 +2260,8 @@
           "count": 5
         },
         "TechCrunch": {
-          "mean": 0.2617,
-          "count": 1
+          "mean": 0.0566,
+          "count": 3
         },
         "The Verge": {
           "mean": 0.2263,
@@ -2238,6 +2278,22 @@
         "VentureBeat AI": {
           "mean": 1.0,
           "count": 1
+        }
+      }
+    },
+    "2026-03-29": {
+      "mean": 0.1218,
+      "count": 2,
+      "pos": 1,
+      "neg": 1,
+      "neu": 0,
+      "sources": [
+        "ZDNet AI"
+      ],
+      "by_source": {
+        "ZDNet AI": {
+          "mean": 0.1218,
+          "count": 2
         }
       }
     }
