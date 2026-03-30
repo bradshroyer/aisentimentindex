@@ -36,6 +36,7 @@ SOURCE_MAP = {
     "arstechnica.com": "Ars Technica",
     "wired.com": "Wired",
     "bbc.co.uk": "BBC Technology",
+    "bbc.com": "BBC Technology",
     "theguardian.com": "The Guardian",
     "technologyreview.com": "MIT Tech Review",
     "bloomberg.com": "Bloomberg",
