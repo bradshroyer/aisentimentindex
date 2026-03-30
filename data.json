@@ -2239,6 +2239,146 @@
       "timestamp": "2026-03-30T09:03:50.156304+00:00",
       "score_raw": 0.4767,
       "score": 0.4767
+    },
+    {
+      "title": "ScaleOps raises $130M to improve computing efficiency amid AI demand",
+      "summary": "ScaleOps just raised $130M to tackle GPU shortages and soaring AI cloud costs by automating infrastructure in real time.",
+      "url": "https://techcrunch.com/2026/03/30/scaleops-130m-series-c-kubernetes-efficiency-ai-demand-funding/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:04.594148+00:00",
+      "score_raw": 0.5106,
+      "score": 0.6606
+    },
+    {
+      "title": "AI chip startup Rebellions raises $400 million at $2.3B valuation in pre-IPO round",
+      "summary": "The startup, which is planning to go public later this year, designs chips specifically for AI inference, another challenger to Nvidia's dominance.",
+      "url": "https://techcrunch.com/2026/03/30/ai-chip-startup-rebellions-raises-400-million-at-2-3b-valuation-in-pre-ipo-round/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:04.594171+00:00",
+      "score_raw": 0.0516,
+      "score": 0.0516
+    },
+    {
+      "title": "Mistral AI raises $830M in debt to set up a data center near Paris",
+      "summary": "Mistral aims to start operating the data center by the second quarter of 2026.",
+      "url": "https://techcrunch.com/2026/03/30/mistral-ai-raises-830m-in-debt-to-set-up-a-data-center-near-paris/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:04.594180+00:00",
+      "score_raw": -0.3612,
+      "score": -0.3612
+    },
+    {
+      "title": "Qodo raises $70M for code verification as AI coding scales",
+      "summary": "As AI floods software development with code, Qodo is betting the real challenge is making sure it actually works.",
+      "url": "https://techcrunch.com/2026/03/30/qodo-bets-on-code-verification-as-ai-coding-scales-raises-70m/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:04.594187+00:00",
+      "score_raw": 0.3818,
+      "score": 0.3818
+    },
+    {
+      "title": "5 Best Video Doorbell Cameras (2026): Smart, Battery, AI, Budget, and Subscription-Free",
+      "summary": "Never miss a delivery. These WIRED-tested picks will help you keep tabs on your front door from anywhere.",
+      "url": "https://www.wired.com/gallery/best-video-doorbells/",
+      "source": "Wired",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:05.266770+00:00",
+      "score_raw": 0.8763,
+      "score": 0.8763
+    },
+    {
+      "title": "Biren Tech\u2019s Revenue Triples on China\u2019s Demand for AI Chips",
+      "summary": "Shanghai Biren Technology Co.\u2019s annual revenue more than tripled, driven by China\u2019s surging demand for artificial intelligence chips.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/biren-tech-s-revenue-triples-on-china-s-demand-for-ai-chips",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.170458+00:00",
+      "score_raw": 0.2732,
+      "score": 0.2732
+    },
+    {
+      "title": "Meta Faces $310 Billion Market Value Drop on Legal, AI Concerns",
+      "summary": "Meta Platforms Inc. was looking like the best Big Tech stock in the market when the year began. But investors\u2019 fears of legal risks and heavy spending on artificial intelligence are bubbling to the surface, culminating in last week\u2019s 11% rout.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/meta-s-310-billion-tailspin-sparks-tobacco-moment-questions",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.170480+00:00",
+      "score_raw": 0.5106,
+      "score": 0.5106
+    },
+    {
+      "title": "OpenAI\u2019s ChatGPT App Store Took Aim at Apple, But Results Lag So Far",
+      "summary": "Six months in, ChatGPT\u2019s third-party apps offer limited functionality and have been frustrating for developers.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/openai-s-chatgpt-app-store-took-aim-at-apple-but-results-lag-so-far",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.170524+00:00",
+      "score_raw": -0.8519,
+      "score": -0.8519
+    },
+    {
+      "title": "Trump\u2019s Technology Council Ignores Top AI Company Chiefs",
+      "summary": "Presidential advisory group dominated by old-line tech names",
+      "url": "https://www.bloomberg.com/news/newsletters/2026-03-30/trump-s-tech-group-ignores-leaders-of-top-ai-companies",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.170532+00:00",
+      "score_raw": -0.0772,
+      "score": -0.0772
+    },
+    {
+      "title": "Inside the Odd&mdash;and Oddly Human&mdash;Work of Teaching AI to Talk",
+      "summary": "They vent, confess and role-play with strangers, all to help machines learn how to sound human.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/inside-the-odd-and-oddly-human-work-of-teaching-ai-to-talk",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.170586+00:00",
+      "score_raw": 0.4019,
+      "score": 0.4019
+    },
+    {
+      "title": "Forterro CEO: AI-driven Fears an Overreaction",
+      "summary": "Dean Forbes, CEO of industrial software provider Forterro says the technological shift that AI has brought about in the software space presents an \"opportunity\" for companies like Forterro. There have been growing fears that entire industries, including software programming, are at risk of being disrupted by artificial intelligence. In an interview on Thursday March 26 on \"The Pulse with Francine Lacqua,\" Forbes also spoke about the impact of geopolitical uncertainty on business. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-30/forterro-ceo-ai-driven-fears-an-overreaction-video",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.170595+00:00",
+      "score_raw": -0.1779,
+      "score": -0.1779
+    },
+    {
+      "title": "This AI expert says the job apocalypse isn't coming, even if you're a coder - here's why",
+      "summary": "AI will either substitute or supplement our work. Too many people are focused on the substitute side, argues Stanford's Erik Brynjolfsson.",
+      "url": "https://www.zdnet.com/article/ai-job-apocalypse-not-happening-for-coders/",
+      "source": "ZDNet AI",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:06.416641+00:00",
+      "score_raw": 0.0,
+      "score": -0.3
+    },
+    {
+      "title": "Samsung-backed AI chip firm Rebellions raises $400 million ahead of IPO",
+      "summary": "Rebellions' chips are focused on AI inferencing, putting it in competition with Nvidia as well as other startups from Groq to Cerebras.",
+      "url": "https://www.cnbc.com/2026/03/30/ai-chip-startup-rebellions-raises-400-million-ipo.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:07.295861+00:00",
+      "score_raw": 0.128,
+      "score": 0.128
+    },
+    {
+      "title": "Tech giants unite to fight online scams",
+      "summary": "Google, Amazon, Meta and other major companies joined a new anti-scam agreement as AI-driven fraud grows more convincing and harder to detect.",
+      "url": "https://www.foxnews.com/tech/tech-giants-unite-fight-online-scams",
+      "source": "Fox News Tech",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T14:57:11.177316+00:00",
+      "score_raw": -0.5118,
+      "score": -0.5118
     }
   ],
   "daily_scores": {
@@ -2553,43 +2693,58 @@
       }
     },
     "2026-03-30": {
-      "mean": 0.4219,
-      "count": 12,
-      "pos": 9,
-      "neg": 3,
+      "mean": 0.2333,
+      "count": 26,
+      "pos": 17,
+      "neg": 9,
       "neu": 0,
       "sources": [
         "Bloomberg",
         "CNBC Tech",
+        "Fox News Tech",
         "NPR Technology",
         "TechCrunch",
         "The Guardian",
-        "The Verge"
+        "The Verge",
+        "Wired",
+        "ZDNet AI"
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": -0.3612,
-          "count": 1
+          "mean": 0.0743,
+          "count": 5
         },
         "The Verge": {
           "mean": 0.1779,
           "count": 1
         },
         "Bloomberg": {
-          "mean": 0.5516,
-          "count": 6
+          "mean": 0.2823,
+          "count": 12
         },
         "The Guardian": {
           "mean": 0.5904,
           "count": 1
         },
         "CNBC Tech": {
-          "mean": -0.0516,
-          "count": 1
+          "mean": 0.0382,
+          "count": 2
         },
         "NPR Technology": {
           "mean": 0.6987,
           "count": 2
+        },
+        "Wired": {
+          "mean": 0.8763,
+          "count": 1
+        },
+        "ZDNet AI": {
+          "mean": -0.3,
+          "count": 1
+        },
+        "Fox News Tech": {
+          "mean": -0.5118,
+          "count": 1
         }
       }
     }
