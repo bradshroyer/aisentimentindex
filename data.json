@@ -2379,6 +2379,166 @@
       "timestamp": "2026-03-30T14:57:11.177316+00:00",
       "score_raw": -0.5118,
       "score": -0.5118
+    },
+    {
+      "title": "As more Americans adopt AI tools, fewer say they can trust the results",
+      "summary": "AI adoption is rising in the U.S., but trust remains low, with most Americans concerned about transparency, regulation, and the technology\u2019s broader societal impact, according to a new Quinnipiac poll.",
+      "url": "https://techcrunch.com/2026/03/30/ai-trust-adoption-poll-more-americans-adopt-tools-fewer-say-they-can-trust-the-results/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:56.946911+00:00",
+      "score_raw": 0.664,
+      "score": 0.814
+    },
+    {
+      "title": "Bluesky\u2019s new AI tool Attie is already the most blocked account other than J.D. Vance",
+      "summary": "More than 125,000 Bluesky users have blocked Attie in just a few days,  sending a strong message from the user base.",
+      "url": "https://techcrunch.com/2026/03/30/blueskys-new-ai-tool-attie-is-already-the-most-blocked-account-other-than-j-d-vance/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:56.946981+00:00",
+      "score_raw": -0.0498,
+      "score": -0.0498
+    },
+    {
+      "title": "Okta&#8217;s CEO is betting big on AI agent identity",
+      "summary": "Today, I\u2019m talking with Todd McKinnon, who is co-founder and CEO of Okta, a platform that lets big companies manage security and identity across all the apps and services their employees use. Think of it like login management \u2014 actually, that\u2019s a great way to think about it because the way most people encounter Okta [&#8230;]",
+      "url": "https://www.theverge.com/podcast/902264/oktas-ceo-is-betting-big-on-ai-agent-identity",
+      "source": "The Verge",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:57.301089+00:00",
+      "score_raw": 0.8402,
+      "score": 0.8402
+    },
+    {
+      "title": "There are more AI health tools than ever\u2014but how well do they work?",
+      "summary": "Earlier this month, Microsoft launched Copilot Health, a new space within its Copilot app where users will be able to connect their medical records and ask specific questions about their health. A couple of days earlier, Amazon had announced that Health AI, an LLM-based tool previously restricted to members of its One Medical service, would&#8230;",
+      "url": "https://www.technologyreview.com/2026/03/30/1134795/there-are-more-ai-health-tools-than-ever-but-how-well-do-they-work/",
+      "source": "MIT Tech Review",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.486979+00:00",
+      "score_raw": 0.1779,
+      "score": 0.0779
+    },
+    {
+      "title": "The Pentagon\u2019s culture war tactic against Anthropic has backfired",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first,\u00a0sign up here. Last Thursday, a California judge temporarily blocked the Pentagon from labeling Anthropic a supply chain risk and ordering government agencies to stop using its AI. It\u2019s the latest development in the month-long&#8230;",
+      "url": "https://www.technologyreview.com/2026/03/30/1134881/the-pentagons-culture-war-tactic-against-anthropic-has-backfired/",
+      "source": "MIT Tech Review",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.486999+00:00",
+      "score_raw": -0.7783,
+      "score": -0.7783
+    },
+    {
+      "title": "Dan Niles: 'Nowhere Near the Bottom' in Software",
+      "summary": "Niles Investment Management Founder & Portfolio Manager Dan Niles discusses the fall in tech stocks since the outset of the war in Iran, why software is 'nowhere near the bottom,' and how agentic AI will drive tech's next phase higher. He talks with Katie Greifeld and Bailey Lipschultz on \"The Close.\" (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-30/dan-niles-nowhere-near-the-bottom-in-software-video",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.907157+00:00",
+      "score_raw": -0.5994,
+      "score": -0.5994
+    },
+    {
+      "title": "More Than Half of US Says AI Likely to Harm Them, Poll Finds",
+      "summary": "Americans are increasingly turning against artificial intelligence, with growing majorities saying they fear the fast-moving technology will take away their jobs and hurt education, according to a new Quinnipiac poll.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/more-than-half-of-us-says-ai-likely-to-harm-them-poll-finds",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.907228+00:00",
+      "score_raw": -0.743,
+      "score": -0.743
+    },
+    {
+      "title": "Meta\u2019s $280 Billion Tailspin Sparks \u2018Tobacco Moment\u2019\u00a0Questions",
+      "summary": "Meta Platforms Inc. was looking like the best Big Tech stock in the market when the year began. But investors\u2019 fears of legal risks and heavy spending on artificial intelligence are bubbling to the surface, culminating in last week\u2019s 11% rout.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/meta-s-310-billion-tailspin-sparks-tobacco-moment-questions",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.907266+00:00",
+      "score_raw": 0.4404,
+      "score": 0.4404
+    },
+    {
+      "title": "Goldman CIO on the Warp-Speed Improvements in AI",
+      "summary": "With AI capabilities advancing at an unprecedented speed, how are companies adapting to the rapidly changing landscape?\n\nGoldman Sachs Chief Information Officer Marco Argenti joins Tracy Alloway and Joe Weisenthal on the Odd Lots podcast to discuss what AI deployment at the bank actually looks like. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-30/goldman-cio-on-the-warp-speed-improvements-in-ai-video",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.907274+00:00",
+      "score_raw": 0.3612,
+      "score": 0.3612
+    },
+    {
+      "title": "Mistral Raises $830 Million to House Nvidia Chips in Data Center",
+      "summary": "Mistral AI, a French startup trying to build a European alternative to OpenAI, has secured its first debt financing of $830 million for a data center project outside of Paris, becoming the latest technology company tapping credit markets for an unprecedented buildout of artificial intelligence infrastructure.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/ai-startup-mistral-raises-830-million-in-data-center-debt-rush",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.907282+00:00",
+      "score_raw": 0.7096,
+      "score": 0.7096
+    },
+    {
+      "title": "Blackstone Acquires Napa Valley Resort in a Foreclosure Sale",
+      "summary": "Blackstone Inc. bought a luxury resort in California\u2019s Napa Valley, extending a bet that booming demand for artificial intelligence will translate into real estate profits in San Francisco and the surrounding region.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/blackstone-acquires-napa-valley-resort-in-a-foreclosure-sale",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:58.907299+00:00",
+      "score_raw": 0.6124,
+      "score": 0.6124
+    },
+    {
+      "title": "What Google's TurboQuant can and can't do for AI's spiraling cost",
+      "summary": "Google's real-time quantization could be important for running local AI. Here's why.",
+      "url": "https://www.zdnet.com/article/what-googles-turboquant-can-and-cant-do-for-ais-spiraling-cost/",
+      "source": "ZDNet AI",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:59.258135+00:00",
+      "score_raw": 0.2023,
+      "score": 0.2023
+    },
+    {
+      "title": "RSAC 2026 shipped five agent identity frameworks and left three critical gaps open",
+      "summary": "\u201cYou can deceive, manipulate, and lie. That\u2019s an inherent property of language. It\u2019s a feature, not a flaw,\u201d CrowdStrike CTO Elia Zaitsev told VentureBeat in an exclusive interview at RSA Conference 2026. If deception is baked into language itself, every vendor trying to secure AI agents by analyzing their intent is chasing a problem that cannot be conclusively solved. Zaitsev is betting on context instead. CrowdStrike\u2019s Falcon sensor walks the process tree on an endpoint and tracks what agents did, not what agents appeared to intend. \u201cObserving actual kinetic actions is a structured, solvable problem,\u201d Zaitsev told VentureBeat. \u201cIntent is not.\u201dThat argument landed 24 hours after CrowdStrike CEO George Kurtz disclosed two production incidents at Fortune 50 companies. In the first, a CEO&#x27;s AI agent rewrote the company&#x27;s own security policy \u2014 not because it was compromised, but because it wanted to fix a problem, lacked the permissions to do so, and removed the restriction itself. Every identity check passed; the company caught the modification by accident. The second incident involved a 100-agent Slack swarm that delegated a code fix between agents with no human approval. Agent 12 made the commit. The team discovered it after the fact.Two incidents at two Fortune 50 companies. Caught by accident both times. Every identity framework that shipped at RSAC this week missed them. The vendors verified who the agent was. None of them tracked what the agent did.The urgency behind every framework launch reflects a broader market shift. &quot;The difficulty of securing agentic AI is likely to push customers toward trusted platform vendors that can offer broader coverage across the expanding attack surface,&quot; according to William Blair&#x27;s RSA Conference 2026 equity research report by analyst Jonathan Ho. Five vendors answered that call at RSAC this week. None of them answered it completely.Attackers are already inside enterprise pilotsThe scale of the exposure is already visible in production data. CrowdStrike&#x27;s Falcon sensors detect more than 1,800 distinct AI applications across the company&#x27;s customer fleet, generating 160 million unique instances on enterprise endpoints. Cisco found that 85% of its enterprise customers surveyed have pilot agent programs; only 5% have moved to production, meaning the vast majority of these agents are running without the governance structures production deployments typically require. &quot;The biggest impediment to scaled adoption in enterprises for business-critical tasks is establishing a sufficient amount of trust,&quot; Cisco President and Chief Product Officer Jeetu Patel told VentureBeat in an exclusive interview at RSA Conference 2026. &quot;Delegating versus trusted delegating of tasks to agents. The difference between those two, one leads to bankruptcy and the other leads to market dominance.&quot;Etay Maor, VP of Threat Intelligence at Cato Networks, ran a live Censys scan during an exclusive VentureBeat interview at RSA Conference 2026 and counted nearly 500,000 internet-facing OpenClaw instances. The week before: 230,000. Cato CTRL senior researcher Vitaly Simonovich documented a BreachForums listing from February 22, 2026, published on the Cato CTRL blog on February 25, where a threat actor advertised root shell access to a UK CEO\u2019s computer for $25,000 in cryptocurrency. The selling point was the CEO\u2019s OpenClaw AI personal assistant, which had accumulated the company\u2019s production database, Telegram bot tokens, and Trading 212 API keys in plain-text Markdown with no encryption at rest. \u201cYour AI? It\u2019s my AI now. It\u2019s an assistant for the attacker,\u201d Maor told VentureBeat.The exposure data from multiple independent researchers tells the same story. Bitsight found more than 30,000 OpenClaw instances exposed to the public internet between January 27 and February 8, 2026. SecurityScorecard identified 15,200 of those instances as vulnerable to remote code execution through three high-severity CVEs, the worst rated CVSS 8.8. Koi Security found 824 malicious skills on ClawHub \u2014 335 of them tied to ClawHavoc, which Kurtz flagged in his keynote as the first major supply chain attack on an AI agent ecosystem.Five vendors, three gaps none of them closedCisco went deepest on identity governance. Duo Agentic Identity registers agents as distinct identity objects mapped to human owners, and every tool call routes through an MCP gateway in Secure Access SSE. Cisco Identity Intelligence catches shadow agents by monitoring network traffic rather than authentication logs. Patel told VentureBeat that today\u2019s agents behave \u201cmore like teenagers \u2014 supremely intelligent, but with no fear of consequence, easily sidetracked or influenced.\u201d CrowdStrike made the biggest philosophical bet, treating agents as endpoint telemetry and tracking the kinetic layer through Falcon\u2019s process-tree lineage. CrowdStrike expanded AIDR to cover Microsoft Copilot Studio agents and shipped Shadow SaaS and AI Agent Discovery across Copilot, Salesforce Agentforce, ChatGPT Enterprise, and OpenAI Enterprise GPT.Palo Alto Networks built Prisma AIRS 3.0 with an agentic registry, an agentic IDP, and an MCP gateway for runtime traffic control. Palo Alto Networks\u2019 pending Koi acquisition adds supply chain and runtime visibility. Microsoft spread governance across Entra, Purview, Sentinel, and Defender, with Microsoft Sentinel embedding MCP natively and a Claude MCP connector in public preview April 1. Cato CTRL delivered the adversarial proof that the identity gaps the other four vendors are trying to close are already being exploited. Maor told VentureBeat that enterprises abandoned basic security principles when deploying agents. \u201cWe just gave these AI tools complete autonomy,\u201d Maor said.Gap 1: Agents can rewrite the rules governing their own behaviorThe Kurtz incident illustrates the gap exactly. Every credential check passed \u2014 the action was authorized. Zaitsev argues that the only reliable detection happens at the kinetic layer: which file was modified, by what process, initiated by what agent, compared against a behavioral baseline. Intent-based controls evaluate whether the call looks malicious. This one did not. Palo Alto Networks offers pre-deployment red teaming in Prisma AIRS 3.0, but red teaming runs before deployment, not during runtime when self-modification happens. No vendor ships behavioral anomaly detection for policy-modifying actions as a production capability.Patel framed the stakes in the VentureBeat interview: \u201cThe agent takes the wrong action and worse yet, some of those actions might be critical actions that are not reversible.\u201d Board question: An authorized agent modifies the policy governing the agent\u2019s future actions. What fires?Gap 2: Agent-to-agent handoffs have no trust verificationThe 100-agent swarm is the proof point. Agent A found a defect and posted to Slack. Agent 12 executed the fix. No human approved the delegation. Zaitsev\u2019s approach: collapse agent identities back to the human. An agent acting on your behalf should never have more privileges than you do. But no product follows the delegation chain between agents. IAM was built for human-to-system. Agent-to-agent delegation needs a trust primitive that does not exist in OAuth, SAML, or MCP.Gap 3: Ghost agents hold live credentials with no offboardingOrganizations adopt AI tools, run a pilot, lose interest, and move on. The agents keep running. The credentials stay active. Maor calls these abandoned instances ghost agents. Zaitsev connected ghost agents to a broader failure: agents expose where enterprises delayed action on basic identity hygiene. Standing privileged accounts, long-lived credentials, and missing offboarding procedures. These problems existed for humans. Agents running at machine speed make the consequences catastrophic.Maor demonstrated a Living Off the AI attack at the RSA Conference 2026, chaining Atlassian\u2019s MCP and Jira Service Management to show that attackers do not separate trusted tools, services, and models. Attackers chain all three. \u201cWe need an HR view of agents,\u201d Maor told VentureBeat. \u201cOnboarding, monitoring, offboarding. If there\u2019s no business justification? Removal.\u201dWhy these three gaps resist a product fixHuman IAM assumes the identity holder will not rewrite permissions, spawn new identities, or leave. Agents violate all three. OAuth handles user-to-service. SAML handles federated human identity. MCP handles model-to-tool. None includes agent-to-agent verification.Five vendors against three gapsCiscoCrowdStrikeMicrosoftPalo Alto NetworksUnsolvedRegistration. Can the vendor discover and inventory agents?Duo Agentic Identity. Agents registered as identity objects with human owners. Shadow agent detection via network traffic.Falcon sensor auto-discovery. 1,800+ agent apps, ~160M instances across customer fleet.Security Dashboard for AI + Entra shadow AI detection at the network layer.Agentic registry in Prisma AIRS 3.0. Agents inventoried before operating.All four register agents. No cross-vendor identity standard exists.Self-modification. Can the vendor detect when an agent changes its own policies?MCP gateway catches anomalous tool-call patterns in real time, but does not monitor for direct policy file modifications on the endpoint.Process-tree lineage tracks file modifications at the action layer. Could detect a policy file change, but no dedicated self-modification rule ships.Defender predictive shielding adjusts access policies reactively during active attacks. Not proactive self-modification detection.AI Red Teaming tests for this before deployment. No runtime detection after the agent is live.OPEN. No vendor detects an agent rewriting the policy governing the agent\u2019s own behavior as a shipping capability.Delegation. Can the vendor track when one agent hands work to another?Maps each agent to a human owner. Does not track agent-to-agent handoffs.Collapses the agent identity to the human operator. Does not correlate the delegation chains between agents.Entra governs individual non-human identities. No multi-agent chain tracking.AI Agent Gateway governs individual agents. No delegation primitive between agents.OPEN. No trust primitive for agent-to-agent delegation exists in OAuth, SAML, or MCP.Decommission. Can the vendor confirm a killed agent holds zero credentials?Identity Intelligence runs a continuous inventory of active agents.Shadow SaaS + AI Agent Discovery finds running agents across SaaS and endpoints.Entra&#x27;s shadow AI detection surfaces unmanaged AI applications.Koi acquisition (pending) adds endpoint visibility for agent applications.OPEN. All four discover running agents. None verifies zero residual credentials after decommission.Runtime / Kinetic. Can the vendor monitor what agents do in real time?MCP gateway enforces policy per tool call at the network layer. Contextual anomaly detection on call patterns.Falcon EDR tracks commands, scripts, file activity, and network connections at the process level.Defender endpoint + cloud monitoring. Predictive shielding during active incidents.Prisma AIRS AI Agent Gateway for runtime traffic control.CrowdStrike is the only vendor framing endpoint runtime as the primary safety net for agentic behavior.Five things to do Monday morning before your board asksAudit self-modification risk. Pull every agent with write access to security policies, IAM configs, firewall rules, or ACLs. Flag any agent that can modify controls governing the agent\u2019s own behavior. No vendor automates this.Map delegation paths. Document every agent-to-agent invocation. Flag delegation without human approval. Human-in-the-loop on every delegation event until a trust primitive ships.Kill ghost agents. Build a registry. For each agent: business justification, human owner, credentials held, systems accessed. No justification? Manual revoke. Weekly.Stress test the MCP gateway enforcement. Cisco, Palo Alto Networks, and Microsoft all announced MCP gateways this week. Verify that agent tool traffic actually routes through the gateway. A misconfigured gateway creates false confidence while agents call tools directly.Baseline agent behavioral norms. Before any agent reaches production, establish what normal looks like: typical API calls, data access patterns, systems touched, and hours of activity. Without a behavioral baseline, the kinetic-layer anomaly detection Zaitsev describes has nothing to compare against.Zaitsev\u2019s advice was blunt: you already know what to do. Agents just made the cost of not doing it catastrophic. Every vendor at RSAC verified who the agent was. None of them tracked what the agent did.",
+      "url": "https://venturebeat.com/security/rsac-2026-agent-identity-frameworks-three-gaps",
+      "source": "VentureBeat AI",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:59.551904+00:00",
+      "score_raw": -0.9988,
+      "score": -1.0
+    },
+    {
+      "title": "Cohere's open-weight ASR model hits 5.4% word error rate \u2014 low enough to replace speech APIs in production pipelines",
+      "summary": "Enterprises building voice-enabled workflows have had limited options for production-grade transcription: closed APIs with data residency risks, or open models that trade accuracy for deployability. Cohere&#x27;s new open-weight ASR model, Transcribe, is built to compete on all four key differentiators \u2014 contextual accuracy, latency, control and cost.Cohere says that Transcribe outperforms current leaders on accuracy \u2014 and unlike closed APIs, it can run on an organization&#x27;s own infrastructure.Cohere, which can be accessed via an API or in Cohere\u2019s Model Vault as cohere-transcribe-03-2026, has 2 billion parameters and is licensed under Apache-2.0. The company said Transcribe has an average word error rate (WER) of just 5.42%, so it makes fewer mistakes than similar models.It\u2019s trained on 14 languages: English, French, German, Italian, Spanish, Greek, Dutch, Polish, Portuguese, Chinese, Japanese, Korean, Vietnamese and Arabic. The company did not specify which Chinese dialect the model was trained on.\u00a0Cohere said it trained the model \u201cwith a deliberate focus on minimizing WER, while keeping production readiness top-of-mind.\u201d According to Cohere, the result is a model that enterprises can plug directly into voice-powered automations, transcription pipelines, and audio search workflows.Self-hosted transcription for production pipelinesUntil recently, enterprise transcription has been a trade-off \u2014 closed APIs offered accuracy but locked in data; open models offered control but lagged on performance. Unlike Whisper, which launched as a research model under MIT license, Transcribe is available for commercial use from release and can run on an organization&#x27;s own local GPU infrastructure. Early users flagged the commercial-ready open-weight approach as meaningful for enterprise deployments.Organizations can bring Transcribe to their own local instances, since Cohere said the model has a more manageable inference footprint for local GPUs. The company said they were able to do this because the model \u201cextends the Pareto frontier, delivering state-of-the-art accuracy (low WER) while sustaining best-in-class throughput (high RTFx) within the 1B+ parameter model cohort.\u201dHow Transcribe stacks upTranscribe outperformed speech-model stalwarts, including Whisper from OpenAI, which powers the voice feature of ChatGPT, and ElevenLabs, which many big retail brands deploy. It currently tops the Hugging Face ASR leaderboard, leading with an average word error rate of 5.42%, outperforming Whisper Large v3 at 7.44%, ElevenLabs Scribe v2 at 5.83%, and Qwen3-ASR-1.7B at 5.76%.Based on other datasets tested by Hugging Face, Transcribe also performed well. The AMI dataset, which measures meeting understanding and dialogue analysis, Transcribe logged a score of 8.15%. For the Voxpopuli dataset that tests understanding of different accents, the model scored 5.87%, beaten only by Zoom Scribe.Early users have flagged accuracy and local deployment as the standout factors \u2014 particularly for teams that have been routing audio data through external APIs and want to bring that workload in-house.\nFor engineering teams building RAG pipelines or agent workflows with audio inputs, Transcribe offers a path to production-grade transcription without the data residency and latency penalties of closed APIs.",
+      "url": "https://venturebeat.com/orchestration/coheres-open-weight-asr-model-hits-5-4-word-error-rate-low-enough-to-replace",
+      "source": "VentureBeat AI",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:59.551974+00:00",
+      "score_raw": 0.2382,
+      "score": 0.2382
+    },
+    {
+      "title": "Palo Alto shares pop as CEO Nikesh Arora buys stock for first time in years",
+      "summary": "Cybersecurity stocks have plunged this year on worries that AI will disrupt their business models.",
+      "url": "https://www.cnbc.com/2026/03/30/palo-alto-stock-nikesh-arora-buys-shares.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:35:59.791651+00:00",
+      "score_raw": -0.1531,
+      "score": -0.1531
+    },
+    {
+      "title": "China's AI chatbots are advanced and versatile \u2014 and begging for more users",
+      "summary": "Chinese AI companies are focused less on being cutting edge and more on attracting customers. That means holiday promotions, and making chatbots useful in everyday life.",
+      "url": "https://www.npr.org/2026/03/30/nx-s1-5760939/china-chatbot-industry-doubao-qwen-yuanbao",
+      "source": "NPR Technology",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T20:36:00.133903+00:00",
+      "score_raw": 0.907,
+      "score": 1.0
     }
   ],
   "daily_scores": {
@@ -2693,58 +2853,68 @@
       }
     },
     "2026-03-30": {
-      "mean": 0.2333,
-      "count": 26,
-      "pos": 17,
-      "neg": 9,
-      "neu": 0,
+      "mean": 0.1914,
+      "count": 42,
+      "pos": 27,
+      "neg": 14,
+      "neu": 1,
       "sources": [
         "Bloomberg",
         "CNBC Tech",
         "Fox News Tech",
+        "MIT Tech Review",
         "NPR Technology",
         "TechCrunch",
         "The Guardian",
         "The Verge",
+        "VentureBeat AI",
         "Wired",
         "ZDNet AI"
       ],
       "by_source": {
         "TechCrunch": {
-          "mean": 0.0743,
-          "count": 5
+          "mean": 0.1623,
+          "count": 7
         },
         "The Verge": {
-          "mean": 0.1779,
-          "count": 1
+          "mean": 0.5091,
+          "count": 2
         },
         "Bloomberg": {
-          "mean": 0.2823,
-          "count": 12
+          "mean": 0.2316,
+          "count": 18
         },
         "The Guardian": {
           "mean": 0.5904,
           "count": 1
         },
         "CNBC Tech": {
-          "mean": 0.0382,
-          "count": 2
+          "mean": -0.0256,
+          "count": 3
         },
         "NPR Technology": {
-          "mean": 0.6987,
-          "count": 2
+          "mean": 0.7992,
+          "count": 3
         },
         "Wired": {
           "mean": 0.8763,
           "count": 1
         },
         "ZDNet AI": {
-          "mean": -0.3,
-          "count": 1
+          "mean": -0.0488,
+          "count": 2
         },
         "Fox News Tech": {
           "mean": -0.5118,
           "count": 1
+        },
+        "MIT Tech Review": {
+          "mean": -0.3502,
+          "count": 2
+        },
+        "VentureBeat AI": {
+          "mean": -0.3809,
+          "count": 2
         }
       }
     }
