@@ -2159,6 +2159,86 @@
       "timestamp": "2026-03-30T04:38:13.412371+00:00",
       "score_raw": -0.4939,
       "score": -0.4939
+    },
+    {
+      "title": "UK\u2019s big, risky AI bet \u2013 podcast",
+      "summary": "Reporter Aisha Down explores the UK\u2019s \u2018phantom investments\u2019 in AI, and the risk the government has taken in betting so heavily on the technology if it all goes bustFor years now, the UK has bet big on AI. As Keir Starmer put it last year, he wanted to \u2018unleash AI\u2019 to boost growth across the country.Yet what has become of the billions promised in AI investment? Reporter Aisha Down charts the murky world of building projects behind schedule, vague spending commitments, and even vast sums being thrown at chips at risk of being out of date. Continue reading...",
+      "url": "https://www.theguardian.com/news/audio/2026/mar/30/uk-big-risky-ai-bet",
+      "source": "The Guardian",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:48.730210+00:00",
+      "score_raw": 0.4404,
+      "score": 0.5904
+    },
+    {
+      "title": "Goldman CIO Marco Argenti on the Warp-Speed Improvements in AI | Odd Lots",
+      "summary": "When we last spoke to Marco Argenti, chief information officer at Goldman Sachs, we were talking about how the bank was deploying AI, including the development of its own internal tools. But that was a year and a half ago and a lot has changed since then, especially with the arrival of agentic platforms like Claude Code. So what exactly is Goldman Sachs doing with AI now? And what has its experience with the new tech been like so far? On this episode, we catch up with Marco to discuss what AI deployment at the bank actually looks like at the moment &mdash; including how AI coding is changing the work of its developers and engineers &mdash; to all the data challenges and regulatory concerns that come with integrating this technology at scale.\n (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-30/warp-speed-improvements-in-ai-video",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:49.219404+00:00",
+      "score_raw": 0.89,
+      "score": 0.89
+    },
+    {
+      "title": "European Bank Stocks to Snap Record Quarterly Run on Iran, AI",
+      "summary": "European banking shares are poised to snap a record 13-quarter winning streak, as optimism over strong earnings and capital returns is displaced by concerns over the impact of the Iran war and an exodus from the private credit market.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/european-bank-stocks-to-snap-record-quarterly-run-on-iran-ai",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:49.219423+00:00",
+      "score_raw": 0.9022,
+      "score": 0.7522
+    },
+    {
+      "title": "Goldman CIO Marco Argenti on the Warp-Speed Improvements in AI",
+      "summary": "Look how much has changed in just a year and a half.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/goldman-cio-marco-argenti-on-changes-in-corporate-ai-use",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:49.219433+00:00",
+      "score_raw": 0.3182,
+      "score": 0.4682
+    },
+    {
+      "title": "Odd Lots: Goldman\u2019s Argenti on the Improvements in AI (Podcast)",
+      "summary": "When we last spoke to Marco Argenti, chief information officer at Goldman Sachs, we were talking about how the bank was deploying AI, including the development of its own internal tools. But that was a year and a half ago and a lot has changed since then, especially with the arrival of agentic platforms like Claude Code. So what exactly is Goldman Sachs doing with AI now? And what has its experience with the new tech been like so far? On this episode, we catch up with Marco to discuss what AI de",
+      "url": "https://www.bloomberg.com/news/audio/2026-03-30/odd-lots-goldman-sachs-cio-marco-argenti-on-the-improvements-in-ai",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:49.219443+00:00",
+      "score_raw": 0.782,
+      "score": 0.782
+    },
+    {
+      "title": "Mistral secures $830 million in debt financing to fund AI data center",
+      "summary": "Mistral is one of the few European startups building foundational AI models.",
+      "url": "https://www.cnbc.com/2026/03/30/mistral-ai-paris-data-center-cluster-debt-financing.html",
+      "source": "CNBC Tech",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:50.067134+00:00",
+      "score_raw": -0.0516,
+      "score": -0.0516
+    },
+    {
+      "title": "China's chatbot industry is fiercely competing for customers. Cue the freebies",
+      "summary": "Chinese AI companies are focused less on being cutting edge and more on attracting customers. That means holiday promotions, and making chatbots useful in everyday life.",
+      "url": "https://www.npr.org/2026/03/30/nx-s1-5760939/china-chatbot-industry-doubao-qwen-yuanbao",
+      "source": "NPR Technology",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:50.156290+00:00",
+      "score_raw": 0.9208,
+      "score": 0.9208
+    },
+    {
+      "title": "Expert talks about the Pentagon's use of artificial intelligence",
+      "summary": "NPR's Steve Inskeep speaks with Tristan Harris, co-founder of the Center for Humane Technology, about the use of AI by the Pentagon.",
+      "url": "https://www.npr.org/2026/03/30/nx-s1-5750502/expert-talks-about-the-pentagons-use-of-artificial-intelligence",
+      "source": "NPR Technology",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T09:03:50.156304+00:00",
+      "score_raw": 0.4767,
+      "score": 0.4767
     }
   ],
   "daily_scores": {
@@ -2473,14 +2553,17 @@
       }
     },
     "2026-03-30": {
-      "mean": 0.0584,
-      "count": 4,
-      "pos": 2,
-      "neg": 2,
+      "mean": 0.4219,
+      "count": 12,
+      "pos": 9,
+      "neg": 3,
       "neu": 0,
       "sources": [
         "Bloomberg",
+        "CNBC Tech",
+        "NPR Technology",
         "TechCrunch",
+        "The Guardian",
         "The Verge"
       ],
       "by_source": {
@@ -2493,7 +2576,19 @@
           "count": 1
         },
         "Bloomberg": {
-          "mean": 0.2085,
+          "mean": 0.5516,
+          "count": 6
+        },
+        "The Guardian": {
+          "mean": 0.5904,
+          "count": 1
+        },
+        "CNBC Tech": {
+          "mean": -0.0516,
+          "count": 1
+        },
+        "NPR Technology": {
+          "mean": 0.6987,
           "count": 2
         }
       }
