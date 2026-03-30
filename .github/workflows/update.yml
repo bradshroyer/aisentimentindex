@@ -22,8 +22,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Fetch feeds and rebuild
+      - name: Fetch RSS feeds and rebuild
         run: python fetch_and_build.py
+
+      - name: Backfill from NewsAPI.ai
+        env:
+          NEWSAPI_AI_KEY: ${{ secrets.NEWSAPI_AI_KEY }}
+        run: python backfill_newsapi_ai.py
 
       - name: Commit and push
         run: |

@@ -69,7 +69,7 @@ CONTEXT_OVERRIDES = {
     "cuts development": 0.25, "eliminates": 0.2, "disrupts": 0.1,
 }
 
-DATA_START_DATE = "2026-03-25"  # Project start date — ignore data before this
+DATA_START_DATE = "2026-02-28"  # Backfilled via NewsAPI.ai (30-day free tier limit)
 
 DATA_FILE = os.path.join(os.path.dirname(__file__) or ".", "data.json")
 HTML_FILE = os.path.join(os.path.dirname(__file__) or ".", "index.html")
