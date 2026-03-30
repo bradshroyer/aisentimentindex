@@ -2099,6 +2099,66 @@
       "timestamp": "2026-03-29T20:21:36.772272+00:00",
       "score_raw": 0.9351,
       "score": 0.9351
+    },
+    {
+      "title": "Why OpenAI really shut down Sora",
+      "summary": "OpenAI's decision last week to shut down Sora, its AI video-generation tool, just six months after releasing it to the public raised immediate suspicions. The app had invited users to upload their own faces \u2014 so was this some kind of elaborate data grab?",
+      "url": "https://techcrunch.com/2026/03/29/why-openai-really-shut-down-sora/",
+      "source": "TechCrunch",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T04:38:07.508931+00:00",
+      "score_raw": -0.3612,
+      "score": -0.3612
+    },
+    {
+      "title": "All the latest in AI &#8216;music&#8217;",
+      "summary": "AI has touched every part of the music industry, from sample sourcing and demo recording, to serving up digital liner notes and building playlists. There are technical and legal challenges, fierce ethical debates, and fears that the slop will simply crush working musicians through sheer volume. Is it art or just an output? What exactly [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/903196/ai-music-suno-udio-art-lawsuit",
+      "source": "The Verge",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T04:38:07.775772+00:00",
+      "score_raw": 0.1779,
+      "score": 0.1779
+    },
+    {
+      "title": "Bluesky\u2019s new app is an AI for customizing your feed",
+      "summary": "The latest app from the team behind Bluesky is Attie, an AI assistant that lets you build your own algorithm. At the Atmosphere conference, Bluesky's former CEO, Jay Graber, and CTO Paul Frazee, unveiled Attie, which is powered by Anthropic's Claude and built on top of Bluesky's underlying AT Protocol (atproto). Attie allows users to [&#8230;]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/903190/bluesky-attie-ai-custom-feeds",
+      "source": "The Verge",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-30T04:38:07.775793+00:00",
+      "score_raw": 0.2023,
+      "score": 0.2023
+    },
+    {
+      "title": "Tech CEOs suddenly love blaming AI for mass job cuts. Why?",
+      "summary": "More tech leaders are pointing to job cuts caused by AI tools - and a need for more investment cash.",
+      "url": "https://www.bbc.com/news/articles/cde5y2x51y8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "date": "2026-03-29",
+      "timestamp": "2026-03-30T04:38:08.398736+00:00",
+      "score_raw": -0.34,
+      "score": -0.34
+    },
+    {
+      "title": "Ex-OpenAI's Kass: AI Is Going to Make a Lot of Winners",
+      "summary": "Former OpenAI Head of Go-To-Market Zack Kass believes that while it's still early days for artificial intelligence investments, AI is going to make a lot of winners. Kass has become one of the most sought-after voices on how businesses can harness this powerful technology. He speaks with Haslinda Amin from the sidelines of 'Citi Macro Conference in Hong Kong'. (Source: Bloomberg)",
+      "url": "https://www.bloomberg.com/news/videos/2026-03-30/ex-openai-s-kass-ai-is-going-to-make-a-lot-of-winners-video",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T04:38:13.412348+00:00",
+      "score_raw": 0.9109,
+      "score": 0.9109
+    },
+    {
+      "title": "DeepSeek Goes Down for Seven Hours in Biggest Outage Since Debut",
+      "summary": "DeepSeek\u2019s chatbot suffered a major outage of more than seven hours overnight in China, forcing the AI pioneer to deploy several updates to rectify the issue.",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-30/deepseek-probes-hours-long-ai-outage-after-users-report-errors",
+      "source": "Bloomberg",
+      "date": "2026-03-30",
+      "timestamp": "2026-03-30T04:38:13.412371+00:00",
+      "score_raw": -0.4939,
+      "score": -0.4939
     }
   ],
   "daily_scores": {
@@ -2362,12 +2422,13 @@
       }
     },
     "2026-03-29": {
-      "mean": -0.0409,
-      "count": 9,
-      "pos": 3,
-      "neg": 5,
+      "mean": -0.046,
+      "count": 11,
+      "pos": 4,
+      "neg": 6,
       "neu": 1,
       "sources": [
+        "BBC Technology",
         "Bloomberg",
         "CNBC Tech",
         "TechCrunch",
@@ -2382,8 +2443,8 @@
           "count": 2
         },
         "The Verge": {
-          "mean": 0.7569,
-          "count": 1
+          "mean": 0.4796,
+          "count": 2
         },
         "The Guardian": {
           "mean": -0.6908,
@@ -2404,6 +2465,36 @@
         "VentureBeat AI": {
           "mean": 0.9351,
           "count": 1
+        },
+        "BBC Technology": {
+          "mean": -0.34,
+          "count": 1
+        }
+      }
+    },
+    "2026-03-30": {
+      "mean": 0.0584,
+      "count": 4,
+      "pos": 2,
+      "neg": 2,
+      "neu": 0,
+      "sources": [
+        "Bloomberg",
+        "TechCrunch",
+        "The Verge"
+      ],
+      "by_source": {
+        "TechCrunch": {
+          "mean": -0.3612,
+          "count": 1
+        },
+        "The Verge": {
+          "mean": 0.1779,
+          "count": 1
+        },
+        "Bloomberg": {
+          "mean": 0.2085,
+          "count": 2
         }
       }
     }
