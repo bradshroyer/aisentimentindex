@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { fetchDailyScores, fetchHeadlines } from "@/lib/data";
 import { Dashboard } from "@/components/Dashboard";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { ShareButton } from "@/components/ShareButton";
 
 export const revalidate = 0; // Always fetch fresh data
 
@@ -27,7 +28,10 @@ export default async function Home() {
             {lastUpdated}
           </p>
         </div>
-        <ThemeToggle />
+        <div className="flex items-center gap-1">
+          <ShareButton />
+          <ThemeToggle />
+        </div>
       </header>
 
       <Suspense>
