@@ -72,8 +72,8 @@ def main():
             "pos": scores["pos"],
             "neg": scores["neg"],
             "neu": scores["neu"],
-            "sources": json.dumps(scores.get("sources", [])),
-            "by_source": json.dumps(scores.get("by_source", {})),
+            "sources": scores.get("sources", []),
+            "by_source": scores.get("by_source", {}),
         })
 
     result = sb.table("daily_scores").upsert(rows, on_conflict="date").execute()

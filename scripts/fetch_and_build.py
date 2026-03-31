@@ -255,8 +255,8 @@ def upsert_daily_scores(sb, daily: dict) -> int:
             "pos": scores["pos"],
             "neg": scores["neg"],
             "neu": scores["neu"],
-            "sources": json.dumps(scores.get("sources", [])),
-            "by_source": json.dumps(scores.get("by_source", {})),
+            "sources": scores.get("sources", []),
+            "by_source": scores.get("by_source", {}),
         }
         for date, scores in daily.items()
     ]
