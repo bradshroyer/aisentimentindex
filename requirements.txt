@@ -3,3 +3,4 @@ vaderSentiment
 requests
 eventregistry
 python-dotenv
+supabase

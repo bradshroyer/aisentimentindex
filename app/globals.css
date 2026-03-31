@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-positive: #16a34a;
+  --color-negative: #dc2626;
+  --color-neutral: #6b7280;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+}
