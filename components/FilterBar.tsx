@@ -30,9 +30,9 @@ export function FilterBar({
           className="px-3 py-1.5 border border-border rounded-lg text-xs font-mono bg-card text-text-primary
                      focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent"
         >
-          <option value="All">All Sources</option>
+          <option value="All" className="text-black bg-white">All Sources</option>
           {sources.map((s) => (
-            <option key={s} value={s}>
+            <option key={s} value={s} className="text-black bg-white">
               {s}
             </option>
           ))}
