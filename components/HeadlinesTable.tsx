@@ -17,6 +17,53 @@ function scoreColor(score: number): string {
   return "text-neutral";
 }
 
+function scoreBgColor(score: number): string {
+  if (score > 0.05) return "bg-positive/10 text-positive";
+  if (score < -0.05) return "bg-negative/10 text-negative";
+  return "bg-neutral/10 text-neutral";
+}
+
+function HeadlineCard({ h }: { h: Headline }) {
+  return (
+    <div className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          {h.url ? (
+            <a
+              href={h.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-800 hover:text-accent leading-snug"
+            >
+              {h.title}
+            </a>
+          ) : (
+            <span className="text-sm font-medium text-slate-800 leading-snug">
+              {h.title}
+            </span>
+          )}
+          {h.summary && (
+            <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+              {h.summary}
+            </p>
+          )}
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-xs text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
+              {h.source}
+            </span>
+          </div>
+        </div>
+        <span
+          className={`shrink-0 text-sm font-bold font-mono tabular-nums px-2 py-1 rounded-lg ${scoreBgColor(h.score)}`}
+        >
+          {h.score >= 0 ? "+" : ""}
+          {h.score.toFixed(3)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function HeadlinesTable({
   headlines,
   selectedDate,
@@ -65,63 +112,83 @@ export function HeadlinesTable({
         )}
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-slate-50 border-b border-slate-100">
-              <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                Headline
-              </th>
-              <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-36">
-                Source
-              </th>
-              <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-20">
-                Score
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {visible.map((h) => (
-              <tr
-                key={h.id}
-                className="border-b border-slate-50 last:border-b-0 hover:bg-slate-50/50 transition-colors"
-              >
-                <td className="px-4 py-3 text-sm">
-                  {h.url ? (
-                    <a
-                      href={h.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-800 hover:text-accent hover:underline"
-                    >
-                      {h.title}
-                    </a>
-                  ) : (
-                    h.title
-                  )}
-                </td>
-                <td className="px-4 py-3 text-sm text-slate-500">{h.source}</td>
-                <td
-                  className={`px-4 py-3 text-sm text-right font-mono tabular-nums ${scoreColor(h.score)}`}
-                >
-                  {h.score >= 0 ? "+" : ""}
-                  {h.score.toFixed(3)}
-                </td>
+      {/* Card view when date-filtered, table view otherwise */}
+      {selectedDate ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {visible.map((h) => (
+            <HeadlineCard key={h.id} h={h} />
+          ))}
+          {visible.length === 0 && (
+            <div className="col-span-full text-center py-8 text-sm text-slate-400">
+              No headlines found for this filter.
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-slate-50 border-b border-slate-100">
+                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                  Headline
+                </th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-36 hidden sm:table-cell">
+                  Source
+                </th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-20">
+                  Score
+                </th>
               </tr>
-            ))}
-            {visible.length === 0 && (
-              <tr>
-                <td
-                  colSpan={3}
-                  className="px-4 py-8 text-center text-sm text-slate-400"
+            </thead>
+            <tbody>
+              {visible.map((h) => (
+                <tr
+                  key={h.id}
+                  className="border-b border-slate-50 last:border-b-0 hover:bg-slate-50/50 transition-colors"
                 >
-                  No headlines found for this filter.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+                  <td className="px-4 py-3 text-sm">
+                    {h.url ? (
+                      <a
+                        href={h.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-800 hover:text-accent hover:underline"
+                      >
+                        {h.title}
+                      </a>
+                    ) : (
+                      h.title
+                    )}
+                    {/* Show source inline on mobile */}
+                    <span className="block sm:hidden text-xs text-slate-400 mt-0.5">
+                      {h.source}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-500 hidden sm:table-cell">
+                    {h.source}
+                  </td>
+                  <td
+                    className={`px-4 py-3 text-sm text-right font-mono tabular-nums ${scoreColor(h.score)}`}
+                  >
+                    {h.score >= 0 ? "+" : ""}
+                    {h.score.toFixed(3)}
+                  </td>
+                </tr>
+              ))}
+              {visible.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={3}
+                    className="px-4 py-8 text-center text-sm text-slate-400"
+                  >
+                    No headlines found for this filter.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {hasMore && (
         <button

@@ -18,26 +18,28 @@ export function FilterBar({
   onRangeChange,
 }: FilterBarProps) {
   return (
-    <div className="flex items-center gap-3 flex-wrap">
-      <label htmlFor="sourceFilter" className="text-sm text-slate-500">
-        Source:
-      </label>
-      <select
-        id="sourceFilter"
-        value={selectedSource}
-        onChange={(e) => onSourceChange(e.target.value)}
-        className="px-3 py-1.5 border border-slate-200 rounded-lg text-sm bg-white
-                   focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent"
-      >
-        <option value="All">All Sources</option>
-        {sources.map((s) => (
-          <option key={s} value={s}>
-            {s}
-          </option>
-        ))}
-      </select>
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+      <div className="flex items-center gap-2">
+        <label htmlFor="sourceFilter" className="text-sm text-slate-500">
+          Source:
+        </label>
+        <select
+          id="sourceFilter"
+          value={selectedSource}
+          onChange={(e) => onSourceChange(e.target.value)}
+          className="px-3 py-1.5 border border-slate-200 rounded-lg text-sm bg-white
+                     focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent"
+        >
+          <option value="All">All Sources</option>
+          {sources.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <div className="flex gap-1 ml-auto">
+      <div className="flex gap-1 sm:ml-auto">
         {ranges.map((r) => (
           <button
             key={r.label}
