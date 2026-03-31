@@ -47,12 +47,12 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
   const neuPct = (neu / total) * 100;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300">
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden transition-all duration-300">
       {/* Header */}
-      <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+      <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div>
-            <h3 className="text-sm font-medium text-slate-500">{formatDate(dailyScore.date)}</h3>
+            <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">{formatDate(dailyScore.date)}</h3>
             <div className="flex items-center gap-3 mt-0.5">
               <span className={`text-2xl font-bold tabular-nums ${scoreColor(mean)}`}>
                 {mean >= 0 ? "+" : ""}{mean.toFixed(3)}
@@ -67,7 +67,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
         </div>
         <button
           onClick={onClose}
-          className="text-slate-400 hover:text-slate-600 text-xl leading-none cursor-pointer px-2"
+          className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xl leading-none cursor-pointer px-2"
         >
           &times;
         </button>
@@ -76,7 +76,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
       <div className="p-5 space-y-5">
         {/* Distribution bar */}
         <div>
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1.5">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
             <span>{count} headlines</span>
             <span className="flex gap-3">
               <span className="text-positive">{pos} positive</span>
@@ -84,7 +84,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
               <span className="text-negative">{neg} negative</span>
             </span>
           </div>
-          <div className="flex h-2.5 rounded-full overflow-hidden bg-slate-100">
+          <div className="flex h-2.5 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800">
             {posPct > 0 && (
               <div
                 className="bg-positive transition-all duration-500"
@@ -109,7 +109,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
         {/* Source breakdown grid */}
         {sourceEntries.length > 0 && (
           <div>
-            <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">By Source</h4>
+            <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">By Source</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
               {sourceEntries.map(([source, stats]) => (
                 <div
@@ -133,7 +133,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {topPositive.length > 0 && (
             <div>
-              <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Most Positive</h4>
+              <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Most Positive</h4>
               <div className="space-y-2">
                 {topPositive.map((h) => (
                   <div key={h.id} className="flex items-start gap-2">
@@ -144,7 +144,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
                       href={h.url ?? "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-slate-700 hover:text-accent leading-snug line-clamp-2"
+                      className="text-xs text-slate-700 dark:text-slate-300 hover:text-accent leading-snug line-clamp-2"
                     >
                       {h.title}
                     </a>
@@ -155,7 +155,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
           )}
           {topNegative.length > 0 && (
             <div>
-              <h4 className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Most Negative</h4>
+              <h4 className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Most Negative</h4>
               <div className="space-y-2">
                 {topNegative.map((h) => (
                   <div key={h.id} className="flex items-start gap-2">
@@ -166,7 +166,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
                       href={h.url ?? "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-slate-700 hover:text-accent leading-snug line-clamp-2"
+                      className="text-xs text-slate-700 dark:text-slate-300 hover:text-accent leading-snug line-clamp-2"
                     >
                       {h.title}
                     </a>

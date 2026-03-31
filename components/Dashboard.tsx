@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import type { Headline, DailyScore } from "@/lib/types";
 import { SOURCES, TIME_RANGES } from "@/lib/types";
 import { FilterBar } from "./FilterBar";
@@ -15,9 +16,32 @@ interface DashboardProps {
 }
 
 export function Dashboard({ dailyScores, headlines }: DashboardProps) {
-  const [selectedSource, setSelectedSource] = useState<string>("All");
-  const [selectedRange, setSelectedRange] = useState<number>(30);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const [selectedSource, setSelectedSource] = useState<string>(() => {
+    const src = searchParams.get("source");
+    return src && (SOURCES as readonly string[]).includes(src) ? src : "All";
+  });
+  const [selectedRange, setSelectedRange] = useState<number>(() => {
+    const r = searchParams.get("range");
+    const days = r ? parseInt(r, 10) : NaN;
+    return TIME_RANGES.some((t) => t.days === days) ? days : 30;
+  });
+  const [selectedDate, setSelectedDate] = useState<string | null>(() => {
+    return searchParams.get("date") || null;
+  });
+
+  // Sync state to URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (selectedSource !== "All") params.set("source", selectedSource);
+    if (selectedRange !== 30) params.set("range", String(selectedRange));
+    if (selectedDate) params.set("date", selectedDate);
+    const qs = params.toString();
+    const url = qs ? `?${qs}` : "/";
+    router.replace(url, { scroll: false });
+  }, [selectedSource, selectedRange, selectedDate, router]);
 
   // Filter daily scores by time range
   const filteredDailyScores = useMemo(() => {
@@ -183,7 +207,7 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
       />
 
       {trendSummary && (
-        <p className="text-sm text-slate-500 -mt-2">
+        <p className="text-sm text-slate-500 dark:text-slate-400 -mt-2">
           {trendSummary.includes("up") ? (
             <span className="text-positive font-medium">{trendSummary.split("up")[0]}up</span>
           ) : trendSummary.includes("down") ? (
@@ -230,7 +254,7 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         onClearDate={() => setSelectedDate(null)}
       />
 
-      <footer className="text-center text-xs text-slate-400 pt-6 pb-8 space-y-1">
+      <footer className="text-center text-xs text-slate-400 dark:text-slate-500 pt-6 pb-8 space-y-1">
         <p>
           Tracking AI sentiment across {SOURCES.length} major tech outlets &middot; Updated every 6 hours
         </p>

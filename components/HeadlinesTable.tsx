@@ -25,7 +25,7 @@ function scoreBgColor(score: number): string {
 
 function HeadlineCard({ h }: { h: Headline }) {
   return (
-    <div className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           {h.url ? (
@@ -33,22 +33,22 @@ function HeadlineCard({ h }: { h: Headline }) {
               href={h.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-800 hover:text-accent leading-snug"
+              className="text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-accent leading-snug"
             >
               {h.title}
             </a>
           ) : (
-            <span className="text-sm font-medium text-slate-800 leading-snug">
+            <span className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">
               {h.title}
             </span>
           )}
           {h.summary && (
-            <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
               {h.summary}
             </p>
           )}
           <div className="flex items-center gap-2 mt-2">
-            <span className="text-xs text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
+            <span className="text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
               {h.source}
             </span>
           </div>
@@ -94,7 +94,7 @@ export function HeadlinesTable({
             <>
               Headlines for{" "}
               <span className="text-accent">{selectedDate}</span>
-              <span className="text-sm font-normal text-slate-500 ml-2">
+              <span className="text-sm font-normal text-slate-500 dark:text-slate-400 ml-2">
                 ({headlines.length} article{headlines.length !== 1 ? "s" : ""})
               </span>
             </>
@@ -105,7 +105,7 @@ export function HeadlinesTable({
         {selectedDate && (
           <button
             onClick={onClearDate}
-            className="text-sm text-slate-400 hover:text-slate-600 cursor-pointer"
+            className="text-sm text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
           >
             Clear filter
           </button>
@@ -125,17 +125,17 @@ export function HeadlinesTable({
           )}
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-100">
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
+                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                   Headline
                 </th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-36 hidden sm:table-cell">
+                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider w-36 hidden sm:table-cell">
                   Source
                 </th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-20">
+                <th className="text-right px-4 py-3 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider w-20">
                   Score
                 </th>
               </tr>
@@ -144,7 +144,7 @@ export function HeadlinesTable({
               {visible.map((h) => (
                 <tr
                   key={h.id}
-                  className="border-b border-slate-50 last:border-b-0 hover:bg-slate-50/50 transition-colors"
+                  className="border-b border-slate-50 dark:border-slate-800/50 last:border-b-0 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors"
                 >
                   <td className="px-4 py-3 text-sm">
                     {h.url ? (
@@ -152,7 +152,7 @@ export function HeadlinesTable({
                         href={h.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-800 hover:text-accent hover:underline"
+                        className="text-slate-800 dark:text-slate-200 hover:text-accent hover:underline"
                       >
                         {h.title}
                       </a>
@@ -160,11 +160,11 @@ export function HeadlinesTable({
                       h.title
                     )}
                     {/* Show source inline on mobile */}
-                    <span className="block sm:hidden text-xs text-slate-400 mt-0.5">
+                    <span className="block sm:hidden text-xs text-slate-400 dark:text-slate-500 mt-0.5">
                       {h.source}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm text-slate-500 hidden sm:table-cell">
+                  <td className="px-4 py-3 text-sm text-slate-500 dark:text-slate-400 hidden sm:table-cell">
                     {h.source}
                   </td>
                   <td

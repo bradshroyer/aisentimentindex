@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-positive: #16a34a;
   --color-negative: #dc2626;
   --color-neutral: #6b7280;
   --color-accent: #2563eb;
   --color-accent-hover: #1d4ed8;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8fafc;
+  --color-border: #e2e8f0;
 }
