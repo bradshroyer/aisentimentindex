@@ -3,6 +3,9 @@ __pycache__/
 *.pyc
 backfill_progress.json
 
+# Data (dev fallback only — Supabase is source of truth)
+data.json
+
 # Environment
 .env
 .env*.local
