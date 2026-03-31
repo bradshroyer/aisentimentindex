@@ -4,3 +4,4 @@ requests
 eventregistry
 python-dotenv
 supabase
+anthropic

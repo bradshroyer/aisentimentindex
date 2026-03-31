@@ -13,6 +13,11 @@ from dotenv import load_dotenv
 from supabase import create_client
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+try:
+    from anthropic import Anthropic
+except ImportError:
+    Anthropic = None
+
 load_dotenv()
 
 # ---------------------------------------------------------------------------
@@ -53,28 +58,57 @@ POSITIVE_BOOSTS = {
     "adoption": 0.15, "advance": 0.15, "improve": 0.15,
     "boost": 0.15, "transform": 0.15, "solve": 0.15,
     "open source": 0.1, "open-source": 0.1,
+    "funding": 0.1, "investment": 0.05, "partnership": 0.1,
+    "collaboration": 0.1,
 }
 NEGATIVE_BOOSTS = {
     "hype": -0.2, "bubble": -0.25, "overhyped": -0.3,
     "threat": -0.15, "replace jobs": -0.2, "job loss": -0.25,
     "surveillance": -0.2, "lawsuit": -0.2, "sued": -0.2,
-    "ban": -0.15, "restrict": -0.1,
+    "ban": -0.15, "banned": -0.15, "banning": -0.15,
+    "restrict": -0.1,
     "existential risk": -0.35, "existential crisis": -0.35,
     "existential threat": -0.35, "extinction": -0.35,
     "catastrophic": -0.3, "apocalyp": -0.3, "doomsday": -0.3,
     "superintelligence": -0.15,
     "hallucinate": -0.15, "hallucination": -0.15, "bias": -0.15,
+    "layoff": -0.2, "copyright": -0.15, "plagiarism": -0.2,
+    "scraping": -0.1, "deepfake": -0.2,
+    "misinformation": -0.2, "disinformation": -0.2,
 }
 CONTEXT_OVERRIDES = {
     "cuts cost": 0.25, "cuts time": 0.25, "cut cost": 0.25,
     "cuts development": 0.25, "eliminates": 0.2, "disrupts": 0.1,
 }
 
+# Terms that need word-boundary matching to avoid substring false positives.
+# e.g. "ban" must not match "bank", "hype" must not match "hyperscaler".
+_WORD_BOUNDARY_TERMS = {"ban", "banned", "banning", "hype", "bias", "boost", "solve"}
+
 DATA_START_DATE = "2026-02-28"
 
 # Supabase connection
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+
+# Claude scoring
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+CLAUDE_SCORING_PROMPT = """You are a sentiment classifier for AI/tech news headlines.
+
+Given a headline (and optional summary), return a JSON object with:
+- "sentiment": float from -1.0 (strongly anti-AI / negative about AI) to +1.0 (strongly pro-AI / positive about AI). 0.0 = neutral.
+
+Scoring guidelines:
+- Score the headline's STANCE toward AI, not the emotional valence of the words.
+- "Anthropic Wins Court Order Pausing Ban" = POSITIVE for AI (company won), despite negative words like "ban".
+- "AI replaces 500 jobs" = NEGATIVE for AI sentiment, even though it shows AI capability.
+- Funding, launches, partnerships, breakthroughs = generally positive.
+- Bans, lawsuits, safety failures, job losses, regulation = generally negative.
+- Neutral reporting or mixed signals = near 0.0.
+- Headlines unrelated to AI = 0.0.
+
+Return ONLY valid JSON, no markdown fences."""
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -143,31 +177,102 @@ def fetch_headlines() -> list[dict]:
 # Sentiment
 # ---------------------------------------------------------------------------
 
+def _term_in_text(term: str, text: str) -> bool:
+    """Check if *term* appears in *text*, using word boundaries for short
+    terms that are prone to substring false-positives (e.g. 'ban' vs 'bank')."""
+    if term in _WORD_BOUNDARY_TERMS:
+        return bool(re.search(rf"\b{re.escape(term)}\b", text))
+    return term in text
+
+
 def domain_adjust(text: str, base_score: float) -> float:
     t = text.lower()
     adjustment = 0.0
     for term, boost in POSITIVE_BOOSTS.items():
-        if term in t:
+        if _term_in_text(term, t):
             adjustment += boost
     for term, boost in NEGATIVE_BOOSTS.items():
-        if term in t:
+        if _term_in_text(term, t):
             adjustment += boost
     for term, boost in CONTEXT_OVERRIDES.items():
-        if term in t:
+        if _term_in_text(term, t):
             adjustment += boost
     adjusted = base_score + adjustment
     return max(-1.0, min(1.0, adjusted))
 
 
+def _get_claude_client():
+    """Return an Anthropic client if the SDK and API key are available."""
+    if Anthropic is None or not ANTHROPIC_API_KEY:
+        return None
+    return Anthropic(api_key=ANTHROPIC_API_KEY)
+
+
+def _score_one_claude(client, text: str, retries: int = 2):
+    """Score a single headline with Claude. Returns float or None on failure."""
+    for attempt in range(retries + 1):
+        try:
+            resp = client.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=100,
+                system=CLAUDE_SCORING_PROMPT,
+                messages=[
+                    {"role": "user", "content": text},
+                    {"role": "assistant", "content": "{"},
+                ],
+            )
+            raw = "{" + resp.content[0].text.strip()
+            # Truncate after first complete JSON object
+            brace_depth = 0
+            for idx, ch in enumerate(raw):
+                if ch == "{":
+                    brace_depth += 1
+                elif ch == "}":
+                    brace_depth -= 1
+                    if brace_depth == 0:
+                        raw = raw[: idx + 1]
+                        break
+            parsed = json.loads(raw)
+            return max(-1.0, min(1.0, float(parsed["sentiment"])))
+        except Exception as e:
+            if "rate_limit" in str(e) and attempt < retries:
+                time.sleep(15)
+                continue
+            if attempt == retries:
+                print(f"  Claude scoring error: {e}")
+            return None
+
+
 def score_headlines(headlines: list[dict]) -> list[dict]:
     analyzer = SentimentIntensityAnalyzer()
-    for h in headlines:
+    claude = _get_claude_client()
+
+    if claude:
+        print(f"Scoring {len(headlines)} headlines with Claude ({CLAUDE_MODEL})...")
+    else:
+        print(f"Scoring {len(headlines)} headlines with VADER (no ANTHROPIC_API_KEY)...")
+
+    for i, h in enumerate(headlines):
         text = h["title"]
         if h.get("summary"):
             text = f"{text}. {h['summary']}"
+
+        # Always compute VADER as baseline / score_raw
         base = analyzer.polarity_scores(text)["compound"]
         h["score_raw"] = round(base, 4)
-        h["score"] = round(domain_adjust(text, base), 4)
+
+        # Use Claude if available, fall back to VADER + domain adjustments
+        if claude:
+            claude_score = _score_one_claude(claude, text)
+            if claude_score is not None:
+                h["score"] = round(claude_score, 4)
+            else:
+                h["score"] = round(domain_adjust(text, base), 4)
+            if (i + 1) % 10 == 0:
+                print(f"  Scored {i + 1}/{len(headlines)}...")
+        else:
+            h["score"] = round(domain_adjust(text, base), 4)
+
     return headlines
 
 
