@@ -29,9 +29,7 @@ GitHub Actions          → runs Python scripts every 6h
 ### Python scripts (in `scripts/`)
 - `fetch_and_build.py` — RSS fetch + Claude/VADER scoring → upsert to Supabase
 - `backfill_newsapi_ai.py` — NewsAPI.ai backfill → upsert to Supabase
-- `rescore_all.py` — One-time bulk rescore of all headlines with Claude
-- `test_claude_scoring.py` — Compare Claude vs VADER scoring on sample headlines
-- `migrate_to_supabase.py` — One-time migration from data.json
+- `rescore_all.py` — Ad-hoc bulk rescore of all headlines with Claude (run manually when scoring logic changes)
 - `schema.sql` — Supabase table definitions + RLS policies
 
 ## Key Design Decisions
