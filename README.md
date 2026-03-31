@@ -1,6 +1,6 @@
 # AI Sentiment Index
 
-**Live:** [aisentimentindex.vercel.app](https://aisentimentindex.vercel.app)
+**Live:** [labs.bradshroyer.com](https://labs.bradshroyer.com)
 
 I was curious: how does the media *actually* feel about AI right now? Not what Twitter thinks, not what VCs are pitching — what are the major outlets writing, and is the overall tone positive or negative?
 

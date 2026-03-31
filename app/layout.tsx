@@ -22,10 +22,30 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const siteUrl = new URL("https://labs.bradshroyer.com");
+
 export const metadata: Metadata = {
   title: "AI Sentiment Index",
   description:
     "Tracking how major tech outlets talk about AI — sentiment analysis across 14 news sources.",
+  metadataBase: siteUrl,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "AI Sentiment Index",
+    description:
+      "Tracking how major tech outlets talk about AI — sentiment analysis across 14 news sources.",
+    url: "/",
+    siteName: "AI Sentiment Index",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Sentiment Index",
+    description:
+      "Tracking how major tech outlets talk about AI — sentiment analysis across 14 news sources.",
+  },
 };
 
 export default function RootLayout({
