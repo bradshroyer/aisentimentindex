@@ -18,13 +18,14 @@ export default async function Home() {
 
   return (
     <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <header className="mb-6 flex items-start justify-between">
+      <header className="mb-8 flex items-start justify-between animate-in">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-serif tracking-tight">
             AI Sentiment Index
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Tracking how major tech outlets talk about AI &mdash; updated{" "}
+          <div className="w-12 h-0.5 bg-accent mt-2 rounded-full" />
+          <p className="text-xs text-text-secondary mt-2 font-mono tracking-wide uppercase">
+            Tracking {"\u00B7"} 14 sources {"\u00B7"} updated{" "}
             {lastUpdated}
           </p>
         </div>

@@ -2,13 +2,172 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-positive: #16a34a;
-  --color-negative: #dc2626;
-  --color-neutral: #6b7280;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-surface: #ffffff;
-  --color-surface-alt: #f8fafc;
-  --color-border: #e2e8f0;
+@theme {
+  /* Semantic color tokens — light mode defaults */
+  --color-positive: #10B981;
+  --color-negative: #F43F5E;
+  --color-neutral: #78716C;
+  --color-accent: #D97706;
+  --color-accent-hover: #B45309;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F0EB;
+  --color-border: rgba(120, 100, 80, 0.10);
+
+  /* Layout tokens */
+  --color-bg: #FAF9F7;
+  --color-card: #FFFFFF;
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #78716C;
+  --color-text-tertiary: #A8A29E;
+
+  /* Chart tokens (consumed by JS via getComputedStyle) */
+  --color-chart-grid: rgba(120, 100, 80, 0.06);
+  --color-chart-zero: rgba(120, 100, 80, 0.15);
+  --color-chart-line: #D97706;
+  --color-chart-line-fill: rgba(217, 119, 6, 0.06);
+  --color-chart-ma: rgba(120, 113, 108, 0.5);
+  --color-chart-pos-bar: rgba(16, 185, 129, 0.35);
+  --color-chart-pos-bar-active: rgba(16, 185, 129, 0.65);
+  --color-chart-pos-border: rgba(16, 185, 129, 0.50);
+  --color-chart-neg-bar: rgba(244, 63, 94, 0.25);
+  --color-chart-neg-bar-active: rgba(244, 63, 94, 0.60);
+  --color-chart-neg-border: rgba(244, 63, 94, 0.40);
+  --color-chart-point: #D97706;
+  --color-chart-point-selected: #F43F5E;
+  --color-chart-point-border: #FFFFFF;
+  --color-chart-legend: #78716C;
+  --color-chart-tick: #78716C;
+  --color-chart-tooltip-bg: #FFFFFF;
+  --color-chart-tooltip-title: #1C1917;
+  --color-chart-tooltip-body: #78716C;
+  --color-chart-tooltip-border: rgba(120, 100, 80, 0.10);
+
+  /* Font families */
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 }
+
+/* Dark mode overrides */
+.dark {
+  --color-positive: #34D399;
+  --color-negative: #FB7185;
+  --color-neutral: #A8A29E;
+  --color-accent: #F59E0B;
+  --color-accent-hover: #FBBF24;
+  --color-surface: rgba(255, 245, 235, 0.04);
+  --color-surface-alt: rgba(255, 245, 235, 0.06);
+  --color-border: rgba(255, 245, 235, 0.07);
+  --color-bg: #0C0A09;
+  --color-card: rgba(255, 245, 235, 0.03);
+  --color-text-primary: #F5F0EB;
+  --color-text-secondary: #A8A29E;
+  --color-text-tertiary: #57534E;
+  --color-chart-grid: rgba(255, 245, 235, 0.04);
+  --color-chart-zero: rgba(255, 245, 235, 0.12);
+  --color-chart-line: #F59E0B;
+  --color-chart-line-fill: rgba(245, 158, 11, 0.10);
+  --color-chart-ma: rgba(168, 162, 158, 0.5);
+  --color-chart-pos-bar: rgba(52, 211, 153, 0.30);
+  --color-chart-pos-bar-active: rgba(52, 211, 153, 0.60);
+  --color-chart-pos-border: rgba(52, 211, 153, 0.45);
+  --color-chart-neg-bar: rgba(251, 113, 133, 0.22);
+  --color-chart-neg-bar-active: rgba(251, 113, 133, 0.55);
+  --color-chart-neg-border: rgba(251, 113, 133, 0.38);
+  --color-chart-point: #F59E0B;
+  --color-chart-point-selected: #FB7185;
+  --color-chart-point-border: #0C0A09;
+  --color-chart-legend: #A8A29E;
+  --color-chart-tick: #A8A29E;
+  --color-chart-tooltip-bg: #1C1917;
+  --color-chart-tooltip-title: #F5F0EB;
+  --color-chart-tooltip-body: #A8A29E;
+  --color-chart-tooltip-border: rgba(255, 245, 235, 0.08);
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.dark body::before {
+  opacity: 0.04;
+}
+
+/* ── Card glow (dark mode luminous borders) ── */
+.card-glow {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-glow:hover {
+  transform: translateY(-1px);
+}
+
+.dark .card-glow {
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.04), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.08), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Chart ambient glow ── */
+.chart-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(217, 119, 6, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dark .chart-glow::before {
+  background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+}
+
+/* ── Button glow on hover ── */
+.btn-glow {
+  transition: box-shadow 0.2s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 12px rgba(217, 119, 6, 0.15);
+}
+
+.dark .btn-glow:hover {
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+/* ── Entrance animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.1s; }
+.delay-3 { animation-delay: 0.15s; }
+.delay-4 { animation-delay: 0.2s; }
+.delay-5 { animation-delay: 0.25s; }

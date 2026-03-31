@@ -9,8 +9,7 @@ export function ThemeToggle() {
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = stored === "dark" || (!stored && prefersDark);
+    const isDark = stored === "light" ? false : (stored === "dark" || true);
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
@@ -28,7 +27,7 @@ export function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+      className="p-2 rounded-lg text-text-secondary hover:bg-surface-alt hover:text-text-primary transition-colors cursor-pointer"
     >
       {dark ? (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">

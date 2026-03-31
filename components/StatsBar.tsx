@@ -42,30 +42,30 @@ export function StatsBar({
 }: StatsBarProps) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm px-5 py-4">
-        <div className="text-2xl font-bold tabular-nums">
+      <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
+        <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums">
           {totalHeadlines.toLocaleString()}
         </div>
-        <div className="text-xs text-slate-500 dark:text-slate-400">Headlines analyzed</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1">Headlines analyzed</div>
       </div>
-      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm px-5 py-4">
-        <div className="text-2xl font-bold tabular-nums">{daysTracked}</div>
-        <div className="text-xs text-slate-500 dark:text-slate-400">Days tracked</div>
+      <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
+        <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums">{daysTracked}</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1">Days tracked</div>
       </div>
-      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm px-5 py-4">
-        <div className={`text-2xl font-bold tabular-nums ${scoreColor(latestScore)}`}>
+      <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
+        <div className={`text-2xl sm:text-3xl font-bold font-mono tabular-nums ${scoreColor(latestScore)}`}>
           {latestScore >= 0 ? "+" : ""}
           {latestScore.toFixed(3)}
         </div>
-        <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">Latest score</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1 mb-1.5">Latest score</div>
         <div className="flex flex-col gap-0.5">
           <DeltaBadge delta={dayDelta} label="vs yesterday" />
           <DeltaBadge delta={weekDelta} label="vs last week" />
         </div>
       </div>
-      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm px-5 py-4">
-        <div className="text-2xl font-bold tabular-nums">{sourcesToday}</div>
-        <div className="text-xs text-slate-500 dark:text-slate-400">Sources today</div>
+      <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
+        <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums">{sourcesToday}</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1">Sources today</div>
       </div>
     </div>
   );

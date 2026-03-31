@@ -15,7 +15,7 @@ export function ShareButton() {
     <button
       onClick={handleCopy}
       aria-label="Copy link to current view"
-      className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer relative"
+      className="p-2 rounded-lg text-text-secondary hover:bg-surface-alt hover:text-text-primary transition-colors cursor-pointer relative"
     >
       {copied ? (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-positive">
@@ -28,7 +28,7 @@ export function ShareButton() {
         </svg>
       )}
       {copied && (
-        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 px-2 py-1 rounded whitespace-nowrap">
+        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-text-primary text-bg px-2 py-1 rounded whitespace-nowrap">
           Link copied!
         </span>
       )}

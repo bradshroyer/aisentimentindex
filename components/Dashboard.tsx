@@ -196,39 +196,45 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
   }, [weekDelta, dailyScores]);
 
   return (
-    <div className="space-y-6">
-      <FilterBar
-        sources={[...SOURCES]}
-        selectedSource={selectedSource}
-        onSourceChange={handleSourceChange}
-        ranges={[...TIME_RANGES]}
-        selectedRange={selectedRange}
-        onRangeChange={handleRangeChange}
-      />
+    <div className="space-y-4">
+      <div className="animate-in delay-1">
+        <FilterBar
+          sources={[...SOURCES]}
+          selectedSource={selectedSource}
+          onSourceChange={handleSourceChange}
+          ranges={[...TIME_RANGES]}
+          selectedRange={selectedRange}
+          onRangeChange={handleRangeChange}
+        />
+      </div>
 
       {trendSummary && (
-        <p className="text-sm text-slate-500 dark:text-slate-400 -mt-2">
-          {trendSummary.includes("up") ? (
-            <span className="text-positive font-medium">{trendSummary.split("up")[0]}up</span>
-          ) : trendSummary.includes("down") ? (
-            <span className="text-negative font-medium">{trendSummary.split("down")[0]}down</span>
-          ) : (
-            <span className="text-neutral font-medium">{trendSummary.split("steady")[0]}steady</span>
-          )}
-          {trendSummary.includes("up")
-            ? trendSummary.split("up").slice(1).join("up")
-            : trendSummary.includes("down")
-              ? trendSummary.split("down").slice(1).join("down")
-              : trendSummary.split("steady").slice(1).join("steady")}
-        </p>
+        <div className="animate-in delay-1 border-l-2 border-accent/30 pl-3 -mt-1">
+          <p className="text-xs font-mono text-text-secondary">
+            {trendSummary.includes("up") ? (
+              <span className="text-positive font-medium">{trendSummary.split("up")[0]}up</span>
+            ) : trendSummary.includes("down") ? (
+              <span className="text-negative font-medium">{trendSummary.split("down")[0]}down</span>
+            ) : (
+              <span className="text-neutral font-medium">{trendSummary.split("steady")[0]}steady</span>
+            )}
+            {trendSummary.includes("up")
+              ? trendSummary.split("up").slice(1).join("up")
+              : trendSummary.includes("down")
+                ? trendSummary.split("down").slice(1).join("down")
+                : trendSummary.split("steady").slice(1).join("steady")}
+          </p>
+        </div>
       )}
 
-      <SentimentChart
-        data={chartData}
-        movingAverage={movingAverage}
-        selectedDate={selectedDate}
-        onDateSelect={handleDateSelect}
-      />
+      <div className="animate-in delay-2">
+        <SentimentChart
+          data={chartData}
+          movingAverage={movingAverage}
+          selectedDate={selectedDate}
+          onDateSelect={handleDateSelect}
+        />
+      </div>
 
       {selectedDayScore && (
         <DayDetail
@@ -239,26 +245,30 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         />
       )}
 
-      <StatsBar
-        totalHeadlines={totalHeadlines}
-        daysTracked={daysTracked}
-        latestScore={latestScore}
-        dayDelta={dayDelta}
-        weekDelta={weekDelta}
-        sourcesToday={sourcesToday}
-      />
+      <div className="animate-in delay-3">
+        <StatsBar
+          totalHeadlines={totalHeadlines}
+          daysTracked={daysTracked}
+          latestScore={latestScore}
+          dayDelta={dayDelta}
+          weekDelta={weekDelta}
+          sourcesToday={sourcesToday}
+        />
+      </div>
 
-      <HeadlinesTable
-        headlines={filteredHeadlines}
-        selectedDate={selectedDate}
-        onClearDate={() => setSelectedDate(null)}
-      />
+      <div className="animate-in delay-4">
+        <HeadlinesTable
+          headlines={filteredHeadlines}
+          selectedDate={selectedDate}
+          onClearDate={() => setSelectedDate(null)}
+        />
+      </div>
 
-      <footer className="text-center text-xs text-slate-400 dark:text-slate-500 pt-6 pb-8 space-y-1">
-        <p>
+      <footer className="text-center text-xs text-text-tertiary pt-6 pb-8 space-y-1 animate-in delay-5">
+        <p className="font-serif italic">
           Tracking AI sentiment across {SOURCES.length} major tech outlets &middot; Updated every 6 hours
         </p>
-        <p>
+        <p className="font-mono text-[11px]">
           Sentiment scoring via VADER with domain-specific adjustments for AI terminology
         </p>
       </footer>
