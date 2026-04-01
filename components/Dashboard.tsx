@@ -169,8 +169,8 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     return headlines.filter((h) => h.date === selectedDate);
   }, [headlines, selectedDate]);
 
-  // Trend summary sentence
-  const trendSummary = useMemo(() => {
+  // Trend data (structured for safe JSX composition)
+  const trendData = useMemo(() => {
     if (weekDelta === null || dailyScores.length < 8) return null;
     const direction = weekDelta > 0.01 ? "up" : weekDelta < -0.01 ? "down" : "flat";
     const pct = Math.abs(weekDelta * 100).toFixed(0);
@@ -193,16 +193,17 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
       }
     }
 
-    if (direction === "flat") return `Sentiment holding steady across ${sourceCount} sources this week`;
-    const moverNote = biggestMover && biggestShift > 0.03
-      ? `, led by ${biggestMover}`
-      : "";
-    return `Sentiment ${direction} ~${pct}% this week across ${sourceCount} sources${moverNote}`;
+    return {
+      direction,
+      pct,
+      sourceCount,
+      biggestMover: biggestMover && biggestShift > 0.03 ? biggestMover : null,
+    };
   }, [weekDelta, dailyScores]);
 
   return (
     <div className="space-y-4">
-      <div className="animate-in delay-1">
+      <div className="animate-in delay-1 relative z-20">
         <FilterBar
           sources={[...SOURCES]}
           selectedSource={selectedSource}
@@ -213,21 +214,19 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         />
       </div>
 
-      {trendSummary && (
+      {trendData && (
         <div className="animate-in delay-1 border-l-2 border-accent/30 pl-3 -mt-1">
           <p className="text-xs font-mono text-text-secondary">
-            {trendSummary.includes("up") ? (
-              <span className="text-positive font-medium">{trendSummary.split("up")[0]}up</span>
-            ) : trendSummary.includes("down") ? (
-              <span className="text-negative font-medium">{trendSummary.split("down")[0]}down</span>
+            Sentiment{" "}
+            {trendData.direction === "up" ? (
+              <span className="text-positive font-medium">up ~{trendData.pct}%</span>
+            ) : trendData.direction === "down" ? (
+              <span className="text-negative font-medium">down ~{trendData.pct}%</span>
             ) : (
-              <span className="text-neutral font-medium">{trendSummary.split("steady")[0]}steady</span>
+              <span className="text-neutral font-medium">holding steady</span>
             )}
-            {trendSummary.includes("up")
-              ? trendSummary.split("up").slice(1).join("up")
-              : trendSummary.includes("down")
-                ? trendSummary.split("down").slice(1).join("down")
-                : trendSummary.split("steady").slice(1).join("steady")}
+            {" "}this week across {trendData.sourceCount} sources
+            {trendData.biggestMover && <>, led by {trendData.biggestMover}</>}
           </p>
         </div>
       )}
@@ -258,6 +257,9 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
           dayDelta={dayDelta}
           weekDelta={weekDelta}
           sourcesToday={sourcesToday}
+          firstDate={dailyScores[0]?.date ?? ""}
+          lastDate={dailyScores[dailyScores.length - 1]?.date ?? ""}
+          totalSources={SOURCES.length}
         />
       </div>
 

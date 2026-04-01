@@ -7,6 +7,9 @@ interface StatsBarProps {
   dayDelta: number | null;
   weekDelta: number | null;
   sourcesToday: number;
+  firstDate: string;
+  lastDate: string;
+  totalSources: number;
 }
 
 function scoreColor(score: number): string {
@@ -32,6 +35,13 @@ function DeltaBadge({ delta, label }: { delta: number | null; label: string }) {
   );
 }
 
+function formatShortDate(dateStr: string): string {
+  if (!dateStr) return "";
+  const [, month, day] = dateStr.split("-");
+  const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
+}
+
 export function StatsBar({
   totalHeadlines,
   daysTracked,
@@ -39,6 +49,9 @@ export function StatsBar({
   dayDelta,
   weekDelta,
   sourcesToday,
+  firstDate,
+  lastDate,
+  totalSources,
 }: StatsBarProps) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
@@ -46,11 +59,17 @@ export function StatsBar({
         <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums">
           {totalHeadlines.toLocaleString()}
         </div>
-        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1">Headlines analyzed</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1 mb-1.5">Headlines analyzed</div>
+        <div className="text-xs text-text-tertiary font-mono">
+          ~{daysTracked > 0 ? Math.round(totalHeadlines / daysTracked) : 0}/day avg
+        </div>
       </div>
       <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
         <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums">{daysTracked}</div>
-        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1">Days tracked</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1 mb-1.5">Days tracked</div>
+        <div className="text-xs text-text-tertiary font-mono">
+          {formatShortDate(firstDate)} — {formatShortDate(lastDate)}
+        </div>
       </div>
       <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
         <div className={`text-2xl sm:text-3xl font-bold font-mono tabular-nums ${scoreColor(latestScore)}`}>
@@ -65,7 +84,10 @@ export function StatsBar({
       </div>
       <div className="bg-card border border-border rounded-lg px-5 py-4 card-glow">
         <div className="text-2xl sm:text-3xl font-bold font-mono tabular-nums">{sourcesToday}</div>
-        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1">Sources today</div>
+        <div className="text-[11px] text-text-tertiary font-mono uppercase tracking-wider mt-1 mb-1.5">Sources today</div>
+        <div className="text-xs text-text-tertiary font-mono">
+          {totalSources} configured
+        </div>
       </div>
     </div>
   );

@@ -17,6 +17,12 @@ function scoreColor(score: number): string {
   return "text-neutral";
 }
 
+function formatShortDate(dateStr: string): string {
+  const [, month, day] = dateStr.split("-");
+  const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
+}
+
 function scoreBgColor(score: number): string {
   if (score > 0.05) return "bg-positive/10 text-positive";
   if (score < -0.05) return "bg-negative/10 text-negative";
@@ -135,6 +141,9 @@ export function HeadlinesTable({
                 <th className="text-left px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider w-36 hidden sm:table-cell font-mono">
                   Source
                 </th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider w-24 hidden sm:table-cell font-mono">
+                  Date
+                </th>
                 <th className="text-right px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider w-20 font-mono">
                   Score
                 </th>
@@ -161,11 +170,14 @@ export function HeadlinesTable({
                     )}
                     {/* Show source inline on mobile */}
                     <span className="block sm:hidden text-xs text-text-tertiary mt-0.5">
-                      {h.source}
+                      {h.source} &middot; {formatShortDate(h.date)}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-sm text-text-secondary hidden sm:table-cell">
                     {h.source}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-text-tertiary font-mono tabular-nums hidden sm:table-cell whitespace-nowrap">
+                    {formatShortDate(h.date)}
                   </td>
                   <td
                     className={`px-4 py-3 text-sm text-right font-mono tabular-nums ${scoreColor(h.score)}`}
@@ -178,7 +190,7 @@ export function HeadlinesTable({
               {visible.length === 0 && (
                 <tr>
                   <td
-                    colSpan={3}
+                    colSpan={4}
                     className="px-4 py-8 text-center text-sm text-text-tertiary"
                   >
                     No headlines found for this filter.
@@ -197,6 +209,9 @@ export function HeadlinesTable({
                      text-sm font-medium hover:bg-accent-hover transition-colors cursor-pointer btn-glow"
         >
           Show more
+          <span className="ml-1.5 opacity-70 font-normal">
+            ({(headlines.length - visible.length).toLocaleString()} remaining)
+          </span>
         </button>
       )}
     </div>
