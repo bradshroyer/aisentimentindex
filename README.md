@@ -37,8 +37,7 @@ lib/                     → Supabase client, data fetching, types
 scripts/
   fetch_and_build.py     → RSS fetch + Claude/VADER scoring → Supabase
   backfill_newsapi_ai.py → NewsAPI.ai backfill → Supabase
-  rescore_all.py         → One-time bulk rescore with Claude
-  test_claude_scoring.py → Claude vs VADER comparison tool
+  rescore_all.py         → Ad-hoc bulk rescore with Claude
   schema.sql             → Supabase table definitions
 .github/workflows/       → GitHub Actions cron (every 6h)
 ```
@@ -65,13 +64,6 @@ python scripts/fetch_and_build.py
 # Backfill from NewsAPI.ai
 NEWSAPI_AI_KEY=your-key python scripts/backfill_newsapi_ai.py
 ```
-
-## What's Next
-
-- Insights panel: automated observations (day-over-day, week-over-week trends)
-- Explainability: click a day to see *why* sentiment moved (top headlines, source breakdown)
-- Additional structured fields from Claude (future outlook, topic category)
-- Custom domain
 
 ## License
 
