@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from fetch_and_build import (
     AI_KEYWORDS, DATA_START_DATE, is_ai_related, score_headlines,
-    strip_html, get_supabase, upsert_headlines, upsert_daily_scores,
+    strip_html, normalize_text, get_supabase, upsert_headlines, upsert_daily_scores,
     aggregate_daily, load_existing_titles,
 )
 
@@ -102,7 +102,7 @@ def fetch_from_newsapi(date_start: str, date_end: str, max_per_batch: int = 2000
 
 
 def convert_article(art: dict) -> dict | None:
-    title = (art.get("title") or "").strip()
+    title = normalize_text((art.get("title") or "").strip())
     if not title:
         return None
 
@@ -112,7 +112,7 @@ def convert_article(art: dict) -> dict | None:
         return None
 
     body = (art.get("body") or "").strip()
-    summary = body[:MAX_SUMMARY_CHARS] if body else ""
+    summary = normalize_text(body[:MAX_SUMMARY_CHARS]) if body else ""
 
     date = art.get("date", "")
     if not date or date < DATA_START_DATE:

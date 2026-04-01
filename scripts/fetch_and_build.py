@@ -118,6 +118,18 @@ def strip_html(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text).strip()
 
 
+def normalize_text(text: str) -> str:
+    """Normalize curly quotes/dashes to ASCII equivalents for deduplication."""
+    return (
+        text.replace("\u2018", "'").replace("\u2019", "'")   # ' '
+        .replace("\u201A", "'").replace("\u201B", "'")       # ‚ ‛
+        .replace("\u201C", '"').replace("\u201D", '"')       # " "
+        .replace("\u201E", '"').replace("\u201F", '"')       # „ ‟
+        .replace("\u2013", "-").replace("\u2014", "--")       # – —
+        .strip()
+    )
+
+
 def is_ai_related(title: str, summary: str = "") -> bool:
     t = f" {title.lower()} {summary.lower()} "
     return any(kw in t for kw in AI_KEYWORDS)
@@ -151,11 +163,11 @@ def fetch_headlines() -> list[dict]:
         try:
             feed = feedparser.parse(url)
             for entry in feed.entries:
-                title = entry.get("title", "").strip()
+                title = normalize_text(entry.get("title", "").strip())
                 if not title or title in seen_titles:
                     continue
                 seen_titles.add(title)
-                summary = strip_html(entry.get("summary", ""))
+                summary = normalize_text(strip_html(entry.get("summary", "")))
                 date = parse_date(entry)
                 if date < DATA_START_DATE:
                     continue

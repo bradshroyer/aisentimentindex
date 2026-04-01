@@ -60,11 +60,31 @@ export async function fetchHeadlines(): Promise<Headline[]> {
       offset += pageSize;
     }
 
-    return allData;
+    return dedupeHeadlines(allData);
   }
 
   // Fallback: read from local data.json
   return loadHeadlinesFromFile();
+}
+
+/**
+ * Deduplicate headlines by normalized title+source+date, keeping the first occurrence.
+ */
+function dedupeHeadlines(headlines: Headline[]): Headline[] {
+  const normalize = (s: string) =>
+    s.replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+     .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+     .replace(/\u2013/g, "-")
+     .replace(/\u2014/g, "--")
+     .trim();
+
+  const seen = new Set<string>();
+  return headlines.filter((h) => {
+    const key = `${normalize(h.title)}|${h.source}|${h.date}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 // --- Local file fallback for dev without Supabase ---

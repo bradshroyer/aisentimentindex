@@ -9,6 +9,7 @@ import { SentimentChart } from "./SentimentChart";
 import { StatsBar } from "./StatsBar";
 import { DayDetail } from "./DayDetail";
 import { HeadlinesTable } from "./HeadlinesTable";
+import { MethodologyFooter } from "./MethodologyFooter";
 
 interface DashboardProps {
   dailyScores: DailyScore[];
@@ -62,10 +63,14 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
       }
       const src = d.by_source[selectedSource];
       if (!src) return null;
-      // Per-source doesn't have pos/neg/neu breakdown, use count for both
-      return { date: d.date, mean: src.mean, count: src.count, pos: src.count, neg: 0, neu: 0 };
+      // Derive pos/neg/neu from headlines for this source+day
+      const dayHeadlines = headlines.filter((h) => h.source === selectedSource && h.date === d.date);
+      const pos = dayHeadlines.filter((h) => h.score > 0.05).length;
+      const neg = dayHeadlines.filter((h) => h.score < -0.05).length;
+      const neu = dayHeadlines.length - pos - neg;
+      return { date: d.date, mean: src.mean, count: src.count, pos, neg, neu };
     }).filter(Boolean) as { date: string; mean: number; count: number; pos: number; neg: number; neu: number }[];
-  }, [filteredDailyScores, selectedSource]);
+  }, [filteredDailyScores, selectedSource, headlines]);
 
   // 7-day moving average
   const movingAverage = useMemo(() => {
@@ -264,14 +269,7 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         />
       </div>
 
-      <footer className="text-center text-xs text-text-tertiary pt-6 pb-8 space-y-1 animate-in delay-5">
-        <p className="font-serif italic">
-          Tracking AI sentiment across {SOURCES.length} major tech outlets &middot; Updated every 6 hours
-        </p>
-        <p className="font-mono text-[11px]">
-          Sentiment scoring via VADER with domain-specific adjustments for AI terminology
-        </p>
-      </footer>
+      <MethodologyFooter />
     </div>
   );
 }
