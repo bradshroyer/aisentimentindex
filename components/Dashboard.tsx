@@ -72,6 +72,13 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     }).filter(Boolean) as { date: string; mean: number; count: number; pos: number; neg: number; neu: number }[];
   }, [filteredDailyScores, selectedSource, headlines]);
 
+  // Clear selectedDate if it's no longer in chartData (e.g. source has no data for that day)
+  useEffect(() => {
+    if (selectedDate && chartData.length > 0 && !chartData.some(d => d.date === selectedDate)) {
+      setSelectedDate(null);
+    }
+  }, [chartData, selectedDate]);
+
   // 7-day moving average
   const movingAverage = useMemo(() => {
     return chartData.map((_, i) => {
@@ -106,7 +113,6 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
 
   const handleSourceChange = useCallback((source: string) => {
     setSelectedSource(source);
-    setSelectedDate(null);
   }, []);
 
   const handleRangeChange = useCallback(
