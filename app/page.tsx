@@ -3,6 +3,7 @@ import { fetchDailyScores, fetchHeadlines } from "@/lib/data";
 import { Dashboard } from "@/components/Dashboard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
+import { SponsorPill } from "@/components/SponsorPill";
 import { RelativeTime } from "@/components/RelativeTime";
 
 export const revalidate = 0; // Always fetch fresh data
@@ -62,7 +63,9 @@ export default async function Home() {
             <RelativeTime timestamp={headlines[0]?.timestamp || new Date().toISOString()} />
           </p>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
+          <SponsorPill />
+          <div className="w-px h-5 bg-border mx-0.5 hidden sm:block" />
           <ShareButton />
           <ThemeToggle />
         </div>
