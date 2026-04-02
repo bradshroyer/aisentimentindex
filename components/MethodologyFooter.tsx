@@ -45,6 +45,20 @@ export function MethodologyFooter() {
             <span className="text-text-secondary">VADER + domain rules</span>
           </span>
         </div>
+
+        <div className="mt-3 pt-3 border-t border-border">
+          <p className="text-xs text-text-tertiary font-mono">
+            Built by{" "}
+            <a
+              href="https://bradshroyer.com"
+              className="text-accent hover:text-accent-hover transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Brad Shroyer
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
