@@ -151,11 +151,30 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
   // Sources active today
   const sourcesToday = dailyScores[dailyScores.length - 1]?.sources?.length ?? 0;
 
-  // Selected day data for DayDetail panel
+  // Selected day data for DayDetail panel (filtered by source if active)
   const selectedDayScore = useMemo(() => {
     if (!selectedDate) return null;
-    return dailyScores.find((d) => d.date === selectedDate) ?? null;
-  }, [dailyScores, selectedDate]);
+    const raw = dailyScores.find((d) => d.date === selectedDate);
+    if (!raw) return null;
+    if (selectedSource === "All") return raw;
+    // Build synthetic DailyScore for the selected source
+    const srcStats = raw.by_source[selectedSource];
+    if (!srcStats) return null;
+    const dayHeadlines = headlines.filter((h) => h.source === selectedSource && h.date === selectedDate);
+    const pos = dayHeadlines.filter((h) => h.score > 0.05).length;
+    const neg = dayHeadlines.filter((h) => h.score < -0.05).length;
+    const neu = dayHeadlines.length - pos - neg;
+    return {
+      ...raw,
+      mean: srcStats.mean,
+      count: srcStats.count,
+      pos,
+      neg,
+      neu,
+      sources: [selectedSource],
+      by_source: { [selectedSource]: srcStats },
+    };
+  }, [dailyScores, selectedDate, selectedSource, headlines]);
 
   const selectedPrevDayScore = useMemo(() => {
     if (!selectedDate) return null;
@@ -163,11 +182,15 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     return idx > 0 ? dailyScores[idx - 1] : null;
   }, [dailyScores, selectedDate]);
 
-  // Headlines for selected day (unfiltered by source for DayDetail)
+  // Headlines for selected day (filtered by source if active)
   const selectedDayHeadlines = useMemo(() => {
     if (!selectedDate) return [];
-    return headlines.filter((h) => h.date === selectedDate);
-  }, [headlines, selectedDate]);
+    let filtered = headlines.filter((h) => h.date === selectedDate);
+    if (selectedSource !== "All") {
+      filtered = filtered.filter((h) => h.source === selectedSource);
+    }
+    return filtered;
+  }, [headlines, selectedDate, selectedSource]);
 
   // Trend data (structured for safe JSX composition)
   const trendData = useMemo(() => {

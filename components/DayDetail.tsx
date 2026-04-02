@@ -106,8 +106,8 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
           </div>
         </div>
 
-        {/* Source breakdown grid */}
-        {sourceEntries.length > 0 && (
+        {/* Source breakdown grid (hidden when filtered to a single source) */}
+        {sourceEntries.length > 1 && (
           <div>
             <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">By Source</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
