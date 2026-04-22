@@ -104,13 +104,14 @@ const spikeAnnotationsPlugin: Plugin<"bar" | "line"> = {
         const markerY = topY + slot * slotHeight + 5;
         const markerColor = item.ann.direction === "up" ? options.posColor : options.negColor;
 
-        // Dashed vertical connector from the data point up to the marker row.
+        // Short dashed leader from the marker down to the plot top — stops
+        // before it enters the bars so the annotation rail floats above.
         ctx.strokeStyle = options.lineColor;
         ctx.lineWidth = 1;
         ctx.setLineDash([3, 3]);
         ctx.beginPath();
-        ctx.moveTo(item.x, item.y - 6);
-        ctx.lineTo(item.x, markerY);
+        ctx.moveTo(item.x, markerY + 2);
+        ctx.lineTo(item.x, chartArea.top);
         ctx.stroke();
         ctx.setLineDash([]);
 
@@ -233,6 +234,8 @@ export function SentimentChart({
         backgroundColor: posBarColors,
         borderColor: chartPosBorder,
         borderWidth: 1,
+        barPercentage: 0.7,
+        categoryPercentage: 0.85,
         yAxisID: "y1",
         order: 3,
         stack: "headlines",
@@ -244,6 +247,8 @@ export function SentimentChart({
         backgroundColor: negBarColors,
         borderColor: chartNegBorder,
         borderWidth: 1,
+        barPercentage: 0.7,
+        categoryPercentage: 0.85,
         yAxisID: "y1",
         order: 3,
         stack: "headlines",
@@ -288,14 +293,14 @@ export function SentimentChart({
       data: sentiment,
       borderColor: chartLine,
       backgroundColor: chartLineFill,
-      fill: isDay,
+      fill: false,
       tension: 0.3,
       pointRadius: pointRadii,
       pointHoverRadius: 7,
       pointBackgroundColor: pointBg,
       pointBorderColor: pointBorder,
       pointBorderWidth: 2,
-      borderWidth: 2.5,
+      borderWidth: 2.75,
       spanGaps: true,
       yAxisID: "y",
       order: 1,

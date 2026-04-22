@@ -58,34 +58,73 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
 
   return (
     <div className="bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 card-glow">
-      {/* Header */}
-      <div className="px-4 py-3 border-b border-border flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div>
-            <h3 className="text-sm font-medium text-text-secondary">{longLabel}</h3>
-            <div className="flex items-center gap-3 mt-0.5 flex-wrap">
-              <span className={`text-2xl font-bold font-mono tabular-nums ${scoreColor(mean)}`}>
+      {/* Hero block: date → big score → distribution as one unit */}
+      <div className="px-5 py-5 sm:px-6 sm:py-6 border-b border-border">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
+            <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-text-tertiary">
+              {longLabel}
+            </div>
+            <div className="mt-2 flex items-baseline gap-4 flex-wrap">
+              <span
+                className={`text-5xl sm:text-6xl font-mono font-medium tabular-nums tracking-tight leading-none ${scoreColor(mean)}`}
+              >
                 {mean >= 0 ? "+" : ""}{mean.toFixed(3)}
               </span>
-              {delta !== null && (
-                <span className={`text-sm font-mono tabular-nums ${scoreColor(delta)}`}>
-                  {delta >= 0 ? "\u25B2" : "\u25BC"} {Math.abs(delta).toFixed(3)} vs {nouns.prev}
+              <div className="flex flex-col gap-0.5">
+                {delta !== null && (
+                  <span className={`text-sm font-mono tabular-nums ${scoreColor(delta)}`}>
+                    {delta >= 0 ? "\u25B2" : "\u25BC"} {Math.abs(delta).toFixed(3)}
+                    <span className="text-text-tertiary"> vs {nouns.prev}</span>
+                  </span>
+                )}
+                {showSpread && (
+                  <span className="text-xs font-mono text-text-tertiary tabular-nums">
+                    range {min.toFixed(2)} .. {max.toFixed(2)} over {dates.length} day{dates.length !== 1 ? "s" : ""}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-5 max-w-xl">
+              <div className="flex h-1.5 rounded-sm overflow-hidden bg-surface-alt">
+                {posPct > 0 && (
+                  <div
+                    className="bg-positive transition-all duration-500"
+                    style={{ width: `${posPct}%` }}
+                  />
+                )}
+                {neuPct > 0 && (
+                  <div
+                    className="bg-neutral/40 transition-all duration-500"
+                    style={{ width: `${neuPct}%` }}
+                  />
+                )}
+                {negPct > 0 && (
+                  <div
+                    className="bg-negative transition-all duration-500"
+                    style={{ width: `${negPct}%` }}
+                  />
+                )}
+              </div>
+              <div className="mt-2 flex items-center gap-4 text-[11px] font-mono tabular-nums">
+                <span className="text-text-secondary">
+                  {count} headlines{granularity !== "day" ? ` this ${nouns.unit}` : ""}
                 </span>
-              )}
-              {showSpread && (
-                <span className="text-xs font-mono text-text-tertiary tabular-nums">
-                  range {min.toFixed(2)} .. {max.toFixed(2)} over {dates.length} day{dates.length !== 1 ? "s" : ""}
-                </span>
-              )}
+                <span className="text-positive">{pos} pos</span>
+                <span className="text-neutral">{neu} neu</span>
+                <span className="text-negative">{neg} neg</span>
+              </div>
             </div>
           </div>
+          <button
+            onClick={onClose}
+            className="text-text-tertiary hover:text-text-primary text-xl leading-none cursor-pointer px-2 -mr-2 -mt-1 shrink-0"
+            aria-label="Close day detail"
+          >
+            &times;
+          </button>
         </div>
-        <button
-          onClick={onClose}
-          className="text-text-tertiary hover:text-text-primary text-xl leading-none cursor-pointer px-2"
-        >
-          &times;
-        </button>
       </div>
 
       <div className="p-4 space-y-4">
@@ -120,57 +159,43 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
           </div>
         )}
 
-        {/* Distribution bar */}
-        <div>
-          <div className="flex items-center justify-between text-xs text-text-secondary mb-1.5">
-            <span>{count} headlines{granularity !== "day" ? ` this ${nouns.unit}` : ""}</span>
-            <span className="flex gap-3">
-              <span className="text-positive">{pos} positive</span>
-              <span className="text-neutral">{neu} neutral</span>
-              <span className="text-negative">{neg} negative</span>
-            </span>
-          </div>
-          <div className="flex h-2 rounded-sm overflow-hidden bg-surface-alt">
-            {posPct > 0 && (
-              <div
-                className="bg-positive transition-all duration-500"
-                style={{ width: `${posPct}%` }}
-              />
-            )}
-            {neuPct > 0 && (
-              <div
-                className="bg-neutral/40 transition-all duration-500"
-                style={{ width: `${neuPct}%` }}
-              />
-            )}
-            {negPct > 0 && (
-              <div
-                className="bg-negative transition-all duration-500"
-                style={{ width: `${negPct}%` }}
-              />
-            )}
-          </div>
-        </div>
-
-        {/* Source breakdown grid (hidden when filtered to a single source) */}
+        {/* Source breakdown — diverging bars from zero */}
         {sourceEntries.length > 1 && (
           <div>
             <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">By Source</h4>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-              {sourceEntries.map(([source, stats]) => (
-                <div
-                  key={source}
-                  className={`rounded-lg px-3 py-2 transition-transform duration-200 hover:scale-[1.02] ${scoreBg(stats.mean)}`}
-                >
-                  <div className="text-xs font-medium truncate">{source}</div>
-                  <div className="flex items-center justify-between mt-0.5">
-                    <span className="text-sm font-bold font-mono tabular-nums">
+            <div className="grid grid-cols-[minmax(0,7rem)_1fr_auto] gap-x-3 gap-y-0.5 items-center text-xs">
+              {sourceEntries.map(([source, stats]) => {
+                const isPos = stats.mean > 0;
+                // Scale bars so ±0.8 fills the half-width; clamp at 100%.
+                const barPct = Math.min(Math.abs(stats.mean) / 0.8, 1) * 100;
+                return (
+                  <div key={source} className="contents group">
+                    <div className="flex items-baseline gap-1.5 min-w-0">
+                      <span className="truncate text-text-primary">{source}</span>
+                      <span className="font-mono tabular-nums text-[10px] text-text-tertiary shrink-0">
+                        {stats.count}
+                      </span>
+                    </div>
+                    <div className="relative h-4 flex items-center" aria-hidden="true">
+                      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border" />
+                      {isPos ? (
+                        <div
+                          className="absolute left-1/2 h-1.5 bg-positive/70 rounded-r-sm transition-all duration-500 group-hover:bg-positive"
+                          style={{ width: `${barPct / 2}%` }}
+                        />
+                      ) : (
+                        <div
+                          className="absolute right-1/2 h-1.5 bg-negative/70 rounded-l-sm transition-all duration-500 group-hover:bg-negative"
+                          style={{ width: `${barPct / 2}%` }}
+                        />
+                      )}
+                    </div>
+                    <span className={`font-mono tabular-nums text-right ${scoreColor(stats.mean)}`}>
                       {stats.mean >= 0 ? "+" : ""}{stats.mean.toFixed(3)}
                     </span>
-                    <span className="text-xs opacity-60">{stats.count} art.</span>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             {thinSources > 0 && (
               <p className="mt-2 text-[11px] font-mono text-text-tertiary">

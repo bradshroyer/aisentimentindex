@@ -24,48 +24,50 @@ function formatShortDate(dateStr: string): string {
   return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
 }
 
-function scoreBgColor(score: number): string {
-  if (score > 0.05) return "bg-positive/10 text-positive";
-  if (score < -0.05) return "bg-negative/10 text-negative";
-  return "bg-neutral/10 text-neutral";
+function scoreRailColor(score: number): string {
+  if (score > 0.05) return "bg-positive";
+  if (score < -0.05) return "bg-negative";
+  return "bg-neutral/40";
 }
 
-function HeadlineCard({ h }: { h: Headline }) {
+function HeadlineRow({ h }: { h: Headline }) {
   return (
-    <div className="bg-card border border-border rounded-lg p-3 hover:border-accent/20 transition-colors card-glow">
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
+    <div className="group relative flex items-start gap-3 px-3 py-2.5 border-b border-border/40 last:border-b-0 hover:bg-surface-alt/50 transition-colors">
+      <span
+        className={`w-0.5 self-stretch shrink-0 rounded-full ${scoreRailColor(h.score)}`}
+        aria-hidden="true"
+      />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-3">
           {h.url ? (
             <a
               href={h.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-text-primary hover:text-accent leading-snug"
+              className="text-sm text-text-primary group-hover:text-accent leading-snug line-clamp-2 flex-1"
             >
               {h.title}
             </a>
           ) : (
-            <span className="text-sm font-medium text-text-primary leading-snug">
+            <span className="text-sm text-text-primary leading-snug line-clamp-2 flex-1">
               {h.title}
             </span>
           )}
-          {h.summary && (
-            <p className="text-xs text-text-secondary mt-1.5 line-clamp-2 leading-relaxed">
-              {h.summary}
-            </p>
-          )}
-          <div className="flex items-center gap-2 mt-2">
-            <span className="text-xs text-text-tertiary bg-surface-alt px-2 py-0.5 rounded">
-              {h.source}
-            </span>
-          </div>
+          <span
+            className={`shrink-0 text-xs font-mono tabular-nums ${scoreColor(h.score)}`}
+          >
+            {h.score >= 0 ? "+" : ""}
+            {h.score.toFixed(3)}
+          </span>
         </div>
-        <span
-          className={`shrink-0 text-sm font-bold font-mono tabular-nums px-2 py-1 rounded ${scoreBgColor(h.score)}`}
-        >
-          {h.score >= 0 ? "+" : ""}
-          {h.score.toFixed(3)}
-        </span>
+        {h.summary && (
+          <p className="text-xs text-text-tertiary mt-1 line-clamp-1 leading-snug">
+            {h.summary}
+          </p>
+        )}
+        <div className="flex items-center gap-2 mt-1 text-[10px] font-mono uppercase tracking-wider text-text-tertiary">
+          <span>{h.source}</span>
+        </div>
       </div>
     </div>
   );
@@ -120,14 +122,14 @@ export function HeadlinesTable({
         )}
       </div>
 
-      {/* Card view when date-filtered, table view otherwise */}
+      {/* Compact list when date-filtered, table view otherwise */}
       {selectedDate ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="bg-card border border-border rounded-lg overflow-hidden card-glow">
           {visible.map((h) => (
-            <HeadlineCard key={h.id} h={h} />
+            <HeadlineRow key={h.id} h={h} />
           ))}
           {visible.length === 0 && (
-            <div className="col-span-full text-center py-8 text-sm text-text-tertiary">
+            <div className="text-center py-8 text-sm text-text-tertiary">
               No headlines found for this filter.
             </div>
           )}

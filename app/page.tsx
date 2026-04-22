@@ -1,44 +1,11 @@
-import { Suspense } from "react";
 import { fetchDailyScores, fetchHeadlines } from "@/lib/data";
 import { Dashboard } from "@/components/Dashboard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
-import { SponsorPill } from "@/components/SponsorPill";
 
 // Data refreshes every 6h via GitHub Actions, so per-request fetches are wasteful.
 // Revalidate every 10 min — plenty fresh, and it collapses traffic on Supabase.
 export const revalidate = 600;
-
-function DashboardSkeleton() {
-  return (
-    <div className="space-y-4 animate-pulse">
-      <div className="flex items-center gap-3">
-        <div className="h-8 w-40 bg-surface-alt rounded-lg" />
-        <div className="h-8 w-28 bg-surface-alt rounded-lg ml-auto" />
-      </div>
-      <div className="bg-card border border-border rounded-lg p-5 h-[340px] sm:h-[540px]">
-        <div className="h-full bg-surface-alt/50 rounded" />
-      </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="bg-card border border-border rounded-lg px-5 py-4 h-24">
-            <div className="h-6 w-16 bg-surface-alt rounded mb-2" />
-            <div className="h-3 w-24 bg-surface-alt rounded" />
-          </div>
-        ))}
-      </div>
-      <div className="bg-card border border-border rounded-lg overflow-hidden">
-        <div className="bg-surface-alt border-b border-border h-10" />
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="px-4 py-3 border-b border-border/50 flex items-center gap-4">
-            <div className="h-4 flex-1 bg-surface-alt/50 rounded" />
-            <div className="h-4 w-16 bg-surface-alt/50 rounded" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default async function Home() {
   const [dailyScores, headlines] = await Promise.all([
@@ -59,16 +26,12 @@ export default async function Home() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <SponsorPill />
-          <div className="w-px h-5 bg-border mx-0.5 hidden sm:block" />
           <ShareButton />
           <ThemeToggle />
         </div>
       </header>
 
-      <Suspense fallback={<DashboardSkeleton />}>
-        <Dashboard dailyScores={dailyScores} headlines={headlines} />
-      </Suspense>
+      <Dashboard dailyScores={dailyScores} headlines={headlines} />
     </main>
   );
 }
