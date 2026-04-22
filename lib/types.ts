@@ -15,6 +15,18 @@ export interface SourceStats {
   count: number;
 }
 
+export interface SourceSummary {
+  source: string;
+  mean: number;         // mean score over last 30d window
+  count: number;        // headlines in last 30d window
+  meanAllTime: number;  // all-time mean (for stable reference)
+  countAllTime: number; // all-time volume
+  delta30: number | null; // last 30d mean − prior 30d mean (null if not enough data)
+  recencyDays: number;    // days since most recent headline
+  posPct: number;       // % positive in last 30d window
+  negPct: number;       // % negative in last 30d window
+}
+
 export interface DailyScore {
   date: string;
   mean: number;
@@ -48,5 +60,8 @@ export type SourceName = (typeof SOURCES)[number];
 export const TIME_RANGES = [
   { label: "1W", days: 7 },
   { label: "1M", days: 30 },
+  { label: "3M", days: 90 },
+  { label: "6M", days: 180 },
+  { label: "1Y", days: 365 },
   { label: "All", days: 0 },
 ] as const;

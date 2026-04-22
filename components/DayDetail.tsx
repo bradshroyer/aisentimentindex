@@ -1,10 +1,11 @@
 "use client";
 
-import type { DailyScore, Headline } from "@/lib/types";
+import type { Headline } from "@/lib/types";
+import type { Bucket } from "@/lib/bucketing";
 
 interface DayDetailProps {
-  dailyScore: DailyScore;
-  prevDailyScore: DailyScore | null;
+  bucket: Bucket;
+  prevBucket: Bucket | null;
   headlines: Headline[];
   onClose: () => void;
 }
@@ -21,30 +22,30 @@ function scoreBg(score: number): string {
   return "bg-neutral/10 text-neutral";
 }
 
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split("-");
-  const months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}, ${year}`;
-}
+const GRANULARITY_LABELS = {
+  day: { prev: "prev day", unit: "day" },
+  week: { prev: "prev week", unit: "week" },
+  month: { prev: "prev month", unit: "month" },
+} as const;
 
-export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: DayDetailProps) {
-  const { mean, count, pos, neg, neu, by_source } = dailyScore;
-  const delta = prevDailyScore ? mean - prevDailyScore.mean : null;
+export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailProps) {
+  const { mean, count, pos, neg, neu, by_source, granularity, min, max, dates, longLabel } = bucket;
+  const delta = prevBucket ? mean - prevBucket.mean : null;
+  const nouns = GRANULARITY_LABELS[granularity];
 
-  // Source breakdown sorted by score
-  const sourceEntries = Object.entries(by_source)
-    .sort((a, b) => b[1].mean - a[1].mean);
+  const sourceEntries = Object.entries(by_source).sort((a, b) => b[1].mean - a[1].mean);
 
-  // Top positive and negative headlines
   const sortedByScore = [...headlines].sort((a, b) => b.score - a.score);
   const topPositive = sortedByScore.slice(0, 3).filter((h) => h.score > 0.05);
   const topNegative = sortedByScore.slice(-3).reverse().filter((h) => h.score < -0.05);
 
-  // Distribution bar percentages
   const total = pos + neg + neu || 1;
   const posPct = (pos / total) * 100;
   const negPct = (neg / total) * 100;
   const neuPct = (neu / total) * 100;
+
+  const spread = max - min;
+  const showSpread = granularity !== "day" && spread > 0.0005;
 
   return (
     <div className="bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 card-glow">
@@ -52,14 +53,19 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
       <div className="px-4 py-3 border-b border-border flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div>
-            <h3 className="text-sm font-medium text-text-secondary">{formatDate(dailyScore.date)}</h3>
-            <div className="flex items-center gap-3 mt-0.5">
+            <h3 className="text-sm font-medium text-text-secondary">{longLabel}</h3>
+            <div className="flex items-center gap-3 mt-0.5 flex-wrap">
               <span className={`text-2xl font-bold font-mono tabular-nums ${scoreColor(mean)}`}>
                 {mean >= 0 ? "+" : ""}{mean.toFixed(3)}
               </span>
               {delta !== null && (
                 <span className={`text-sm font-mono tabular-nums ${scoreColor(delta)}`}>
-                  {delta >= 0 ? "\u25B2" : "\u25BC"} {Math.abs(delta).toFixed(3)} vs prev day
+                  {delta >= 0 ? "\u25B2" : "\u25BC"} {Math.abs(delta).toFixed(3)} vs {nouns.prev}
+                </span>
+              )}
+              {showSpread && (
+                <span className="text-xs font-mono text-text-tertiary tabular-nums">
+                  range {min.toFixed(2)} .. {max.toFixed(2)} over {dates.length} day{dates.length !== 1 ? "s" : ""}
                 </span>
               )}
             </div>
@@ -77,7 +83,7 @@ export function DayDetail({ dailyScore, prevDailyScore, headlines, onClose }: Da
         {/* Distribution bar */}
         <div>
           <div className="flex items-center justify-between text-xs text-text-secondary mb-1.5">
-            <span>{count} headlines</span>
+            <span>{count} headlines{granularity !== "day" ? ` this ${nouns.unit}` : ""}</span>
             <span className="flex gap-3">
               <span className="text-positive">{pos} positive</span>
               <span className="text-neutral">{neu} neutral</span>

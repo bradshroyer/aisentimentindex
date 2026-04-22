@@ -17,6 +17,8 @@ import {
   type ChartData,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
+import type { BucketPoint, Granularity } from "@/lib/bucketing";
+import { bucketLongLabel } from "@/lib/bucketing";
 
 ChartJS.register(
   CategoryScale,
@@ -31,26 +33,12 @@ ChartJS.register(
   Legend
 );
 
-interface ChartDataPoint {
-  date: string;
-  mean: number;
-  count: number;
-  pos: number;
-  neg: number;
-  neu: number;
-}
-
 interface SentimentChartProps {
-  data: ChartDataPoint[];
+  data: BucketPoint[];
   movingAverage: number[];
+  granularity: Granularity;
   selectedDate: string | null;
   onDateSelect: (date: string | null) => void;
-}
-
-function formatDateLabel(dateStr: string): string {
-  const [, month, day] = dateStr.split("-");
-  const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
 }
 
 function useIsDark() {
@@ -70,9 +58,16 @@ function getCSSVar(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
+const BUCKET_NOUN: Record<Granularity, { singular: string; prev: string; volume: string }> = {
+  day: { singular: "day", prev: "prev day", volume: "Headlines" },
+  week: { singular: "week", prev: "prev week", volume: "Headlines (wk)" },
+  month: { singular: "month", prev: "prev month", volume: "Headlines (mo)" },
+};
+
 export function SentimentChart({
   data,
   movingAverage,
+  granularity,
   selectedDate,
   onDateSelect,
 }: SentimentChartProps) {
@@ -81,9 +76,14 @@ export function SentimentChart({
     ? data.findIndex((d) => d.date === selectedDate)
     : -1;
 
+  const isDay = granularity === "day";
+  const showMA = isDay && movingAverage.length > 0;
+
   const chartData: ChartData<"bar" | "line", number[], string> = useMemo(() => {
-    const labels = data.map((d) => formatDateLabel(d.date));
+    const labels = data.map((d) => d.label);
     const sentiment = data.map((d) => d.mean);
+    const minArr = data.map((d) => d.min);
+    const maxArr = data.map((d) => d.max);
     const posCounts = data.map((d) => d.pos);
     const negCounts = data.map((d) => d.neg);
 
@@ -100,14 +100,12 @@ export function SentimentChart({
     const chartLineFill = getCSSVar("--color-chart-line-fill");
     const chartMa = getCSSVar("--color-chart-ma");
 
-    // Highlight selected point
-    const pointRadii = data.map((_, i) => (i === selectedIndex ? 8 : 4));
+    const pointRadii = data.map((_, i) => (i === selectedIndex ? 8 : isDay ? 4 : 3));
     const pointBg = data.map((_, i) =>
       i === selectedIndex ? chartPointSelected : chartPoint
     );
     const pointBorder = data.map(() => chartPointBorder);
 
-    // Selected bar highlight
     const posBarColors = data.map((_, i) =>
       i === selectedIndex ? chartPosBarActive : chartPosBar
     );
@@ -115,68 +113,103 @@ export function SentimentChart({
       i === selectedIndex ? chartNegBarActive : chartNegBar
     );
 
-    return {
-      labels,
-      datasets: [
+    const datasets: ChartData<"bar" | "line", number[], string>["datasets"] = [
+      {
+        label: "Positive",
+        type: "bar" as const,
+        data: posCounts,
+        backgroundColor: posBarColors,
+        borderColor: chartPosBorder,
+        borderWidth: 1,
+        yAxisID: "y1",
+        order: 3,
+        stack: "headlines",
+      },
+      {
+        label: "Negative",
+        type: "bar" as const,
+        data: negCounts,
+        backgroundColor: negBarColors,
+        borderColor: chartNegBorder,
+        borderWidth: 1,
+        yAxisID: "y1",
+        order: 3,
+        stack: "headlines",
+      },
+    ];
+
+    // Volatility band (week/month only)
+    if (!isDay) {
+      datasets.push(
         {
-          label: "Positive",
-          type: "bar" as const,
-          data: posCounts,
-          backgroundColor: posBarColors,
-          borderColor: chartPosBorder,
-          borderWidth: 1,
-          yAxisID: "y1",
-          order: 3,
-          stack: "headlines",
-        },
-        {
-          label: "Negative",
-          type: "bar" as const,
-          data: negCounts,
-          backgroundColor: negBarColors,
-          borderColor: chartNegBorder,
-          borderWidth: 1,
-          yAxisID: "y1",
-          order: 3,
-          stack: "headlines",
-        },
-        {
-          label: "Sentiment",
+          label: "__band_high",
           type: "line" as const,
-          data: sentiment,
-          borderColor: chartLine,
-          backgroundColor: chartLineFill,
-          fill: true,
-          tension: 0.3,
-          pointRadius: pointRadii,
-          pointHoverRadius: 7,
-          pointBackgroundColor: pointBg,
-          pointBorderColor: pointBorder,
-          pointBorderWidth: 2,
-          borderWidth: 2.5,
-          spanGaps: true,
-          yAxisID: "y",
-          order: 1,
-        },
-        {
-          label: "7-day avg",
-          type: "line" as const,
-          data: movingAverage,
-          borderColor: chartMa,
-          borderDash: [6, 3],
-          borderWidth: 1.5,
+          data: maxArr,
+          borderColor: "transparent",
+          backgroundColor: "transparent",
           pointRadius: 0,
-          pointHoverRadius: 4,
-          pointBackgroundColor: chartMa,
+          pointHoverRadius: 0,
           fill: false,
           tension: 0.3,
-          spanGaps: true,
           yAxisID: "y",
-          order: 2,
+          order: 5,
         },
-      ],
-    };
-  }, [data, movingAverage, selectedIndex, isDark]);
+        {
+          label: "__band_low",
+          type: "line" as const,
+          data: minArr,
+          borderColor: "transparent",
+          backgroundColor: chartLineFill,
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          fill: "-1",
+          tension: 0.3,
+          yAxisID: "y",
+          order: 5,
+        }
+      );
+    }
+
+    datasets.push({
+      label: "Sentiment",
+      type: "line" as const,
+      data: sentiment,
+      borderColor: chartLine,
+      backgroundColor: chartLineFill,
+      fill: isDay,
+      tension: 0.3,
+      pointRadius: pointRadii,
+      pointHoverRadius: 7,
+      pointBackgroundColor: pointBg,
+      pointBorderColor: pointBorder,
+      pointBorderWidth: 2,
+      borderWidth: 2.5,
+      spanGaps: true,
+      yAxisID: "y",
+      order: 1,
+    });
+
+    if (showMA) {
+      datasets.push({
+        label: "7-day avg",
+        type: "line" as const,
+        data: movingAverage,
+        borderColor: chartMa,
+        borderDash: [6, 3],
+        borderWidth: 1.5,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointBackgroundColor: chartMa,
+        fill: false,
+        tension: 0.3,
+        spanGaps: true,
+        yAxisID: "y",
+        order: 2,
+      });
+    }
+
+    return { labels, datasets };
+  }, [data, movingAverage, selectedIndex, isDark, isDay, showMA]);
 
   const gridColor = getCSSVar("--color-chart-grid");
   const zeroLineColor = getCSSVar("--color-chart-zero");
@@ -189,6 +222,8 @@ export function SentimentChart({
 
   const monoFont = "'JetBrains Mono', ui-monospace, monospace";
   const sansFont = "'DM Sans', ui-sans-serif, system-ui, sans-serif";
+
+  const nouns = BUCKET_NOUN[granularity];
 
   const options: ChartOptions<"bar" | "line"> = useMemo(
     () => ({
@@ -218,6 +253,7 @@ export function SentimentChart({
             boxWidth: 8,
             font: { size: 11, family: monoFont },
             color: legendColor,
+            filter: (item) => !item.text?.startsWith("__band"),
           },
         },
         tooltip: {
@@ -230,11 +266,14 @@ export function SentimentChart({
           titleFont: { family: sansFont, size: 12 },
           bodyFont: { family: monoFont, size: 11 },
           padding: 10,
+          filter: (item) => !item.dataset.label?.startsWith("__band"),
           callbacks: {
             title: (items) => {
               if (items.length === 0) return "";
               const idx = items[0].dataIndex;
-              return data[idx]?.date ?? "";
+              const key = data[idx]?.date ?? "";
+              if (!key) return "";
+              return bucketLongLabel(key, granularity);
             },
             label: (item) => {
               if (item.dataset.label === "Positive")
@@ -249,9 +288,12 @@ export function SentimentChart({
                 const prevScore = idx > 0 ? data[idx - 1]?.mean : null;
                 const delta = prevScore !== null ? score - prevScore : null;
                 const deltaStr = delta !== null
-                  ? ` (${delta >= 0 ? "+" : ""}${delta.toFixed(3)} vs prev day)`
+                  ? ` (${delta >= 0 ? "+" : ""}${delta.toFixed(3)} vs ${nouns.prev})`
                   : "";
-                return `  Sentiment: ${score >= 0 ? "+" : ""}${score.toFixed(3)}${deltaStr}`;
+                const rangeStr = !isDay
+                  ? `  Range: ${data[idx].min.toFixed(2)} .. ${data[idx].max.toFixed(2)}\n`
+                  : "";
+                return `${rangeStr}  Sentiment: ${score >= 0 ? "+" : ""}${score.toFixed(3)}${deltaStr}`;
               }
               return `${item.dataset.label}: ${item.parsed.y}`;
             },
@@ -283,7 +325,7 @@ export function SentimentChart({
           stacked: true,
           title: {
             display: true,
-            text: "Headlines",
+            text: nouns.volume,
             font: { size: 11, family: sansFont },
             color: tickColor,
           },
@@ -303,20 +345,24 @@ export function SentimentChart({
         },
       },
     }),
-    [data, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
+    [data, granularity, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
   );
+
+  const selectedLabel = selectedDate
+    ? bucketLongLabel(selectedDate, granularity)
+    : null;
 
   return (
     <div className="bg-card border border-border rounded-lg p-3 sm:p-5 min-h-[340px] sm:min-h-[540px] cursor-pointer chart-glow card-glow">
       <div className="h-[280px] sm:h-[500px] relative z-10">
         <Chart type="bar" data={chartData} options={options} />
       </div>
-      {selectedDate ? (
+      {selectedLabel ? (
         <div className="mt-3 text-center">
           <span className="inline-flex items-center gap-2 text-sm text-text-secondary">
             <span className="w-2 h-2 rounded-full bg-negative" />
             Showing headlines for{" "}
-            <span className="font-medium text-text-primary">{selectedDate}</span>
+            <span className="font-medium text-text-primary">{selectedLabel}</span>
             <button
               onClick={() => onDateSelect(null)}
               className="ml-1 text-text-tertiary hover:text-text-primary cursor-pointer"
@@ -328,7 +374,7 @@ export function SentimentChart({
       ) : (
         <div className="mt-3 text-center">
           <span className="text-xs text-text-tertiary">
-            Click a data point to explore that day&apos;s headlines
+            Click a {nouns.singular} to explore that {nouns.singular}&apos;s headlines
           </span>
         </div>
       )}

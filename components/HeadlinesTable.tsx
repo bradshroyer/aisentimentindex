@@ -8,6 +8,7 @@ const PAGE_SIZE = 25;
 interface HeadlinesTableProps {
   headlines: Headline[];
   selectedDate: string | null;
+  selectedLabel?: string | null;
   onClearDate: () => void;
 }
 
@@ -73,6 +74,7 @@ function HeadlineCard({ h }: { h: Headline }) {
 export function HeadlinesTable({
   headlines,
   selectedDate,
+  selectedLabel,
   onClearDate,
 }: HeadlinesTableProps) {
   const [page, setPage] = useState(0);
@@ -99,7 +101,7 @@ export function HeadlinesTable({
           {selectedDate ? (
             <>
               Headlines for{" "}
-              <span className="text-accent">{selectedDate}</span>
+              <span className="text-accent">{selectedLabel ?? selectedDate}</span>
               <span className="text-sm font-normal text-text-secondary ml-2">
                 ({headlines.length} article{headlines.length !== 1 ? "s" : ""})
               </span>

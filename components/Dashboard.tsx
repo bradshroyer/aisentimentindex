@@ -4,11 +4,22 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Headline, DailyScore } from "@/lib/types";
 import { SOURCES, TIME_RANGES } from "@/lib/types";
+import {
+  getGranularity,
+  bucketKey,
+  bucketEnd,
+  bucketChartData,
+  buildBucket,
+  prevBucketKey,
+  type ChartDayPoint,
+} from "@/lib/bucketing";
+import { computeSourceLeaderboard } from "@/lib/sourceStats";
 import { FilterBar } from "./FilterBar";
 import { SentimentChart } from "./SentimentChart";
 import { StatsBar } from "./StatsBar";
 import { DayDetail } from "./DayDetail";
 import { HeadlinesTable } from "./HeadlinesTable";
+import { SourceLeaderboard } from "./SourceLeaderboard";
 import { MethodologyFooter } from "./MethodologyFooter";
 
 interface DashboardProps {
@@ -44,6 +55,8 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     router.replace(url, { scroll: false });
   }, [selectedSource, selectedRange, selectedDate, router]);
 
+  const granularity = useMemo(() => getGranularity(selectedRange), [selectedRange]);
+
   // Filter daily scores by time range
   const filteredDailyScores = useMemo(() => {
     if (selectedRange === 0) return dailyScores;
@@ -55,54 +68,81 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     return dailyScores.filter((d) => d.date >= cutoffStr);
   }, [dailyScores, selectedRange]);
 
-  // Chart data: either "All" sources or a specific source
-  const chartData = useMemo(() => {
+  // Per-day points (pre-bucketing), respecting source filter
+  const dayPoints = useMemo<ChartDayPoint[]>(() => {
     return filteredDailyScores.map((d) => {
       if (selectedSource === "All") {
         return { date: d.date, mean: d.mean, count: d.count, pos: d.pos, neg: d.neg, neu: d.neu };
       }
       const src = d.by_source[selectedSource];
       if (!src) return null;
-      // Derive pos/neg/neu from headlines for this source+day
       const dayHeadlines = headlines.filter((h) => h.source === selectedSource && h.date === d.date);
       const pos = dayHeadlines.filter((h) => h.score > 0.05).length;
       const neg = dayHeadlines.filter((h) => h.score < -0.05).length;
       const neu = dayHeadlines.length - pos - neg;
       return { date: d.date, mean: src.mean, count: src.count, pos, neg, neu };
-    }).filter(Boolean) as { date: string; mean: number; count: number; pos: number; neg: number; neu: number }[];
+    }).filter(Boolean) as ChartDayPoint[];
   }, [filteredDailyScores, selectedSource, headlines]);
 
-  // Clear selectedDate if it's no longer in chartData (e.g. source has no data for that day)
+  // Bucketed chart data (day/week/month)
+  const chartData = useMemo(
+    () => bucketChartData(dayPoints, granularity),
+    [dayPoints, granularity]
+  );
+
+  // Clear selectedDate if its bucket is no longer in chartData
   useEffect(() => {
-    if (selectedDate && chartData.length > 0 && !chartData.some(d => d.date === selectedDate)) {
+    if (selectedDate && chartData.length > 0 && !chartData.some((d) => d.date === selectedDate)) {
       setSelectedDate(null);
     }
   }, [chartData, selectedDate]);
 
-  // 7-day moving average
+  // 7-day moving average (only meaningful at day granularity)
   const movingAverage = useMemo(() => {
+    if (granularity !== "day") return [];
     return chartData.map((_, i) => {
       const window = chartData.slice(Math.max(0, i - 6), i + 1);
-      const avg = window.reduce((sum, d) => sum + d.mean, 0) / window.length;
-      return avg;
+      return window.reduce((sum, d) => sum + d.mean, 0) / window.length;
     });
-  }, [chartData]);
+  }, [chartData, granularity]);
 
-  // Filter headlines by source + selected date
+  // Bucket currently selected
+  const selectedBucket = useMemo(() => {
+    if (!selectedDate) return null;
+    return buildBucket(dailyScores, headlines, granularity, selectedSource, selectedDate);
+  }, [dailyScores, headlines, granularity, selectedSource, selectedDate]);
+
+  const selectedPrevBucket = useMemo(() => {
+    if (!selectedDate) return null;
+    const prevKey = prevBucketKey(selectedDate, granularity);
+    // For prev bucket delta, always use "All" sources if selected is "All"; otherwise match.
+    return buildBucket(dailyScores, headlines, granularity, selectedSource, prevKey);
+  }, [dailyScores, headlines, granularity, selectedSource, selectedDate]);
+
+  // Headlines in the selected bucket's date range
+  const selectedBucketHeadlines = useMemo(() => {
+    if (!selectedBucket) return [];
+    const { start, end } = selectedBucket;
+    let filtered = headlines.filter((h) => h.date >= start && h.date <= end);
+    if (selectedSource !== "All") filtered = filtered.filter((h) => h.source === selectedSource);
+    return filtered;
+  }, [headlines, selectedBucket, selectedSource]);
+
+  // Filter headlines for the main table
   const filteredHeadlines = useMemo(() => {
     let filtered = headlines;
     if (selectedSource !== "All") {
       filtered = filtered.filter((h) => h.source === selectedSource);
     }
-    if (selectedDate) {
-      filtered = filtered.filter((h) => h.date === selectedDate);
-      // Sort by absolute score (most impactful first) when day-filtered
+    if (selectedBucket) {
+      const { start, end } = selectedBucket;
+      filtered = filtered.filter((h) => h.date >= start && h.date <= end);
       filtered = [...filtered].sort(
         (a, b) => Math.abs(b.score) - Math.abs(a.score)
       );
     }
     return filtered;
-  }, [headlines, selectedSource, selectedDate]);
+  }, [headlines, selectedSource, selectedBucket]);
 
   const handleDateSelect = useCallback(
     (date: string | null) => {
@@ -117,21 +157,45 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
 
   const handleRangeChange = useCallback(
     (days: number) => {
+      const oldG = getGranularity(selectedRange);
       setSelectedRange(days);
-      // Clear selection if the selected date falls outside the new range
-      if (selectedDate && days > 0) {
-        const lastDate = dailyScores[dailyScores.length - 1]?.date;
-        if (lastDate) {
+      // Remap the selected bucket to the new granularity. Pick a
+      // representative day from the *overlap* between the old bucket's
+      // range and the new visible range, so narrowing doesn't push the
+      // selection off-chart whenever any part of the old bucket is still
+      // on-screen.
+      if (selectedDate) {
+        const newG = getGranularity(days);
+        const lastDate = dailyScores[dailyScores.length - 1]?.date ?? "";
+        const oldStart = selectedDate;
+        const oldEnd = bucketEnd(selectedDate, oldG);
+        let visibleStart = "0000-00-00";
+        if (days > 0 && lastDate) {
           const cutoff = new Date(lastDate + "T12:00:00");
           cutoff.setDate(cutoff.getDate() - days);
-          const cutoffStr = cutoff.toISOString().slice(0, 10);
-          if (selectedDate < cutoffStr) {
-            setSelectedDate(null);
-          }
+          visibleStart = cutoff.toISOString().slice(0, 10);
         }
+        const visibleEnd = lastDate || oldEnd;
+        const overlapStart = oldStart > visibleStart ? oldStart : visibleStart;
+        const overlapEnd = oldEnd < visibleEnd ? oldEnd : visibleEnd;
+        // If the old selection has no overlap with the new visible range,
+        // clamp to the nearest visible edge rather than clearing — keeps the
+        // user oriented when narrowing past an old pick.
+        let representative: string;
+        if (overlapStart > overlapEnd) {
+          representative = oldEnd < visibleStart ? visibleStart : visibleEnd;
+        } else {
+          const midStart = new Date(overlapStart + "T12:00:00").getTime();
+          const midEnd = new Date(overlapEnd + "T12:00:00").getTime();
+          representative = new Date((midStart + midEnd) / 2)
+            .toISOString()
+            .slice(0, 10);
+        }
+        const newKey = bucketKey(representative, newG);
+        if (newKey !== selectedDate) setSelectedDate(newKey);
       }
     },
-    [selectedDate, dailyScores]
+    [selectedDate, selectedRange, dailyScores]
   );
 
   // Compute stats
@@ -157,46 +221,11 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
   // Sources active today
   const sourcesToday = dailyScores[dailyScores.length - 1]?.sources?.length ?? 0;
 
-  // Selected day data for DayDetail panel (filtered by source if active)
-  const selectedDayScore = useMemo(() => {
-    if (!selectedDate) return null;
-    const raw = dailyScores.find((d) => d.date === selectedDate);
-    if (!raw) return null;
-    if (selectedSource === "All") return raw;
-    // Build synthetic DailyScore for the selected source
-    const srcStats = raw.by_source[selectedSource];
-    if (!srcStats) return null;
-    const dayHeadlines = headlines.filter((h) => h.source === selectedSource && h.date === selectedDate);
-    const pos = dayHeadlines.filter((h) => h.score > 0.05).length;
-    const neg = dayHeadlines.filter((h) => h.score < -0.05).length;
-    const neu = dayHeadlines.length - pos - neg;
-    return {
-      ...raw,
-      mean: srcStats.mean,
-      count: srcStats.count,
-      pos,
-      neg,
-      neu,
-      sources: [selectedSource],
-      by_source: { [selectedSource]: srcStats },
-    };
-  }, [dailyScores, selectedDate, selectedSource, headlines]);
-
-  const selectedPrevDayScore = useMemo(() => {
-    if (!selectedDate) return null;
-    const idx = dailyScores.findIndex((d) => d.date === selectedDate);
-    return idx > 0 ? dailyScores[idx - 1] : null;
-  }, [dailyScores, selectedDate]);
-
-  // Headlines for selected day (filtered by source if active)
-  const selectedDayHeadlines = useMemo(() => {
-    if (!selectedDate) return [];
-    let filtered = headlines.filter((h) => h.date === selectedDate);
-    if (selectedSource !== "All") {
-      filtered = filtered.filter((h) => h.source === selectedSource);
-    }
-    return filtered;
-  }, [headlines, selectedDate, selectedSource]);
+  // Per-source leaderboard (all sources, independent of selectedSource filter)
+  const sourceLeaderboard = useMemo(
+    () => computeSourceLeaderboard(headlines),
+    [headlines]
+  );
 
   // Trend data (structured for safe JSX composition)
   const trendData = useMemo(() => {
@@ -264,16 +293,17 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         <SentimentChart
           data={chartData}
           movingAverage={movingAverage}
+          granularity={granularity}
           selectedDate={selectedDate}
           onDateSelect={handleDateSelect}
         />
       </div>
 
-      {selectedDayScore && (
+      {selectedBucket && (
         <DayDetail
-          dailyScore={selectedDayScore}
-          prevDailyScore={selectedPrevDayScore}
-          headlines={selectedDayHeadlines}
+          bucket={selectedBucket}
+          prevBucket={selectedPrevBucket}
+          headlines={selectedBucketHeadlines}
           onClose={() => setSelectedDate(null)}
         />
       )}
@@ -293,9 +323,18 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
       </div>
 
       <div className="animate-in delay-4">
+        <SourceLeaderboard
+          rows={sourceLeaderboard}
+          selectedSource={selectedSource}
+          onSourceChange={handleSourceChange}
+        />
+      </div>
+
+      <div className="animate-in delay-4">
         <HeadlinesTable
           headlines={filteredHeadlines}
           selectedDate={selectedDate}
+          selectedLabel={selectedBucket?.longLabel ?? null}
           onClearDate={() => setSelectedDate(null)}
         />
       </div>
