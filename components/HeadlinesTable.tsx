@@ -24,55 +24,6 @@ function formatShortDate(dateStr: string): string {
   return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
 }
 
-function scoreRailColor(score: number): string {
-  if (score > 0.05) return "bg-positive";
-  if (score < -0.05) return "bg-negative";
-  return "bg-neutral/40";
-}
-
-function HeadlineRow({ h }: { h: Headline }) {
-  return (
-    <div className="group relative flex items-start gap-3 px-3 py-2.5 border-b border-border/40 last:border-b-0 hover:bg-surface-alt/50 transition-colors">
-      <span
-        className={`w-0.5 self-stretch shrink-0 rounded-full ${scoreRailColor(h.score)}`}
-        aria-hidden="true"
-      />
-      <div className="min-w-0 flex-1">
-        <div className="flex items-baseline gap-3">
-          {h.url ? (
-            <a
-              href={h.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-text-primary group-hover:text-accent leading-snug truncate min-w-0 flex-1"
-            >
-              {h.title}
-            </a>
-          ) : (
-            <span className="text-sm text-text-primary leading-snug truncate min-w-0 flex-1">
-              {h.title}
-            </span>
-          )}
-          <span className="shrink-0 font-mono uppercase tracking-wider text-[10px] text-text-tertiary/80">
-            {h.source}
-          </span>
-          <span
-            className={`shrink-0 text-xs font-mono tabular-nums ${scoreColor(h.score)}`}
-          >
-            {h.score >= 0 ? "+" : ""}
-            {h.score.toFixed(3)}
-          </span>
-        </div>
-        {h.summary && (
-          <p className="mt-0.5 pr-16 text-xs text-text-tertiary/80 line-clamp-1 leading-snug">
-            {h.summary}
-          </p>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export function HeadlinesTable({
   headlines,
   selectedDate,
@@ -122,20 +73,7 @@ export function HeadlinesTable({
         )}
       </div>
 
-      {/* Compact list when date-filtered, table view otherwise */}
-      {selectedDate ? (
-        <div className="bg-card border border-border rounded-lg overflow-hidden">
-          {visible.map((h) => (
-            <HeadlineRow key={h.id} h={h} />
-          ))}
-          {visible.length === 0 && (
-            <div className="text-center py-8 text-sm text-text-tertiary">
-              No headlines found for this filter.
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="bg-card border border-border rounded-lg overflow-hidden">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="bg-surface-alt border-b border-border">
@@ -201,10 +139,9 @@ export function HeadlinesTable({
                   </td>
                 </tr>
               )}
-            </tbody>
-          </table>
-        </div>
-      )}
+          </tbody>
+        </table>
+      </div>
 
       {hasMore && (
         <button

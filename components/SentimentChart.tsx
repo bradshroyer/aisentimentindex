@@ -215,14 +215,17 @@ export function SentimentChart({
     return { labels, datasets };
   }, [data, movingAverage, selectedIndex, isDark, isDay, showMA]);
 
+  // Note: reading `isDark` here makes these values reactive to theme changes.
+  // getCSSVar reads the DOM, which doesn't tie into React's render cycle on its own.
+  void isDark;
   const gridColor = getCSSVar("--color-chart-grid");
   const zeroLineColor = getCSSVar("--color-chart-zero");
   const tickColor = getCSSVar("--color-chart-tick");
   const legendColor = getCSSVar("--color-chart-legend");
-  const tooltipBg = getCSSVar("--color-chart-tooltip-bg");
-  const tooltipTitle = getCSSVar("--color-chart-tooltip-title");
-  const tooltipBody = getCSSVar("--color-chart-tooltip-body");
-  const tooltipBorder = getCSSVar("--color-chart-tooltip-border");
+  const tooltipBg = isDark ? "#1C1917" : "#FFFFFF";
+  const tooltipTitle = isDark ? "#F5F0EB" : "#1C1917";
+  const tooltipBody = isDark ? "#A8A29E" : "#78716C";
+  const tooltipBorder = isDark ? "rgba(255, 245, 235, 0.08)" : "rgba(120, 100, 80, 0.10)";
 
   const monoFont = "'JetBrains Mono', ui-monospace, monospace";
   const sansFont = "'DM Sans', ui-sans-serif, system-ui, sans-serif";
@@ -277,6 +280,20 @@ export function SentimentChart({
           padding: 10,
           filter: (item) => !item.dataset.label?.startsWith("__band"),
           callbacks: {
+            labelColor: (item) => {
+              // Pre-composited colors that match how the bars actually
+              // render on the chart background per theme.
+              const label = item.dataset.label;
+              const swatch = (dark: string, light: string) => {
+                const c = isDark ? dark : light;
+                return { backgroundColor: c, borderColor: c };
+              };
+              if (label === "Positive") return swatch("#24835F", "#62CFAA");
+              if (label === "Negative") return swatch("#8F434D", "#F6899B");
+              if (label === "Sentiment") return swatch("#F59E0B", "#D97706");
+              if (label === "7-day avg") return swatch("#5C5A57", "#C4C0BA");
+              return { backgroundColor: "transparent", borderColor: "transparent" };
+            },
             title: (items) => {
               if (items.length === 0) return "";
               const idx = items[0].dataIndex;
@@ -364,7 +381,7 @@ export function SentimentChart({
   return (
     <div className="bg-card border border-border rounded-lg p-3 sm:p-5 min-h-[340px] sm:min-h-[540px] cursor-pointer chart-glow card-glow">
       <div className="h-[280px] sm:h-[500px] relative z-10">
-        <Chart type="bar" data={chartData} options={options} />
+        <Chart key={isDark ? "dark" : "light"} type="bar" data={chartData} options={options} />
       </div>
       {selectedLabel ? (
         <div className="mt-3 text-center">
