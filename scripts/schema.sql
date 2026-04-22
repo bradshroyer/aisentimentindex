@@ -58,6 +58,7 @@ CREATE TABLE sponsor_inquiries (
 CREATE INDEX idx_headlines_date ON headlines(date);
 CREATE INDEX idx_headlines_source ON headlines(source);
 CREATE INDEX idx_headlines_date_source ON headlines(date, source);
+CREATE INDEX idx_headlines_date_timestamp ON headlines(date, timestamp DESC);
 
 -- Enable Row Level Security
 ALTER TABLE headlines ENABLE ROW LEVEL SECURITY;
