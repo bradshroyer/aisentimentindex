@@ -36,9 +36,9 @@ components/              → React components (chart, table, filters, stats)
 lib/                     → Supabase client, data fetching, types
 scripts/
   fetch_and_build.py     → RSS fetch + Claude/VADER scoring → Supabase
-  backfill_newsapi_ai.py → NewsAPI.ai backfill → Supabase
-  rescore_all.py         → Ad-hoc bulk rescore with Claude
+  backfill_newsapi_ai.py → NewsAPI.ai backfill (manual, for historical gaps)
   schema.sql             → Supabase table definitions
+  migrations/            → SQL migrations applied via Supabase SQL editor
 .github/workflows/       → GitHub Actions cron (every 6h)
 ```
 
