@@ -1,63 +1,80 @@
 "use client";
 
 import { SOURCES } from "@/lib/types";
+import { NewsAPIaiLogo } from "./NewsAPIaiLogo";
+
+const META = [
+  { label: "Model", value: "claude-haiku-4-5" },
+  { label: "Scale", value: "−1.0 to +1.0" },
+  { label: "Sources", value: `${SOURCES.length} outlets` },
+  { label: "Updates", value: "every 6h" },
+  { label: "Fallback", value: "VADER + domain rules" },
+];
 
 export function MethodologyFooter() {
   return (
-    <footer className="animate-in delay-5 pt-6 pb-8">
-      <div className="bg-card border border-border rounded-lg px-5 py-4 border-l-[3px] border-l-accent/40">
-        <p className="text-[11px] font-mono uppercase tracking-widest text-text-tertiary mb-2">
-          Methodology
-        </p>
+    <footer className="animate-in delay-5 pt-20 pb-12">
+      <div
+        className="flex items-center justify-center gap-5 mb-12"
+        aria-hidden="true"
+      >
+        <span className="h-px flex-1 bg-border" />
+        <span className="font-serif text-accent/70 text-lg leading-none select-none">
+          ✦
+        </span>
+        <span className="h-px flex-1 bg-border" />
+      </div>
 
-        <p className="text-xs text-text-secondary leading-relaxed">
-          Each headline is scored by Claude Haiku for its{" "}
-          <span className="text-text-primary font-medium">
-            stance toward AI
-          </span>
-          , not just word sentiment&mdash;a headline about an AI company winning
-          a court case scores positive, even if the words sound adversarial.
-        </p>
+      <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-text-tertiary text-center mb-5">
+        Methodology
+      </p>
 
-        <div className="mt-3 pt-3 border-t border-border flex flex-wrap gap-x-6 gap-y-1.5 text-[11px] font-mono text-text-tertiary">
-          <span>
-            Model{" "}
-            <span className="text-text-secondary">claude-haiku-4-5</span>
-          </span>
-          <span>
-            Scale{" "}
-            <span className="text-text-secondary">
-              <span className="text-negative">&minus;1.0</span>
-              {" "}to{" "}
-              <span className="text-positive">+1.0</span>
+      <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-text-secondary text-center leading-snug mb-10">
+        Each headline is scored by Claude Haiku for its{" "}
+        <span className="text-text-primary">stance toward AI</span>&mdash;not
+        word sentiment.
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-x-7 gap-y-3 mb-14">
+        {META.map((m) => (
+          <span
+            key={m.label}
+            className="text-[10px] font-mono uppercase tracking-[0.18em] text-text-tertiary"
+          >
+            {m.label}
+            <span className="text-text-secondary normal-case tracking-normal ml-1.5">
+              {m.value}
             </span>
           </span>
-          <span>
-            Sources{" "}
-            <span className="text-text-secondary">{SOURCES.length} outlets</span>
-          </span>
-          <span>
-            Updates{" "}
-            <span className="text-text-secondary">every 6h</span>
-          </span>
-          <span>
-            Fallback{" "}
-            <span className="text-text-secondary">VADER + domain rules</span>
-          </span>
-        </div>
+        ))}
+      </div>
 
-        <div className="mt-3 pt-3 border-t border-border">
-          <p className="text-xs text-text-tertiary font-mono">
-            Built by{" "}
-            <a
-              href="https://bradshroyer.com"
-              className="text-accent hover:text-accent-hover transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Brad Shroyer
-            </a>
-          </p>
+      <div className="flex flex-wrap items-center justify-between gap-y-5 gap-x-6 pt-5 border-t border-border/70">
+        <p className="text-[11px] font-mono text-text-tertiary">
+          Built by{" "}
+          <a
+            href="https://bradshroyer.com"
+            className="text-text-secondary hover:text-accent transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Brad Shroyer
+          </a>
+        </p>
+
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] font-mono uppercase tracking-[0.28em] text-text-secondary">
+            Sponsor
+          </span>
+          <a
+            href="https://newsapi.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="NewsAPI.ai"
+            className="text-text-secondary hover:text-text-primary transition-colors"
+          >
+            <NewsAPIaiLogo className="h-[18px] w-auto" />
+          </a>
         </div>
       </div>
     </footer>
