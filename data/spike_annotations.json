@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "updated": "2026-04-21",
+  "note": "Manually curated labels for the biggest day-over-day sentiment swings. Regenerate by inspecting top day-deltas in daily_scores and reading the top ~3 scored headlines on each day.",
+  "events": [
+    {
+      "date": "2025-01-08",
+      "label": "Vegas bomb + Altman suit",
+      "direction": "down",
+      "blurb": "Cybertruck bomber used AI to plan the attack; Sam Altman's sister filed suit the same day."
+    },
+    {
+      "date": "2025-01-27",
+      "label": "DeepSeek selloff",
+      "direction": "down",
+      "blurb": "DeepSeek's cheap Chinese model knocked ~$589B off Nvidia and hammered US AI stocks."
+    },
+    {
+      "date": "2025-02-03",
+      "label": "Deep Research launch",
+      "direction": "up",
+      "blurb": "OpenAI's o3-powered Deep Research debuted; coverage framed it as the start of the agent era."
+    },
+    {
+      "date": "2025-05-19",
+      "label": "Microsoft Build",
+      "direction": "up",
+      "blurb": "Microsoft Build week: GitHub coding agent, NotebookLM app, USB-C-of-AI-apps protocol push."
+    },
+    {
+      "date": "2025-07-21",
+      "label": "IMO gold medal",
+      "direction": "up",
+      "blurb": "Google DeepMind and OpenAI both claimed gold at the International Math Olympiad."
+    },
+    {
+      "date": "2025-08-09",
+      "label": "AI jobs + bubble fears",
+      "direction": "down",
+      "blurb": "Bloomberg ran entry-level-jobs and AI-deception pieces; traders fled AI-exposed stocks."
+    },
+    {
+      "date": "2025-09-01",
+      "label": "AI rally",
+      "direction": "up",
+      "blurb": "Evercore called for a 20% S&P rally on AI; Alibaba added $50B on AI revenue."
+    },
+    {
+      "date": "2025-10-06",
+      "label": "OpenAI–AMD deal",
+      "direction": "up",
+      "blurb": "OpenAI's multi-year AMD chip deal triggered a rally; AgentKit launched the same day."
+    },
+    {
+      "date": "2025-11-24",
+      "label": "Thanksgiving AI surge",
+      "direction": "up",
+      "blurb": "Broad positive run across launches and funding headlines heading into US Thanksgiving week."
+    },
+    {
+      "date": "2026-01-10",
+      "label": "Grok deepfake scandal",
+      "direction": "down",
+      "blurb": "Grok was used to generate sexualized deepfakes; global alarm over child-safety and bans followed."
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 import type { Headline } from "@/lib/types";
 import type { Bucket } from "@/lib/bucketing";
+import { SPIKE_ANNOTATIONS } from "@/lib/annotations";
 
 interface DayDetailProps {
   bucket: Bucket;
@@ -47,6 +48,10 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
   const spread = max - min;
   const showSpread = granularity !== "day" && spread > 0.0005;
 
+  const spikes = SPIKE_ANNOTATIONS.filter(
+    (a) => a.date >= bucket.start && a.date <= bucket.end,
+  );
+
   return (
     <div className="bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 card-glow">
       {/* Header */}
@@ -80,6 +85,37 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
       </div>
 
       <div className="p-4 space-y-4">
+        {spikes.length > 0 && (
+          <div className="space-y-1.5">
+            {spikes.map((s) => (
+              <div
+                key={s.date}
+                className={`rounded-md border px-3 py-2 text-xs leading-snug ${
+                  s.direction === "up"
+                    ? "bg-positive/5 border-positive/30"
+                    : "bg-negative/5 border-negative/30"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`font-mono font-semibold text-[11px] uppercase tracking-wider ${
+                      s.direction === "up" ? "text-positive" : "text-negative"
+                    }`}
+                  >
+                    {s.direction === "up" ? "\u25B2" : "\u25BC"} {s.label}
+                  </span>
+                  {granularity !== "day" && (
+                    <span className="text-[10px] font-mono text-text-tertiary">
+                      {s.date}
+                    </span>
+                  )}
+                </div>
+                <p className="mt-0.5 text-text-secondary">{s.blurb}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Distribution bar */}
         <div>
           <div className="flex items-center justify-between text-xs text-text-secondary mb-1.5">

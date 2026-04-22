@@ -15,10 +15,93 @@ import {
   Legend,
   type ChartOptions,
   type ChartData,
+  type ChartType,
+  type Plugin,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
 import type { BucketPoint, Granularity } from "@/lib/bucketing";
 import { bucketLongLabel } from "@/lib/bucketing";
+import { annotationsByBucket, type SpikeAnnotation } from "@/lib/annotations";
+
+interface SpikeAnnotationsPluginOptions {
+  labels: { index: number; ann: SpikeAnnotation }[];
+  sentimentDatasetIndex: number;
+  lineColor: string;
+  posColor: string;
+  negColor: string;
+  textColor: string;
+  font: string;
+}
+
+declare module "chart.js" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface PluginOptionsByType<TType extends ChartType> {
+    spikeAnnotations?: SpikeAnnotationsPluginOptions;
+  }
+}
+
+const spikeAnnotationsPlugin: Plugin<"bar" | "line"> = {
+  id: "spikeAnnotations",
+  afterDatasetsDraw(chart, _args, opts) {
+    const options = opts as unknown as SpikeAnnotationsPluginOptions | undefined;
+    if (!options || !options.labels?.length) return;
+    const meta = chart.getDatasetMeta(options.sentimentDatasetIndex);
+    if (!meta || !meta.data) return;
+    const { ctx, chartArea } = chart;
+    const topY = chartArea.top + 4;
+    const slotHeight = 14;
+
+    // Pre-sort labels by x to stagger overlapping labels into vertical slots.
+    const slotted = options.labels
+      .map(({ index, ann }) => {
+        const pt = meta.data[index];
+        if (!pt) return null;
+        return { index, ann, x: pt.x, y: pt.y };
+      })
+      .filter((v): v is { index: number; ann: SpikeAnnotation; x: number; y: number } => v !== null)
+      .sort((a, b) => a.x - b.x);
+
+    ctx.save();
+    ctx.font = options.font;
+    ctx.textBaseline = "middle";
+
+    const slotLastX: number[] = [];
+    for (const item of slotted) {
+      const textWidth = ctx.measureText(item.ann.label).width;
+      const labelLeft = item.x + 6;
+      const labelRight = labelLeft + textWidth;
+      let slot = 0;
+      while (slot < slotLastX.length && slotLastX[slot] > labelLeft - 6) slot++;
+      slotLastX[slot] = labelRight;
+
+      const markerY = topY + slot * slotHeight + 5;
+      const markerColor = item.ann.direction === "up" ? options.posColor : options.negColor;
+
+      // Dashed vertical connector from the data point up to the marker row.
+      ctx.strokeStyle = options.lineColor;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(item.x, item.y - 6);
+      ctx.lineTo(item.x, markerY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Marker dot.
+      ctx.fillStyle = markerColor;
+      ctx.beginPath();
+      ctx.arc(item.x, markerY, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Label text.
+      ctx.fillStyle = options.textColor;
+      ctx.textAlign = "left";
+      ctx.fillText(item.ann.label, labelLeft, markerY);
+    }
+
+    ctx.restore();
+  },
+};
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +113,8 @@ ChartJS.register(
   BarController,
   Filler,
   Tooltip,
-  Legend
+  Legend,
+  spikeAnnotationsPlugin
 );
 
 interface SentimentChartProps {
@@ -225,10 +309,34 @@ export function SentimentChart({
 
   const nouns = BUCKET_NOUN[granularity];
 
+  const annotationByIndex = useMemo(() => {
+    const byBucket = annotationsByBucket(granularity);
+    const labels: { index: number; ann: SpikeAnnotation }[] = [];
+    const perBucket: Record<string, SpikeAnnotation[]> = {};
+    data.forEach((d, i) => {
+      const anns = byBucket.get(d.date);
+      if (!anns || anns.length === 0) return;
+      perBucket[d.date] = anns;
+      for (const ann of anns) labels.push({ index: i, ann });
+    });
+    return { labels, perBucket };
+  }, [data, granularity]);
+
+  const annotationTextColor = getCSSVar("--color-text-primary") || getCSSVar("--color-chart-tick");
+  const annotationLineColor = getCSSVar("--color-chart-tick");
+  const annotationPosColor = getCSSVar("--color-positive") || getCSSVar("--color-chart-pos-border");
+  const annotationNegColor = getCSSVar("--color-negative") || getCSSVar("--color-chart-neg-border");
+
+  // Sentiment dataset sits after the two bars (and two band lines when not day).
+  const sentimentDatasetIndex = isDay ? 2 : 4;
+
   const options: ChartOptions<"bar" | "line"> = useMemo(
     () => ({
       responsive: true,
       maintainAspectRatio: false,
+      layout: {
+        padding: { top: annotationByIndex.labels.length > 0 ? 36 : 0 },
+      },
       interaction: {
         mode: "index" as const,
         intersect: false,
@@ -245,6 +353,15 @@ export function SentimentChart({
         }
       },
       plugins: {
+        spikeAnnotations: {
+          labels: annotationByIndex.labels,
+          sentimentDatasetIndex,
+          lineColor: annotationLineColor,
+          posColor: annotationPosColor,
+          negColor: annotationNegColor,
+          textColor: annotationTextColor,
+          font: `10px ${monoFont}`,
+        },
         legend: {
           display: true,
           position: "top" as const,
@@ -273,7 +390,20 @@ export function SentimentChart({
               const idx = items[0].dataIndex;
               const key = data[idx]?.date ?? "";
               if (!key) return "";
-              return bucketLongLabel(key, granularity);
+              const base = bucketLongLabel(key, granularity);
+              const anns = annotationByIndex.perBucket[key];
+              if (anns && anns.length > 0) {
+                return `${base}  •  ${anns.map((a) => a.label).join(", ")}`;
+              }
+              return base;
+            },
+            afterBody: (items) => {
+              if (items.length === 0) return "";
+              const idx = items[0].dataIndex;
+              const key = data[idx]?.date ?? "";
+              const anns = annotationByIndex.perBucket[key];
+              if (!anns || anns.length === 0) return "";
+              return anns.map((a) => `  ${a.blurb}`);
             },
             label: (item) => {
               if (item.dataset.label === "Positive")
@@ -345,7 +475,7 @@ export function SentimentChart({
         },
       },
     }),
-    [data, granularity, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
+    [data, granularity, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont, annotationByIndex, sentimentDatasetIndex, annotationLineColor, annotationPosColor, annotationNegColor, annotationTextColor]
   );
 
   const selectedLabel = selectedDate
