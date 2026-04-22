@@ -33,7 +33,7 @@
   --color-chart-neg-bar-active: rgba(244, 63, 94, 0.60);
   --color-chart-neg-border: rgba(244, 63, 94, 0.40);
   --color-chart-point: #D97706;
-  --color-chart-point-selected: #F43F5E;
+  --color-chart-point-selected: #F59E0B;
   --color-chart-point-border: #FFFFFF;
   --color-chart-legend: #78716C;
   --color-chart-tick: #78716C;
@@ -75,7 +75,7 @@
   --color-chart-neg-bar-active: rgba(251, 113, 133, 0.55);
   --color-chart-neg-border: rgba(251, 113, 133, 0.38);
   --color-chart-point: #F59E0B;
-  --color-chart-point-selected: #FB7185;
+  --color-chart-point-selected: #FBBF24;
   --color-chart-point-border: #0C0A09;
   --color-chart-legend: #A8A29E;
   --color-chart-tick: #A8A29E;
