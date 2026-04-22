@@ -6,7 +6,9 @@ import { ShareButton } from "@/components/ShareButton";
 import { SponsorPill } from "@/components/SponsorPill";
 import { RelativeTime } from "@/components/RelativeTime";
 
-export const revalidate = 0; // Always fetch fresh data
+// Data refreshes every 6h via GitHub Actions, so per-request fetches are wasteful.
+// Revalidate every 10 min — plenty fresh, and it collapses traffic on Supabase.
+export const revalidate = 600;
 
 function DashboardSkeleton() {
   return (

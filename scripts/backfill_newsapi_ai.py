@@ -101,7 +101,13 @@ def fetch_from_newsapi(date_start: str, date_end: str, max_per_batch: int = 2000
     return articles
 
 
-def convert_article(art: dict) -> dict | None:
+def convert_article(art: dict, min_date: str | None = None) -> dict | None:
+    """Convert a NewsAPI.ai article dict to our headline format.
+
+    Args:
+        art: Raw article dict from EventRegistry.
+        min_date: Override the earliest allowed date (default: DATA_START_DATE).
+    """
     title = normalize_text((art.get("title") or "").strip())
     if not title:
         return None
@@ -114,8 +120,9 @@ def convert_article(art: dict) -> dict | None:
     body = (art.get("body") or "").strip()
     summary = normalize_text(body[:MAX_SUMMARY_CHARS]) if body else ""
 
+    cutoff = min_date or DATA_START_DATE
     date = art.get("date", "")
-    if not date or date < DATA_START_DATE:
+    if not date or date < cutoff:
         return None
 
     if not is_ai_related(title, summary):

@@ -33,6 +33,18 @@ export async function fetchDailyScores(): Promise<DailyScore[]> {
   return loadDailyScoresFromFile();
 }
 
+// Cap server-side fetch to keep page payload bounded as the table grows.
+// The chart is driven by `daily_scores` (which stays all-time), so the "All"
+// range still works; only headline-backed views (tables, leaderboard, click-
+// through) are restricted to this window.
+const HEADLINES_WINDOW_DAYS = 365;
+
+function cutoffDateISO(daysBack: number): string {
+  const d = new Date();
+  d.setUTCDate(d.getUTCDate() - daysBack);
+  return d.toISOString().slice(0, 10);
+}
+
 /**
  * Fetch headlines — from Supabase if configured, otherwise from local data.json.
  */
@@ -40,7 +52,7 @@ export async function fetchHeadlines(): Promise<Headline[]> {
   const supabase = getSupabase();
 
   if (supabase) {
-    // Paginate to get all headlines
+    const cutoff = cutoffDateISO(HEADLINES_WINDOW_DAYS);
     const allData: Headline[] = [];
     let offset = 0;
     const pageSize = 1000;
@@ -49,6 +61,7 @@ export async function fetchHeadlines(): Promise<Headline[]> {
       const { data, error } = await supabase
         .from("headlines")
         .select("*")
+        .gte("date", cutoff)
         .order("timestamp", { ascending: false })
         .range(offset, offset + pageSize - 1);
 
@@ -60,31 +73,11 @@ export async function fetchHeadlines(): Promise<Headline[]> {
       offset += pageSize;
     }
 
-    return dedupeHeadlines(allData);
+    return allData;
   }
 
   // Fallback: read from local data.json
   return loadHeadlinesFromFile();
-}
-
-/**
- * Deduplicate headlines by normalized title+source+date, keeping the first occurrence.
- */
-function dedupeHeadlines(headlines: Headline[]): Headline[] {
-  const normalize = (s: string) =>
-    s.replace(/[\u2018\u2019\u201A\u201B]/g, "'")
-     .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
-     .replace(/\u2013/g, "-")
-     .replace(/\u2014/g, "--")
-     .trim();
-
-  const seen = new Set<string>();
-  return headlines.filter((h) => {
-    const key = `${normalize(h.title)}|${h.source}|${h.date}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
 }
 
 // --- Local file fallback for dev without Supabase ---

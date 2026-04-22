@@ -355,7 +355,7 @@ def upsert_headlines(sb, headlines: list[dict]) -> int:
             for h in batch
         ]
         result = sb.table("headlines").upsert(
-            rows, on_conflict="title,source,date"
+            rows, on_conflict="title_normalized,source,date"
         ).execute()
         total += len(result.data) if result.data else 0
 
@@ -382,17 +382,18 @@ def upsert_daily_scores(sb, daily: dict) -> int:
 
 
 def load_existing_titles(sb) -> set[str]:
-    """Load all existing headline titles from Supabase for dedup."""
+    """Load normalized titles from Supabase for dedup. Returns the same form
+    that `normalize_text` produces, so callers should normalize before lookup."""
     titles = set()
     # Paginate through all headlines (1000 at a time)
     offset = 0
     page_size = 1000
     while True:
-        result = sb.table("headlines").select("title").range(offset, offset + page_size - 1).execute()
+        result = sb.table("headlines").select("title_normalized").range(offset, offset + page_size - 1).execute()
         if not result.data:
             break
         for row in result.data:
-            titles.add(row["title"])
+            titles.add(row["title_normalized"])
         if len(result.data) < page_size:
             break
         offset += page_size
