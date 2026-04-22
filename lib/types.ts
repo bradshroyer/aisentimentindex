@@ -15,18 +15,6 @@ export interface SourceStats {
   count: number;
 }
 
-export interface SourceSummary {
-  source: string;
-  mean: number;         // mean score over last 30d window
-  count: number;        // headlines in last 30d window
-  meanAllTime: number;  // all-time mean (for stable reference)
-  countAllTime: number; // all-time volume
-  delta30: number | null; // last 30d mean − prior 30d mean (null if not enough data)
-  recencyDays: number;    // days since most recent headline
-  posPct: number;       // % positive in last 30d window
-  negPct: number;       // % negative in last 30d window
-}
-
 export interface DailyScore {
   date: string;
   mean: number;

@@ -19,7 +19,6 @@ GitHub Actions          → runs Python scripts every 6h
 - `components/SentimentChart.tsx` — Chart.js mixed line+bar chart with click-to-filter
 - `components/HeadlinesTable.tsx` — Paginated headlines, filtered by day/source
 - `components/FilterBar.tsx` — Source dropdown + time range buttons
-- `components/StatsBar.tsx` — Key metrics (headlines, days, latest score)
 
 ### Data layer
 - `lib/supabase.ts` — Supabase client

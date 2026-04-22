@@ -44,15 +44,18 @@ function HeadlineRow({ h }: { h: Headline }) {
               href={h.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-text-primary group-hover:text-accent leading-snug line-clamp-2 flex-1"
+              className="text-sm text-text-primary group-hover:text-accent leading-snug truncate min-w-0 flex-1"
             >
               {h.title}
             </a>
           ) : (
-            <span className="text-sm text-text-primary leading-snug line-clamp-2 flex-1">
+            <span className="text-sm text-text-primary leading-snug truncate min-w-0 flex-1">
               {h.title}
             </span>
           )}
+          <span className="shrink-0 font-mono uppercase tracking-wider text-[10px] text-text-tertiary/80">
+            {h.source}
+          </span>
           <span
             className={`shrink-0 text-xs font-mono tabular-nums ${scoreColor(h.score)}`}
           >
@@ -61,13 +64,10 @@ function HeadlineRow({ h }: { h: Headline }) {
           </span>
         </div>
         {h.summary && (
-          <p className="text-xs text-text-tertiary mt-1 line-clamp-1 leading-snug">
+          <p className="mt-0.5 pr-16 text-xs text-text-tertiary/80 line-clamp-1 leading-snug">
             {h.summary}
           </p>
         )}
-        <div className="flex items-center gap-2 mt-1 text-[10px] font-mono uppercase tracking-wider text-text-tertiary">
-          <span>{h.source}</span>
-        </div>
       </div>
     </div>
   );
@@ -124,7 +124,7 @@ export function HeadlinesTable({
 
       {/* Compact list when date-filtered, table view otherwise */}
       {selectedDate ? (
-        <div className="bg-card border border-border rounded-lg overflow-hidden card-glow">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           {visible.map((h) => (
             <HeadlineRow key={h.id} h={h} />
           ))}
@@ -135,7 +135,7 @@ export function HeadlinesTable({
           )}
         </div>
       ) : (
-        <div className="bg-card border border-border rounded-lg overflow-hidden card-glow">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="bg-surface-alt border-b border-border">

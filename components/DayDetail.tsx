@@ -86,7 +86,7 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
               </div>
             </div>
 
-            <div className="mt-5 max-w-xl">
+            <div className="mt-5">
               <div className="flex h-1.5 rounded-sm overflow-hidden bg-surface-alt">
                 {posPct > 0 && (
                   <div

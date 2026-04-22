@@ -8,18 +8,16 @@ import {
   getGranularity,
   bucketKey,
   bucketEnd,
+  bucketCenter,
   bucketChartData,
   buildBucket,
   prevBucketKey,
   type ChartDayPoint,
 } from "@/lib/bucketing";
-import { computeSourceLeaderboard } from "@/lib/sourceStats";
 import { FilterBar } from "./FilterBar";
 import { SentimentChart } from "./SentimentChart";
-import { StatsBar } from "./StatsBar";
 import { DayDetail } from "./DayDetail";
 import { HeadlinesTable } from "./HeadlinesTable";
-import { SourceLeaderboard } from "./SourceLeaderboard";
 import { MethodologyFooter } from "./MethodologyFooter";
 
 interface DashboardProps {
@@ -57,16 +55,26 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
 
   const granularity = useMemo(() => getGranularity(selectedRange), [selectedRange]);
 
-  // Filter daily scores by time range
+  // Filter daily scores by time range. When a bucket is selected, center the
+  // visible window on the selection so narrowing/widening the range keeps the
+  // focus on-chart. Otherwise, anchor the window at the latest date.
   const filteredDailyScores = useMemo(() => {
     if (selectedRange === 0) return dailyScores;
     const lastDate = dailyScores[dailyScores.length - 1]?.date;
     if (!lastDate) return dailyScores;
-    const cutoff = new Date(lastDate + "T12:00:00");
+    let windowEnd = lastDate;
+    if (selectedDate) {
+      const bEnd = bucketEnd(selectedDate, granularity);
+      const end = new Date(bEnd + "T12:00:00");
+      end.setDate(end.getDate() + Math.floor(selectedRange / 2));
+      const endStr = end.toISOString().slice(0, 10);
+      if (endStr < lastDate) windowEnd = endStr;
+    }
+    const cutoff = new Date(windowEnd + "T12:00:00");
     cutoff.setDate(cutoff.getDate() - selectedRange);
     const cutoffStr = cutoff.toISOString().slice(0, 10);
-    return dailyScores.filter((d) => d.date >= cutoffStr);
-  }, [dailyScores, selectedRange]);
+    return dailyScores.filter((d) => d.date >= cutoffStr && d.date <= windowEnd);
+  }, [dailyScores, selectedRange, selectedDate, granularity]);
 
   // Per-day points (pre-bucketing), respecting source filter
   const dayPoints = useMemo<ChartDayPoint[]>(() => {
@@ -158,71 +166,22 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
   const handleRangeChange = useCallback(
     (days: number) => {
       const oldG = getGranularity(selectedRange);
+      const newG = getGranularity(days);
       setSelectedRange(days);
-      // Remap the selected bucket to the new granularity. Pick a
-      // representative day from the *overlap* between the old bucket's
-      // range and the new visible range, so narrowing doesn't push the
-      // selection off-chart whenever any part of the old bucket is still
-      // on-screen.
-      if (selectedDate) {
-        const newG = getGranularity(days);
-        const lastDate = dailyScores[dailyScores.length - 1]?.date ?? "";
-        const oldStart = selectedDate;
-        const oldEnd = bucketEnd(selectedDate, oldG);
-        let visibleStart = "0000-00-00";
-        if (days > 0 && lastDate) {
-          const cutoff = new Date(lastDate + "T12:00:00");
-          cutoff.setDate(cutoff.getDate() - days);
-          visibleStart = cutoff.toISOString().slice(0, 10);
-        }
-        const visibleEnd = lastDate || oldEnd;
-        const overlapStart = oldStart > visibleStart ? oldStart : visibleStart;
-        const overlapEnd = oldEnd < visibleEnd ? oldEnd : visibleEnd;
-        // If the old selection has no overlap with the new visible range,
-        // clamp to the nearest visible edge rather than clearing — keeps the
-        // user oriented when narrowing past an old pick.
-        let representative: string;
-        if (overlapStart > overlapEnd) {
-          representative = oldEnd < visibleStart ? visibleStart : visibleEnd;
-        } else {
-          const midStart = new Date(overlapStart + "T12:00:00").getTime();
-          const midEnd = new Date(overlapEnd + "T12:00:00").getTime();
-          representative = new Date((midStart + midEnd) / 2)
-            .toISOString()
-            .slice(0, 10);
-        }
+      // Remap the selected bucket to the new granularity using its center day.
+      // The visible window re-anchors around the selection (see filteredDailyScores),
+      // so no clamp-to-edge logic is needed.
+      if (selectedDate && oldG !== newG) {
+        const representative = bucketCenter(selectedDate, oldG);
         const newKey = bucketKey(representative, newG);
         if (newKey !== selectedDate) setSelectedDate(newKey);
       }
     },
-    [selectedDate, selectedRange, dailyScores]
+    [selectedDate, selectedRange]
   );
 
-  // Compute stats
   const totalHeadlines = dailyScores.reduce((sum, d) => sum + d.count, 0);
   const daysTracked = dailyScores.length;
-  const latestScore = dailyScores[dailyScores.length - 1]?.mean ?? 0;
-
-  // Day-over-day delta
-  const prevDayMean = dailyScores.length >= 2 ? dailyScores[dailyScores.length - 2]?.mean ?? 0 : null;
-  const dayDelta = prevDayMean !== null ? latestScore - prevDayMean : null;
-
-  // Week-over-week delta (avg of last 7 days vs prior 7 days)
-  const weekDelta = useMemo(() => {
-    if (dailyScores.length < 8) return null;
-    const last7 = dailyScores.slice(-7);
-    const prior7 = dailyScores.slice(-14, -7);
-    if (prior7.length === 0) return null;
-    const last7Avg = last7.reduce((s, d) => s + d.mean, 0) / last7.length;
-    const prior7Avg = prior7.reduce((s, d) => s + d.mean, 0) / prior7.length;
-    return last7Avg - prior7Avg;
-  }, [dailyScores]);
-
-  // Per-source leaderboard (all sources, independent of selectedSource filter)
-  const sourceLeaderboard = useMemo(
-    () => computeSourceLeaderboard(headlines),
-    [headlines]
-  );
 
   // Range-aware trend headline. Adapts comparison window + framing to the selected range.
   const trendData = useMemo(() => {
@@ -363,26 +322,6 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         />
       )}
 
-      <div className="animate-in delay-3">
-        <StatsBar
-          totalHeadlines={totalHeadlines}
-          daysTracked={daysTracked}
-          latestScore={latestScore}
-          dayDelta={dayDelta}
-          weekDelta={weekDelta}
-          firstDate={dailyScores[0]?.date ?? ""}
-          lastDate={dailyScores[dailyScores.length - 1]?.date ?? ""}
-        />
-      </div>
-
-      <div className="animate-in delay-4">
-        <SourceLeaderboard
-          rows={sourceLeaderboard}
-          selectedSource={selectedSource}
-          onSourceChange={handleSourceChange}
-        />
-      </div>
-
       <div className="animate-in delay-4">
         <HeadlinesTable
           headlines={filteredHeadlines}
@@ -392,7 +331,12 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         />
       </div>
 
-      <MethodologyFooter />
+      <MethodologyFooter
+        totalHeadlines={totalHeadlines}
+        daysTracked={daysTracked}
+        firstDate={dailyScores[0]?.date ?? ""}
+        lastDate={dailyScores[dailyScores.length - 1]?.date ?? ""}
+      />
     </div>
   );
 }

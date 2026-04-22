@@ -3,15 +3,38 @@
 import { SOURCES } from "@/lib/types";
 import { NewsAPIaiLogo } from "./NewsAPIaiLogo";
 
-const META = [
-  { label: "Model", value: "claude-haiku-4-5" },
-  { label: "Scale", value: "−1.0 to +1.0" },
-  { label: "Sources", value: `${SOURCES.length} outlets` },
-  { label: "Updates", value: "every 6h" },
-  { label: "Fallback", value: "VADER + domain rules" },
-];
+interface MethodologyFooterProps {
+  totalHeadlines: number;
+  daysTracked: number;
+  firstDate: string;
+  lastDate: string;
+}
 
-export function MethodologyFooter() {
+function formatShortDate(dateStr: string): string {
+  if (!dateStr) return "";
+  const [, month, day] = dateStr.split("-");
+  const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
+}
+
+export function MethodologyFooter({
+  totalHeadlines,
+  daysTracked,
+  firstDate,
+  lastDate,
+}: MethodologyFooterProps) {
+  const META = [
+    { label: "Model", value: "claude-haiku-4-5" },
+    { label: "Scale", value: "−1.0 to +1.0" },
+    { label: "Sources", value: `${SOURCES.length} outlets` },
+    { label: "Updates", value: "every 6h" },
+    { label: "Fallback", value: "VADER + domain rules" },
+    { label: "Headlines", value: totalHeadlines.toLocaleString() },
+    {
+      label: "Coverage",
+      value: `${daysTracked} days · ${formatShortDate(firstDate)}–${formatShortDate(lastDate)}`,
+    },
+  ];
   return (
     <footer className="animate-in delay-5 pt-20 pb-12">
       <div
