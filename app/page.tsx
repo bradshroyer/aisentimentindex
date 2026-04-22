@@ -4,7 +4,6 @@ import { Dashboard } from "@/components/Dashboard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
 import { SponsorPill } from "@/components/SponsorPill";
-import { RelativeTime } from "@/components/RelativeTime";
 
 // Data refreshes every 6h via GitHub Actions, so per-request fetches are wasteful.
 // Revalidate every 10 min — plenty fresh, and it collapses traffic on Supabase.
@@ -56,13 +55,7 @@ export default async function Home() {
           </h1>
           <div className="w-12 h-0.5 bg-accent mt-2 rounded-full" />
           <p className="text-xs text-text-secondary mt-2 leading-relaxed">
-            How positive or negative are the world&rsquo;s top tech outlets when they write about AI?
-            <br />
-            A daily score from &minus;1.0 to +1.0, derived from headlines across 14 sources.
-          </p>
-          <p className="text-xs text-text-tertiary mt-2 font-mono tracking-wide uppercase">
-            Tracking {"\u00B7"} 14 sources {"\u00B7"} updated{" "}
-            <RelativeTime timestamp={headlines[0]?.timestamp || new Date().toISOString()} />
+            How positive or negative are the world&rsquo;s top tech outlets when they write about AI? A daily score from &minus;1.0 to +1.0.
           </p>
         </div>
         <div className="flex items-center gap-2">

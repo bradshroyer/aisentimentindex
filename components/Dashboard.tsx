@@ -14,7 +14,6 @@ import {
   type ChartDayPoint,
 } from "@/lib/bucketing";
 import { computeSourceLeaderboard } from "@/lib/sourceStats";
-import { SPIKE_ANNOTATIONS } from "@/lib/annotations";
 import { FilterBar } from "./FilterBar";
 import { SentimentChart } from "./SentimentChart";
 import { StatsBar } from "./StatsBar";
@@ -22,7 +21,6 @@ import { DayDetail } from "./DayDetail";
 import { HeadlinesTable } from "./HeadlinesTable";
 import { SourceLeaderboard } from "./SourceLeaderboard";
 import { MethodologyFooter } from "./MethodologyFooter";
-import { YearReviewRibbon, type YearReviewData } from "./YearReviewRibbon";
 
 interface DashboardProps {
   dailyScores: DailyScore[];
@@ -220,82 +218,11 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     return last7Avg - prior7Avg;
   }, [dailyScores]);
 
-  // Sources active today
-  const sourcesToday = dailyScores[dailyScores.length - 1]?.sources?.length ?? 0;
-
   // Per-source leaderboard (all sources, independent of selectedSource filter)
   const sourceLeaderboard = useMemo(
     () => computeSourceLeaderboard(headlines),
     [headlines]
   );
-
-  // Year-in-review hero stat. Independent of selectedRange — always reflects
-  // the last 365 days of full data (not filtered). Null when <365 days logged.
-  const yearReview = useMemo<YearReviewData | null>(() => {
-    if (dailyScores.length < 365) return null;
-    const window = dailyScores.slice(-365);
-    const recent = window.slice(-30);
-    const prior = window.slice(0, 30);
-    if (recent.length < 30 || prior.length < 30) return null;
-
-    const meanOf = (arr: DailyScore[]) =>
-      arr.reduce((s, d) => s + d.mean, 0) / arr.length;
-    const recentMean = meanOf(recent);
-    const priorMean = meanOf(prior);
-    const delta = recentMean - priorMean;
-
-    // Peak / trough month (min 15 days coverage)
-    const monthAgg = new Map<string, { weighted: number; count: number; days: number }>();
-    for (const d of window) {
-      const key = d.date.slice(0, 7);
-      const agg = monthAgg.get(key) ?? { weighted: 0, count: 0, days: 0 };
-      agg.weighted += d.mean * d.count;
-      agg.count += d.count;
-      agg.days += 1;
-      monthAgg.set(key, agg);
-    }
-    let peak: { key: string; mean: number } | null = null;
-    let trough: { key: string; mean: number } | null = null;
-    for (const [key, agg] of monthAgg) {
-      if (agg.days < 15 || agg.count === 0) continue;
-      const mean = agg.weighted / agg.count;
-      if (!peak || mean > peak.mean) peak = { key, mean };
-      if (!trough || mean < trough.mean) trough = { key, mean };
-    }
-
-    // Biggest single-day swing
-    let biggestDay: { date: string; delta: number; label: string | null } | null = null;
-    for (let i = 1; i < window.length; i++) {
-      const diff = window[i].mean - window[i - 1].mean;
-      if (!biggestDay || Math.abs(diff) > Math.abs(biggestDay.delta)) {
-        biggestDay = { date: window[i].date, delta: diff, label: null };
-      }
-    }
-    if (biggestDay) {
-      const annot = SPIKE_ANNOTATIONS.find((a) => a.date === biggestDay!.date);
-      if (annot) biggestDay.label = annot.label;
-    }
-
-    // Biggest source mover (first 30d vs last 30d)
-    const allSources = new Set<string>();
-    recent.forEach((d) => Object.keys(d.by_source).forEach((s) => allSources.add(s)));
-    prior.forEach((d) => Object.keys(d.by_source).forEach((s) => allSources.add(s)));
-    let biggestSourceMover: { source: string; shift: number } | null = null;
-    for (const src of allSources) {
-      const rPts = recent.filter((d) => d.by_source[src]);
-      const pPts = prior.filter((d) => d.by_source[src]);
-      if (rPts.length < 5 || pPts.length < 5) continue;
-      const rAvg = rPts.reduce((s, d) => s + d.by_source[src].mean, 0) / rPts.length;
-      const pAvg = pPts.reduce((s, d) => s + d.by_source[src].mean, 0) / pPts.length;
-      const shift = Math.abs(rAvg - pAvg);
-      if (!biggestSourceMover || shift > biggestSourceMover.shift) {
-        biggestSourceMover = { source: src, shift };
-      }
-    }
-    if (biggestSourceMover && biggestSourceMover.shift < 0.1) biggestSourceMover = null;
-
-    return { delta, recentMean, priorMean, peak, trough, biggestDay, biggestSourceMover };
-  }, [dailyScores]);
 
   // Range-aware trend headline. Adapts comparison window + framing to the selected range.
   const trendData = useMemo(() => {
@@ -400,8 +327,6 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
         />
       </div>
 
-      {yearReview && <YearReviewRibbon data={yearReview} />}
-
       {trendData && (
         <div className="animate-in delay-1 border-l-2 border-accent/30 pl-3 -mt-1">
           <p className="text-xs font-mono text-text-secondary">
@@ -445,10 +370,8 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
           latestScore={latestScore}
           dayDelta={dayDelta}
           weekDelta={weekDelta}
-          sourcesToday={sourcesToday}
           firstDate={dailyScores[0]?.date ?? ""}
           lastDate={dailyScores[dailyScores.length - 1]?.date ?? ""}
-          totalSources={SOURCES.length}
         />
       </div>
 

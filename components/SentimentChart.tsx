@@ -313,10 +313,13 @@ export function SentimentChart({
     const byBucket = annotationsByBucket(granularity);
     const labels: { index: number; ann: SpikeAnnotation }[] = [];
     const perBucket: Record<string, SpikeAnnotation[]> = {};
+    // Labels on month buckets pile up and fight the data — keep context in tooltips only.
+    const showLabels = granularity !== "month";
     data.forEach((d, i) => {
       const anns = byBucket.get(d.date);
       if (!anns || anns.length === 0) return;
       perBucket[d.date] = anns;
+      if (!showLabels) return;
       for (const ann of anns) labels.push({ index: i, ann });
     });
     return { labels, perBucket };
@@ -370,7 +373,12 @@ export function SentimentChart({
             boxWidth: 8,
             font: { size: 11, family: monoFont },
             color: legendColor,
-            filter: (item) => !item.text?.startsWith("__band"),
+            filter: (item) => {
+              const t = item.text ?? "";
+              if (t.startsWith("__band")) return false;
+              if (t === "Positive" || t === "Negative") return false;
+              return true;
+            },
           },
         },
         tooltip: {

@@ -34,7 +34,11 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
   const delta = prevBucket ? mean - prevBucket.mean : null;
   const nouns = GRANULARITY_LABELS[granularity];
 
-  const sourceEntries = Object.entries(by_source).sort((a, b) => b[1].mean - a[1].mean);
+  // Sources with only 1-2 articles overstate precision (e.g. "Wired +0.750 / 1 art.").
+  // Hide them from the tile grid; show a compact footnote instead.
+  const allSourceEntries = Object.entries(by_source).sort((a, b) => b[1].mean - a[1].mean);
+  const sourceEntries = allSourceEntries.filter(([, s]) => s.count >= 3);
+  const thinSources = allSourceEntries.length - sourceEntries.length;
 
   const sortedByScore = [...headlines].sort((a, b) => b.score - a.score);
   const topPositive = sortedByScore.slice(0, 3).filter((h) => h.score > 0.05);
@@ -168,6 +172,11 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
                 </div>
               ))}
             </div>
+            {thinSources > 0 && (
+              <p className="mt-2 text-[11px] font-mono text-text-tertiary">
+                {`+ ${thinSources} source${thinSources !== 1 ? "s" : ""} with fewer than 3 headlines hidden`}
+              </p>
+            )}
           </div>
         )}
 
