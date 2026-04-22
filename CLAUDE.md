@@ -46,7 +46,7 @@ Scores title + summary together (not just title) for better context.
 ### Data sources
 14 RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, VentureBeat AI, CNBC Tech, NPR Technology, Fox News Tech
 
-**NewsAPI.ai backfill**: After each RSS fetch, `backfill_newsapi_ai.py` queries the NewsAPI.ai (Event Registry) API for the same 14 sources over the last 7 days, catching headlines that RSS feeds rotated out. Uses batched keyword queries to stay under the free plan's 15-item query limit. Requires `NEWSAPI_AI_KEY` env var (stored as GitHub Actions secret).
+**NewsAPI.ai backfill (manual)**: `backfill_newsapi_ai.py` queries NewsAPI.ai (Event Registry) for the same 14 sources over a date window, scoring via the same pipeline as `fetch_and_build.py`. It was on the 6h cron originally, but over 14 days of routine operation it contributed zero headlines (RSS covers the 6h window fully) so it was retired from CI. Still kept in-repo for one-off historical backfills — run locally with `NEWSAPI_AI_KEY` set. Uses batched keyword queries to stay under the free plan's 15-item query limit.
 
 ### Database (Supabase)
 Two tables:
@@ -85,7 +85,7 @@ NEWSAPI_AI_KEY=your-key python scripts/backfill_newsapi_ai.py
 
 ## Known Limitations
 
-- RSS feeds only retain ~1 week of history; NewsAPI.ai backfill covers gaps but free tier limited to last 30 days
+- RSS feeds only retain ~1 week of history; NewsAPI.ai backfill (manual, free tier limited to last 30 days) covers larger gaps if RSS ever misses a window
 - Claude Haiku scoring adds ~$0.01-0.02/day API cost; falls back to VADER if API key not set or API errors
 - VADER fallback uses word-boundary regex for domain adjustments but still lacks context awareness
 
