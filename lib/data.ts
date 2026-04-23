@@ -57,10 +57,15 @@ export async function fetchHeadlines(): Promise<Headline[]> {
     let offset = 0;
     const pageSize = 1000;
 
+    // Project only columns the UI reads. Dropping `summary` (a per-row text
+    // blob that's never rendered) keeps the response small enough to finish
+    // inside Supabase's statement_timeout during Vercel prerender.
+    const columns = "id,title,url,source,date,timestamp,score";
+
     while (true) {
       const { data, error } = await supabase
         .from("headlines")
-        .select("*")
+        .select(columns)
         .gte("date", cutoff)
         .order("timestamp", { ascending: false })
         .range(offset, offset + pageSize - 1);
