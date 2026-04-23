@@ -29,6 +29,12 @@ const GRANULARITY_LABELS = {
   month: { prev: "prev month", unit: "month" },
 } as const;
 
+const SHORT_MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function formatShortDate(dateStr: string): string {
+  const [, m, d] = dateStr.split("-");
+  return `${SHORT_MONTHS[parseInt(m, 10)]} ${parseInt(d, 10)}`;
+}
+
 export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailProps) {
   const { mean, count, pos, neg, neu, by_source, granularity, min, max, dates, longLabel } = bucket;
   const delta = prevBucket ? mean - prevBucket.mean : null;
@@ -149,7 +155,7 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
                   </span>
                   {granularity !== "day" && (
                     <span className="text-[10px] font-mono text-text-tertiary">
-                      {s.date}
+                      {formatShortDate(s.date)}
                     </span>
                   )}
                 </div>
@@ -162,7 +168,7 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
         {/* Source breakdown — diverging bars from zero */}
         {sourceEntries.length > 1 && (
           <div>
-            <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">By Source</h4>
+            <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">By source</h4>
             <div className="grid grid-cols-[minmax(0,7rem)_1fr_auto] gap-x-3 gap-y-0.5 items-center text-xs">
               {sourceEntries.map(([source, stats]) => {
                 const isPos = stats.mean > 0;
@@ -209,7 +215,7 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {topPositive.length > 0 && (
             <div>
-              <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">Most Positive</h4>
+              <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">Most positive</h4>
               <div className="space-y-2">
                 {topPositive.map((h) => (
                   <div key={h.id} className="flex items-start gap-2">
@@ -231,7 +237,7 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
           )}
           {topNegative.length > 0 && (
             <div>
-              <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">Most Negative</h4>
+              <h4 className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2 font-mono">Most negative</h4>
               <div className="space-y-2">
                 {topNegative.map((h) => (
                   <div key={h.id} className="flex items-start gap-2">

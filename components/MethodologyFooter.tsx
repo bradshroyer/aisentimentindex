@@ -10,11 +10,12 @@ interface MethodologyFooterProps {
   lastDate: string;
 }
 
-function formatShortDate(dateStr: string): string {
+function formatShortDate(dateStr: string, withYear = false): string {
   if (!dateStr) return "";
-  const [, month, day] = dateStr.split("-");
+  const [year, month, day] = dateStr.split("-");
   const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
+  const base = `${months[parseInt(month, 10)]} ${parseInt(day, 10)}`;
+  return withYear ? `${base}, ${year}` : base;
 }
 
 export function MethodologyFooter({
@@ -28,11 +29,11 @@ export function MethodologyFooter({
     { label: "Scale", value: "−1.0 to +1.0" },
     { label: "Sources", value: `${SOURCES.length} outlets` },
     { label: "Updates", value: "every 6h" },
-    { label: "Fallback", value: "VADER + domain rules" },
+    { label: "Fallback", value: "lexical scorer" },
     { label: "Headlines", value: totalHeadlines.toLocaleString() },
     {
       label: "Coverage",
-      value: `${daysTracked} days · ${formatShortDate(firstDate)}–${formatShortDate(lastDate)}`,
+      value: `${daysTracked} days · ${formatShortDate(firstDate)} – ${formatShortDate(lastDate, true)}`,
     },
   ];
   return (
@@ -87,7 +88,7 @@ export function MethodologyFooter({
 
         <div className="flex items-center gap-3">
           <span className="text-[10px] font-mono uppercase tracking-[0.28em] text-text-secondary">
-            Sponsor
+            Data source
           </span>
           <a
             href="https://newsapi.ai"

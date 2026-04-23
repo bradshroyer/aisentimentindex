@@ -8,7 +8,7 @@ export default function Loading() {
           </h1>
           <div className="w-12 h-0.5 bg-accent mt-2 rounded-full" />
           <p className="text-xs text-text-secondary mt-2 leading-relaxed">
-            How positive or negative are the world&rsquo;s top tech outlets when they write about AI? A daily score from &minus;1.0 to +1.0.
+            How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across 14 sources.
           </p>
         </div>
         <div className="flex items-center gap-2 animate-pulse">

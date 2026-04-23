@@ -27,7 +27,7 @@ const siteUrl = new URL("https://labs.bradshroyer.com");
 export const metadata: Metadata = {
   title: "AI Sentiment Index",
   description:
-    "Tracking how major tech outlets talk about AI — sentiment analysis across 14 news sources.",
+    "Tracking how major news outlets talk about AI — sentiment analysis across 14 sources.",
   metadataBase: siteUrl,
   alternates: {
     canonical: "/",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Sentiment Index",
     description:
-      "Tracking how major tech outlets talk about AI — sentiment analysis across 14 news sources.",
+      "Tracking how major news outlets talk about AI — sentiment analysis across 14 sources.",
     url: "/",
     siteName: "AI Sentiment Index",
     type: "website",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Sentiment Index",
     description:
-      "Tracking how major tech outlets talk about AI — sentiment analysis across 14 news sources.",
+      "Tracking how major news outlets talk about AI — sentiment analysis across 14 sources.",
   },
 };
 

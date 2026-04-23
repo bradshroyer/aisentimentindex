@@ -37,7 +37,7 @@ export default async function Home() {
           </h1>
           <div className="w-12 h-0.5 bg-accent mt-2 rounded-full" />
           <p className="text-xs text-text-secondary mt-2 leading-relaxed">
-            How positive or negative are the world&rsquo;s top tech outlets when they write about AI? A daily score from &minus;1.0 to +1.0.
+            How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across 14 sources.
           </p>
           {freshness && (
             <p className="text-[11px] font-mono mt-2 tabular-nums text-text-tertiary">

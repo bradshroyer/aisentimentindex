@@ -295,7 +295,7 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
             ) : trendData.direction === "down" ? (
               <span className="text-negative font-medium">down {trendData.magnitude}</span>
             ) : (
-              <span className="text-neutral font-medium">holding steady</span>
+              <span className="text-neutral font-medium">unchanged</span>
             )}
             {" "}{trendData.framing}
             {trendData.biggestMover && <>, led by {trendData.biggestMover}</>}

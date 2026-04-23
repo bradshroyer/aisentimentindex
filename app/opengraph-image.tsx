@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "AI Sentiment Index — tracking how major tech outlets talk about AI";
+export const alt = "AI Sentiment Index — tracking how major news outlets talk about AI";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,8 +49,8 @@ export default function Image() {
             lineHeight: 1.4,
           }}
         >
-          How positive or negative are the world&apos;s top tech outlets
-          when they write about AI?
+          How positive or negative are major news outlets when they
+          write about AI?
         </div>
         <div
           style={{

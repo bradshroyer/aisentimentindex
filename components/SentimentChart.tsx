@@ -400,7 +400,7 @@ export function SentimentChart({
       ) : (
         <div className="mt-3 text-center">
           <span className="text-xs text-text-tertiary">
-            Click a {nouns.singular} to explore that {nouns.singular}&apos;s headlines
+            Click any {nouns.singular} for headlines
           </span>
         </div>
       )}
