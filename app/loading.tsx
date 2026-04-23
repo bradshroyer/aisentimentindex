@@ -10,19 +10,28 @@ export default function Loading() {
           <p className="text-xs text-text-secondary mt-2 leading-relaxed">
             How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across 14 sources.
           </p>
+          <div className="h-3 w-48 bg-surface-alt/70 rounded mt-2 animate-pulse" />
         </div>
-        <div className="flex items-center gap-2 animate-pulse">
-          <div className="h-8 w-8 rounded-full bg-surface-alt" />
-          <div className="h-8 w-8 rounded-full bg-surface-alt" />
+        <div className="flex flex-col items-end gap-3 animate-pulse">
+          <div className="flex items-center gap-5">
+            <div className="h-3 w-16 bg-surface-alt rounded" />
+            <div className="h-3 w-20 bg-surface-alt rounded" />
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-full bg-surface-alt" />
+            <div className="h-8 w-8 rounded-full bg-surface-alt" />
+          </div>
         </div>
       </header>
 
       <div className="space-y-4 animate-pulse">
-        {/* Filter bar */}
-        <div className="flex items-center gap-3">
-          <div className="h-3 w-14 bg-surface-alt/70 rounded" />
-          <div className="h-8 w-36 bg-surface-alt rounded-lg" />
-          <div className="h-8 w-56 bg-surface-alt rounded-lg ml-auto" />
+        {/* Filter bar — matches FilterBar: Source label + dropdown on left, range pills on right */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-14 bg-surface-alt/70 rounded" />
+            <div className="h-8 w-36 bg-card border border-border rounded-lg" />
+          </div>
+          <div className="h-9 w-[22rem] max-w-full bg-surface-alt/50 rounded-lg sm:ml-auto" />
         </div>
 
         {/* Trend strip */}
@@ -35,44 +44,29 @@ export default function Loading() {
           <div className="h-[280px] sm:h-[500px] bg-surface-alt/40 rounded" />
         </div>
 
-        {/* Stats bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div
-              key={i}
-              className="bg-card border border-border rounded-lg px-5 py-4 h-[88px]"
-            >
-              <div className="h-6 w-20 bg-surface-alt rounded mb-2" />
-              <div className="h-3 w-24 bg-surface-alt/70 rounded" />
-            </div>
-          ))}
-        </div>
-
-        {/* Source leaderboard strip */}
-        <div className="bg-card border border-border rounded-lg h-14 flex items-center px-4 gap-3">
-          <div className="h-3 w-44 bg-surface-alt rounded" />
-          <div className="h-3 w-64 bg-surface-alt/60 rounded" />
-          <div className="ml-auto h-3 w-20 bg-surface-alt/60 rounded" />
-        </div>
-
-        {/* Headlines list */}
+        {/* Headlines table — matches HeadlinesTable: heading + bordered table with 4 columns */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <div className="h-6 w-56 bg-surface-alt rounded" />
-            <div className="h-4 w-20 bg-surface-alt/60 rounded" />
+            <div className="h-6 w-48 bg-surface-alt rounded" />
           </div>
           <div className="bg-card border border-border rounded-lg overflow-hidden">
+            <div className="bg-surface-alt border-b border-border flex items-center px-4 py-3 gap-4">
+              <div className="h-3 w-20 bg-surface-alt/80 rounded" />
+              <div className="h-3 w-16 bg-surface-alt/80 rounded ml-auto hidden sm:block" />
+              <div className="h-3 w-12 bg-surface-alt/80 rounded hidden sm:block" />
+              <div className="h-3 w-12 bg-surface-alt/80 rounded" />
+            </div>
             {Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
-                className="flex items-start gap-3 px-3 py-3 border-b border-border/40 last:border-b-0"
+                className="flex items-center gap-4 px-4 py-3 border-b border-border/50 last:border-b-0"
               >
-                <div className="w-0.5 self-stretch bg-surface-alt rounded-full" />
                 <div className="flex-1 min-w-0 space-y-1.5">
                   <div className="h-3 w-5/6 bg-surface-alt rounded" />
-                  <div className="h-2 w-3/5 bg-surface-alt/60 rounded" />
-                  <div className="h-2 w-16 bg-surface-alt/40 rounded" />
+                  <div className="h-2 w-20 bg-surface-alt/60 rounded sm:hidden" />
                 </div>
+                <div className="h-3 w-28 bg-surface-alt/70 rounded hidden sm:block" />
+                <div className="h-3 w-14 bg-surface-alt/70 rounded hidden sm:block" />
                 <div className="h-3 w-12 bg-surface-alt rounded" />
               </div>
             ))}
