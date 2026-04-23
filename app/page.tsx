@@ -2,6 +2,7 @@ import { fetchDailyScores, fetchHeadlines } from "@/lib/data";
 import { Dashboard } from "@/components/Dashboard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
+import { SiteNav } from "@/components/SiteNav";
 
 // Data refreshes every 6h via GitHub Actions, so per-request fetches are wasteful.
 // Revalidate every 10 min — plenty fresh, and it collapses traffic on Supabase.
@@ -48,9 +49,12 @@ export default async function Home() {
             </p>
           )}
         </div>
-        <div className="flex items-center gap-2">
-          <ShareButton />
-          <ThemeToggle />
+        <div className="flex flex-col items-end gap-3">
+          <SiteNav />
+          <div className="flex items-center gap-2">
+            <ShareButton />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
