@@ -1,7 +1,16 @@
 import { getSupabase } from "./supabase";
 import type { Headline, DailyScore, SourceStats } from "./types";
+import { decodeEntities } from "./text";
 import fs from "fs";
 import path from "path";
+
+function normalizeHeadline<T extends { title: string; summary?: string | null }>(h: T): T {
+  return {
+    ...h,
+    title: decodeEntities(h.title),
+    summary: h.summary == null ? h.summary : decodeEntities(h.summary),
+  };
+}
 
 /**
  * Fetch daily scores — from Supabase if configured, otherwise from local data.json.
@@ -73,7 +82,7 @@ export async function fetchHeadlines(): Promise<Headline[]> {
       if (error) throw error;
       if (!data || data.length === 0) break;
 
-      allData.push(...(data as Headline[]));
+      allData.push(...(data as Headline[]).map(normalizeHeadline));
       if (data.length < pageSize) break;
       offset += pageSize;
     }
@@ -123,8 +132,8 @@ function loadHeadlinesFromFile(): Headline[] {
   return data.headlines
     .map((h: any, i: number) => ({
       id: i,
-      title: h.title,
-      summary: h.summary ?? null,
+      title: decodeEntities(h.title ?? ""),
+      summary: h.summary == null ? null : decodeEntities(h.summary),
       url: h.url ?? null,
       source: h.source,
       date: h.date,
