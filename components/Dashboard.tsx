@@ -234,44 +234,56 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
       moverThreshold = 0.08;
     }
 
-    const recentMean =
-      recentWindow.reduce((s, d) => s + d.mean, 0) / recentWindow.length;
-    const priorMean =
-      priorWindow.reduce((s, d) => s + d.mean, 0) / priorWindow.length;
+    const getMean = (d: DailyScore): number | undefined =>
+      selectedSource === "All" ? d.mean : d.by_source[selectedSource]?.mean;
+
+    const recentVals = recentWindow
+      .map(getMean)
+      .filter((v): v is number => v !== undefined);
+    const priorVals = priorWindow
+      .map(getMean)
+      .filter((v): v is number => v !== undefined);
+    if (recentVals.length === 0 || priorVals.length === 0) return null;
+
+    const recentMean = recentVals.reduce((s, v) => s + v, 0) / recentVals.length;
+    const priorMean = priorVals.reduce((s, v) => s + v, 0) / priorVals.length;
     const delta = recentMean - priorMean;
 
     const direction =
       delta > flatThreshold ? "up" : delta < -flatThreshold ? "down" : "flat";
 
-    // Biggest source mover over the matching window
+    // Biggest source mover — only meaningful for the overall view.
     let biggestMover: string | null = null;
-    let biggestShift = 0;
-    const allSources = new Set<string>();
-    recentWindow.forEach((d) =>
-      Object.keys(d.by_source).forEach((s) => allSources.add(s))
-    );
-    for (const src of allSources) {
-      const rAvg =
-        recentWindow.reduce((s, d) => s + (d.by_source[src]?.mean ?? 0), 0) /
-        recentWindow.length;
-      const pAvg =
-        priorWindow.reduce((s, d) => s + (d.by_source[src]?.mean ?? 0), 0) /
-        priorWindow.length;
-      const shift = Math.abs(rAvg - pAvg);
-      if (shift > biggestShift) {
-        biggestShift = shift;
-        biggestMover = src;
+    if (selectedSource === "All") {
+      let biggestShift = 0;
+      const allSources = new Set<string>();
+      recentWindow.forEach((d) =>
+        Object.keys(d.by_source).forEach((s) => allSources.add(s))
+      );
+      for (const src of allSources) {
+        const rAvg =
+          recentWindow.reduce((s, d) => s + (d.by_source[src]?.mean ?? 0), 0) /
+          recentWindow.length;
+        const pAvg =
+          priorWindow.reduce((s, d) => s + (d.by_source[src]?.mean ?? 0), 0) /
+          priorWindow.length;
+        const shift = Math.abs(rAvg - pAvg);
+        if (shift > biggestShift) {
+          biggestShift = shift;
+          biggestMover = src;
+        }
       }
+      if (biggestShift < moverThreshold) biggestMover = null;
     }
-    if (biggestShift < moverThreshold) biggestMover = null;
 
     return {
       direction,
       magnitude: magnitudeFmt(delta),
       framing,
       biggestMover,
+      source: selectedSource === "All" ? null : selectedSource,
     };
-  }, [filteredDailyScores, selectedRange]);
+  }, [filteredDailyScores, selectedRange, selectedSource]);
 
   return (
     <div className="space-y-4">
@@ -289,7 +301,7 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
       {trendData && (
         <div className="animate-in delay-1 border-l-2 border-accent/30 pl-3 -mt-1">
           <p className="text-xs font-mono text-text-secondary">
-            Sentiment{" "}
+            {trendData.source ? `${trendData.source} sentiment` : "Sentiment"}{" "}
             {trendData.direction === "up" ? (
               <span className="text-positive font-medium">up {trendData.magnitude}</span>
             ) : trendData.direction === "down" ? (
