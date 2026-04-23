@@ -8,6 +8,7 @@ export interface Headline {
   timestamp: string; // ISO 8601
   score_raw: number;
   score: number;
+  scored_by: string | null;
 }
 
 export interface SourceStats {
@@ -26,24 +27,14 @@ export interface DailyScore {
   by_source: Record<string, SourceStats>;
 }
 
-export const SOURCES = [
-  "Ars Technica",
-  "BBC Technology",
-  "Bloomberg",
-  "CNBC Tech",
-  "Fox News Tech",
-  "MIT Tech Review",
-  "NPR Technology",
-  "NYT Technology",
-  "TechCrunch",
-  "The Guardian",
-  "The Verge",
-  "VentureBeat AI",
-  "Wired",
-  "ZDNet AI",
-] as const;
+// Source list is canonical in data/sources.json and shared with Python
+// (scripts/fetch_and_build.py, scripts/backfill_newsapi_ai.py) to prevent
+// drift between ingest and UI.
+import sourcesData from "@/data/sources.json";
 
-export type SourceName = (typeof SOURCES)[number];
+export const SOURCES: readonly string[] = [...sourcesData.map((s) => s.name)].sort();
+
+export type SourceName = string;
 
 export const TIME_RANGES = [
   { label: "1W", days: 7 },

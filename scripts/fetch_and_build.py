@@ -6,6 +6,7 @@ import os
 import re
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 from statistics import mean
 
 import feedparser
@@ -24,22 +25,13 @@ load_dotenv()
 # Configuration
 # ---------------------------------------------------------------------------
 
-RSS_FEEDS = {
-    "TechCrunch": "https://techcrunch.com/feed/",
-    "NYT Technology": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-    "The Verge": "https://www.theverge.com/rss/index.xml",
-    "Ars Technica": "https://feeds.arstechnica.com/arstechnica/index",
-    "Wired": "https://www.wired.com/feed/rss",
-    "BBC Technology": "https://feeds.bbci.co.uk/news/technology/rss.xml",
-    "The Guardian": "https://www.theguardian.com/technology/rss",
-    "MIT Tech Review": "https://www.technologyreview.com/feed/",
-    "Bloomberg": "https://feeds.bloomberg.com/technology/news.rss",
-    "ZDNet AI": "https://www.zdnet.com/topic/artificial-intelligence/rss.xml",
-    "VentureBeat AI": "https://feeds.feedburner.com/venturebeat/SZYF",
-    "CNBC Tech": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910",
-    "NPR Technology": "https://feeds.npr.org/1019/rss.xml",
-    "Fox News Tech": "https://moxie.foxnews.com/google-publisher/tech.xml",
-}
+# Canonical source list lives in data/sources.json and is shared with the
+# frontend (lib/types.ts). Python derives RSS_FEEDS (name→rss) here.
+_SOURCES_PATH = Path(__file__).resolve().parent.parent / "data" / "sources.json"
+with open(_SOURCES_PATH) as _f:
+    SOURCES = json.load(_f)
+
+RSS_FEEDS: dict[str, str] = {s["name"]: s["rss"] for s in SOURCES}
 
 AI_KEYWORDS = [
     "artificial intelligence", " ai ", " ai,", " ai.", " ai:", " ai'",
@@ -273,17 +265,22 @@ def score_headlines(headlines: list[dict]) -> list[dict]:
         base = analyzer.polarity_scores(text)["compound"]
         h["score_raw"] = round(base, 4)
 
-        # Use Claude if available, fall back to VADER + domain adjustments
+        # Use Claude if available, fall back to VADER + domain adjustments.
+        # Record which scorer actually produced `score` so we can audit
+        # signal origins after model swaps.
         if claude:
             claude_score = _score_one_claude(claude, text)
             if claude_score is not None:
                 h["score"] = round(claude_score, 4)
+                h["scored_by"] = CLAUDE_MODEL
             else:
                 h["score"] = round(domain_adjust(text, base), 4)
+                h["scored_by"] = "vader"
             if (i + 1) % 10 == 0:
                 print(f"  Scored {i + 1}/{len(headlines)}...")
         else:
             h["score"] = round(domain_adjust(text, base), 4)
+            h["scored_by"] = "vader"
 
     return headlines
 
@@ -351,6 +348,7 @@ def upsert_headlines(sb, headlines: list[dict]) -> int:
                 "timestamp": h["timestamp"],
                 "score_raw": h.get("score_raw", h["score"]),
                 "score": h["score"],
+                "scored_by": h.get("scored_by"),
             }
             for h in batch
         ]
@@ -404,6 +402,17 @@ def load_existing_titles(sb) -> set[str]:
 # Main
 # ---------------------------------------------------------------------------
 
+def reaggregate_dates(sb, dates: set[str]) -> int:
+    """Recompute daily_scores for the given dates by fetching their headlines
+    from Supabase. Scoped to avoid full-table rebuilds on every ingest run."""
+    if not dates:
+        return 0
+    result = sb.table("headlines").select("*").in_("date", sorted(dates)).execute()
+    day_rows = result.data or []
+    daily = aggregate_daily(day_rows)
+    return upsert_daily_scores(sb, daily)
+
+
 def main():
     sb = get_supabase()
 
@@ -413,6 +422,8 @@ def main():
     new_headlines = fetch_headlines()
     new_headlines = [h for h in new_headlines if h["title"] not in existing_titles]
 
+    dates_touched: set[str] = {h["date"] for h in new_headlines}
+
     if new_headlines:
         scored = score_headlines(new_headlines)
         count = upsert_headlines(sb, scored)
@@ -420,24 +431,12 @@ def main():
     else:
         print("No new headlines found")
 
-    # Re-aggregate from all headlines in Supabase
-    # Fetch all headlines to compute daily aggregates
-    all_headlines = []
-    offset = 0
-    page_size = 1000
-    while True:
-        result = sb.table("headlines").select("*").range(offset, offset + page_size - 1).execute()
-        if not result.data:
-            break
-        all_headlines.extend(result.data)
-        if len(result.data) < page_size:
-            break
-        offset += page_size
+    if not dates_touched:
+        print("No dates changed — skipping re-aggregation")
+        return
 
-    print(f"Total headlines in Supabase: {len(all_headlines)}")
-
-    daily = aggregate_daily(all_headlines)
-    count = upsert_daily_scores(sb, daily)
+    print(f"Re-aggregating {len(dates_touched)} date(s): {sorted(dates_touched)}")
+    count = reaggregate_dates(sb, dates_touched)
     print(f"Updated {count} daily score entries in Supabase")
 
 

@@ -126,6 +126,7 @@ function loadHeadlinesFromFile(): Headline[] {
       timestamp: h.timestamp ?? "",
       score_raw: h.score_raw ?? h.score,
       score: h.score,
+      scored_by: h.scored_by ?? null,
     }))
     .sort((a: Headline, b: Headline) => b.timestamp.localeCompare(a.timestamp));
 }

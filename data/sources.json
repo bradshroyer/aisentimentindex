@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Ars Technica",
+    "rss": "https://feeds.arstechnica.com/arstechnica/index",
+    "newsapi_uris": ["arstechnica.com"]
+  },
+  {
+    "name": "BBC Technology",
+    "rss": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+    "newsapi_uris": ["bbc.co.uk", "bbc.com"]
+  },
+  {
+    "name": "Bloomberg",
+    "rss": "https://feeds.bloomberg.com/technology/news.rss",
+    "newsapi_uris": ["bloomberg.com"]
+  },
+  {
+    "name": "CNBC Tech",
+    "rss": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910",
+    "newsapi_uris": ["cnbc.com"]
+  },
+  {
+    "name": "Fox News Tech",
+    "rss": "https://moxie.foxnews.com/google-publisher/tech.xml",
+    "newsapi_uris": ["foxnews.com"]
+  },
+  {
+    "name": "MIT Tech Review",
+    "rss": "https://www.technologyreview.com/feed/",
+    "newsapi_uris": ["technologyreview.com"]
+  },
+  {
+    "name": "NPR Technology",
+    "rss": "https://feeds.npr.org/1019/rss.xml",
+    "newsapi_uris": ["npr.org"]
+  },
+  {
+    "name": "NYT Technology",
+    "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+    "newsapi_uris": ["nytimes.com"]
+  },
+  {
+    "name": "TechCrunch",
+    "rss": "https://techcrunch.com/feed/",
+    "newsapi_uris": ["techcrunch.com"]
+  },
+  {
+    "name": "The Guardian",
+    "rss": "https://www.theguardian.com/technology/rss",
+    "newsapi_uris": ["theguardian.com"]
+  },
+  {
+    "name": "The Verge",
+    "rss": "https://www.theverge.com/rss/index.xml",
+    "newsapi_uris": ["theverge.com"]
+  },
+  {
+    "name": "VentureBeat AI",
+    "rss": "https://feeds.feedburner.com/venturebeat/SZYF",
+    "newsapi_uris": ["venturebeat.com"]
+  },
+  {
+    "name": "Wired",
+    "rss": "https://www.wired.com/feed/rss",
+    "newsapi_uris": ["wired.com"]
+  },
+  {
+    "name": "ZDNet AI",
+    "rss": "https://www.zdnet.com/topic/artificial-intelligence/rss.xml",
+    "newsapi_uris": ["zdnet.com"]
+  }
+]

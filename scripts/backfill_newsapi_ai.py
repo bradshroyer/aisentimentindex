@@ -20,9 +20,9 @@ from eventregistry import (
 sys.path.insert(0, os.path.dirname(__file__))
 
 from fetch_and_build import (
-    AI_KEYWORDS, DATA_START_DATE, is_ai_related, score_headlines,
+    AI_KEYWORDS, DATA_START_DATE, SOURCES, is_ai_related, score_headlines,
     strip_html, normalize_text, get_supabase, upsert_headlines, upsert_daily_scores,
-    aggregate_daily, load_existing_titles,
+    aggregate_daily, load_existing_titles, reaggregate_dates,
 )
 
 load_dotenv()
@@ -31,23 +31,12 @@ API_KEY = os.getenv("NEWSAPI_AI_KEY")
 if not API_KEY:
     raise SystemExit("Set NEWSAPI_AI_KEY in .env")
 
-# Map EventRegistry source URIs → our source names (must match RSS_FEEDS keys)
-SOURCE_MAP = {
-    "techcrunch.com": "TechCrunch",
-    "nytimes.com": "NYT Technology",
-    "theverge.com": "The Verge",
-    "arstechnica.com": "Ars Technica",
-    "wired.com": "Wired",
-    "bbc.co.uk": "BBC Technology",
-    "bbc.com": "BBC Technology",
-    "theguardian.com": "The Guardian",
-    "technologyreview.com": "MIT Tech Review",
-    "bloomberg.com": "Bloomberg",
-    "zdnet.com": "ZDNet AI",
-    "venturebeat.com": "VentureBeat AI",
-    "cnbc.com": "CNBC Tech",
-    "npr.org": "NPR Technology",
-    "foxnews.com": "Fox News Tech",
+# Map EventRegistry source URIs → our source names. Derived from the shared
+# data/sources.json so adding a source in one place works everywhere.
+SOURCE_MAP: dict[str, str] = {
+    uri: s["name"]
+    for s in SOURCES
+    for uri in s.get("newsapi_uris", [])
 }
 
 KEYWORD_BATCHES = [
@@ -214,23 +203,12 @@ def main():
     count = upsert_headlines(sb, scored)
     print(f"\nUpserted {count} headlines to Supabase")
 
-    # Re-aggregate daily scores from all headlines
-    all_headlines = []
-    offset = 0
-    page_size = 1000
-    while True:
-        result = sb.table("headlines").select("*").range(offset, offset + page_size - 1).execute()
-        if not result.data:
-            break
-        all_headlines.extend(result.data)
-        if len(result.data) < page_size:
-            break
-        offset += page_size
-
-    daily = aggregate_daily(all_headlines)
-    daily_count = upsert_daily_scores(sb, daily)
+    # Re-aggregate only dates we touched. Backfills commonly span many days;
+    # still far cheaper than a full-table rebuild.
+    dates_touched = {h["date"] for h in scored}
+    print(f"\nRe-aggregating {len(dates_touched)} date(s)")
+    daily_count = reaggregate_dates(sb, dates_touched)
     print(f"Updated {daily_count} daily score entries in Supabase")
-    print(f"\nDone! Supabase now has {len(all_headlines) + count} headlines across {len(daily)} days")
 
 
 if __name__ == "__main__":

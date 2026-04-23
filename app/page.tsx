@@ -7,11 +7,26 @@ import { ShareButton } from "@/components/ShareButton";
 // Revalidate every 10 min — plenty fresh, and it collapses traffic on Supabase.
 export const revalidate = 600;
 
+function describeFreshness(latestDate: string | null) {
+  if (!latestDate) return null;
+  const today = new Date().toISOString().slice(0, 10);
+  const latestMs = Date.parse(latestDate + "T00:00:00Z");
+  const todayMs = Date.parse(today + "T00:00:00Z");
+  const days = Math.max(0, Math.round((todayMs - latestMs) / 86400000));
+  const dateLabel = new Date(latestDate + "T12:00:00Z").toLocaleDateString("en-US", {
+    month: "short", day: "numeric", year: "numeric", timeZone: "UTC",
+  });
+  const relative = days === 0 ? "today" : days === 1 ? "yesterday" : `${days} days ago`;
+  return { dateLabel, relative, stale: days >= 2 };
+}
+
 export default async function Home() {
   const [dailyScores, headlines] = await Promise.all([
     fetchDailyScores(),
     fetchHeadlines(),
   ]);
+
+  const freshness = describeFreshness(dailyScores[dailyScores.length - 1]?.date ?? null);
 
   return (
     <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -24,6 +39,14 @@ export default async function Home() {
           <p className="text-xs text-text-secondary mt-2 leading-relaxed">
             How positive or negative are the world&rsquo;s top tech outlets when they write about AI? A daily score from &minus;1.0 to +1.0.
           </p>
+          {freshness && (
+            <p className="text-[11px] font-mono mt-2 tabular-nums text-text-tertiary">
+              Data through {freshness.dateLabel} ·{" "}
+              <span className={freshness.stale ? "text-negative" : "text-text-secondary"}>
+                {freshness.relative}
+              </span>
+            </p>
+          )}
         </div>
         <div className="flex items-center gap-2">
           <ShareButton />
