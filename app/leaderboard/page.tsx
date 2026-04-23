@@ -4,6 +4,7 @@ import { LeaderboardView } from "@/components/LeaderboardView";
 import { SiteNav } from "@/components/SiteNav";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
+import { MethodologyFooter } from "@/components/MethodologyFooter";
 
 export const revalidate = 600;
 
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
 
 export default async function LeaderboardPage() {
   const dailyScores = await fetchDailyScores();
+  const totalHeadlines = dailyScores.reduce((sum, d) => sum + d.count, 0);
+  const daysTracked = dailyScores.length;
 
   return (
     <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -47,6 +50,13 @@ export default async function LeaderboardPage() {
       </header>
 
       <LeaderboardView dailyScores={dailyScores} />
+
+      <MethodologyFooter
+        totalHeadlines={totalHeadlines}
+        daysTracked={daysTracked}
+        firstDate={dailyScores[0]?.date ?? ""}
+        lastDate={dailyScores[dailyScores.length - 1]?.date ?? ""}
+      />
     </main>
   );
 }

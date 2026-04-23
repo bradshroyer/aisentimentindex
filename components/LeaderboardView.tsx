@@ -48,7 +48,6 @@ function computeLeaderboard(
   const rows: LeaderboardRow[] = [];
   for (const [source, a] of agg) {
     if (a.count === 0) continue;
-    // Decimate to ~24 sparkline points via equal-sized chunks.
     const target = 24;
     const step = Math.max(1, Math.ceil(a.daily.length / target));
     const series: number[] = [];
@@ -71,7 +70,7 @@ function formatMean(n: number): string {
 
 function Sparkline({ points }: { points: number[] }) {
   if (points.length < 2) return <span className="inline-block w-16 h-4" />;
-  const w = 64;
+  const w = 56;
   const h = 16;
   const min = -1;
   const max = 1;
@@ -126,6 +125,9 @@ interface Props {
   dailyScores: DailyScore[];
 }
 
+const GRID =
+  "grid-cols-[2ch_1fr_minmax(80px,1.5fr)_6ch] sm:grid-cols-[2ch_1fr_56px_minmax(160px,1.5fr)_6ch]";
+
 export function LeaderboardView({ dailyScores }: Props) {
   const [range, setRange] = useState<number>(365);
 
@@ -172,24 +174,31 @@ export function LeaderboardView({ dailyScores }: Props) {
         </div>
       </div>
 
-      <div className="animate-in delay-2 border-l-2 border-accent/30 pl-3">
-        <p className="text-xs font-mono text-text-secondary">
-          Ranked by average sentiment toward AI. Click an outlet to view its
-          full chart and headlines.
-        </p>
-      </div>
+      {rows.length >= 2 && (
+        <div className="animate-in delay-2 pt-1 pb-2">
+          <p className="font-serif italic text-base sm:text-lg text-text-secondary leading-snug">
+            Over the selected range,{" "}
+            <span className="text-positive">{rows[0].source}</span>{" "}
+            covers AI most positively; at the other end,{" "}
+            <span className="text-negative">{rows[rows.length - 1].source}</span>{" "}
+            covers it most critically.
+          </p>
+        </div>
+      )}
 
       <div className="animate-in delay-3 rounded-xl border border-border bg-card card-glow overflow-hidden">
         <div
-          className="grid text-[10px] font-mono uppercase tracking-[0.18em] text-text-tertiary px-4 py-3 border-b border-border"
-          style={{ gridTemplateColumns: "2ch 1fr 64px minmax(120px,1fr) 5ch 6ch" }}
+          className={`grid text-[10px] font-mono uppercase tracking-[0.18em] text-text-tertiary px-4 py-3 border-b border-border gap-3 ${GRID}`}
         >
           <span>#</span>
           <span>Outlet</span>
           <span className="hidden sm:block">Trend</span>
-          <span className="hidden sm:block">Sentiment</span>
+          <span className="hidden sm:flex items-center justify-between normal-case tracking-normal text-[9px]">
+            <span>critical</span>
+            <span className="tabular-nums">0</span>
+            <span>positive</span>
+          </span>
           <span className="text-right">Score</span>
-          <span className="text-right">N</span>
         </div>
 
         {rows.length === 0 ? (
@@ -202,8 +211,7 @@ export function LeaderboardView({ dailyScores }: Props) {
               <li key={r.source}>
                 <Link
                   href={`/?source=${encodeURIComponent(r.source)}&range=${range}`}
-                  className="grid items-center px-4 py-3 gap-3 text-xs font-mono border-b border-border last:border-b-0 hover:bg-surface-alt/60 transition-colors group"
-                  style={{ gridTemplateColumns: "2ch 1fr 64px minmax(120px,1fr) 5ch 6ch" }}
+                  className={`grid items-center px-4 py-3 gap-3 text-xs font-mono border-b border-border last:border-b-0 hover:bg-surface-alt/60 transition-colors group ${GRID}`}
                 >
                   <span className="text-text-tertiary tabular-nums">
                     {i + 1}
@@ -214,7 +222,7 @@ export function LeaderboardView({ dailyScores }: Props) {
                   <span className="hidden sm:block">
                     <Sparkline points={r.series} />
                   </span>
-                  <span className="hidden sm:block">
+                  <span className="block">
                     <Bar mean={r.mean} maxAbs={maxAbs} />
                   </span>
                   <span
@@ -228,31 +236,12 @@ export function LeaderboardView({ dailyScores }: Props) {
                   >
                     {formatMean(r.mean)}
                   </span>
-                  <span className="text-right text-text-tertiary tabular-nums">
-                    {r.count.toLocaleString()}
-                  </span>
                 </Link>
               </li>
             ))}
           </ul>
         )}
       </div>
-
-      {rows.length >= 2 && (
-        <div className="animate-in delay-4 pt-2 px-1">
-          <p className="font-serif italic text-base sm:text-lg text-text-secondary leading-snug">
-            Over the selected range,{" "}
-            <span className="text-positive not-italic font-sans">
-              {rows[0].source}
-            </span>{" "}
-            covers AI most positively; at the other end,{" "}
-            <span className="text-negative not-italic font-sans">
-              {rows[rows.length - 1].source}
-            </span>{" "}
-            covers it most critically.
-          </p>
-        </div>
-      )}
     </div>
   );
 }
