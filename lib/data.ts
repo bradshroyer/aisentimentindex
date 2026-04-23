@@ -96,12 +96,38 @@ export async function fetchHeadlines(): Promise<Headline[]> {
 
 // --- Local file fallback for dev without Supabase ---
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function loadDataJson(): any | null {
+type DailyScoreRaw = {
+  mean: number;
+  count: number;
+  pos: number;
+  neg: number;
+  neu: number;
+  sources?: string[];
+  by_source?: Record<string, SourceStats>;
+};
+
+type HeadlineRaw = {
+  title?: string;
+  summary?: string | null;
+  url?: string | null;
+  source: string;
+  date: string;
+  timestamp?: string;
+  score_raw?: number;
+  score: number;
+  scored_by?: string | null;
+};
+
+type DataJson = {
+  daily_scores?: Record<string, DailyScoreRaw>;
+  headlines?: HeadlineRaw[];
+};
+
+function loadDataJson(): DataJson | null {
   try {
     const filePath = path.join(process.cwd(), "data.json");
     const raw = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(raw);
+    return JSON.parse(raw) as DataJson;
   } catch {
     return null;
   }
@@ -113,7 +139,7 @@ function loadDailyScoresFromFile(): DailyScore[] {
 
   return Object.entries(data.daily_scores)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([date, d]: [string, any]) => ({
+    .map(([date, d]) => ({
       date,
       mean: d.mean,
       count: d.count,
@@ -130,7 +156,7 @@ function loadHeadlinesFromFile(): Headline[] {
   if (!data?.headlines) return [];
 
   return data.headlines
-    .map((h: any, i: number) => ({
+    .map((h: HeadlineRaw, i: number) => ({
       id: i,
       title: decodeEntities(h.title ?? ""),
       summary: h.summary == null ? null : decodeEntities(h.summary),

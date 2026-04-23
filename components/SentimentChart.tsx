@@ -80,6 +80,9 @@ export function SentimentChart({
   const showMA = isDay && movingAverage.length > 0;
 
   const chartData: ChartData<"bar" | "line", number[], string> = useMemo(() => {
+    // getCSSVar reads the DOM; referencing `isDark` here makes this memo
+    // re-run on theme changes so the colors update.
+    void isDark;
     const labels = data.map((d) => d.label);
     const sentiment = data.map((d) => d.mean);
     const minArr = data.map((d) => d.min);
@@ -371,7 +374,7 @@ export function SentimentChart({
         },
       },
     }),
-    [data, granularity, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
+    [data, granularity, isDark, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
   );
 
   const selectedLabel = selectedDate

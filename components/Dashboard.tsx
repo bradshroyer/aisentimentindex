@@ -98,12 +98,11 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     [dayPoints, granularity]
   );
 
-  // Clear selectedDate if its bucket is no longer in chartData
-  useEffect(() => {
-    if (selectedDate && chartData.length > 0 && !chartData.some((d) => d.date === selectedDate)) {
-      setSelectedDate(null);
-    }
-  }, [chartData, selectedDate]);
+  // Clear selectedDate if its bucket is no longer in chartData.
+  // Done during render (not in an effect) so URL-sync picks it up in the same render.
+  if (selectedDate && chartData.length > 0 && !chartData.some((d) => d.date === selectedDate)) {
+    setSelectedDate(null);
+  }
 
   // 7-day moving average (only meaningful at day granularity)
   const movingAverage = useMemo(() => {

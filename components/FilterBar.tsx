@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 
 interface FilterBarProps {
   sources: string[];
@@ -24,7 +24,7 @@ export function FilterBar({
   const listRef = useRef<HTMLDivElement>(null);
   const [focusIndex, setFocusIndex] = useState(-1);
 
-  const allOptions = ["All", ...sources];
+  const allOptions = useMemo(() => ["All", ...sources], [sources]);
 
   // Close on click outside
   useEffect(() => {
@@ -35,13 +35,16 @@ export function FilterBar({
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Reset focus index when opening
-  useEffect(() => {
+  // Reset focus index when opening. Track prev open in state so we can
+  // adjust focusIndex during render (cheaper than an effect).
+  const [prevOpen, setPrevOpen] = useState(open);
+  if (open !== prevOpen) {
+    setPrevOpen(open);
     if (open) {
       const idx = allOptions.indexOf(selectedSource);
       setFocusIndex(idx >= 0 ? idx : 0);
     }
-  }, [open, selectedSource, allOptions.length]);
+  }
 
   // Scroll focused item into view
   useEffect(() => {

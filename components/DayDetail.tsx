@@ -17,12 +17,6 @@ function scoreColor(score: number): string {
   return "text-neutral";
 }
 
-function scoreBg(score: number): string {
-  if (score > 0.05) return "bg-positive/10 text-positive";
-  if (score < -0.05) return "bg-negative/10 text-negative";
-  return "bg-neutral/10 text-neutral";
-}
-
 const GRANULARITY_LABELS = {
   day: { prev: "prev day", unit: "day" },
   week: { prev: "prev week", unit: "week" },
