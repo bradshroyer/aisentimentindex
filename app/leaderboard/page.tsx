@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
 import { MethodologyFooter } from "@/components/MethodologyFooter";
 
-export const revalidate = 600;
+export const revalidate = 21600;
 
 export const metadata: Metadata = {
   title: "Leaderboard · AI Sentiment Index",

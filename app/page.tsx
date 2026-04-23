@@ -4,9 +4,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
 import { SiteNav } from "@/components/SiteNav";
 
-// Data refreshes every 6h via GitHub Actions, so per-request fetches are wasteful.
-// Revalidate every 10 min — plenty fresh, and it collapses traffic on Supabase.
-export const revalidate = 600;
+// Data refreshes every 6h via GitHub Actions, so match that cadence.
+// Any shorter and we're paying ISR writes for data that hasn't changed.
+export const revalidate = 21600;
 
 function describeFreshness(latestDate: string | null) {
   if (!latestDate) return null;
