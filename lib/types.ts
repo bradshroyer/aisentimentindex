@@ -28,8 +28,7 @@ export interface DailyScore {
 }
 
 // Source list is canonical in data/sources.json and shared with Python
-// (scripts/fetch_and_build.py, scripts/backfill_newsapi_ai.py) to prevent
-// drift between ingest and UI.
+// (scripts/fetch_and_build.py) to prevent drift between ingest and UI.
 import sourcesData from "@/data/sources.json";
 
 export const SOURCES: readonly string[] = [...sourcesData.map((s) => s.name)].sort();

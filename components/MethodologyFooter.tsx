@@ -1,7 +1,6 @@
 "use client";
 
 import { SOURCES } from "@/lib/types";
-import { NewsAPIaiLogo } from "./NewsAPIaiLogo";
 
 interface MethodologyFooterProps {
   totalHeadlines: number;
@@ -90,15 +89,9 @@ export function MethodologyFooter({
           <span className="text-[10px] font-mono uppercase tracking-[0.28em] text-text-secondary">
             Data source
           </span>
-          <a
-            href="https://newsapi.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="NewsAPI.ai"
-            className="text-text-secondary hover:text-text-primary transition-colors"
-          >
-            <NewsAPIaiLogo className="h-[18px] w-auto" />
-          </a>
+          <span className="text-[11px] font-mono text-text-secondary">
+            RSS · {SOURCES.length} outlets
+          </span>
         </div>
       </div>
     </footer>

@@ -1,6 +1,5 @@
 feedparser
 vaderSentiment
-eventregistry
 python-dotenv
 supabase
 anthropic

@@ -27,7 +27,6 @@ GitHub Actions          → runs Python scripts every 6h
 
 ### Python scripts (in `scripts/`)
 - `fetch_and_build.py` — RSS fetch + Claude/VADER scoring → upsert to Supabase
-- `backfill_newsapi_ai.py` — Manual NewsAPI.ai backfill for historical gaps. Not on the cron; RSS coverage on a 6h cadence is sufficient for steady state
 - `schema.sql` — Supabase table definitions + RLS policies
 - `migrations/` — incremental SQL migrations applied via Supabase SQL editor
 
@@ -45,7 +44,7 @@ Scores title + summary together (not just title) for better context.
 ### Data sources
 14 RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, VentureBeat AI, CNBC Tech, NPR Technology, Fox News Tech
 
-**NewsAPI.ai backfill (manual)**: `backfill_newsapi_ai.py` queries NewsAPI.ai (Event Registry) for the same 14 sources over a date window, scoring via the same pipeline as `fetch_and_build.py`. It was on the 6h cron originally, but over 14 days of routine operation it contributed zero headlines (RSS covers the 6h window fully) so it was retired from CI. Still kept in-repo for one-off historical backfills — run locally with `NEWSAPI_AI_KEY` set. Uses batched keyword queries to stay under the free plan's 15-item query limit.
+Ingestion is RSS-only. A NewsAPI.ai (Event Registry) backfill script existed earlier for historical gaps but was removed — over 14 days of routine operation it contributed zero headlines (RSS covers the 6h window fully), so it wasn't worth the paid quota.
 
 ### Database (Supabase)
 Two tables:
@@ -69,9 +68,6 @@ npm run dev
 
 # Fetch new headlines
 python scripts/fetch_and_build.py
-
-# Backfill from NewsAPI.ai (last 7 days by default)
-NEWSAPI_AI_KEY=your-key python scripts/backfill_newsapi_ai.py
 ```
 
 ## Environment Variables
@@ -80,11 +76,10 @@ NEWSAPI_AI_KEY=your-key python scripts/backfill_newsapi_ai.py
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase publishable key (safe for browser)
 - `SUPABASE_SERVICE_ROLE_KEY` — Supabase secret key (Python writes only)
 - `ANTHROPIC_API_KEY` — Anthropic API key for Claude Haiku scoring (falls back to VADER if not set)
-- `NEWSAPI_AI_KEY` — NewsAPI.ai API key (backfill only)
 
 ## Known Limitations
 
-- RSS feeds only retain ~1 week of history; NewsAPI.ai backfill (manual, free tier limited to last 30 days) covers larger gaps if RSS ever misses a window
+- RSS feeds only retain ~1 week of history, and there is no backfill source, so headlines are permanently lost if the 6h ingestion misses a window for longer than that
 - Claude Haiku scoring adds ~$0.01-0.02/day API cost; falls back to VADER if API key not set or API errors
 - VADER fallback uses word-boundary regex for domain adjustments but still lacks context awareness
 
