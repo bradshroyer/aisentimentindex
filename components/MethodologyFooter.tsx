@@ -26,7 +26,6 @@ export function MethodologyFooter({
   const META = [
     { label: "Model", value: "claude-haiku-4-5" },
     { label: "Scale", value: "−1.0 to +1.0" },
-    { label: "Sources", value: `${SOURCES.length} outlets` },
     { label: "Updates", value: "every 6h" },
     { label: "Fallback", value: "lexical scorer" },
     { label: "Headlines", value: totalHeadlines.toLocaleString() },
