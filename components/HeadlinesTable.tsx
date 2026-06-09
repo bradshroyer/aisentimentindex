@@ -10,6 +10,8 @@ interface HeadlinesTableProps {
   selectedDate: string | null;
   selectedLabel?: string | null;
   onClearDate: () => void;
+  /** True while older headlines are being fetched for a widened view. */
+  loading?: boolean;
 }
 
 function scoreColor(score: number): string {
@@ -29,6 +31,7 @@ export function HeadlinesTable({
   selectedDate,
   selectedLabel,
   onClearDate,
+  loading = false,
 }: HeadlinesTableProps) {
   const [page, setPage] = useState(0);
 
@@ -135,7 +138,7 @@ export function HeadlinesTable({
                     colSpan={4}
                     className="px-4 py-8 text-center text-sm text-text-tertiary"
                   >
-                    No headlines found for this filter.
+                    {loading ? "Loading headlines…" : "No headlines found for this filter."}
                   </td>
                 </tr>
               )}

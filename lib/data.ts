@@ -1,16 +1,9 @@
 import { getSupabase } from "./supabase";
 import type { Headline, DailyScore, SourceStats } from "./types";
 import { decodeEntities } from "./text";
+import { HEADLINE_COLUMNS, normalizeHeadline } from "./clientData";
 import fs from "fs";
 import path from "path";
-
-function normalizeHeadline<T extends { title: string; summary?: string | null }>(h: T): T {
-  return {
-    ...h,
-    title: decodeEntities(h.title),
-    summary: h.summary == null ? h.summary : decodeEntities(h.summary),
-  };
-}
 
 /**
  * Fetch daily scores — from Supabase if configured, otherwise from local data.json.
@@ -42,47 +35,45 @@ export async function fetchDailyScores(): Promise<DailyScore[]> {
   return loadDailyScoresFromFile();
 }
 
-// Cap server-side fetch to keep page payload bounded as the table grows.
-// The chart is driven by `daily_scores` (which stays all-time), so the "All"
-// range still works; only headline-backed views (tables, leaderboard, click-
-// through) are restricted to this window.
-const HEADLINES_WINDOW_DAYS = 365;
+// The server renders only the default 30-day view; older slices stream in on
+// demand from the browser (lib/clientData.ts fetchHeadlinesRange). The 5-day
+// pad means a slightly stale ingest still doesn't force a fetch on first
+// paint. The chart is driven by `daily_scores` (which stays all-time), so
+// every range renders instantly — only headline-backed views (table, day
+// detail) wait on the on-demand fetch.
+const INITIAL_HEADLINES_DAYS = 35;
 
-function cutoffDateISO(daysBack: number): string {
+/** Start of the server-rendered headlines window (YYYY-MM-DD). */
+export function headlinesSince(): string {
   const d = new Date();
-  d.setUTCDate(d.getUTCDate() - daysBack);
+  d.setUTCDate(d.getUTCDate() - INITIAL_HEADLINES_DAYS);
   return d.toISOString().slice(0, 10);
 }
 
 /**
- * Fetch headlines — from Supabase if configured, otherwise from local data.json.
+ * Fetch headlines from `since` onward — from Supabase if configured,
+ * otherwise from local data.json.
  */
-export async function fetchHeadlines(): Promise<Headline[]> {
+export async function fetchHeadlines(since: string): Promise<Headline[]> {
   const supabase = getSupabase();
 
   if (supabase) {
-    const cutoff = cutoffDateISO(HEADLINES_WINDOW_DAYS);
     const allData: Headline[] = [];
     let offset = 0;
     const pageSize = 1000;
 
-    // Project only columns the UI reads. Dropping `summary` (a per-row text
-    // blob that's never rendered) keeps the response small enough to finish
-    // inside Supabase's statement_timeout during Vercel prerender.
-    const columns = "id,title,url,source,date,timestamp,score";
-
     while (true) {
       const { data, error } = await supabase
         .from("headlines")
-        .select(columns)
-        .gte("date", cutoff)
+        .select(HEADLINE_COLUMNS)
+        .gte("date", since)
         .order("timestamp", { ascending: false })
         .range(offset, offset + pageSize - 1);
 
       if (error) throw error;
       if (!data || data.length === 0) break;
 
-      allData.push(...(data as Headline[]).map(normalizeHeadline));
+      allData.push(...(data as unknown as Headline[]).map(normalizeHeadline));
       if (data.length < pageSize) break;
       offset += pageSize;
     }
@@ -90,7 +81,8 @@ export async function fetchHeadlines(): Promise<Headline[]> {
     return allData;
   }
 
-  // Fallback: read from local data.json
+  // Fallback: read everything from local data.json. Dev without Supabase has
+  // no on-demand source for older slices, so ship the whole file instead.
   return loadHeadlinesFromFile();
 }
 

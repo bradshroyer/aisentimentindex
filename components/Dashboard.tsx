@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import type { Headline, DailyScore } from "@/lib/types";
 import { SOURCES, TIME_RANGES } from "@/lib/types";
+import { fetchHeadlinesRange } from "@/lib/clientData";
 import {
   getGranularity,
   bucketKey,
@@ -22,28 +23,51 @@ import { MethodologyFooter } from "./MethodologyFooter";
 
 interface DashboardProps {
   dailyScores: DailyScore[];
-  headlines: Headline[];
+  initialHeadlines: Headline[];
+  /** Start of the server-rendered headlines window (YYYY-MM-DD). */
+  initialSince: string;
 }
 
-export function Dashboard({ dailyScores, headlines }: DashboardProps) {
-  const searchParams = useSearchParams();
+export function Dashboard({ dailyScores, initialHeadlines, initialSince }: DashboardProps) {
   const router = useRouter();
 
-  const [selectedSource, setSelectedSource] = useState<string>(() => {
-    const src = searchParams.get("source");
-    return src && (SOURCES as readonly string[]).includes(src) ? src : "All";
-  });
-  const [selectedRange, setSelectedRange] = useState<number>(() => {
-    const r = searchParams.get("range");
-    const days = r ? parseInt(r, 10) : NaN;
-    return TIME_RANGES.some((t) => t.days === days) ? days : 30;
-  });
-  const [selectedDate, setSelectedDate] = useState<string | null>(() => {
-    return searchParams.get("date") || null;
-  });
+  // Deep-link params (?source/?range/?date) are applied in an effect below
+  // rather than via useSearchParams() — reading search params during the
+  // first render opts the whole page out of static rendering, leaving
+  // crawlers the loading skeleton instead of the dashboard.
+  const [selectedSource, setSelectedSource] = useState<string>("All");
+  const [selectedRange, setSelectedRange] = useState<number>(30);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [urlApplied, setUrlApplied] = useState(false);
 
-  // Sync state to URL
+  // The server ships only the default window of headlines; older slices are
+  // fetched on demand and merged here as the user widens the view.
+  const [headlines, setHeadlines] = useState<Headline[]>(initialHeadlines);
+  const [loadedSince, setLoadedSince] = useState(initialSince);
+  const fetchInFlight = useRef(false);
+
+  /* eslint-disable react-hooks/set-state-in-effect -- one-time sync FROM an
+     external system (the URL) after hydration. The cascading render is the
+     point: SSR ships the default view, deep links re-render to the linked
+     one. Reading the URL during the first render would either bail out of
+     static rendering (useSearchParams) or mismatch the server HTML. */
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const src = params.get("source");
+    if (src && (SOURCES as readonly string[]).includes(src)) setSelectedSource(src);
+    const r = params.get("range");
+    const days = r ? parseInt(r, 10) : NaN;
+    if (TIME_RANGES.some((t) => t.days === days)) setSelectedRange(days);
+    const date = params.get("date");
+    if (date) setSelectedDate(date);
+    setUrlApplied(true);
+  }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  // Sync state to URL. Skipped until deep-link params have been applied so
+  // the first run doesn't wipe them.
+  useEffect(() => {
+    if (!urlApplied) return;
     const params = new URLSearchParams();
     if (selectedSource !== "All") params.set("source", selectedSource);
     if (selectedRange !== 30) params.set("range", String(selectedRange));
@@ -51,9 +75,75 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
     const qs = params.toString();
     const url = qs ? `?${qs}` : "/";
     router.replace(url, { scroll: false });
-  }, [selectedSource, selectedRange, selectedDate, router]);
+  }, [urlApplied, selectedSource, selectedRange, selectedDate, router]);
 
   const granularity = useMemo(() => getGranularity(selectedRange), [selectedRange]);
+
+  // Earliest day the current view needs headlines for. Mirrors the window
+  // math in filteredDailyScores, extended to cover the selected bucket's
+  // predecessor (DayDetail compares against the previous bucket).
+  const neededSince = useMemo(() => {
+    const firstDate = dailyScores[0]?.date;
+    const lastDate = dailyScores[dailyScores.length - 1]?.date;
+    if (!firstDate || !lastDate) return null;
+    let needed: string;
+    if (selectedRange === 0) {
+      needed = firstDate;
+    } else {
+      let windowEnd = lastDate;
+      if (selectedDate) {
+        const bEnd = bucketEnd(selectedDate, granularity);
+        const end = new Date(bEnd + "T12:00:00");
+        end.setDate(end.getDate() + Math.floor(selectedRange / 2));
+        const endStr = end.toISOString().slice(0, 10);
+        if (endStr < lastDate) windowEnd = endStr;
+      }
+      const cutoff = new Date(windowEnd + "T12:00:00");
+      cutoff.setDate(cutoff.getDate() - selectedRange);
+      needed = cutoff.toISOString().slice(0, 10);
+    }
+    if (selectedDate) {
+      const prevStart = prevBucketKey(selectedDate, granularity);
+      if (prevStart < needed) needed = prevStart;
+    }
+    return needed < firstDate ? firstDate : needed;
+  }, [dailyScores, selectedRange, selectedDate, granularity]);
+
+  // A gap between what the view needs and what's been loaded means older
+  // headlines are on their way (or about to be requested).
+  const loadingOlder = urlApplied && neededSince !== null && neededSince < loadedSince;
+
+  // Pull older headlines when the view reaches past what's loaded. One fetch
+  // in flight at a time; completion updates loadedSince, which re-runs the
+  // effect to cover any gap that opened up meanwhile. Merges dedupe by id, so
+  // overlapping slices are harmless.
+  useEffect(() => {
+    if (!urlApplied || !neededSince) return;
+    if (neededSince >= loadedSince || fetchInFlight.current) return;
+    fetchInFlight.current = true;
+    let cancelled = false;
+    fetchHeadlinesRange(neededSince, loadedSince)
+      .then((older) => {
+        if (cancelled) return;
+        setHeadlines((prev) => {
+          const seen = new Set(prev.map((h) => h.id));
+          return [...prev, ...older.filter((h) => !seen.has(h.id))];
+        });
+        setLoadedSince((prev) => (neededSince < prev ? neededSince : prev));
+      })
+      .catch((err) => {
+        console.error("Failed to fetch older headlines", err);
+        // Mark the slice loaded anyway — an empty table beats a perpetual
+        // "Loading…" state, and a reload retries cleanly.
+        if (!cancelled) setLoadedSince((prev) => (neededSince < prev ? neededSince : prev));
+      })
+      .finally(() => {
+        fetchInFlight.current = false;
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [urlApplied, neededSince, loadedSince]);
 
   // Filter daily scores by time range. When a bucket is selected, center the
   // visible window on the selection so narrowing/widening the range keeps the
@@ -339,6 +429,7 @@ export function Dashboard({ dailyScores, headlines }: DashboardProps) {
           selectedDate={selectedDate}
           selectedLabel={selectedBucket?.longLabel ?? null}
           onClearDate={() => setSelectedDate(null)}
+          loading={loadingOlder}
         />
       </div>
 

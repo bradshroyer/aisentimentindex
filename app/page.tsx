@@ -1,4 +1,4 @@
-import { fetchDailyScores, fetchHeadlines } from "@/lib/data";
+import { fetchDailyScores, fetchHeadlines, headlinesSince } from "@/lib/data";
 import { Dashboard } from "@/components/Dashboard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
@@ -22,9 +22,10 @@ function describeFreshness(latestDate: string | null) {
 }
 
 export default async function Home() {
+  const since = headlinesSince();
   const [dailyScores, headlines] = await Promise.all([
     fetchDailyScores(),
-    fetchHeadlines(),
+    fetchHeadlines(since),
   ]);
 
   const freshness = describeFreshness(dailyScores[dailyScores.length - 1]?.date ?? null);
@@ -58,7 +59,7 @@ export default async function Home() {
         </div>
       </header>
 
-      <Dashboard dailyScores={dailyScores} headlines={headlines} />
+      <Dashboard dailyScores={dailyScores} initialHeadlines={headlines} initialSince={since} />
     </main>
   );
 }
