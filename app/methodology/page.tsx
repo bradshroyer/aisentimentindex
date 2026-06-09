@@ -101,8 +101,8 @@ const LIMITATIONS = [
     title: "It costs money",
     body: (
       <>
-        About $0.01&ndash;0.02 per day in API calls at current volume. If the
-        key is absent or the API errors, the index degrades to lexicon scoring
+        A few cents a day in API calls at current volume. If the key is
+        absent or the API errors, the index degrades to lexicon scoring
         rather than stopping.
       </>
     ),
@@ -253,9 +253,9 @@ export default function MethodologyPage() {
           </ul>
 
           <p className="text-sm text-text-secondary leading-relaxed">
-            So Claude Haiku became the primary scorer. At roughly 60 headlines
-            a day, that costs about{" "}
-            <span className="text-text-primary">$0.01&ndash;0.02 per day</span>
+            So Claude Haiku became the primary scorer. At the current volume
+            of 100-odd headlines a day, that costs{" "}
+            <span className="text-text-primary">a few cents per day</span>
             . VADER never left, though: its compound score is still computed
             for every headline and stored as <Mono>score_raw</Mono>, and it
             remains the fallback &mdash; now with word-boundary regexes for

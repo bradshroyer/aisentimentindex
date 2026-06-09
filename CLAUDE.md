@@ -14,16 +14,34 @@ GitHub Actions          → runs Python scripts every 6h
 ```
 
 ### Frontend
-- `app/page.tsx` — Server component, fetches data from Supabase
+- `app/page.tsx` — Server component, fetches data from Supabase, emits JSON-LD (WebSite + Dataset)
+- `app/methodology/page.tsx` — Static methodology page (scoring approach, Claude-vs-VADER, pipeline)
+- `app/opengraph-image.tsx` — Edge OG image rendering the live index value + 30-day sparkline (static fallback on fetch failure)
 - `components/Dashboard.tsx` — Client component, manages state (selectedDate, selectedSource, selectedRange)
-- `components/SentimentChart.tsx` — Chart.js mixed line+bar chart with click-to-filter
+- `components/SentimentChart.tsx` — Chart.js mixed line+bar chart with click-to-filter + 7-day moving average
 - `components/HeadlinesTable.tsx` — Paginated headlines, filtered by day/source
 - `components/FilterBar.tsx` — Source dropdown + time range buttons
+- `components/DayDetail.tsx` — Click a day → score, source breakdown, top movers
 
 ### Data layer
-- `lib/supabase.ts` — Supabase client
-- `lib/data.ts` — Data fetching (Supabase with local data.json fallback for dev)
+- `lib/supabase.ts` — Supabase client (isomorphic; NEXT_PUBLIC vars work in the browser)
+- `lib/data.ts` — Server-side fetching (Supabase with local data.json fallback for dev)
+- `lib/clientData.ts` — Browser-side on-demand headline slices + shared column list
 - `lib/types.ts` — Shared TypeScript types
+
+### Page payload strategy (important)
+The server prerenders only the last **35 days** of headlines (`headlinesSince()` in
+`lib/data.ts`) — this matches the default 1M view, keeps the page ~1.3MB instead of
+growing unboundedly with history, and still server-renders real content for crawlers.
+When the user widens the range or selects an older day, `Dashboard` fetches the
+missing `[neededSince, loadedSince)` slice from the browser via `fetchHeadlinesRange`
+and merges it (dedupe by id). `daily_scores` stays all-time (it's one small row/day),
+so the chart renders every range instantly.
+
+Do NOT reintroduce `useSearchParams()` into the initial render path of any component
+under `app/page.tsx` — combined with the implicit Suspense from `loading.tsx`, it
+silently turns the prerendered HTML into the loading skeleton (no indexable content).
+Deep-link params are applied in a post-mount effect in `Dashboard` instead.
 
 ### Python scripts (in `scripts/`)
 - `fetch_and_build.py` — RSS fetch + Claude/VADER scoring → upsert to Supabase
@@ -39,7 +57,7 @@ If `ANTHROPIC_API_KEY` is not set, scoring falls back to VADER + domain-specific
 
 Scores title + summary together (not just title) for better context.
 
-**Why Claude over VADER:** VADER is lexicon-based and had a 62% direction agreement with Claude in testing. Key failures: substring matching ("ban" matched "bank", "banking"), context blindness (couldn't tell "wins court order pausing ban" is positive), and poor handling of news/legal language. Claude costs ~$0.01-0.02/day at ~60 headlines/day on Haiku.
+**Why Claude over VADER:** VADER is lexicon-based and had a 62% direction agreement with Claude in testing. Key failures: substring matching ("ban" matched "bank", "banking"), context blindness (couldn't tell "wins court order pausing ban" is positive), and poor handling of news/legal language. Claude costs a few cents/day on Haiku (volume has grown from ~60 to ~100+ headlines/day since launch).
 
 ### Data sources
 14 RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, VentureBeat AI, CNBC Tech, NPR Technology, Fox News Tech
@@ -80,13 +98,14 @@ python scripts/fetch_and_build.py
 ## Known Limitations
 
 - RSS feeds only retain ~1 week of history, and there is no backfill source, so headlines are permanently lost if the 6h ingestion misses a window for longer than that
-- Claude Haiku scoring adds ~$0.01-0.02/day API cost; falls back to VADER if API key not set or API errors
+- Claude Haiku scoring adds a few cents/day in API cost; falls back to VADER if API key not set or API errors
 - VADER fallback uses word-boundary regex for domain adjustments but still lacks context awareness
 
 ## Future Directions (planned)
 
-- Insights/observations panel (day-over-day, week-over-week trends, notable spikes)
-- Explainability panel (click a day → source breakdown, top movers)
-- Moving average overlay on chart
 - Additional structured fields from Claude (future_outlook, topic category, etc.)
-- Custom domain
+- Per-source pos/neg/neu in `daily_scores.by_source` (would remove the dashboard's
+  need for raw headlines when computing source-filtered stacked bars)
+
+Shipped from earlier versions of this list: trend insights line, DayDetail
+explainability panel, 7-day moving average, custom domain (sentimentindex.ai).
