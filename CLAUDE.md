@@ -2,7 +2,7 @@
 
 Tracks media sentiment about AI across major tech outlets. Next.js + Supabase + Vercel, with Python scripts for data ingestion.
 
-Live: https://labs.bradshroyer.com
+Live: https://sentimentindex.ai (redirects from labs.bradshroyer.com)
 
 ## Architecture
 

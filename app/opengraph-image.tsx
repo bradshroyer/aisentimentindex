@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE_HOST } from "@/lib/site";
 
 export const runtime = "edge";
 export const alt = "AI Sentiment Index — tracking how major news outlets talk about AI";
@@ -82,7 +83,7 @@ export default function Image() {
             fontFamily: "monospace",
           }}
         >
-          labs.bradshroyer.com
+          {SITE_HOST}
         </div>
       </div>
     ),

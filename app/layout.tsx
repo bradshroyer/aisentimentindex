@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, JetBrains_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -22,7 +23,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const siteUrl = new URL("https://labs.bradshroyer.com");
+const siteUrl = new URL(SITE_URL);
 
 export const metadata: Metadata = {
   title: "AI Sentiment Index",

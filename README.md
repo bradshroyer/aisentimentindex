@@ -1,6 +1,6 @@
 # AI Sentiment Index
 
-**Live:** [labs.bradshroyer.com](https://labs.bradshroyer.com)
+**Live:** [sentimentindex.ai](https://sentimentindex.ai)
 
 I was curious: how does the media *actually* feel about AI right now? Not what Twitter thinks, not what VCs are pitching — what are the major outlets writing, and is the overall tone positive or negative?
 
