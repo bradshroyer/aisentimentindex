@@ -47,6 +47,16 @@ CREATE TABLE daily_scores (
   by_source JSONB NOT NULL DEFAULT '{}'
 );
 
+-- Per-feed health: consecutive zero-entry runs per source, written by
+-- fetch_and_build.py. A feed dark for ~2 days fails the workflow so the
+-- ingestion-failure issue fires. (Migration 005.)
+CREATE TABLE feed_health (
+  source TEXT PRIMARY KEY,
+  last_ok TIMESTAMPTZ,
+  consecutive_failures INT NOT NULL DEFAULT 0,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 -- Indexes for common queries
 CREATE INDEX idx_headlines_date ON headlines(date);
 CREATE INDEX idx_headlines_source ON headlines(source);
@@ -56,6 +66,8 @@ CREATE INDEX idx_headlines_date_timestamp ON headlines(date, timestamp DESC);
 -- Enable Row Level Security
 ALTER TABLE headlines ENABLE ROW LEVEL SECURITY;
 ALTER TABLE daily_scores ENABLE ROW LEVEL SECURITY;
+ALTER TABLE feed_health ENABLE ROW LEVEL SECURITY;
+-- feed_health gets no policies: not publicly readable, service-role writes only.
 
 -- Public read access (anon + authenticated)
 CREATE POLICY "Allow public read access on headlines"

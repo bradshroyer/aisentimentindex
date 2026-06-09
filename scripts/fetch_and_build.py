@@ -5,7 +5,7 @@ import json
 import os
 import re
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from statistics import mean
 
@@ -79,6 +79,16 @@ _WORD_BOUNDARY_TERMS = {"ban", "banned", "banning", "hype", "bias", "boost", "so
 
 DATA_START_DATE = "2026-02-28"
 
+# RSS feeds surface ~1 week of items, so titles older than this can't
+# reappear; keeps the dedup query bounded as the table grows. The DB unique
+# constraint on (title_normalized, source, date) is the final guard anyway.
+DEDUP_LOOKBACK_DAYS = 14
+
+# Feeds dark (zero raw entries) for this many consecutive runs trigger a
+# nonzero exit, which fires the workflow's ingestion-failure issue.
+# 8 runs ≈ 2 days at the 6h cadence.
+FEED_DARK_THRESHOLD = 8
+
 # Supabase connection
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
@@ -148,12 +158,20 @@ def get_supabase():
 # Fetch & Filter
 # ---------------------------------------------------------------------------
 
-def fetch_headlines() -> list[dict]:
+def fetch_headlines() -> tuple[list[dict], dict[str, int]]:
+    """Fetch all feeds. Returns (ai_headlines, raw_entry_count_per_source).
+
+    The raw counts feed health tracking: feedparser does not raise on HTTP
+    errors — a dead feed just parses to zero entries — so the except below
+    almost never fires and absence of entries is the real failure signal.
+    """
     seen_titles: set[str] = set()
     results = []
+    entry_counts: dict[str, int] = {}
     for source, url in RSS_FEEDS.items():
         try:
             feed = feedparser.parse(url)
+            entry_counts[source] = len(feed.entries)
             for entry in feed.entries:
                 title = normalize_text(entry.get("title", "").strip())
                 if not title or title in seen_titles:
@@ -173,8 +191,9 @@ def fetch_headlines() -> list[dict]:
                         "timestamp": datetime.now(timezone.utc).isoformat(),
                     })
         except Exception as e:
+            entry_counts[source] = 0
             print(f"Warning: failed to fetch {source}: {e}")
-    return results
+    return results, entry_counts
 
 
 # ---------------------------------------------------------------------------
@@ -219,6 +238,7 @@ def _score_one_claude(client, text: str, retries: int = 2):
             resp = client.messages.create(
                 model=CLAUDE_MODEL,
                 max_tokens=100,
+                temperature=0.0,  # classification — don't sample; keeps rescores reproducible
                 system=CLAUDE_SCORING_PROMPT,
                 messages=[
                     {"role": "user", "content": text},
@@ -239,7 +259,10 @@ def _score_one_claude(client, text: str, retries: int = 2):
             parsed = json.loads(raw)
             return max(-1.0, min(1.0, float(parsed["sentiment"])))
         except Exception as e:
-            if "rate_limit" in str(e) and attempt < retries:
+            # Retry transient API pressure (429s and 529s); anything else
+            # falls through to the VADER fallback immediately.
+            retriable = "rate_limit" in str(e) or "overloaded" in str(e)
+            if retriable and attempt < retries:
                 time.sleep(15)
                 continue
             if attempt == retries:
@@ -380,14 +403,23 @@ def upsert_daily_scores(sb, daily: dict) -> int:
 
 
 def load_existing_titles(sb) -> set[str]:
-    """Load normalized titles from Supabase for dedup. Returns the same form
-    that `normalize_text` produces, so callers should normalize before lookup."""
+    """Load normalized titles from recent headlines for dedup. Returns the same
+    form that `normalize_text` produces, so callers should normalize before
+    lookup. Scoped to DEDUP_LOOKBACK_DAYS so the query doesn't grow with the
+    table; older titles can't resurface from a ~1-week RSS window."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=DEDUP_LOOKBACK_DAYS)).strftime("%Y-%m-%d")
     titles = set()
-    # Paginate through all headlines (1000 at a time)
+    # Paginate through recent headlines (1000 at a time)
     offset = 0
     page_size = 1000
     while True:
-        result = sb.table("headlines").select("title_normalized").range(offset, offset + page_size - 1).execute()
+        result = (
+            sb.table("headlines")
+            .select("title_normalized")
+            .gte("date", cutoff)
+            .range(offset, offset + page_size - 1)
+            .execute()
+        )
         if not result.data:
             break
         for row in result.data:
@@ -396,6 +428,48 @@ def load_existing_titles(sb) -> set[str]:
             break
         offset += page_size
     return titles
+
+
+def record_feed_health(sb, entry_counts: dict[str, int]) -> list[str]:
+    """Track consecutive zero-entry runs per feed in the feed_health table.
+    Returns sources dark for >= FEED_DARK_THRESHOLD consecutive runs.
+
+    Degrades to a warning if the table doesn't exist yet (migration 005), so
+    ingestion never fails on the health check itself."""
+    now = datetime.now(timezone.utc).isoformat()
+    try:
+        existing = {
+            r["source"]: r
+            for r in (sb.table("feed_health").select("*").execute().data or [])
+        }
+        rows = []
+        for source in RSS_FEEDS:
+            if entry_counts.get(source, 0) > 0:
+                rows.append({
+                    "source": source,
+                    "last_ok": now,
+                    "consecutive_failures": 0,
+                    "updated_at": now,
+                })
+            else:
+                prev = existing.get(source, {})
+                rows.append({
+                    "source": source,
+                    "last_ok": prev.get("last_ok"),
+                    "consecutive_failures": (prev.get("consecutive_failures") or 0) + 1,
+                    "updated_at": now,
+                })
+        sb.table("feed_health").upsert(rows, on_conflict="source").execute()
+        return sorted(
+            r["source"] for r in rows
+            if r["consecutive_failures"] >= FEED_DARK_THRESHOLD
+        )
+    except Exception as e:
+        print(
+            f"Warning: feed_health tracking unavailable ({e}). "
+            "Apply scripts/migrations/005_feed_health.sql in the Supabase SQL editor."
+        )
+        return []
 
 
 # ---------------------------------------------------------------------------
@@ -417,9 +491,13 @@ def main():
     sb = get_supabase()
 
     existing_titles = load_existing_titles(sb)
-    print(f"Existing headlines in Supabase: {len(existing_titles)}")
+    print(f"Recent headlines loaded for dedup (last {DEDUP_LOOKBACK_DAYS}d): {len(existing_titles)}")
 
-    new_headlines = fetch_headlines()
+    new_headlines, entry_counts = fetch_headlines()
+    zero_entry = sorted(s for s, c in entry_counts.items() if c == 0)
+    if zero_entry:
+        print(f"Feeds with zero entries this run: {', '.join(zero_entry)}")
+
     new_headlines = [h for h in new_headlines if h["title"] not in existing_titles]
 
     dates_touched: set[str] = {h["date"] for h in new_headlines}
@@ -431,13 +509,21 @@ def main():
     else:
         print("No new headlines found")
 
-    if not dates_touched:
+    if dates_touched:
+        print(f"Re-aggregating {len(dates_touched)} date(s): {sorted(dates_touched)}")
+        count = reaggregate_dates(sb, dates_touched)
+        print(f"Updated {count} daily score entries in Supabase")
+    else:
         print("No dates changed — skipping re-aggregation")
-        return
 
-    print(f"Re-aggregating {len(dates_touched)} date(s): {sorted(dates_touched)}")
-    count = reaggregate_dates(sb, dates_touched)
-    print(f"Updated {count} daily score entries in Supabase")
+    # Last, after all writes: a dark feed fails the run so the workflow's
+    # ingestion-failure issue fires, but never blocks the data itself.
+    dark_feeds = record_feed_health(sb, entry_counts)
+    if dark_feeds:
+        raise SystemExit(
+            f"ALERT: feed(s) dark for >= {FEED_DARK_THRESHOLD} consecutive runs "
+            f"(~2 days): {', '.join(dark_feeds)}. Check their RSS URLs in data/sources.json."
+        )
 
 
 if __name__ == "__main__":
