@@ -293,12 +293,14 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
       flatThreshold = 0.02;
       moverThreshold = 0.1; // single day per-source is noisy
     } else if (selectedRange === 30) {
-      // Week-over-week (preserves original framing)
+      // Week-over-week. Delta in index points, like every other range — a
+      // "%" here would misread as percent change, which is undefined for a
+      // signed index that crosses zero.
       if (data.length < 8) return null;
       recentWindow = data.slice(-7);
       priorWindow = data.slice(-14, -7);
       framing = "week-over-week";
-      magnitudeFmt = (d) => `~${Math.abs(d * 100).toFixed(0)}%`;
+      magnitudeFmt = (d) => Math.abs(d).toFixed(2);
       flatThreshold = 0.01;
       moverThreshold = 0.03;
     } else if (selectedRange === 90 || selectedRange === 180) {
