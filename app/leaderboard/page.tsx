@@ -9,7 +9,7 @@ import { MethodologyFooter } from "@/components/MethodologyFooter";
 export const revalidate = 21600;
 
 export const metadata: Metadata = {
-  title: "Leaderboard · AI Sentiment Index",
+  title: "Leaderboard",
   description:
     "How 14 major news outlets rank on sentiment toward AI, from most positive to most critical.",
   alternates: { canonical: "/leaderboard" },

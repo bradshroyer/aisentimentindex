@@ -82,6 +82,15 @@ export function MethodologyFooter({
           >
             Brad Shroyer
           </a>
+          {" · "}
+          <a
+            href="https://github.com/bradshroyer/aisentimentindex"
+            className="text-text-secondary hover:text-accent transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View source
+          </a>
         </p>
 
         <div className="flex items-center gap-3">

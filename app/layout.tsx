@@ -25,27 +25,30 @@ const dmSans = DM_Sans({
 
 const siteUrl = new URL(SITE_URL);
 
+const DESCRIPTION =
+  "A daily index of media sentiment toward AI. Claude scores every AI headline from 14 outlets — NYT, TechCrunch, The Verge, Wired, Bloomberg, BBC and more — on a −1 to +1 scale, updated every 6 hours.";
+
 export const metadata: Metadata = {
-  title: "AI Sentiment Index",
-  description:
-    "Tracking how major news outlets talk about AI — sentiment analysis across 14 sources.",
+  title: {
+    default: "AI Sentiment Index — How the Media Covers AI, Daily",
+    template: "%s · AI Sentiment Index",
+  },
+  description: DESCRIPTION,
   metadataBase: siteUrl,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "AI Sentiment Index",
-    description:
-      "Tracking how major news outlets talk about AI — sentiment analysis across 14 sources.",
+    title: "AI Sentiment Index — How the Media Covers AI, Daily",
+    description: DESCRIPTION,
     url: "/",
     siteName: "AI Sentiment Index",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Sentiment Index",
-    description:
-      "Tracking how major news outlets talk about AI — sentiment analysis across 14 sources.",
+    title: "AI Sentiment Index — How the Media Covers AI, Daily",
+    description: DESCRIPTION,
   },
 };
 
