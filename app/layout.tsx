@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Serif, JetBrains_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import { Analytics } from "@/components/Analytics";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -68,6 +69,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-bg text-text-primary font-sans transition-colors">
         {children}
+        <Analytics />
       </body>
     </html>
   );
