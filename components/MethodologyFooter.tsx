@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { SOURCES } from "@/lib/types";
 
 interface MethodologyFooterProps {
@@ -57,7 +58,7 @@ export function MethodologyFooter({
         word sentiment.
       </p>
 
-      <div className="flex flex-wrap justify-center gap-x-7 gap-y-3 mb-14">
+      <div className="flex flex-wrap justify-center gap-x-7 gap-y-3 mb-6">
         {META.map((m) => (
           <span
             key={m.label}
@@ -70,6 +71,15 @@ export function MethodologyFooter({
           </span>
         ))}
       </div>
+
+      <p className="text-center mb-14">
+        <Link
+          href="/methodology"
+          className="text-[11px] font-mono text-text-secondary hover:text-accent transition-colors"
+        >
+          Read the full methodology &rarr;
+        </Link>
+      </p>
 
       <div className="flex flex-wrap items-center justify-between gap-y-5 gap-x-6 pt-5 border-t border-border/70">
         <p className="text-[11px] font-mono text-text-tertiary">
