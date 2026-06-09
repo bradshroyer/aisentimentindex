@@ -27,17 +27,29 @@ The frontend is a Next.js app deployed on Vercel. The chart is interactive — c
 - Filter by time range (1W, 1M, 3M, 6M, 1Y, All)
 - Browse the actual headlines with sentiment scores
 
+## Dataset
+
+The full dataset — every scored headline and daily aggregate since January 2025 — is exported weekly to [`data/export/`](data/export):
+
+- `daily_scores.json` — the index: one row per day with mean, counts, and per-source breakdowns
+- `headlines.json` / `headlines.csv` — every scored headline (title, summary, source, date, score, which scorer produced it)
+
+Free to use with attribution (MIT). The export doubles as the project's backup: RSS feeds have no backfill, so the database is otherwise the only copy.
+
 ## Project Structure
 
 ```
 app/                     → Next.js app (App Router)
 components/              → React components (chart, table, filters, stats)
 lib/                     → Supabase client, data fetching, types
+data/export/             → weekly dataset export (JSON + CSV)
 scripts/
   fetch_and_build.py     → RSS fetch + Claude/VADER scoring → Supabase
+  export_data.py         → dump both tables to data/export/
+  rescore.py             → re-run Claude over VADER-fallback rows
   schema.sql             → Supabase table definitions
   migrations/            → SQL migrations applied via Supabase SQL editor
-.github/workflows/       → GitHub Actions cron (every 6h)
+.github/workflows/       → GitHub Actions: 6h ingest cron + weekly export
 ```
 
 ## Running Locally

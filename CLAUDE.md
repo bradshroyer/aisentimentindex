@@ -8,9 +8,9 @@ Live: https://sentimentindex.ai (redirects from labs.bradshroyer.com)
 
 ```
 Next.js 15 (App Router) → Vercel
-Supabase (Postgres)     → headlines + daily_scores tables
-Python scripts          → fetch/score/backfill → write to Supabase
-GitHub Actions          → runs Python scripts every 6h
+Supabase (Postgres)     → headlines + daily_scores + feed_health tables
+Python scripts          → fetch/score/export → write to Supabase
+GitHub Actions          → ingest every 6h + weekly dataset export to data/export/
 ```
 
 ### Frontend
@@ -45,8 +45,24 @@ Deep-link params are applied in a post-mount effect in `Dashboard` instead.
 
 ### Python scripts (in `scripts/`)
 - `fetch_and_build.py` — RSS fetch + Claude/VADER scoring → upsert to Supabase
+- `export_data.py` — dump both tables to `data/export/` (JSON + CSV); run weekly by
+  `.github/workflows/export.yml`, which commits the output. This is the backup for
+  `headlines` (RSS has no backfill) and the public dataset linked from /methodology.
+- `rescore.py` — re-run Claude over `scored_by='vader'` fallback rows and re-aggregate
+  affected dates. Dry run by default; `--apply` to write.
 - `schema.sql` — Supabase table definitions + RLS policies
 - `migrations/` — incremental SQL migrations applied via Supabase SQL editor
+
+### Pipeline guardrails
+- `requirements.txt` is pinned — CI installs fresh 4×/day, so bump versions
+  deliberately and test locally before committing.
+- Feed health: feedparser doesn't raise on HTTP errors (a dead feed = zero entries),
+  so `fetch_and_build.py` tracks consecutive zero-entry runs per source in the
+  `feed_health` table and exits nonzero once a feed is dark ~2 days
+  (`FEED_DARK_THRESHOLD`), firing the workflow's ingestion-failure issue. Degrades
+  to a warning if the table is missing.
+- Claude scoring uses `temperature=0` and retries on rate-limit/overloaded errors;
+  other errors fall back to VADER for that headline (tracked via `scored_by`).
 
 ## Key Design Decisions
 
@@ -65,9 +81,10 @@ Scores title + summary together (not just title) for better context.
 Ingestion is RSS-only. A NewsAPI.ai (Event Registry) backfill script existed earlier for historical gaps but was removed — over 14 days of routine operation it contributed zero headlines (RSS covers the 6h window fully), so it wasn't worth the paid quota.
 
 ### Database (Supabase)
-Two tables:
-- `headlines` — id, title, summary, url, source, date, timestamp, score_raw, score (UNIQUE on title+source+date)
+Three tables:
+- `headlines` — id, title, summary, url, source, date, timestamp, score_raw, score, scored_by (UNIQUE on title_normalized+source+date)
 - `daily_scores` — date (PK), mean, count, pos, neg, neu, sources (JSONB), by_source (JSONB)
+- `feed_health` — source (PK), last_ok, consecutive_failures (per-feed dark detection; migration 005)
 
 IMPORTANT: Don't `json.dumps()` JSONB fields before upserting — supabase-py handles serialization automatically. Double-encoding causes string-instead-of-object bugs.
 
@@ -97,7 +114,7 @@ python scripts/fetch_and_build.py
 
 ## Known Limitations
 
-- RSS feeds only retain ~1 week of history, and there is no backfill source, so headlines are permanently lost if the 6h ingestion misses a window for longer than that
+- RSS feeds only retain ~1 week of history, and there is no backfill source, so headlines are permanently lost if the 6h ingestion misses a window for longer than that. The weekly `data/export/` commit backs up what's already in the DB, but can't recover never-ingested headlines.
 - Claude Haiku scoring adds a few cents/day in API cost; falls back to VADER if API key not set or API errors
 - VADER fallback uses word-boundary regex for domain adjustments but still lacks context awareness
 

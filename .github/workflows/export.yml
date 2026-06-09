@@ -1,0 +1,42 @@
+name: Export dataset
+
+# Weekly dump of both Supabase tables, committed to data/export/. Doubles as
+# the backup for the headlines table (RSS has no backfill — the DB is the
+# only copy) and as the public dataset linked from the methodology page.
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'  # Sundays 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Export tables from Supabase
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python scripts/export_data.py
+
+      - name: Commit dataset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/export
+          git diff --staged --quiet || (git commit -m "Weekly dataset export" && git push)

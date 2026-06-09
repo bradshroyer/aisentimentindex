@@ -107,6 +107,17 @@ const LIMITATIONS = [
       </>
     ),
   },
+  {
+    title: "Volume moves the needle",
+    body: (
+      <>
+        The daily mean weighs every headline equally, so prolific outlets and
+        AI-vertical feeds pull harder than occasional publishers &mdash; and
+        any change to the source list shows up in the index itself. Long-range
+        comparisons read best alongside the per-source view.
+      </>
+    ),
+  },
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -211,6 +222,20 @@ export default function MethodologyPage() {
             Funding rounds, launches, and breakthroughs generally score
             positive; bans, lawsuits, safety failures, and job losses generally
             score negative; neutral reporting lands near zero.
+          </p>
+
+          <p className="text-sm text-text-secondary leading-relaxed mt-4">
+            The daily mean is{" "}
+            <span className="text-text-primary">headline-weighted</span>: every
+            headline counts once, so an outlet that publishes more moves that
+            day&rsquo;s index more. That is deliberate &mdash; the index
+            measures the tone of AI coverage as it actually lands, volume
+            included &mdash; but it means a shift can come from who published,
+            not only from what changed. The per-source means on the{" "}
+            <Link href="/leaderboard" className="text-text-primary hover:text-accent transition-colors underline decoration-border underline-offset-2">
+              leaderboard
+            </Link>{" "}
+            are the volume-neutral view.
           </p>
         </section>
 
@@ -347,9 +372,32 @@ export default function MethodologyPage() {
           </p>
         </section>
 
-        {/* 05 — Limitations */}
+        {/* 05 — Data */}
         <section className="animate-in delay-5">
-          <SectionLabel>05 &middot; Limitations</SectionLabel>
+          <SectionLabel>05 &middot; Data</SectionLabel>
+          <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
+            Take the data
+          </h2>
+          <p className="text-sm text-text-secondary leading-relaxed">
+            The full dataset &mdash; every scored headline and every daily
+            aggregate since January 2025 &mdash; is exported weekly to the
+            repository as JSON and CSV, free to use with attribution:{" "}
+            <a
+              href="https://github.com/bradshroyer/aisentimentindex/tree/main/data/export"
+              className="text-text-primary hover:text-accent transition-colors underline decoration-border underline-offset-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              data/export on GitHub
+            </a>
+            . <Mono>daily_scores.json</Mono> is the index itself;{" "}
+            <Mono>headlines.csv</Mono> has every row behind it.
+          </p>
+        </section>
+
+        {/* 06 — Limitations */}
+        <section className="animate-in delay-5">
+          <SectionLabel>06 &middot; Limitations</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             Honest limitations
           </h2>

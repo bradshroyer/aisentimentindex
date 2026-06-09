@@ -41,6 +41,29 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
           ? { temporalCoverage: `${firstDate}/${lastDate}` }
           : {}),
         isAccessibleForFree: true,
+        license:
+          "https://github.com/bradshroyer/aisentimentindex/blob/main/LICENSE",
+        // Weekly export committed by .github/workflows/export.yml
+        distribution: [
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
+            contentUrl:
+              "https://raw.githubusercontent.com/bradshroyer/aisentimentindex/main/data/export/daily_scores.json",
+          },
+          {
+            "@type": "DataDownload",
+            encodingFormat: "text/csv",
+            contentUrl:
+              "https://raw.githubusercontent.com/bradshroyer/aisentimentindex/main/data/export/headlines.csv",
+          },
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
+            contentUrl:
+              "https://raw.githubusercontent.com/bradshroyer/aisentimentindex/main/data/export/headlines.json",
+          },
+        ],
         keywords: [
           "AI sentiment",
           "media sentiment analysis",
