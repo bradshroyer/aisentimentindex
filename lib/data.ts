@@ -67,7 +67,10 @@ export async function fetchHeadlines(since: string): Promise<Headline[]> {
         .from("headlines")
         .select(HEADLINE_COLUMNS)
         .gte("date", since)
+        // id tiebreaker keeps offset pagination stable across requests —
+        // timestamps tie within an ingest batch (see lib/clientData.ts).
         .order("timestamp", { ascending: false })
+        .order("id", { ascending: false })
         .range(offset, offset + pageSize - 1);
 
       if (error) throw error;

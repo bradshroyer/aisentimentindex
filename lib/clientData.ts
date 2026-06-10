@@ -21,8 +21,17 @@ export function normalizeHeadline<T extends { title: string; summary?: string | 
  * selects a day older than the server-rendered window. Returns [] when
  * Supabase isn't configured — dev without env serves the full data.json
  * payload up front, so there's nothing older to fetch.
+ *
+ * A wide range can span many 1000-row pages fetched sequentially, so `onPage`
+ * delivers each page as it arrives — callers can render progressively instead
+ * of staring at a blank view, and pages already received survive a failure on
+ * a later one.
  */
-export async function fetchHeadlinesRange(since: string, before: string): Promise<Headline[]> {
+export async function fetchHeadlinesRange(
+  since: string,
+  before: string,
+  onPage?: (page: Headline[]) => void
+): Promise<Headline[]> {
   const supabase = getSupabase();
   if (!supabase) return [];
 
@@ -36,13 +45,19 @@ export async function fetchHeadlinesRange(since: string, before: string): Promis
       .select(HEADLINE_COLUMNS)
       .gte("date", since)
       .lt("date", before)
+      // Secondary sort on id: timestamps tie within an ingest batch, and
+      // offset pagination over a nondeterministic tie-order can skip rows
+      // at page boundaries (dedupe downstream catches dupes, not gaps).
       .order("timestamp", { ascending: false })
+      .order("id", { ascending: false })
       .range(offset, offset + pageSize - 1);
 
     if (error) throw error;
     if (!data || data.length === 0) break;
 
-    all.push(...(data as unknown as Headline[]).map(normalizeHeadline));
+    const page = (data as unknown as Headline[]).map(normalizeHeadline);
+    all.push(...page);
+    onPage?.(page);
     if (data.length < pageSize) break;
     offset += pageSize;
   }

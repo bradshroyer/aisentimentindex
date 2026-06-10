@@ -58,8 +58,12 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
     const r = params.get("range");
     const days = r ? parseInt(r, 10) : NaN;
     if (TIME_RANGES.some((t) => t.days === days)) setSelectedRange(days);
+    // Validate strictly: a malformed date would flow into the window math
+    // below as an Invalid Date, where toISOString() throws mid-render.
     const date = params.get("date");
-    if (date) setSelectedDate(date);
+    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && !Number.isNaN(Date.parse(date + "T12:00:00Z"))) {
+      setSelectedDate(date);
+    }
     setUrlApplied(true);
   }, []);
   /* eslint-enable react-hooks/set-state-in-effect */
@@ -114,35 +118,34 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
   const loadingOlder = urlApplied && neededSince !== null && neededSince < loadedSince;
 
   // Pull older headlines when the view reaches past what's loaded. One fetch
-  // in flight at a time; completion updates loadedSince, which re-runs the
-  // effect to cover any gap that opened up meanwhile. Merges dedupe by id, so
-  // overlapping slices are harmless.
+  // in flight at a time; each page merges as it arrives (dedupe by id, so
+  // overlapping slices are harmless). No cancellation: a fetched slice is
+  // valid data no matter how the view has changed meanwhile, and discarding
+  // it on a dep change used to strand the loader — the skipped re-run never
+  // fired again because settling updated no state. loadedSince now always
+  // advances in finally, which re-runs the effect to cover any remaining gap.
   useEffect(() => {
     if (!urlApplied || !neededSince) return;
     if (neededSince >= loadedSince || fetchInFlight.current) return;
     fetchInFlight.current = true;
-    let cancelled = false;
-    fetchHeadlinesRange(neededSince, loadedSince)
-      .then((older) => {
-        if (cancelled) return;
-        setHeadlines((prev) => {
-          const seen = new Set(prev.map((h) => h.id));
-          return [...prev, ...older.filter((h) => !seen.has(h.id))];
-        });
-        setLoadedSince((prev) => (neededSince < prev ? neededSince : prev));
-      })
+    const mergeOlder = (older: Headline[]) => {
+      setHeadlines((prev) => {
+        const seen = new Set(prev.map((h) => h.id));
+        const fresh = older.filter((h) => !seen.has(h.id));
+        return fresh.length > 0 ? [...prev, ...fresh] : prev;
+      });
+    };
+    fetchHeadlinesRange(neededSince, loadedSince, mergeOlder)
       .catch((err) => {
-        console.error("Failed to fetch older headlines", err);
-        // Mark the slice loaded anyway — an empty table beats a perpetual
+        // Pages received before the failure are already merged. Marking the
+        // slice loaded below means an empty stretch beats a perpetual
         // "Loading…" state, and a reload retries cleanly.
-        if (!cancelled) setLoadedSince((prev) => (neededSince < prev ? neededSince : prev));
+        console.error("Failed to fetch older headlines", err);
       })
       .finally(() => {
         fetchInFlight.current = false;
+        setLoadedSince((prev) => (neededSince < prev ? neededSince : prev));
       });
-    return () => {
-      cancelled = true;
-    };
   }, [urlApplied, neededSince, loadedSince]);
 
   // Filter daily scores by time range. When a bucket is selected, center the
