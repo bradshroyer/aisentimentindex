@@ -8,34 +8,41 @@ export function getGranularity(rangeDays: number): Granularity {
   return "day";
 }
 
+// All date math here is done in UTC (parse with an explicit Z, mutate with
+// setUTC*). Parsing local noon and serializing via toISOString() shifts the
+// date by a day for users at UTC+13/+14, putting their buckets off-grid from
+// the server's.
 function parseDate(s: string): Date {
-  return new Date(s + "T12:00:00");
+  return new Date(s + "T12:00:00Z");
 }
 
 function toISO(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** Shift a YYYY-MM-DD string by a number of days (timezone-independent). */
+export function addDays(dateStr: string, days: number): string {
+  const d = parseDate(dateStr);
+  d.setUTCDate(d.getUTCDate() + days);
+  return toISO(d);
+}
+
 export function bucketKey(dateStr: string, g: Granularity): string {
   if (g === "day") return dateStr;
   if (g === "month") return dateStr.slice(0, 7) + "-01";
   const d = parseDate(dateStr);
-  const day = d.getDay();
+  const day = d.getUTCDay();
   const offset = day === 0 ? -6 : 1 - day;
-  d.setDate(d.getDate() + offset);
+  d.setUTCDate(d.getUTCDate() + offset);
   return toISO(d);
 }
 
 export function bucketEnd(key: string, g: Granularity): string {
   if (g === "day") return key;
-  if (g === "week") {
-    const d = parseDate(key);
-    d.setDate(d.getDate() + 6);
-    return toISO(d);
-  }
+  if (g === "week") return addDays(key, 6);
   const d = parseDate(key);
-  d.setMonth(d.getMonth() + 1);
-  d.setDate(0);
+  d.setUTCMonth(d.getUTCMonth() + 1);
+  d.setUTCDate(0);
   return toISO(d);
 }
 
@@ -48,10 +55,10 @@ export function bucketCenter(key: string, g: Granularity): string {
 }
 
 export function prevBucketKey(key: string, g: Granularity): string {
+  if (g === "day") return addDays(key, -1);
+  if (g === "week") return addDays(key, -7);
   const d = parseDate(key);
-  if (g === "day") d.setDate(d.getDate() - 1);
-  else if (g === "week") d.setDate(d.getDate() - 7);
-  else d.setMonth(d.getMonth() - 1);
+  d.setUTCMonth(d.getUTCMonth() - 1);
   return toISO(d);
 }
 

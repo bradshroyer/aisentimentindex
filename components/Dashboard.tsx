@@ -7,6 +7,7 @@ import { SOURCES, TIME_RANGES } from "@/lib/types";
 import { fetchHeadlinesRange } from "@/lib/clientData";
 import {
   getGranularity,
+  addDays,
   bucketKey,
   bucketEnd,
   bucketCenter,
@@ -97,14 +98,10 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
       let windowEnd = lastDate;
       if (selectedDate) {
         const bEnd = bucketEnd(selectedDate, granularity);
-        const end = new Date(bEnd + "T12:00:00");
-        end.setDate(end.getDate() + Math.floor(selectedRange / 2));
-        const endStr = end.toISOString().slice(0, 10);
+        const endStr = addDays(bEnd, Math.floor(selectedRange / 2));
         if (endStr < lastDate) windowEnd = endStr;
       }
-      const cutoff = new Date(windowEnd + "T12:00:00");
-      cutoff.setDate(cutoff.getDate() - selectedRange);
-      needed = cutoff.toISOString().slice(0, 10);
+      needed = addDays(windowEnd, -selectedRange);
     }
     if (selectedDate) {
       const prevStart = prevBucketKey(selectedDate, granularity);
@@ -158,14 +155,10 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
     let windowEnd = lastDate;
     if (selectedDate) {
       const bEnd = bucketEnd(selectedDate, granularity);
-      const end = new Date(bEnd + "T12:00:00");
-      end.setDate(end.getDate() + Math.floor(selectedRange / 2));
-      const endStr = end.toISOString().slice(0, 10);
+      const endStr = addDays(bEnd, Math.floor(selectedRange / 2));
       if (endStr < lastDate) windowEnd = endStr;
     }
-    const cutoff = new Date(windowEnd + "T12:00:00");
-    cutoff.setDate(cutoff.getDate() - selectedRange);
-    const cutoffStr = cutoff.toISOString().slice(0, 10);
+    const cutoffStr = addDays(windowEnd, -selectedRange);
     return dailyScores.filter((d) => d.date >= cutoffStr && d.date <= windowEnd);
   }, [dailyScores, selectedRange, selectedDate, granularity]);
 

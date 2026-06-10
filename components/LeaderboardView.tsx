@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { DailyScore } from "@/lib/types";
 import { TIME_RANGES } from "@/lib/types";
+import { addDays } from "@/lib/bucketing";
 
 interface LeaderboardRow {
   source: string;
@@ -15,9 +16,7 @@ interface LeaderboardRow {
 function windowedScores(dailyScores: DailyScore[], rangeDays: number): DailyScore[] {
   if (rangeDays === 0 || dailyScores.length === 0) return dailyScores;
   const last = dailyScores[dailyScores.length - 1].date;
-  const cutoff = new Date(last + "T12:00:00");
-  cutoff.setDate(cutoff.getDate() - rangeDays);
-  const cutoffStr = cutoff.toISOString().slice(0, 10);
+  const cutoffStr = addDays(last, -rangeDays);
   return dailyScores.filter((d) => d.date >= cutoffStr);
 }
 
