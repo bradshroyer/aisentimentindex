@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteNav } from "@/components/SiteNav";
+import { MethodologyToc } from "@/components/MethodologyToc";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShareButton } from "@/components/ShareButton";
 import sources from "@/data/sources.json";
@@ -22,6 +23,15 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+const TOC_SECTIONS = [
+  { n: "01", id: "scoring", label: "Scoring" },
+  { n: "02", id: "model-choice", label: "Model choice" },
+  { n: "03", id: "pipeline", label: "Pipeline" },
+  { n: "04", id: "sources", label: "Sources" },
+  { n: "05", id: "data", label: "Data" },
+  { n: "06", id: "limitations", label: "Limitations" },
+];
 
 const PIPELINE = [
   { step: "RSS feeds", detail: `${sources.length} outlets` },
@@ -159,7 +169,12 @@ export default function MethodologyPage() {
         </div>
       </header>
 
-      <div className="max-w-2xl space-y-14">
+      <div className="relative max-w-2xl mx-auto">
+        <aside className="hidden xl:block absolute right-full top-0 bottom-0 mr-16 animate-in delay-2">
+          <MethodologyToc sections={TOC_SECTIONS} />
+        </aside>
+
+        <div className="space-y-14">
         <p className="animate-in delay-1 font-serif italic text-xl sm:text-2xl text-text-secondary leading-snug">
           Every headline is scored for its{" "}
           <span className="text-text-primary">stance toward AI</span>&mdash;not
@@ -168,7 +183,7 @@ export default function MethodologyPage() {
         </p>
 
         {/* 01 — How scoring works */}
-        <section className="animate-in delay-2">
+        <section id="scoring" className="animate-in delay-2 scroll-mt-10">
           <SectionLabel>01 &middot; Scoring</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             How scoring works
@@ -240,7 +255,7 @@ export default function MethodologyPage() {
         </section>
 
         {/* 02 — Why an LLM instead of a lexicon */}
-        <section className="animate-in delay-3">
+        <section id="model-choice" className="animate-in delay-3 scroll-mt-10">
           <SectionLabel>02 &middot; Model choice</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             Why an LLM instead of a lexicon
@@ -292,7 +307,7 @@ export default function MethodologyPage() {
         </section>
 
         {/* 03 — The pipeline */}
-        <section className="animate-in delay-4">
+        <section id="pipeline" className="animate-in delay-4 scroll-mt-10">
           <SectionLabel>03 &middot; Pipeline</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             From feed to chart
@@ -343,7 +358,7 @@ export default function MethodologyPage() {
         </section>
 
         {/* 04 — Sources */}
-        <section className="animate-in delay-5">
+        <section id="sources" className="animate-in delay-5 scroll-mt-10">
           <SectionLabel>04 &middot; Sources</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             What gets read
@@ -373,7 +388,7 @@ export default function MethodologyPage() {
         </section>
 
         {/* 05 — Data */}
-        <section className="animate-in delay-5">
+        <section id="data" className="animate-in delay-5 scroll-mt-10">
           <SectionLabel>05 &middot; Data</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             Take the data
@@ -396,7 +411,7 @@ export default function MethodologyPage() {
         </section>
 
         {/* 06 — Limitations */}
-        <section className="animate-in delay-5">
+        <section id="limitations" className="animate-in delay-5 scroll-mt-10">
           <SectionLabel>06 &middot; Limitations</SectionLabel>
           <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mb-4">
             Honest limitations
@@ -435,6 +450,7 @@ export default function MethodologyPage() {
               &larr; Back to the dashboard
             </Link>
           </p>
+        </div>
         </div>
       </div>
     </main>
