@@ -40,8 +40,9 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
           ? { temporalCoverage: `${firstDate}/${lastDate}` }
           : {}),
         isAccessibleForFree: true,
-        license:
-          "https://github.com/bradshroyer/aisentimentindex/blob/main/LICENSE",
+        // Canonical URL so Google recognizes the license (a repo blob URL reads
+        // as "unspecified" in Dataset Search)
+        license: "https://spdx.org/licenses/MIT.html",
         // Weekly export committed by .github/workflows/export.yml
         distribution: [
           {
