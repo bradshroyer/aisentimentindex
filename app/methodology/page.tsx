@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteNav } from "@/components/SiteNav";
+import { SiteHeader } from "@/components/SiteHeader";
 import { MethodologyToc } from "@/components/MethodologyToc";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { ShareButton } from "@/components/ShareButton";
 import sources from "@/data/sources.json";
 
 export const revalidate = 21600;
@@ -149,25 +147,16 @@ function Mono({ children }: { children: React.ReactNode }) {
 export default function MethodologyPage() {
   return (
     <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <header className="mb-12 flex items-start justify-between gap-4 animate-in">
-        <div>
-          <h1 className="text-3xl sm:text-4xl font-serif tracking-tight">
-            AI Sentiment Index
-          </h1>
-          <div className="w-12 h-0.5 bg-accent mt-2 rounded-full" />
-          <p className="text-xs text-text-secondary mt-2 leading-relaxed">
+      <SiteHeader
+        className="mb-12"
+        pageTitle="Methodology"
+        tagline={
+          <>
             Methodology &mdash; how raw headlines become a daily index:
             scoring, model choice, pipeline, and limitations.
-          </p>
-        </div>
-        <div className="flex flex-col items-end gap-3">
-          <SiteNav />
-          <div className="flex items-center gap-2">
-            <ShareButton />
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+          </>
+        }
+      />
 
       <div className="relative max-w-2xl mx-auto">
         <aside className="hidden xl:block absolute right-full top-0 bottom-0 mr-16 animate-in delay-2">

@@ -14,7 +14,7 @@ export function SiteNav() {
 
   return (
     <nav
-      className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1"
+      className="flex flex-wrap items-center justify-start gap-x-4 gap-y-1 sm:justify-end sm:gap-x-5"
       aria-label="Primary"
     >
       {LINKS.map((l) => {

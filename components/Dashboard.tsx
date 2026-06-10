@@ -268,6 +268,20 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
   const totalHeadlines = dailyScores.reduce((sum, d) => sum + d.count, 0);
   const daysTracked = dailyScores.length;
 
+  // The index's current value: the most recent day with data for the
+  // selected source, from all-time scores (not the visible window).
+  // Plain computation — the React Compiler memoizes it, and wrapping the
+  // early-return loop in useMemo defeats its analysis.
+  let latestStat: { date: string; mean: number } | null = null;
+  for (let i = dailyScores.length - 1; i >= 0; i--) {
+    const d = dailyScores[i];
+    const mean = selectedSource === "All" ? d.mean : d.by_source[selectedSource]?.mean;
+    if (mean !== undefined) {
+      latestStat = { date: d.date, mean };
+      break;
+    }
+  }
+
   // Range-aware trend headline. Adapts comparison window + framing to the selected range.
   const trendData = useMemo(() => {
     const data = filteredDailyScores;
@@ -385,20 +399,44 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
         />
       </div>
 
-      {trendData && (
-        <div className="animate-in delay-1 border-l-2 border-accent/30 pl-3 -mt-1">
-          <p className="text-xs font-mono text-text-secondary">
-            {trendData.source ? `${trendData.source} sentiment` : "Sentiment"}{" "}
-            {trendData.direction === "up" ? (
-              <span className="text-positive font-medium">up {trendData.magnitude}</span>
-            ) : trendData.direction === "down" ? (
-              <span className="text-negative font-medium">down {trendData.magnitude}</span>
-            ) : (
-              <span className="text-neutral font-medium">unchanged</span>
-            )}
-            {" "}{trendData.framing}
-            {trendData.biggestMover && <>, led by {trendData.biggestMover}</>}
+      {latestStat && (
+        <div className="animate-in delay-1 space-y-1 border-l-2 border-accent/30 pl-3 -mt-1">
+          {/* Number + label share a baseline so they read as one phrase */}
+          <p className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+            <span
+              className={`font-serif text-3xl sm:text-4xl tracking-tight ${
+                latestStat.mean > 0.05
+                  ? "text-positive"
+                  : latestStat.mean < -0.05
+                    ? "text-negative"
+                    : "text-neutral"
+              }`}
+            >
+              {latestStat.mean < 0 ? "−" : "+"}
+              {Math.abs(latestStat.mean).toFixed(2)}
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-text-tertiary">
+              Latest {selectedSource === "All" ? "daily mean" : `${selectedSource} mean`}
+              {" "}&middot;{" "}
+              {new Date(latestStat.date + "T12:00:00Z").toLocaleDateString("en-US", {
+                month: "short", day: "numeric", timeZone: "UTC",
+              })}
+            </span>
           </p>
+          {trendData && (
+            <p className="text-xs font-mono text-text-secondary">
+              {trendData.source ? `${trendData.source} sentiment` : "Sentiment"}{" "}
+              {trendData.direction === "up" ? (
+                <span className="text-positive font-medium">up {trendData.magnitude}</span>
+              ) : trendData.direction === "down" ? (
+                <span className="text-negative font-medium">down {trendData.magnitude}</span>
+              ) : (
+                <span className="text-neutral font-medium">unchanged</span>
+              )}
+              {" "}{trendData.framing}
+              {trendData.biggestMover && <>, led by {trendData.biggestMover}</>}
+            </p>
+          )}
         </div>
       )}
 
