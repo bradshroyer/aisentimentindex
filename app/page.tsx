@@ -21,7 +21,7 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
         publisher: {
           "@type": "Person",
           name: "Brad Shroyer",
-          url: "https://bradshroyer.com",
+          url: "https://bradshroyer.dev",
         },
       },
       {
@@ -34,7 +34,7 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
         creator: {
           "@type": "Person",
           name: "Brad Shroyer",
-          url: "https://bradshroyer.com",
+          url: "https://bradshroyer.dev",
         },
         ...(firstDate && lastDate
           ? { temporalCoverage: `${firstDate}/${lastDate}` }

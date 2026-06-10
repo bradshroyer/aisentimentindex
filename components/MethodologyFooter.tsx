@@ -85,7 +85,7 @@ export function MethodologyFooter({
         <p className="text-[11px] font-mono text-text-tertiary">
           Built by{" "}
           <a
-            href="https://bradshroyer.com"
+            href="https://bradshroyer.dev"
             className="text-text-secondary hover:text-accent transition-colors"
             target="_blank"
             rel="noopener noreferrer"
