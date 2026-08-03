@@ -24,6 +24,7 @@ export function MethodologyFooter({
   firstDate,
   lastDate,
 }: MethodologyFooterProps) {
+  const spansYears = firstDate.slice(0, 4) !== lastDate.slice(0, 4);
   const META = [
     { label: "Model", value: "claude-haiku-4-5" },
     { label: "Scale", value: "−1.0 to +1.0" },
@@ -32,7 +33,9 @@ export function MethodologyFooter({
     { label: "Headlines", value: totalHeadlines.toLocaleString() },
     {
       label: "Coverage",
-      value: `${daysTracked} days · ${formatShortDate(firstDate)} – ${formatShortDate(lastDate, true)}`,
+      // Once the dataset spans a year boundary, a bare "Jan 1" on the start
+      // reads as the end date's year and understates the range.
+      value: `${daysTracked} days · ${formatShortDate(firstDate, spansYears)} – ${formatShortDate(lastDate, true)}`,
     },
   ];
   return (
