@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MethodologyToc } from "@/components/MethodologyToc";
 import sources from "@/data/sources.json";
-import { ACTIVE_SOURCE_COUNT, RETIRED_SOURCES } from "@/lib/types";
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 
 const activeSources = sources.filter((s) => (s as { active?: boolean }).active !== false);
 
@@ -371,18 +371,6 @@ export default function MethodologyPage() {
               </li>
             ))}
           </ul>
-
-          {Object.keys(RETIRED_SOURCES).length > 0 && (
-            <p className="text-sm text-text-secondary leading-relaxed mb-3">
-              Retired:{" "}
-              {Object.entries(RETIRED_SOURCES)
-                .map(([name, date]) => `${name} (no data after ${date})`)
-                .join(", ")}
-              . Their historical headlines stay in the dataset and in
-              date ranges they cover, but they are no longer ingested and
-              are left out of rankings for ranges with no data.
-            </p>
-          )}
 
           <p className="text-sm text-text-secondary leading-relaxed">
             Feeds are fetched in full on every run; a headline enters the index

@@ -33,8 +33,9 @@ _SOURCES_PATH = Path(__file__).resolve().parent.parent / "data" / "sources.json"
 with open(_SOURCES_PATH) as _f:
     SOURCES = json.load(_f)
 
-# Retired sources ("active": false) keep their historical rows but are no
-# longer fetched or health-checked.
+# Retired sources ("active": false) keep their raw rows in `headlines` but are
+# no longer fetched, health-checked, or counted in daily_scores (the site
+# hides them entirely).
 RSS_FEEDS: dict[str, str] = {
     s["name"]: s["rss"] for s in SOURCES if s.get("active", True)
 }
@@ -347,6 +348,8 @@ def score_headlines(headlines: list[dict]) -> list[dict]:
 def aggregate_daily(headlines: list[dict]) -> dict:
     by_day: dict[str, list[dict]] = {}
     for h in headlines:
+        if h["source"] not in RSS_FEEDS:
+            continue  # retired source
         by_day.setdefault(h["date"], []).append(h)
 
     daily = {}
@@ -547,8 +550,23 @@ def reaggregate_dates(sb, dates: set[str]) -> int:
     from Supabase. Scoped to avoid full-table rebuilds on every ingest run."""
     if not dates:
         return 0
-    result = sb.table("headlines").select("*").in_("date", sorted(dates)).execute()
-    day_rows = result.data or []
+    # Paginate: PostgREST caps a response at 1000 rows, which a handful of
+    # busy days can exceed.
+    day_rows: list[dict] = []
+    page_size = 1000
+    while True:
+        result = (
+            sb.table("headlines")
+            .select("date,source,score")
+            .in_("date", sorted(dates))
+            .order("id")
+            .range(len(day_rows), len(day_rows) + page_size - 1)
+            .execute()
+        )
+        page = result.data or []
+        day_rows.extend(page)
+        if len(page) < page_size:
+            break
     daily = aggregate_daily(day_rows)
     return upsert_daily_scores(sb, daily)
 

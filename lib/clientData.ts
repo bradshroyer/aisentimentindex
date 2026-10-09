@@ -1,5 +1,6 @@
 import { getSupabase } from "./supabase";
 import type { Headline } from "./types";
+import { SOURCES } from "./types";
 import { decodeEntities } from "./text";
 
 // Columns the UI reads. `summary` is excluded — it's a per-row text blob
@@ -45,6 +46,7 @@ export async function fetchHeadlinesRange(
       .select(HEADLINE_COLUMNS)
       .gte("date", since)
       .lt("date", before)
+      .in("source", SOURCES as string[])
       // Secondary sort on id: timestamps tie within an ingest batch, and
       // offset pagination over a nondeterministic tie-order can skip rows
       // at page boundaries (dedupe downstream catches dupes, not gaps).

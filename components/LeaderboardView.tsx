@@ -1,104 +1,65 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import Link from "next/link";
-import type { DailyScore } from "@/lib/types";
-import { TIME_RANGES, RETIRED_SOURCES } from "@/lib/types";
-import { addDays } from "@/lib/bucketing";
-
-interface LeaderboardRow {
-  source: string;
-  mean: number;
-  count: number;
-  series: number[];
-}
-
-function windowedScores(dailyScores: DailyScore[], rangeDays: number): DailyScore[] {
-  if (rangeDays === 0 || dailyScores.length === 0) return dailyScores;
-  const last = dailyScores[dailyScores.length - 1].date;
-  const cutoffStr = addDays(last, -rangeDays);
-  return dailyScores.filter((d) => d.date >= cutoffStr);
-}
-
-function computeLeaderboard(
-  dailyScores: DailyScore[],
-  rangeDays: number
-): LeaderboardRow[] {
-  const windowed = windowedScores(dailyScores, rangeDays);
-  const agg = new Map<
-    string,
-    { sum: number; count: number; daily: { mean: number; count: number }[] }
-  >();
-
-  for (const d of windowed) {
-    for (const [src, stats] of Object.entries(d.by_source)) {
-      if (!stats || stats.count === 0) continue;
-      let a = agg.get(src);
-      if (!a) {
-        a = { sum: 0, count: 0, daily: [] };
-        agg.set(src, a);
-      }
-      a.sum += stats.mean * stats.count;
-      a.count += stats.count;
-      a.daily.push({ mean: stats.mean, count: stats.count });
-    }
-  }
-
-  const rows: LeaderboardRow[] = [];
-  for (const [source, a] of agg) {
-    if (a.count === 0) continue;
-    const target = 24;
-    const step = Math.max(1, Math.ceil(a.daily.length / target));
-    const series: number[] = [];
-    for (let i = 0; i < a.daily.length; i += step) {
-      const slice = a.daily.slice(i, i + step);
-      const wSum = slice.reduce((s, x) => s + x.mean * x.count, 0);
-      const wN = slice.reduce((s, x) => s + x.count, 0);
-      series.push(wN > 0 ? wSum / wN : 0);
-    }
-    rows.push({ source, mean: a.sum / a.count, count: a.count, series });
-  }
-
-  rows.sort((a, b) => b.mean - a.mean);
-  return rows;
-}
+import { TIME_RANGES } from "@/lib/types";
+import type { LeaderboardByRange } from "@/lib/leaderboard";
 
 function formatMean(n: number): string {
   return (n >= 0 ? "+" : "") + n.toFixed(2);
 }
 
-function Sparkline({ points }: { points: number[] }) {
-  if (points.length < 2) return <span className="inline-block w-16 h-4" />;
-  const w = 56;
-  const h = 16;
-  const min = -1;
-  const max = 1;
-  const xStep = w / (points.length - 1);
-  const path = points
-    .map((v, i) => {
-      const x = i * xStep;
-      const y = h - ((v - min) / (max - min)) * h;
-      return `${i === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`;
-    })
+const SPARK_W = 96;
+const SPARK_H = 24;
+
+/**
+ * Trend of one outlet across the range. Every row shares the same y-domain
+ * (±`domain`) so lines are comparable down the table; the fill above / below
+ * zero is tinted positive / negative and the end dot marks the latest value.
+ */
+function Sparkline({ points, domain }: { points: number[]; domain: number }) {
+  const id = useId();
+  if (points.length < 2) return <span className="inline-block" style={{ width: SPARK_W, height: SPARK_H }} />;
+  const pad = 2;
+  const innerH = SPARK_H - pad * 2;
+  const xStep = (SPARK_W - pad * 2) / (points.length - 1);
+  const x = (i: number) => pad + i * xStep;
+  const y = (v: number) =>
+    pad + innerH / 2 - (Math.max(-domain, Math.min(domain, v)) / domain) * (innerH / 2);
+  const zeroY = y(0);
+  const line = points
+    .map((v, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(1)} ${y(v).toFixed(1)}`)
     .join(" ");
-  const zeroY = h - ((0 - min) / (max - min)) * h;
+  const area = `${line} L${x(points.length - 1).toFixed(1)} ${zeroY} L${x(0).toFixed(1)} ${zeroY} Z`;
+  const last = points[points.length - 1];
+  const above = `${id}-above`;
+  const below = `${id}-below`;
   return (
-    <svg width={w} height={h} className="overflow-visible" aria-hidden="true">
-      <line
-        x1={0}
-        x2={w}
-        y1={zeroY}
-        y2={zeroY}
-        stroke="var(--color-chart-zero)"
-        strokeWidth={1}
-      />
+    <svg width={SPARK_W} height={SPARK_H} className="overflow-visible" aria-hidden="true">
+      <defs>
+        <clipPath id={above}>
+          <rect x={0} y={0} width={SPARK_W} height={zeroY} />
+        </clipPath>
+        <clipPath id={below}>
+          <rect x={0} y={zeroY} width={SPARK_W} height={SPARK_H - zeroY} />
+        </clipPath>
+      </defs>
+      <path d={area} fill="var(--color-positive)" fillOpacity={0.22} clipPath={`url(#${above})`} />
+      <path d={area} fill="var(--color-negative)" fillOpacity={0.22} clipPath={`url(#${below})`} />
+      <line x1={pad} x2={SPARK_W - pad} y1={zeroY} y2={zeroY} stroke="var(--color-chart-zero)" strokeWidth={1} />
       <path
-        d={path}
+        d={line}
         fill="none"
-        stroke="var(--color-chart-ma)"
-        strokeWidth={1.25}
+        stroke="var(--color-text-secondary)"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+      <circle
+        cx={x(points.length - 1)}
+        cy={y(last)}
+        r={2.25}
+        fill={last >= 0 ? "var(--color-positive)" : "var(--color-negative)"}
       />
     </svg>
   );
@@ -121,16 +82,22 @@ function Bar({ mean, maxAbs }: { mean: number; maxAbs: number }) {
 }
 
 interface Props {
-  dailyScores: DailyScore[];
+  leaderboards: LeaderboardByRange;
 }
 
 const GRID =
-  "grid-cols-[2ch_1fr_minmax(80px,1.5fr)_6ch] sm:grid-cols-[2ch_1fr_56px_minmax(160px,1.5fr)_6ch]";
+  "grid-cols-[2ch_1fr_minmax(80px,1.5fr)_6ch] sm:grid-cols-[2ch_1fr_96px_minmax(160px,1.5fr)_6ch]";
 
-export function LeaderboardView({ dailyScores }: Props) {
+export function LeaderboardView({ leaderboards }: Props) {
   const [range, setRange] = useState<number>(365);
 
-  const rows = useMemo(() => computeLeaderboard(dailyScores, range), [dailyScores, range]);
+  const rows = useMemo(() => leaderboards[range] ?? [], [leaderboards, range]);
+  // Shared sparkline scale for the range: the widest swing any outlet makes,
+  // floored so a calm range doesn't magnify noise into drama.
+  const sparkDomain = useMemo(
+    () => Math.max(0.3, ...rows.flatMap((r) => r.series.map(Math.abs))),
+    [rows]
+  );
   const maxAbs = useMemo(() => {
     const m = Math.max(0.3, ...rows.map((r) => Math.abs(r.mean))) * 1.05;
     return m;
@@ -217,14 +184,9 @@ export function LeaderboardView({ dailyScores }: Props) {
                   </span>
                   <span className="text-text-primary group-hover:text-accent transition-colors truncate">
                     {r.source}
-                    {RETIRED_SOURCES[r.source] && (
-                      <span className="ml-2 text-[10px] uppercase tracking-wider text-text-tertiary">
-                        retired {RETIRED_SOURCES[r.source]}
-                      </span>
-                    )}
                   </span>
                   <span className="hidden sm:block">
-                    <Sparkline points={r.series} />
+                    <Sparkline points={r.series} domain={sparkDomain} />
                   </span>
                   <span className="block">
                     <Bar mean={r.mean} maxAbs={maxAbs} />

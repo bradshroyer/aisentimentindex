@@ -1,5 +1,6 @@
 import { getSupabase } from "./supabase";
 import type { Headline, DailyScore, SourceStats } from "./types";
+import { SOURCES } from "./types";
 import { decodeEntities } from "./text";
 import { HEADLINE_COLUMNS, normalizeHeadline } from "./clientData";
 import fs from "fs";
@@ -19,20 +20,36 @@ export async function fetchDailyScores(): Promise<DailyScore[]> {
 
     if (error) throw error;
 
-    return (data ?? []).map((row) => ({
-      date: row.date,
-      mean: row.mean,
-      count: row.count,
-      pos: row.pos,
-      neg: row.neg,
-      neu: row.neu,
-      sources: (row.sources as string[]) ?? [],
-      by_source: (row.by_source as Record<string, SourceStats>) ?? {},
-    }));
+    return (data ?? []).map((row) =>
+      withoutRetired({
+        date: row.date,
+        mean: row.mean,
+        count: row.count,
+        pos: row.pos,
+        neg: row.neg,
+        neu: row.neu,
+        sources: (row.sources as string[]) ?? [],
+        by_source: (row.by_source as Record<string, SourceStats>) ?? {},
+      })
+    );
   }
 
   // Fallback: read from local data.json
   return loadDailyScoresFromFile();
+}
+
+// Belt and braces for retired sources: the Python aggregation already leaves
+// them out of daily_scores, but a row written before a source was retired
+// would otherwise still list it per-source (leaderboard, day detail).
+function withoutRetired(d: DailyScore): DailyScore {
+  const active = new Set(SOURCES);
+  return {
+    ...d,
+    sources: d.sources.filter((s) => active.has(s)),
+    by_source: Object.fromEntries(
+      Object.entries(d.by_source).filter(([s]) => active.has(s))
+    ),
+  };
 }
 
 // The server renders only the default 30-day view; older slices stream in on
@@ -67,6 +84,7 @@ export async function fetchHeadlines(since: string): Promise<Headline[]> {
         .from("headlines")
         .select(HEADLINE_COLUMNS)
         .gte("date", since)
+        .in("source", SOURCES as string[])
         // id tiebreaker keeps offset pagination stable across requests —
         // timestamps tie within an ingest batch (see lib/clientData.ts).
         .order("timestamp", { ascending: false })
