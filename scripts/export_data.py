@@ -20,7 +20,7 @@ EXPORT_DIR = Path(__file__).resolve().parent.parent / "data" / "export"
 # (title_normalized, created_at) from the public artifact.
 HEADLINE_COLUMNS = [
     "id", "date", "timestamp", "source", "title", "summary", "url",
-    "score", "score_raw", "scored_by",
+    "score", "score_raw", "scored_by", "about_ai",
 ]
 DAILY_COLUMNS = ["date", "mean", "count", "pos", "neg", "neu", "sources", "by_source"]
 

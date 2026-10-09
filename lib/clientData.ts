@@ -47,6 +47,8 @@ export async function fetchHeadlinesRange(
       .gte("date", since)
       .lt("date", before)
       .in("source", SOURCES as string[])
+      // NULL = not judged (VADER fallback, older rows) and counts as relevant.
+      .not("about_ai", "is", false)
       // Secondary sort on id: timestamps tie within an ingest batch, and
       // offset pagination over a nondeterministic tie-order can skip rows
       // at page boundaries (dedupe downstream catches dupes, not gaps).

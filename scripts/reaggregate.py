@@ -37,7 +37,7 @@ def main():
     args = parser.parse_args()
 
     sb = get_supabase()
-    headlines = fetch_all(sb, "headlines", "date,source,score", args.since)
+    headlines = fetch_all(sb, "headlines", "date,source,score,about_ai", args.since)
     current = {r["date"]: r for r in fetch_all(sb, "daily_scores", "date,mean,count", args.since)}
     rebuilt = aggregate_daily(headlines)
     print(f"{len(headlines)} headlines -> {len(rebuilt)} dates")

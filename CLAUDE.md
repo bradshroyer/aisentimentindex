@@ -50,8 +50,8 @@ Deep-link params are applied in a post-mount effect in `Dashboard` instead.
 - `export_data.py` — dump both tables to `data/export/` (JSON + CSV); run weekly by
   `.github/workflows/export.yml`, which commits the output. This is the backup for
   `headlines` (RSS has no backfill) and the public dataset linked from /methodology.
-- `rescore.py` — re-run Claude over `scored_by='vader'` fallback rows and re-aggregate
-  affected dates. Dry run by default; `--apply` to write.
+- `rescore.py` — re-run Claude over `scored_by='vader'` fallback rows (default) or every
+  row not on the current model (`--all`), then re-aggregate. Dry run by default; `--apply` to write.
 - `reaggregate.py` — rebuild `daily_scores` from `headlines` (e.g. after retiring a
   source). Dry run by default; `--apply` to write, `--since` to limit.
 - `schema.sql` — Supabase table definitions + RLS policies
@@ -68,19 +68,31 @@ Deep-link params are applied in a post-mount effect in `Dashboard` instead.
   `FEED_STALE_HOURS` (48) — a frozen mirror serving HTTP 200. Staleness works from
   in-memory data; the table (migrations 005/006) only adds the run counter and
   `last_entry_at`. Degrades to a warning if the table is missing.
-- Claude scoring uses `temperature=0` and retries on rate-limit/overloaded errors;
-  other errors fall back to VADER for that headline (tracked via `scored_by`).
+- Claude scoring uses structured outputs (no prefill/temperature — Haiku 5.5 rejects both);
+  the SDK retries 429/529/5xx (`max_retries=5`); other failures fall back to VADER for that
+  headline (tracked via `scored_by`).
 
 ## Key Design Decisions
 
 ### Sentiment: Claude Haiku (primary) + VADER fallback
-Headlines are scored using Claude Haiku (`claude-haiku-4-5-20251001`) for context-aware sentiment classification on a -1.0 to +1.0 scale (anti-AI to pro-AI). Claude scores the *stance toward AI*, not just word valence — e.g., "Anthropic Wins Court Order Pausing Ban" scores positive because it's a win for an AI company, even though words like "ban" and "court" sound negative.
+Headlines are scored using Claude Haiku (`claude-haiku-5-5`, effort `medium`, structured JSON output) for context-aware sentiment classification on a -1.0 to +1.0 scale (anti-AI to pro-AI). Claude scores the *stance toward AI*, not just word valence — e.g., "Anthropic Wins Court Order Pausing Ban" scores positive because it's a win for an AI company, even though words like "ban" and "court" sound negative.
 
 If `ANTHROPIC_API_KEY` is not set, scoring falls back to VADER + domain-specific adjustments (`POSITIVE_BOOSTS`, `NEGATIVE_BOOSTS`, `CONTEXT_OVERRIDES` dicts with word-boundary regex matching). VADER compound score is always stored as `score_raw` regardless of which scorer is used.
 
 Scores title + summary together (not just title) for better context.
 
-**Why Claude over VADER:** VADER is lexicon-based and had a 62% direction agreement with Claude in testing. Key failures: substring matching ("ban" matched "bank", "banking"), context blindness (couldn't tell "wins court order pausing ban" is positive), and poor handling of news/legal language. Claude costs a few cents/day on Haiku (volume has grown from ~60 to ~100+ headlines/day since launch).
+**Relevance:** the same call returns `about_ai` (migration 007). The RSS keyword filter lets
+through stories where AI is incidental (phone reviews, buying guides); rows with
+`about_ai = false` stay in `headlines` for audit but `aggregate_daily()` skips them and
+`lib/data.ts` / `lib/clientData.ts` filter them out. NULL (VADER fallback, unjudged) counts as relevant.
+
+**Model changes:** Haiku 4.5 → 5.5 happened 2026-10 after a 300-headline comparison against
+Opus 5.5 as reference (5.5 sentiment MAE 0.08 vs 0.14; caught all off-topic rows). Haiku 5.5
+rejects `temperature` and assistant prefill — use `output_config.format`. After changing the
+model or prompt, run `python3 scripts/rescore.py --all` (dry run) then `--all --apply` to
+rescore history (resumable; skips rows already on the current model) so the chart has no seam.
+
+**Why Claude over VADER:** VADER is lexicon-based and had a 62% direction agreement with Claude in testing. Key failures: substring matching ("ban" matched "bank", "banking"), context blindness (couldn't tell "wins court order pausing ban" is positive), and poor handling of news/legal language. Claude costs under a cent/day on Haiku 5.5 (volume has grown from ~60 to ~100+ headlines/day since launch).
 
 ### Data sources
 13 active RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, CNBC Tech, NPR Technology, Fox News Tech
@@ -91,7 +103,7 @@ Ingestion is RSS-only. A NewsAPI.ai (Event Registry) backfill script existed ear
 
 ### Database (Supabase)
 Three tables:
-- `headlines` — id, title, summary, url, source, date, timestamp, score_raw, score, scored_by (UNIQUE on title_normalized+source+date)
+- `headlines` — id, title, summary, url, source, date, timestamp, score_raw, score, scored_by, about_ai (UNIQUE on title_normalized+source+date)
 - `daily_scores` — date (PK), mean, count, pos, neg, neu, sources (JSONB), by_source (JSONB)
 - `feed_health` — source (PK), last_ok, last_entry_at, consecutive_failures (per-feed dark/stale detection; migrations 005, 006)
 

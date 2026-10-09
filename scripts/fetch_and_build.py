@@ -107,22 +107,36 @@ SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 # Claude scoring
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-CLAUDE_MODEL = "claude-haiku-4-5-20251001"
-CLAUDE_SCORING_PROMPT = """You are a sentiment classifier for AI/tech news headlines.
+# Haiku 5.5 at medium effort: on a 300-headline comparison it tracked an
+# Opus 5.5 reference most closely (sentiment MAE 0.08 vs 0.14 for Haiku 4.5)
+# and caught every off-topic headline Opus flagged, at ~1/10th the price.
+# Changing the model or prompt shifts scores — rescore history after
+# (scripts/rescore.py --all) so the series stays internally consistent.
+CLAUDE_MODEL = "claude-haiku-5-5"
+CLAUDE_EFFORT = "medium"
+CLAUDE_SCORING_PROMPT = """You score news headlines for the AI Sentiment Index, a daily measure of how major outlets cover AI.
 
-Given a headline (and optional summary), return a JSON object with:
-- "sentiment": float from -1.0 (strongly anti-AI / negative about AI) to +1.0 (strongly pro-AI / positive about AI). 0.0 = neutral.
+For each headline (with optional summary) return:
 
-Scoring guidelines:
-- Score the headline's STANCE toward AI, not the emotional valence of the words.
-- "Anthropic Wins Court Order Pausing Ban" = POSITIVE for AI (company won), despite negative words like "ban".
-- "AI replaces 500 jobs" = NEGATIVE for AI sentiment, even though it shows AI capability.
-- Funding, launches, partnerships, breakthroughs = generally positive.
-- Bans, lawsuits, safety failures, job losses, regulation = generally negative.
-- Neutral reporting or mixed signals = near 0.0.
-- Headlines unrelated to AI = 0.0.
+about_ai — true only when AI is a substantive subject of the story: AI technology, models or products; companies' AI work or AI business (funding, revenue, chips and data centers built for AI); AI policy, regulation or lawsuits; or AI's effects on people, jobs, culture or the economy. False when AI only appears in passing — a buying guide, gadget review, or general tech/business story that mentions AI once, or a story about a company that isn't about its AI.
 
-Return ONLY valid JSON, no markdown fences."""
+sentiment — the story's stance toward AI, from -1.0 (strongly negative for AI) to +1.0 (strongly positive for AI); 0.0 is neutral or mixed. Score the stance, not the tone of the words:
+- "Anthropic Wins Court Order Pausing Ban" is positive for AI (an AI company won), despite "ban" and "court".
+- "AI replaces 500 jobs" is negative for AI, even though it shows AI capability.
+- Funding, launches, partnerships, adoption and breakthroughs lean positive.
+- Bans, lawsuits, safety failures, job losses, bubble warnings and backlash lean negative.
+- Straight reporting or genuinely mixed signals sit near 0.0.
+When about_ai is false, give your best stance score anyway; it is not used."""
+
+CLAUDE_OUTPUT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "about_ai": {"type": "boolean"},
+        "sentiment": {"type": "number"},
+    },
+    "required": ["about_ai", "sentiment"],
+    "additionalProperties": False,
+}
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -261,46 +275,32 @@ def _get_claude_client():
     """Return an Anthropic client if the SDK and API key are available."""
     if Anthropic is None or not ANTHROPIC_API_KEY:
         return None
-    return Anthropic(api_key=ANTHROPIC_API_KEY)
+    # The SDK retries 429/529/5xx and connection errors with backoff.
+    return Anthropic(api_key=ANTHROPIC_API_KEY, max_retries=5)
 
 
-def _score_one_claude(client, text: str, retries: int = 2):
-    """Score a single headline with Claude. Returns float or None on failure."""
-    for attempt in range(retries + 1):
-        try:
-            resp = client.messages.create(
-                model=CLAUDE_MODEL,
-                max_tokens=100,
-                temperature=0.0,  # classification — don't sample; keeps rescores reproducible
-                system=CLAUDE_SCORING_PROMPT,
-                messages=[
-                    {"role": "user", "content": text},
-                    {"role": "assistant", "content": "{"},
-                ],
-            )
-            raw = "{" + resp.content[0].text.strip()
-            # Truncate after first complete JSON object
-            brace_depth = 0
-            for idx, ch in enumerate(raw):
-                if ch == "{":
-                    brace_depth += 1
-                elif ch == "}":
-                    brace_depth -= 1
-                    if brace_depth == 0:
-                        raw = raw[: idx + 1]
-                        break
-            parsed = json.loads(raw)
-            return max(-1.0, min(1.0, float(parsed["sentiment"])))
-        except Exception as e:
-            # Retry transient API pressure (429s and 529s); anything else
-            # falls through to the VADER fallback immediately.
-            retriable = "rate_limit" in str(e) or "overloaded" in str(e)
-            if retriable and attempt < retries:
-                time.sleep(15)
-                continue
-            if attempt == retries:
-                print(f"  Claude scoring error: {e}")
+def _score_one_claude(client, text: str) -> Optional[tuple[float, bool]]:
+    """Score one headline with Claude. Returns (sentiment, about_ai), or None
+    on failure so the caller can fall back to VADER."""
+    try:
+        resp = client.messages.create(
+            model=CLAUDE_MODEL,
+            max_tokens=1024,  # room for adaptive thinking ahead of the JSON
+            system=CLAUDE_SCORING_PROMPT,
+            messages=[{"role": "user", "content": text}],
+            output_config={
+                "effort": CLAUDE_EFFORT,
+                "format": {"type": "json_schema", "schema": CLAUDE_OUTPUT_SCHEMA},
+            },
+        )
+        if resp.stop_reason != "end_turn":
+            print(f"  Claude stopped early ({resp.stop_reason})")
             return None
+        parsed = json.loads(next(b.text for b in resp.content if b.type == "text"))
+        return max(-1.0, min(1.0, float(parsed["sentiment"]))), bool(parsed["about_ai"])
+    except Exception as e:
+        print(f"  Claude scoring error: {e}")
+        return None
 
 
 def score_headlines(headlines: list[dict]) -> list[dict]:
@@ -324,10 +324,13 @@ def score_headlines(headlines: list[dict]) -> list[dict]:
         # Use Claude if available, fall back to VADER + domain adjustments.
         # Record which scorer actually produced `score` so we can audit
         # signal origins after model swaps.
+        # about_ai stays None for VADER rows: unknown, so they're kept.
+        h["about_ai"] = None
         if claude:
-            claude_score = _score_one_claude(claude, text)
-            if claude_score is not None:
-                h["score"] = round(claude_score, 4)
+            result = _score_one_claude(claude, text)
+            if result is not None:
+                h["score"] = round(result[0], 4)
+                h["about_ai"] = result[1]
                 h["scored_by"] = CLAUDE_MODEL
             else:
                 h["score"] = round(domain_adjust(text, base), 4)
@@ -350,6 +353,8 @@ def aggregate_daily(headlines: list[dict]) -> dict:
     for h in headlines:
         if h["source"] not in RSS_FEEDS:
             continue  # retired source
+        if h.get("about_ai") is False:
+            continue  # keyword match, but Claude judged AI incidental
         by_day.setdefault(h["date"], []).append(h)
 
     daily = {}
@@ -407,6 +412,7 @@ def upsert_headlines(sb, headlines: list[dict]) -> int:
                 "score_raw": h.get("score_raw", h["score"]),
                 "score": h["score"],
                 "scored_by": h.get("scored_by"),
+                "about_ai": h.get("about_ai"),
             }
             for h in batch
         ]
@@ -550,23 +556,29 @@ def reaggregate_dates(sb, dates: set[str]) -> int:
     from Supabase. Scoped to avoid full-table rebuilds on every ingest run."""
     if not dates:
         return 0
-    # Paginate: PostgREST caps a response at 1000 rows, which a handful of
-    # busy days can exceed.
+    # Chunk the date list (a full-history rescore touches hundreds of dates,
+    # too many for one query string) and paginate each chunk: PostgREST caps
+    # a response at 1000 rows, which a handful of busy days can exceed.
     day_rows: list[dict] = []
     page_size = 1000
-    while True:
-        result = (
-            sb.table("headlines")
-            .select("date,source,score")
-            .in_("date", sorted(dates))
-            .order("id")
-            .range(len(day_rows), len(day_rows) + page_size - 1)
-            .execute()
-        )
-        page = result.data or []
-        day_rows.extend(page)
-        if len(page) < page_size:
-            break
+    ordered = sorted(dates)
+    for i in range(0, len(ordered), 60):
+        chunk = ordered[i : i + 60]
+        fetched = 0
+        while True:
+            result = (
+                sb.table("headlines")
+                .select("date,source,score,about_ai")
+                .in_("date", chunk)
+                .order("id")
+                .range(fetched, fetched + page_size - 1)
+                .execute()
+            )
+            page = result.data or []
+            day_rows.extend(page)
+            fetched += len(page)
+            if len(page) < page_size:
+                break
     daily = aggregate_daily(day_rows)
     return upsert_daily_scores(sb, daily)
 
