@@ -3,6 +3,7 @@ import { Dashboard } from "@/components/Dashboard";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DataFreshness } from "@/components/DataFreshness";
 import { SITE_URL } from "@/lib/site";
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 
 // Dataset markup gets the index into Google Dataset Search; WebSite ties the
 // pages together for regular search. Rebuilt on each ISR revalidation so the
@@ -17,7 +18,7 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
         url: SITE_URL,
         name: "AI Sentiment Index",
         description:
-          "A daily index of media sentiment toward AI across 14 major news outlets.",
+          `A daily index of media sentiment toward AI across ${ACTIVE_SOURCE_COUNT} major news outlets.`,
         publisher: {
           "@type": "Person",
           name: "Brad Shroyer",
@@ -28,7 +29,7 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
         "@type": "Dataset",
         name: "AI Sentiment Index — daily media sentiment toward AI",
         description:
-          "Daily mean sentiment scores (−1.0 anti-AI to +1.0 pro-AI) for AI news coverage across 14 major outlets including NYT, TechCrunch, The Verge, Wired, Bloomberg and BBC. Each headline is scored for its stance toward AI by Claude Haiku; updated every 6 hours.",
+          `Daily mean sentiment scores (−1.0 anti-AI to +1.0 pro-AI) for AI news coverage across ${ACTIVE_SOURCE_COUNT} major outlets including NYT, TechCrunch, The Verge, Wired, Bloomberg and BBC. Each headline is scored for its stance toward AI by Claude Haiku; updated every 6 hours.`,
         url: SITE_URL,
         sameAs: "https://github.com/bradshroyer/aisentimentindex",
         creator: {
@@ -114,7 +115,7 @@ export default async function Home() {
       <SiteHeader
         tagline={
           <>
-            How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across 14 sources.
+            How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across {ACTIVE_SOURCE_COUNT} sources.
           </>
         }
       >

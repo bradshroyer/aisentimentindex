@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { SITE_HOST } from "@/lib/site";
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 
 export const runtime = "edge";
 export const alt = "AI Sentiment Index — tracking how major news outlets talk about AI";
@@ -256,7 +257,7 @@ function liveImage(rows: ScoreRow[]) {
               letterSpacing: "0.1em",
             }}
           >
-            <span>14 sources</span>
+            <span>{ACTIVE_SOURCE_COUNT} sources</span>
             <span style={{ color: "#F59E0B" }}>&middot;</span>
             <span>daily scores</span>
             <span style={{ color: "#F59E0B" }}>&middot;</span>
@@ -339,7 +340,7 @@ function staticImage() {
             letterSpacing: "0.1em",
           }}
         >
-          <span>14 sources</span>
+          <span>{ACTIVE_SOURCE_COUNT} sources</span>
           <span style={{ color: "#F59E0B" }}>&middot;</span>
           <span>daily scores</span>
           <span style={{ color: "#F59E0B" }}>&middot;</span>

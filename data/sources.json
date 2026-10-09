@@ -45,7 +45,9 @@
   },
   {
     "name": "VentureBeat AI",
-    "rss": "https://feeds.feedburner.com/venturebeat/SZYF"
+    "rss": "https://feeds.feedburner.com/venturebeat/SZYF",
+    "active": false,
+    "retired": "2026-09-03"
   },
   {
     "name": "Wired",

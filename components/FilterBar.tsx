@@ -4,6 +4,8 @@ import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 
 interface FilterBarProps {
   sources: string[];
+  /** Retired source name → last day with data; shown as "(retired)". */
+  retired?: Readonly<Record<string, string>>;
   selectedSource: string;
   onSourceChange: (source: string) => void;
   ranges: readonly { label: string; days: number }[];
@@ -13,6 +15,7 @@ interface FilterBarProps {
 
 export function FilterBar({
   sources,
+  retired = {},
   selectedSource,
   onSourceChange,
   ranges,
@@ -142,6 +145,9 @@ export function FilterBar({
                         : "text-text-primary hover:bg-surface-alt"}`}
                 >
                   {s === "All" ? "All Sources" : s}
+                  {retired[s] && (
+                    <span className="text-text-tertiary"> · retired {retired[s]}</span>
+                  )}
                 </button>
               ))}
             </div>

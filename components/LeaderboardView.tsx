@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { DailyScore } from "@/lib/types";
-import { TIME_RANGES } from "@/lib/types";
+import { TIME_RANGES, RETIRED_SOURCES } from "@/lib/types";
 import { addDays } from "@/lib/bucketing";
 
 interface LeaderboardRow {
@@ -217,6 +217,11 @@ export function LeaderboardView({ dailyScores }: Props) {
                   </span>
                   <span className="text-text-primary group-hover:text-accent transition-colors truncate">
                     {r.source}
+                    {RETIRED_SOURCES[r.source] && (
+                      <span className="ml-2 text-[10px] uppercase tracking-wider text-text-tertiary">
+                        retired {RETIRED_SOURCES[r.source]}
+                      </span>
+                    )}
                   </span>
                   <span className="hidden sm:block">
                     <Sparkline points={r.series} />

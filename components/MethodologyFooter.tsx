@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { SOURCES } from "@/lib/types";
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 
 interface MethodologyFooterProps {
   totalHeadlines: number;
@@ -111,7 +111,7 @@ export function MethodologyFooter({
             Data source
           </span>
           <span className="text-[11px] font-mono text-text-secondary">
-            RSS · {SOURCES.length} outlets
+            RSS · {ACTIVE_SOURCE_COUNT} outlets
           </span>
         </div>
       </div>

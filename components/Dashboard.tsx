@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { Headline, DailyScore } from "@/lib/types";
-import { SOURCES, TIME_RANGES } from "@/lib/types";
+import { SOURCES, RETIRED_SOURCES, TIME_RANGES } from "@/lib/types";
 import { fetchHeadlinesRange } from "@/lib/clientData";
 import {
   getGranularity,
@@ -386,11 +386,24 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
     };
   }, [filteredDailyScores, selectedRange, selectedSource]);
 
+  // Retired sources are offered only while the selected range reaches back to
+  // days they covered (always kept if currently selected, so the control
+  // never shows a value that isn't in its list).
+  const filterSources = useMemo(() => {
+    const last = dailyScores[dailyScores.length - 1]?.date;
+    const rangeStart = selectedRange === 0 || !last ? "" : addDays(last, -selectedRange);
+    return SOURCES.filter((s) => {
+      const retired = RETIRED_SOURCES[s];
+      return !retired || retired >= rangeStart || s === selectedSource;
+    });
+  }, [dailyScores, selectedRange, selectedSource]);
+
   return (
     <div className="space-y-4">
       <div className="animate-in delay-1 relative z-20">
         <FilterBar
-          sources={[...SOURCES]}
+          sources={filterSources}
+          retired={RETIRED_SOURCES}
           selectedSource={selectedSource}
           onSourceChange={handleSourceChange}
           ranges={[...TIME_RANGES]}

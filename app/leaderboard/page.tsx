@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
 import { fetchDailyScores } from "@/lib/data";
 import { LeaderboardView } from "@/components/LeaderboardView";
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MethodologyFooter } from "@/components/MethodologyFooter";
 
 export const revalidate = 21600;
 
+const DESCRIPTION = `How ${ACTIVE_SOURCE_COUNT} major news outlets rank on sentiment toward AI, from most positive to most critical.`;
+
 export const metadata: Metadata = {
   title: "Leaderboard",
-  description:
-    "How 14 major news outlets rank on sentiment toward AI, from most positive to most critical.",
+  description: DESCRIPTION,
   alternates: { canonical: "/leaderboard" },
   openGraph: {
     title: "Leaderboard · AI Sentiment Index",
-    description:
-      "How 14 major news outlets rank on sentiment toward AI, from most positive to most critical.",
+    description: DESCRIPTION,
     url: "/leaderboard",
     siteName: "AI Sentiment Index",
     type: "website",

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """AI Sentiment Index — fetch RSS headlines, score sentiment, write to Supabase."""
 
+import calendar
 import json
 import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Optional
 from statistics import mean
 
 import feedparser
@@ -31,7 +33,11 @@ _SOURCES_PATH = Path(__file__).resolve().parent.parent / "data" / "sources.json"
 with open(_SOURCES_PATH) as _f:
     SOURCES = json.load(_f)
 
-RSS_FEEDS: dict[str, str] = {s["name"]: s["rss"] for s in SOURCES}
+# Retired sources ("active": false) keep their historical rows but are no
+# longer fetched or health-checked.
+RSS_FEEDS: dict[str, str] = {
+    s["name"]: s["rss"] for s in SOURCES if s.get("active", True)
+}
 
 AI_KEYWORDS = [
     "artificial intelligence", " ai ", " ai,", " ai.", " ai:", " ai'",
@@ -88,6 +94,11 @@ DEDUP_LOOKBACK_DAYS = 14
 # nonzero exit, which fires the workflow's ingestion-failure issue.
 # 8 runs ≈ 2 days at the 6h cadence.
 FEED_DARK_THRESHOLD = 8
+
+# A feed that still returns entries but whose newest one is older than this
+# is frozen (e.g. a stale Feedburner mirror serving HTTP 200 with old items)
+# and also fails the run. Zero-entry detection alone can't see this.
+FEED_STALE_HOURS = 48
 
 # Supabase connection
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
@@ -148,6 +159,20 @@ def parse_date(entry) -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+def entry_datetime(entry) -> Optional[datetime]:
+    """Full publish time of a feed entry (UTC), or None if unparseable.
+    parse_date() falls back to 'today', which would mask a stale feed, so
+    health checks use this instead."""
+    for field in ("published_parsed", "updated_parsed"):
+        parsed = entry.get(field)
+        if parsed:
+            try:
+                return datetime.fromtimestamp(calendar.timegm(parsed), timezone.utc)
+            except Exception:
+                pass
+    return None
+
+
 def get_supabase():
     if not SUPABASE_URL or not SUPABASE_KEY:
         raise SystemExit("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env")
@@ -158,20 +183,27 @@ def get_supabase():
 # Fetch & Filter
 # ---------------------------------------------------------------------------
 
-def fetch_headlines() -> tuple[list[dict], dict[str, int]]:
-    """Fetch all feeds. Returns (ai_headlines, raw_entry_count_per_source).
+def fetch_headlines() -> tuple[list[dict], dict[str, int], dict[str, datetime]]:
+    """Fetch all feeds. Returns (ai_headlines, raw_entry_count_per_source,
+    newest_entry_time_per_source).
 
     The raw counts feed health tracking: feedparser does not raise on HTTP
     errors — a dead feed just parses to zero entries — so the except below
     almost never fires and absence of entries is the real failure signal.
+    The newest-entry times catch the other failure mode: a frozen feed that
+    still returns old items. Sources with no parseable dates are omitted.
     """
     seen_titles: set[str] = set()
     results = []
     entry_counts: dict[str, int] = {}
+    newest: dict[str, datetime] = {}
     for source, url in RSS_FEEDS.items():
         try:
             feed = feedparser.parse(url)
             entry_counts[source] = len(feed.entries)
+            times = [t for t in map(entry_datetime, feed.entries) if t]
+            if times:
+                newest[source] = max(times)
             for entry in feed.entries:
                 title = normalize_text(entry.get("title", "").strip())
                 if not title or title in seen_titles:
@@ -193,7 +225,7 @@ def fetch_headlines() -> tuple[list[dict], dict[str, int]]:
         except Exception as e:
             entry_counts[source] = 0
             print(f"Warning: failed to fetch {source}: {e}")
-    return results, entry_counts
+    return results, entry_counts, newest
 
 
 # ---------------------------------------------------------------------------
@@ -430,12 +462,35 @@ def load_existing_titles(sb) -> set[str]:
     return titles
 
 
-def record_feed_health(sb, entry_counts: dict[str, int]) -> list[str]:
-    """Track consecutive zero-entry runs per feed in the feed_health table.
+def find_stale_feeds(
+    entry_counts: dict[str, int],
+    newest: dict[str, datetime],
+    now: datetime,
+) -> list[str]:
+    """Feeds that returned entries but whose newest is older than
+    FEED_STALE_HOURS. Zero-entry feeds are handled by the consecutive-run
+    counter; feeds with no parseable dates can't be judged and are skipped."""
+    cutoff = now - timedelta(hours=FEED_STALE_HOURS)
+    return sorted(
+        s for s in RSS_FEEDS
+        if entry_counts.get(s, 0) > 0 and s in newest and newest[s] < cutoff
+    )
+
+
+def record_feed_health(
+    sb,
+    entry_counts: dict[str, int],
+    newest: dict[str, datetime],
+    stale: list[str],
+) -> list[str]:
+    """Track consecutive failing runs per feed in the feed_health table, where
+    failing = zero entries OR newest entry older than FEED_STALE_HOURS.
     Returns sources dark for >= FEED_DARK_THRESHOLD consecutive runs.
 
     Degrades to a warning if the table doesn't exist yet (migration 005), so
-    ingestion never fails on the health check itself."""
+    ingestion never fails on the health check itself. The last_entry_at
+    column (migration 006) is optional: if it's missing the upsert is retried
+    without it."""
     now = datetime.now(timezone.utc).isoformat()
     try:
         existing = {
@@ -444,22 +499,33 @@ def record_feed_health(sb, entry_counts: dict[str, int]) -> list[str]:
         }
         rows = []
         for source in RSS_FEEDS:
-            if entry_counts.get(source, 0) > 0:
-                rows.append({
-                    "source": source,
-                    "last_ok": now,
-                    "consecutive_failures": 0,
-                    "updated_at": now,
-                })
-            else:
-                prev = existing.get(source, {})
-                rows.append({
-                    "source": source,
-                    "last_ok": prev.get("last_ok"),
-                    "consecutive_failures": (prev.get("consecutive_failures") or 0) + 1,
-                    "updated_at": now,
-                })
-        sb.table("feed_health").upsert(rows, on_conflict="source").execute()
+            last_entry = newest.get(source)
+            last_entry_at = (
+                last_entry.isoformat() if last_entry
+                else existing.get(source, {}).get("last_entry_at")
+            )
+            healthy = entry_counts.get(source, 0) > 0 and source not in stale
+            prev = existing.get(source, {})
+            rows.append({
+                "source": source,
+                "last_ok": now if healthy else prev.get("last_ok"),
+                "last_entry_at": last_entry_at,
+                "consecutive_failures": (
+                    0 if healthy else (prev.get("consecutive_failures") or 0) + 1
+                ),
+                "updated_at": now,
+            })
+        try:
+            sb.table("feed_health").upsert(rows, on_conflict="source").execute()
+        except Exception as e:
+            if "last_entry_at" not in str(e):
+                raise
+            print(
+                "Warning: feed_health.last_entry_at missing; apply "
+                "scripts/migrations/006_feed_health_last_entry.sql."
+            )
+            slim = [{k: v for k, v in r.items() if k != "last_entry_at"} for r in rows]
+            sb.table("feed_health").upsert(slim, on_conflict="source").execute()
         return sorted(
             r["source"] for r in rows
             if r["consecutive_failures"] >= FEED_DARK_THRESHOLD
@@ -493,10 +559,16 @@ def main():
     existing_titles = load_existing_titles(sb)
     print(f"Recent headlines loaded for dedup (last {DEDUP_LOOKBACK_DAYS}d): {len(existing_titles)}")
 
-    new_headlines, entry_counts = fetch_headlines()
+    new_headlines, entry_counts, newest = fetch_headlines()
     zero_entry = sorted(s for s, c in entry_counts.items() if c == 0)
     if zero_entry:
         print(f"Feeds with zero entries this run: {', '.join(zero_entry)}")
+    stale = find_stale_feeds(entry_counts, newest, datetime.now(timezone.utc))
+    for source in stale:
+        print(
+            f"Feed stale: {source} newest entry {newest[source].isoformat()} "
+            f"(> {FEED_STALE_HOURS}h old)"
+        )
 
     new_headlines = [h for h in new_headlines if h["title"] not in existing_titles]
 
@@ -518,11 +590,24 @@ def main():
 
     # Last, after all writes: a dark feed fails the run so the workflow's
     # ingestion-failure issue fires, but never blocks the data itself.
-    dark_feeds = record_feed_health(sb, entry_counts)
+    dark_feeds = record_feed_health(sb, entry_counts, newest, stale)
+    problems = []
     if dark_feeds:
+        problems.append(
+            f"dark (zero entries) for >= {FEED_DARK_THRESHOLD} consecutive runs "
+            f"(~2 days): {', '.join(dark_feeds)}"
+        )
+    # Stale feeds alert immediately: the newest-entry age already spans the
+    # window, so there's no point also waiting on the run counter.
+    stale_only = [s for s in stale if s not in dark_feeds]
+    if stale_only:
+        problems.append(
+            f"stale (newest entry > {FEED_STALE_HOURS}h old): {', '.join(stale_only)}"
+        )
+    if problems:
         raise SystemExit(
-            f"ALERT: feed(s) dark for >= {FEED_DARK_THRESHOLD} consecutive runs "
-            f"(~2 days): {', '.join(dark_feeds)}. Check their RSS URLs in data/sources.json."
+            "ALERT: feed health — " + "; ".join(problems)
+            + ". Check their RSS URLs in data/sources.json."
         )
 
 
