@@ -31,7 +31,31 @@ export interface DailyScore {
 // (scripts/fetch_and_build.py) to prevent drift between ingest and UI.
 import sourcesData from "@/data/sources.json";
 
-export const SOURCES: readonly string[] = [...sourcesData.map((s) => s.name)].sort();
+interface SourceEntry {
+  name: string;
+  rss: string;
+  /** false = retired: no longer ingested, historical rows kept. */
+  active?: boolean;
+  /** Last day the source produced data (YYYY-MM-DD), for retired sources. */
+  retired?: string;
+}
+
+const SOURCE_LIST = sourcesData as SourceEntry[];
+
+/** Every source that has ever contributed data (active + retired). */
+export const SOURCES: readonly string[] = SOURCE_LIST.map((s) => s.name).sort();
+
+/** Sources currently being ingested. User-facing "N outlets" copy uses this. */
+export const ACTIVE_SOURCES: readonly string[] = SOURCE_LIST
+  .filter((s) => s.active !== false)
+  .map((s) => s.name)
+  .sort();
+export const ACTIVE_SOURCE_COUNT = ACTIVE_SOURCES.length;
+
+/** Retired source name → last day it had data. */
+export const RETIRED_SOURCES: Readonly<Record<string, string>> = Object.fromEntries(
+  SOURCE_LIST.filter((s) => s.active === false && s.retired).map((s) => [s.name, s.retired as string])
+);
 
 export type SourceName = string;
 

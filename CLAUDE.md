@@ -59,8 +59,11 @@ Deep-link params are applied in a post-mount effect in `Dashboard` instead.
 - Feed health: feedparser doesn't raise on HTTP errors (a dead feed = zero entries),
   so `fetch_and_build.py` tracks consecutive zero-entry runs per source in the
   `feed_health` table and exits nonzero once a feed is dark ~2 days
-  (`FEED_DARK_THRESHOLD`), firing the workflow's ingestion-failure issue. Degrades
-  to a warning if the table is missing.
+  (`FEED_DARK_THRESHOLD`), firing the workflow's ingestion-failure issue. It also
+  fails the run when a feed still returns entries but its newest one is older than
+  `FEED_STALE_HOURS` (48) — a frozen mirror serving HTTP 200. Staleness works from
+  in-memory data; the table (migrations 005/006) only adds the run counter and
+  `last_entry_at`. Degrades to a warning if the table is missing.
 - Claude scoring uses `temperature=0` and retries on rate-limit/overloaded errors;
   other errors fall back to VADER for that headline (tracked via `scored_by`).
 
@@ -76,7 +79,9 @@ Scores title + summary together (not just title) for better context.
 **Why Claude over VADER:** VADER is lexicon-based and had a 62% direction agreement with Claude in testing. Key failures: substring matching ("ban" matched "bank", "banking"), context blindness (couldn't tell "wins court order pausing ban" is positive), and poor handling of news/legal language. Claude costs a few cents/day on Haiku (volume has grown from ~60 to ~100+ headlines/day since launch).
 
 ### Data sources
-14 RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, VentureBeat AI, CNBC Tech, NPR Technology, Fox News Tech
+13 active RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, CNBC Tech, NPR Technology, Fox News Tech
+
+**Retired:** VentureBeat AI (last data 2026-09-03). Its Feedburner feed froze (HTTP 200, stale items) and the direct venturebeat.com feeds sit behind a Vercel bot challenge. Retired sources are marked `"active": false, "retired": "YYYY-MM-DD"` in `data/sources.json`: Python skips them, the UI derives all "N outlets" copy from the active count (`ACTIVE_SOURCE_COUNT` in `lib/types.ts`), and historical rows stay. To bring a source back, fix its `rss` and delete those two keys.
 
 Ingestion is RSS-only. A NewsAPI.ai (Event Registry) backfill script existed earlier for historical gaps but was removed — over 14 days of routine operation it contributed zero headlines (RSS covers the 6h window fully), so it wasn't worth the paid quota.
 
@@ -84,7 +89,7 @@ Ingestion is RSS-only. A NewsAPI.ai (Event Registry) backfill script existed ear
 Three tables:
 - `headlines` — id, title, summary, url, source, date, timestamp, score_raw, score, scored_by (UNIQUE on title_normalized+source+date)
 - `daily_scores` — date (PK), mean, count, pos, neg, neu, sources (JSONB), by_source (JSONB)
-- `feed_health` — source (PK), last_ok, consecutive_failures (per-feed dark detection; migration 005)
+- `feed_health` — source (PK), last_ok, last_entry_at, consecutive_failures (per-feed dark/stale detection; migrations 005, 006)
 
 IMPORTANT: Don't `json.dumps()` JSONB fields before upserting — supabase-py handles serialization automatically. Double-encoding causes string-instead-of-object bugs.
 

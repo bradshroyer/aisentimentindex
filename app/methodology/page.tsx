@@ -3,11 +3,13 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MethodologyToc } from "@/components/MethodologyToc";
 import sources from "@/data/sources.json";
+import { ACTIVE_SOURCE_COUNT, RETIRED_SOURCES } from "@/lib/types";
+
+const activeSources = sources.filter((s) => (s as { active?: boolean }).active !== false);
 
 export const revalidate = 21600;
 
-const DESCRIPTION =
-  "How the AI Sentiment Index works: Claude Haiku scores every AI headline from 14 outlets for its stance toward AI on a −1.0 to +1.0 scale, with a lexicon fallback, a 6-hour pipeline, and honest limitations.";
+const DESCRIPTION = `How the AI Sentiment Index works: Claude Haiku scores every AI headline from ${ACTIVE_SOURCE_COUNT} outlets for its stance toward AI on a −1.0 to +1.0 scale, with a lexicon fallback, a 6-hour pipeline, and honest limitations.`;
 
 export const metadata: Metadata = {
   title: "Methodology",
@@ -32,7 +34,7 @@ const TOC_SECTIONS = [
 ];
 
 const PIPELINE = [
-  { step: "RSS feeds", detail: `${sources.length} outlets` },
+  { step: "RSS feeds", detail: `${ACTIVE_SOURCE_COUNT} outlets` },
   { step: "GitHub Actions", detail: "cron · every 6h" },
   { step: "Claude scoring", detail: "title + summary" },
   { step: "Supabase", detail: "headlines · daily_scores" },
@@ -303,7 +305,7 @@ export default function MethodologyPage() {
           </h2>
           <p className="text-sm text-text-secondary leading-relaxed">
             A GitHub Actions cron runs every six hours. It pulls{" "}
-            {sources.length} RSS feeds, keeps headlines that match an AI
+            {ACTIVE_SOURCE_COUNT} RSS feeds, keeps headlines that match an AI
             keyword filter, dedupes against everything already stored, and
             scores only what is new. Headlines and daily aggregates &mdash;
             mean, counts, per-source breakdowns &mdash; are upserted into two
@@ -353,14 +355,14 @@ export default function MethodologyPage() {
             What gets read
           </h2>
           <p className="text-sm text-text-secondary leading-relaxed">
-            {sources.length} outlets, spanning general tech press, business
+            {ACTIVE_SOURCE_COUNT} outlets, spanning general tech press, business
             desks, and AI-specific verticals. The list lives in a single{" "}
             <Mono>sources.json</Mono> consumed by both the Python ingester and
             this site &mdash; including the grid below.
           </p>
 
           <ul className="flex flex-wrap gap-2 my-5">
-            {sources.map((s) => (
+            {activeSources.map((s) => (
               <li
                 key={s.name}
                 className="text-[11px] font-mono text-text-secondary border border-border bg-card rounded-lg px-3 py-1.5"
@@ -369,6 +371,18 @@ export default function MethodologyPage() {
               </li>
             ))}
           </ul>
+
+          {Object.keys(RETIRED_SOURCES).length > 0 && (
+            <p className="text-sm text-text-secondary leading-relaxed mb-3">
+              Retired:{" "}
+              {Object.entries(RETIRED_SOURCES)
+                .map(([name, date]) => `${name} (no data after ${date})`)
+                .join(", ")}
+              . Their historical headlines stay in the dataset and in
+              date ranges they cover, but they are no longer ingested and
+              are left out of rankings for ranges with no data.
+            </p>
+          )}
 
           <p className="text-sm text-text-secondary leading-relaxed">
             Feeds are fetched in full on every run; a headline enters the index

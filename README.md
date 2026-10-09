@@ -6,11 +6,11 @@
 
 I was curious: how does the media *actually* feel about AI right now? Not what Twitter thinks, not what VCs are pitching — what are the major outlets writing, and is the overall tone positive or negative?
 
-So I built this. The AI Sentiment Index tracks daily media sentiment about AI across 14 major tech and news outlets, scores each headline, and plots the trend over time.
+So I built this. The AI Sentiment Index tracks daily media sentiment about AI across 13 major tech and news outlets, scores each headline, and plots the trend over time.
 
 ## How It Works
 
-Python scripts run every 6 hours via GitHub Actions. They pull RSS feeds from 14 outlets — TechCrunch, NYT, BBC, Wired, The Verge, MIT Tech Review, Bloomberg, and more. Each headline and summary is scored using Claude Haiku for context-aware sentiment analysis. Claude scores the *stance toward AI* (not just word sentiment), so "Anthropic Wins Court Order Pausing Ban" correctly scores positive even though words like "ban" sound negative. VADER serves as a fallback when the API key isn't available. Results are stored in Supabase (Postgres).
+Python scripts run every 6 hours via GitHub Actions. They pull RSS feeds from 13 outlets — TechCrunch, NYT, BBC, Wired, The Verge, MIT Tech Review, Bloomberg, and more. Each headline and summary is scored using Claude Haiku for context-aware sentiment analysis. Claude scores the *stance toward AI* (not just word sentiment), so "Anthropic Wins Court Order Pausing Ban" correctly scores positive even though words like "ban" sound negative. VADER serves as a fallback when the API key isn't available. Results are stored in Supabase (Postgres).
 
 The frontend is a Next.js app deployed on Vercel. The chart is interactive — click any data point to drill into that day's headlines.
 

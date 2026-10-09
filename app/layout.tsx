@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Serif, JetBrains_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 import { Analytics } from "@/components/Analytics";
 
 const instrumentSerif = Instrument_Serif({
@@ -27,7 +28,7 @@ const dmSans = DM_Sans({
 const siteUrl = new URL(SITE_URL);
 
 const DESCRIPTION =
-  "A daily index of media sentiment toward AI. Claude scores every AI headline from 14 outlets — NYT, TechCrunch, The Verge, Wired, Bloomberg, BBC and more — on a −1 to +1 scale, updated every 6 hours.";
+  `A daily index of media sentiment toward AI. Claude scores every AI headline from ${ACTIVE_SOURCE_COUNT} outlets — NYT, TechCrunch, The Verge, Wired, Bloomberg, BBC and more — on a −1 to +1 scale, updated every 6 hours.`;
 
 export const metadata: Metadata = {
   title: {

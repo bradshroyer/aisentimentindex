@@ -1,3 +1,5 @@
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
+
 export default function Loading() {
   return (
     <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -8,7 +10,7 @@ export default function Loading() {
           </h1>
           <div className="w-12 h-0.5 bg-accent mt-2 rounded-full" />
           <p className="text-xs text-text-secondary mt-2 leading-relaxed">
-            How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across 14 sources.
+            How positive or negative are major news outlets when they write about AI? A daily score from &minus;1.0 to +1.0 across {ACTIVE_SOURCE_COUNT} sources.
           </p>
           <div className="h-3 w-48 bg-surface-alt/70 rounded mt-2 animate-pulse" />
         </div>
