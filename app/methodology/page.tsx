@@ -181,12 +181,14 @@ export default function MethodologyPage() {
           </h2>
           <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
             <p>
-              Claude Haiku (<Mono>claude-haiku-4-5-20251001</Mono>) reads each
+              Claude Haiku (<Mono>claude-haiku-5-5</Mono>) reads each
               headline and scores its stance toward AI on a scale from{" "}
               <span className="text-negative">−1.0 (anti-AI)</span> to{" "}
               <span className="text-positive">+1.0 (pro-AI)</span>. It scores
               the title and summary together &mdash; summaries carry context
-              that titles drop &mdash; and returns a single number. A
+              that titles drop &mdash; and also judges whether AI is actually
+              the subject. A phone review or market wrap that mentions AI in
+              passing is kept on record but left out of the index. A
               day&rsquo;s index value is the mean across that day&rsquo;s
               headlines; scores within ±0.05 of zero count as neutral in the
               daily tallies.
@@ -286,14 +288,18 @@ export default function MethodologyPage() {
           <p className="text-sm text-text-secondary leading-relaxed">
             So Claude Haiku became the primary scorer. At the current volume
             of 100-odd headlines a day, that costs{" "}
-            <span className="text-text-primary">a few cents per day</span>
+            <span className="text-text-primary">under a cent per day</span>
             . VADER never left, though: its compound score is still computed
             for every headline and stored as <Mono>score_raw</Mono>, and it
             remains the fallback &mdash; now with word-boundary regexes for
             terms like &ldquo;ban&rdquo; &mdash; whenever the API key is
             missing or a request fails. Every row records which scorer produced
             it in a <Mono>scored_by</Mono> field, so scorer changes can be
-            audited later.
+            audited later. When the scorer moved from Haiku 4.5 to Haiku 5.5
+            in October 2026, the entire history was rescored with the new
+            model so the series has no seam; on a 300-headline check against
+            Claude Opus 5.5 as a reference, Haiku 5.5 tracked it more closely
+            than the old scores did.
           </p>
         </section>
 
@@ -307,7 +313,8 @@ export default function MethodologyPage() {
             A GitHub Actions cron runs every six hours. It pulls{" "}
             {ACTIVE_SOURCE_COUNT} RSS feeds, keeps headlines that match an AI
             keyword filter, dedupes against everything already stored, and
-            scores only what is new. Headlines and daily aggregates &mdash;
+            scores only what is new &mdash; dropping any the scorer judges
+            not really about AI. Headlines and daily aggregates &mdash;
             mean, counts, per-source breakdowns &mdash; are upserted into two
             Supabase tables, and the Next.js frontend re-renders on the same
             six-hour cadence via incremental static regeneration.
@@ -374,7 +381,8 @@ export default function MethodologyPage() {
 
           <p className="text-sm text-text-secondary leading-relaxed">
             Feeds are fetched in full on every run; a headline enters the index
-            only if it matches the AI keyword filter.
+            only if it matches the AI keyword filter and the scorer agrees AI
+            is what the story is about.
           </p>
         </section>
 

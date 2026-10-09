@@ -85,6 +85,7 @@ export async function fetchHeadlines(since: string): Promise<Headline[]> {
         .select(HEADLINE_COLUMNS)
         .gte("date", since)
         .in("source", SOURCES as string[])
+        .not("about_ai", "is", false)
         // id tiebreaker keeps offset pagination stable across requests —
         // timestamps tie within an ingest batch (see lib/clientData.ts).
         .order("timestamp", { ascending: false })

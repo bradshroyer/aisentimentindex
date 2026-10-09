@@ -26,7 +26,7 @@ export function MethodologyFooter({
 }: MethodologyFooterProps) {
   const spansYears = firstDate.slice(0, 4) !== lastDate.slice(0, 4);
   const META = [
-    { label: "Model", value: "claude-haiku-4-5" },
+    { label: "Model", value: "claude-haiku-5-5" },
     { label: "Scale", value: "−1.0 to +1.0" },
     { label: "Updates", value: "every 6h" },
     { label: "Fallback", value: "lexical scorer" },
