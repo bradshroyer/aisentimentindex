@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { fetchDailyScores } from "@/lib/data";
 import { LeaderboardView } from "@/components/LeaderboardView";
+import { computeLeaderboards } from "@/lib/leaderboard";
 import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MethodologyFooter } from "@/components/MethodologyFooter";
@@ -38,7 +39,7 @@ export default async function LeaderboardPage() {
         }
       />
 
-      <LeaderboardView dailyScores={dailyScores} />
+      <LeaderboardView leaderboards={computeLeaderboards(dailyScores)} />
 
       <MethodologyFooter
         totalHeadlines={totalHeadlines}

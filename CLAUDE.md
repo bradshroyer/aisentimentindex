@@ -21,6 +21,8 @@ GitHub Actions          → ingest every 6h + weekly dataset export to data/expo
 - `components/SentimentChart.tsx` — Chart.js mixed line+bar chart with click-to-filter + 7-day moving average
 - `components/HeadlinesTable.tsx` — Paginated headlines, filtered by day/source
 - `components/FilterBar.tsx` — Source dropdown + time range buttons
+- `components/LeaderboardView.tsx` — Outlet ranking; rows for every range are precomputed
+  server-side (`lib/leaderboard.ts`) so the page doesn't ship full per-source history
 - `components/DayDetail.tsx` — Click a day → score, source breakdown, top movers
 
 ### Data layer
@@ -50,6 +52,8 @@ Deep-link params are applied in a post-mount effect in `Dashboard` instead.
   `headlines` (RSS has no backfill) and the public dataset linked from /methodology.
 - `rescore.py` — re-run Claude over `scored_by='vader'` fallback rows and re-aggregate
   affected dates. Dry run by default; `--apply` to write.
+- `reaggregate.py` — rebuild `daily_scores` from `headlines` (e.g. after retiring a
+  source). Dry run by default; `--apply` to write, `--since` to limit.
 - `schema.sql` — Supabase table definitions + RLS policies
 - `migrations/` — incremental SQL migrations applied via Supabase SQL editor
 
@@ -81,7 +85,7 @@ Scores title + summary together (not just title) for better context.
 ### Data sources
 13 active RSS feeds — TechCrunch, NYT, The Verge, Ars Technica, Wired, BBC, Guardian, MIT Tech Review, Bloomberg, ZDNet AI, CNBC Tech, NPR Technology, Fox News Tech
 
-**Retired:** VentureBeat AI (last data 2026-09-03). Its Feedburner feed froze (HTTP 200, stale items) and the direct venturebeat.com feeds sit behind a Vercel bot challenge. Retired sources are marked `"active": false, "retired": "YYYY-MM-DD"` in `data/sources.json`: Python skips them, the UI derives all "N outlets" copy from the active count (`ACTIVE_SOURCE_COUNT` in `lib/types.ts`), and historical rows stay. To bring a source back, fix its `rss` and delete those two keys.
+**Retired:** VentureBeat AI (last data 2026-09-03). Its Feedburner feed froze (HTTP 200, stale items) and the direct venturebeat.com feeds sit behind a Vercel bot challenge. Retired sources are marked `"active": false, "retired": "YYYY-MM-DD"` in `data/sources.json` and are hidden from the site entirely: Python skips them at ingest *and* `aggregate_daily()` leaves them out of `daily_scores`; `lib/data.ts` / `lib/clientData.ts` filter their headlines out of every fetch; `SOURCES` in `lib/types.ts` is active-only. Raw rows stay in `headlines` and the public export. After retiring a source, run `python3 scripts/reaggregate.py` (dry run) then `--apply` to rebuild historical `daily_scores` without it (VentureBeat's removal shifted the index by −0.022 on average). To bring a source back, fix its `rss`, delete those two keys, and reaggregate.
 
 Ingestion is RSS-only. A NewsAPI.ai (Event Registry) backfill script existed earlier for historical gaps but was removed — over 14 days of routine operation it contributed zero headlines (RSS covers the 6h window fully), so it wasn't worth the paid quota.
 

@@ -34,7 +34,7 @@ import sourcesData from "@/data/sources.json";
 interface SourceEntry {
   name: string;
   rss: string;
-  /** false = retired: no longer ingested, historical rows kept. */
+  /** false = retired: no longer ingested or shown; raw rows kept in the DB. */
   active?: boolean;
   /** Last day the source produced data (YYYY-MM-DD), for retired sources. */
   retired?: string;
@@ -42,20 +42,17 @@ interface SourceEntry {
 
 const SOURCE_LIST = sourcesData as SourceEntry[];
 
-/** Every source that has ever contributed data (active + retired). */
-export const SOURCES: readonly string[] = SOURCE_LIST.map((s) => s.name).sort();
-
-/** Sources currently being ingested. User-facing "N outlets" copy uses this. */
-export const ACTIVE_SOURCES: readonly string[] = SOURCE_LIST
+/**
+ * Sources shown on the site: active ones only. Retired sources ("active":
+ * false) are hidden everywhere — the server and browser fetches filter their
+ * headlines out, and the Python aggregation leaves them out of daily_scores.
+ * Their raw rows stay in the database and the public export.
+ */
+export const SOURCES: readonly string[] = SOURCE_LIST
   .filter((s) => s.active !== false)
   .map((s) => s.name)
   .sort();
-export const ACTIVE_SOURCE_COUNT = ACTIVE_SOURCES.length;
-
-/** Retired source name → last day it had data. */
-export const RETIRED_SOURCES: Readonly<Record<string, string>> = Object.fromEntries(
-  SOURCE_LIST.filter((s) => s.active === false && s.retired).map((s) => [s.name, s.retired as string])
-);
+export const ACTIVE_SOURCE_COUNT = SOURCES.length;
 
 export type SourceName = string;
 

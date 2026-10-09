@@ -1,5 +1,7 @@
+import { ACTIVE_SOURCE_COUNT } from "@/lib/types";
+
 const GRID =
-  "grid-cols-[2ch_1fr_minmax(80px,1.5fr)_6ch] sm:grid-cols-[2ch_1fr_56px_minmax(160px,1.5fr)_6ch]";
+  "grid-cols-[2ch_1fr_minmax(80px,1.5fr)_6ch] sm:grid-cols-[2ch_1fr_96px_minmax(160px,1.5fr)_6ch]";
 
 export default function Loading() {
   return (
@@ -39,7 +41,7 @@ export default function Loading() {
           <div className="h-5 w-2/3 bg-surface-alt/60 rounded" />
         </div>
 
-        {/* Leaderboard card: header row + 14 outlet rows */}
+        {/* Leaderboard card: header row + 13 outlet rows */}
         <div className="rounded-xl border border-border bg-card overflow-hidden">
           <div
             className={`grid items-center gap-3 px-4 py-3 border-b border-border ${GRID}`}
@@ -50,14 +52,14 @@ export default function Loading() {
             <div className="h-2.5 w-full bg-surface-alt/60 rounded hidden sm:block" />
             <div className="h-2.5 w-12 bg-surface-alt rounded justify-self-end" />
           </div>
-          {Array.from({ length: 14 }).map((_, i) => (
+          {Array.from({ length: ACTIVE_SOURCE_COUNT }).map((_, i) => (
             <div
               key={i}
               className={`grid items-center gap-3 px-4 py-3 border-b border-border last:border-b-0 ${GRID}`}
             >
               <div className="h-3 w-3 bg-surface-alt/60 rounded" />
               <div className="h-3 w-32 bg-surface-alt rounded" />
-              <div className="h-4 w-14 bg-surface-alt/50 rounded hidden sm:block" />
+              <div className="h-5 w-24 bg-surface-alt/50 rounded hidden sm:block" />
               <div className="h-3 w-full bg-surface-alt/40 rounded" />
               <div className="h-3 w-10 bg-surface-alt rounded justify-self-end" />
             </div>
