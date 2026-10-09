@@ -17,6 +17,7 @@ Dry run by default (scores a small sample, writes nothing):
 """
 
 import argparse
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 from fetch_and_build import (
@@ -88,11 +89,18 @@ def main():
             return None
         score, about_ai = result
         if args.apply:
-            sb.table("headlines").update({
-                "score": round(score, 4),
-                "about_ai": about_ai,
-                "scored_by": CLAUDE_MODEL,
-            }).eq("id", row["id"]).execute()
+            update = {"score": round(score, 4), "about_ai": about_ai, "scored_by": CLAUDE_MODEL}
+            # Long concurrent runs occasionally see a dropped connection from
+            # Supabase; retry, then count the row as failed (a rerun picks it up).
+            for attempt in range(4):
+                try:
+                    sb.table("headlines").update(update).eq("id", row["id"]).execute()
+                    break
+                except Exception as e:
+                    if attempt == 3:
+                        print(f"  write failed for #{row['id']}: {e}")
+                        return None
+                    time.sleep(2 ** attempt)
         return score, about_ai
 
     dates_touched: set[str] = set()
