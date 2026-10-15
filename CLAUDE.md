@@ -65,7 +65,7 @@ Deep-link params are applied in a post-mount effect in `Dashboard` instead.
   `feed_health` table and exits nonzero once a feed is dark ~2 days
   (`FEED_DARK_THRESHOLD`), firing the workflow's ingestion-failure issue. It also
   fails the run when a feed still returns entries but its newest one is older than
-  `FEED_STALE_HOURS` (48) — a frozen mirror serving HTTP 200. Staleness works from
+  `FEED_STALE_HOURS` (96; 48 false-alarmed on quiet holiday weekends) — a frozen mirror serving HTTP 200. Staleness works from
   in-memory data; the table (migrations 005/006) only adds the run counter and
   `last_entry_at`. Degrades to a warning if the table is missing.
 - Claude scoring uses structured outputs (no prefill/temperature — Haiku 5.5 rejects both);
