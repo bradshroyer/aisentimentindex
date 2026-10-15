@@ -99,7 +99,9 @@ FEED_DARK_THRESHOLD = 8
 # A feed that still returns entries but whose newest one is older than this
 # is frozen (e.g. a stale Feedburner mirror serving HTTP 200 with old items)
 # and also fails the run. Zero-entry detection alone can't see this.
-FEED_STALE_HOURS = 48
+# 96h, not 48h: low-volume feeds (NPR, MIT Tech Review) routinely go quiet
+# over a holiday weekend, which tripped 8 false alarms in Oct 2026.
+FEED_STALE_HOURS = 96
 
 # Supabase connection
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
