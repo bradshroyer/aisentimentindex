@@ -7,7 +7,7 @@ Live: https://sentimentindex.ai (redirects from labs.bradshroyer.com)
 ## Architecture
 
 ```
-Next.js 15 (App Router) → Vercel
+Next.js 16 (App Router) → Vercel
 Supabase (Postgres)     → headlines + daily_scores + feed_health tables
 Python scripts          → fetch/score/export → write to Supabase
 GitHub Actions          → ingest every 6h + weekly dataset export to data/export/
@@ -24,6 +24,35 @@ GitHub Actions          → ingest every 6h + weekly dataset export to data/expo
 - `components/LeaderboardView.tsx` — Outlet ranking; rows for every range are precomputed
   server-side (`lib/leaderboard.ts`) so the page doesn't ship full per-source history
 - `components/DayDetail.tsx` — Click a day → score, source breakdown, top movers
+- `components/content.tsx` — Server-only presentational pieces (breadcrumbs, source
+  table, headline list, JSON-LD) shared by the content pages below
+
+### Content pages (crawlable, zero client JS of their own)
+- `app/day/[date]/page.tsx` — One page per day: reading, generated summary, outlet
+  table, every headline. The dashboard's day panel links here ("Full day page").
+- `app/monthly/page.tsx`, `app/monthly/[month]/page.tsx` — Monthly recaps: calendar
+  linking to each day, outlet table with change vs the prior month, keyword themes
+  (`lib/themes.ts`), the month's strongest headlines, curated events
+  (`data/spike_annotations.json`).
+- `app/data/page.tsx` — Data & API docs.
+- `lib/recaps.ts` — aggregation + the generated sentences (every clause restates a
+  number already on the page; thresholds stop it narrating noise). `lib/format.ts` —
+  shared formatters/validators.
+- Day and month pages use `generateStaticParams() → []` + `dynamicParams`: rendered on
+  first request, then ISR-cached. Nothing is prebuilt, so the build doesn't issue a
+  Supabase query per day. Links into them set `prefetch={false}` for the same reason
+  (a month calendar would otherwise trigger ~30 renders on view).
+- Days with fewer than 5 headlines are `noindex` and left out of the sitemap.
+- `lib/og.tsx` — share cards for day/month pages (edge, plain REST fetch).
+
+### Public API (`app/api/v1/*`, `app/feed.xml`)
+`latest`, `daily`, `daily.csv`, `outlets`, plus an RSS feed. Every route is a **static
+route handler** with `revalidate = 21600`: the CDN serves it, and Supabase sees at
+most one query per route per 6h no matter how many clients call. That is the whole
+cost model — **handlers must not read the request** (query params, headers), which
+would make the route dynamic and put the database behind an open endpoint. Add a new
+static route rather than a parameter. Shared envelope/headers in `lib/api.ts`; CORS is
+also set in `next.config.ts` so cached responses carry it.
 
 ### Data layer
 - `lib/supabase.ts` — Supabase client (isomorphic; NEXT_PUBLIC vars work in the browser)
@@ -39,6 +68,14 @@ When the user widens the range or selects an older day, `Dashboard` fetches the
 missing `[neededSince, loadedSince)` slice from the browser via `fetchHeadlinesRange`
 and merges it (dedupe by id). `daily_scores` stays all-time (it's one small row/day),
 so the chart renders every range instantly.
+
+Do NOT add `loading.tsx` to any prerendered route. A loading boundary makes Next ship
+the skeleton as the visible HTML with the real content in a `<div hidden>` that an
+inline script swaps in — crawlers that don't run JS (most AI crawlers, link
+previewers) see only the skeleton, every page gets two `<h1>`s, first paint waits for
+the whole document, and `notFound()` returns HTTP 200. The site had this until
+2026-11; check with `curl -s <url> | grep -c 'hidden id="S:'` (must be 0). Static/ISR
+pages gain nothing from a skeleton anyway.
 
 Do NOT reintroduce `useSearchParams()` into the initial render path of any component
 under `app/page.tsx` — combined with the implicit Suspense from `loading.tsx`, it
@@ -145,5 +182,10 @@ python scripts/fetch_and_build.py
 - Per-source pos/neg/neu in `daily_scores.by_source` (would remove the dashboard's
   need for raw headlines when computing source-filtered stacked bars)
 
-Shipped from earlier versions of this list: trend insights line, DayDetail
+- Model-tagged topics at ingest, replacing the keyword themes in `lib/themes.ts`
+  (needs a migration + a one-off backfill, roughly the cost of a full rescore)
+- Per-topic pages once topics are model-tagged
+
+Shipped from earlier versions of this list: per-day pages, monthly recaps, public
+JSON/CSV API, RSS feed of the index, trend insights line, DayDetail
 explainability panel, 7-day moving average, custom domain (sentimentindex.ai).
