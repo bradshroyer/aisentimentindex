@@ -15,10 +15,83 @@ import {
   Legend,
   type ChartOptions,
   type ChartData,
+  type ChartType,
+  type Plugin,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
 import type { BucketPoint, Granularity } from "@/lib/bucketing";
 import { bucketLongLabel } from "@/lib/bucketing";
+import { annotationsByBucket, type SpikeAnnotation } from "@/lib/annotations";
+import { shortDate } from "@/lib/format";
+
+// ── Event markers ──
+// Notable days (data/spike_annotations.json) get a small triangle on a rail
+// above the plot. Deliberately quiet: an earlier version drew labels, dots on
+// the line and blurbs in the tooltip, and it fought the data. Here nothing is
+// drawn inside the plot area and no text sits on the chart — the label
+// appears in the tooltip on hover, the full blurb in the day panel on click.
+
+type MarkerDirection = "up" | "down" | "mixed";
+
+interface EventMarkersOptions {
+  markers: { index: number; direction: MarkerDirection }[];
+  upColor: string;
+  downColor: string;
+  mixedColor: string;
+}
+
+declare module "chart.js" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface PluginOptionsByType<TType extends ChartType> {
+    eventMarkers?: EventMarkersOptions;
+  }
+}
+
+/** Height of the strip reserved above the plot for the marker rail. */
+const MARKER_RAIL = 12;
+
+const eventMarkersPlugin: Plugin<"bar" | "line"> = {
+  id: "eventMarkers",
+  afterDatasetsDraw(chart, _args, opts) {
+    const options = opts as unknown as EventMarkersOptions | undefined;
+    if (!options?.markers?.length) return;
+    const { ctx, chartArea, scales } = chart;
+    const xScale = scales.x;
+    if (!xScale) return;
+
+    const w = 3.5; // half-width
+    const h = 5.5;
+    const cy = chartArea.top - MARKER_RAIL / 2;
+
+    ctx.save();
+    for (const { index, direction } of options.markers) {
+      const x = xScale.getPixelForValue(index);
+      if (!Number.isFinite(x) || x < chartArea.left - 1 || x > chartArea.right + 1) continue;
+      ctx.beginPath();
+      if (direction === "up") {
+        ctx.fillStyle = options.upColor;
+        ctx.moveTo(x, cy - h / 2);
+        ctx.lineTo(x + w, cy + h / 2);
+        ctx.lineTo(x - w, cy + h / 2);
+      } else if (direction === "down") {
+        ctx.fillStyle = options.downColor;
+        ctx.moveTo(x, cy + h / 2);
+        ctx.lineTo(x + w, cy - h / 2);
+        ctx.lineTo(x - w, cy - h / 2);
+      } else {
+        // A week or month holding both an up and a down day: a diamond.
+        ctx.fillStyle = options.mixedColor;
+        ctx.moveTo(x, cy - h / 2);
+        ctx.lineTo(x + w, cy);
+        ctx.lineTo(x, cy + h / 2);
+        ctx.lineTo(x - w, cy);
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.restore();
+  },
+};
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +103,8 @@ ChartJS.register(
   BarController,
   Filler,
   Tooltip,
-  Legend
+  Legend,
+  eventMarkersPlugin
 );
 
 interface SentimentChartProps {
@@ -235,10 +309,33 @@ export function SentimentChart({
 
   const nouns = BUCKET_NOUN[granularity];
 
+  // Notable days that fall in each visible bucket. Weeks and months can hold
+  // several, so each bucket keeps its own list for the tooltip.
+  const events = useMemo(() => {
+    const byBucket = annotationsByBucket(granularity);
+    const markers: { index: number; direction: MarkerDirection }[] = [];
+    const perBucket: Record<string, SpikeAnnotation[]> = {};
+    data.forEach((d, i) => {
+      const anns = byBucket.get(d.date);
+      if (!anns || anns.length === 0) return;
+      perBucket[d.date] = [...anns].sort((a, b) => a.date.localeCompare(b.date));
+      const up = anns.some((a) => a.direction === "up");
+      const down = anns.some((a) => a.direction === "down");
+      markers.push({ index: i, direction: up && down ? "mixed" : up ? "up" : "down" });
+    });
+    return { markers, perBucket };
+  }, [data, granularity]);
+
+  const markerUp = getCSSVar("--color-positive");
+  const markerDown = getCSSVar("--color-negative");
+  const markerMixed = getCSSVar("--color-text-secondary");
+
   const options: ChartOptions<"bar" | "line"> = useMemo(
     () => ({
       responsive: true,
       maintainAspectRatio: false,
+      // Constant, so the plot doesn't jump when a range has no events.
+      layout: { padding: { top: MARKER_RAIL } },
       interaction: {
         mode: "index" as const,
         intersect: false,
@@ -255,6 +352,12 @@ export function SentimentChart({
         }
       },
       plugins: {
+        eventMarkers: {
+          markers: events.markers,
+          upColor: markerUp,
+          downColor: markerDown,
+          mixedColor: markerMixed,
+        },
         legend: {
           display: true,
           position: "top" as const,
@@ -303,6 +406,19 @@ export function SentimentChart({
               const key = data[idx]?.date ?? "";
               if (!key) return "";
               return bucketLongLabel(key, granularity);
+            },
+            // Name the event(s) behind a marker — label only; the blurb
+            // lives in the day panel.
+            beforeBody: (items) => {
+              if (items.length === 0) return [];
+              const anns = events.perBucket[data[items[0].dataIndex]?.date ?? ""];
+              if (!anns) return [];
+              return anns.map((a) => {
+                const arrow = a.direction === "up" ? "▲" : "▼";
+                return isDay
+                  ? `${arrow} ${a.label}`
+                  : `${arrow} ${shortDate(a.date)} · ${a.label}`;
+              });
             },
             label: (item) => {
               if (item.dataset.label === "Positive")
@@ -374,7 +490,7 @@ export function SentimentChart({
         },
       },
     }),
-    [data, granularity, isDark, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
+    [data, granularity, isDark, isDay, nouns.prev, nouns.volume, selectedDate, onDateSelect, events, markerUp, markerDown, markerMixed, gridColor, zeroLineColor, tickColor, legendColor, tooltipBg, tooltipTitle, tooltipBody, tooltipBorder, monoFont, sansFont]
   );
 
   const selectedLabel = selectedDate
@@ -420,6 +536,14 @@ export function SentimentChart({
         <div className="mt-3 text-center">
           <span className="text-xs text-text-tertiary">
             Click any {nouns.singular} for headlines
+            {events.markers.length > 0 && (
+              <>
+                {" "}&middot;{" "}
+                <span className="text-positive" aria-hidden="true">▲</span>
+                <span className="text-negative" aria-hidden="true">▼</span>{" "}
+                mark notable days
+              </>
+            )}
           </span>
         </div>
       )}

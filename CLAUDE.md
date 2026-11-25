@@ -156,6 +156,11 @@ IMPORTANT: Don't `json.dumps()` JSONB fields before upserting — supabase-py ha
 ### Chart interaction
 Click a data point → filters headlines to that day, highlights the point red. Click again or click empty area to deselect. Source filter + time range interact with the selection.
 
+Notable days from `data/spike_annotations.json` are marked with small ▲/▼ triangles on a
+rail **above** the plot (diamond when a week/month holds both directions); the label shows
+in the tooltip, the blurb in the day panel. Keep it that quiet — an earlier version with
+on-chart labels, dots on the line and tooltip blurbs was removed for fighting the data.
+
 ## How to Run
 
 ```bash
