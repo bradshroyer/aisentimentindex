@@ -3,6 +3,7 @@ import type { Headline, DailyScore, SourceStats } from "./types";
 import { SOURCES } from "./types";
 import { decodeEntities } from "./text";
 import { HEADLINE_COLUMNS, normalizeHeadline } from "./clientData";
+import { cache } from "react";
 import fs from "fs";
 import path from "path";
 
@@ -38,6 +39,12 @@ export async function fetchDailyScores(): Promise<DailyScore[]> {
   return loadDailyScoresFromFile();
 }
 
+/**
+ * `fetchDailyScores` deduped per request: pages that need the series in both
+ * `generateMetadata` and the page body share one query.
+ */
+export const getDailyScores = cache(fetchDailyScores);
+
 // Belt and braces for retired sources: the Python aggregation already leaves
 // them out of daily_scores, but a row written before a source was retired
 // would otherwise still list it per-source (leaderboard, day detail).
@@ -72,6 +79,18 @@ export function headlinesSince(): string {
  * otherwise from local data.json.
  */
 export async function fetchHeadlines(since: string): Promise<Headline[]> {
+  return fetchHeadlinesBetween(since, null);
+}
+
+/**
+ * Fetch headlines with date in [since, until] (inclusive; `until = null`
+ * means open-ended), newest first. Backs the per-day and per-month pages,
+ * which need one bounded slice rather than everything since a cutoff.
+ */
+export async function fetchHeadlinesBetween(
+  since: string,
+  until: string | null
+): Promise<Headline[]> {
   const supabase = getSupabase();
 
   if (supabase) {
@@ -80,10 +99,13 @@ export async function fetchHeadlines(since: string): Promise<Headline[]> {
     const pageSize = 1000;
 
     while (true) {
-      const { data, error } = await supabase
+      let query = supabase
         .from("headlines")
         .select(HEADLINE_COLUMNS)
-        .gte("date", since)
+        .gte("date", since);
+      if (until) query = query.lte("date", until);
+
+      const { data, error } = await query
         .in("source", SOURCES as string[])
         .not("about_ai", "is", false)
         // id tiebreaker keeps offset pagination stable across requests —
@@ -103,9 +125,11 @@ export async function fetchHeadlines(since: string): Promise<Headline[]> {
     return allData;
   }
 
-  // Fallback: read everything from local data.json. Dev without Supabase has
-  // no on-demand source for older slices, so ship the whole file instead.
-  return loadHeadlinesFromFile();
+  // Fallback: read from local data.json. An open-ended fetch ships the whole
+  // file — dev without Supabase has no on-demand source for older slices.
+  const all = loadHeadlinesFromFile();
+  if (!until) return all;
+  return all.filter((h) => h.date >= since && h.date <= until);
 }
 
 // --- Local file fallback for dev without Supabase ---

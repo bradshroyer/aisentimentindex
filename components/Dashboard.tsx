@@ -272,12 +272,12 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
   // selected source, from all-time scores (not the visible window).
   // Plain computation — the React Compiler memoizes it, and wrapping the
   // early-return loop in useMemo defeats its analysis.
-  let latestStat: { date: string; mean: number } | null = null;
+  let latestStat: { date: string; mean: number; count: number } | null = null;
   for (let i = dailyScores.length - 1; i >= 0; i--) {
     const d = dailyScores[i];
-    const mean = selectedSource === "All" ? d.mean : d.by_source[selectedSource]?.mean;
-    if (mean !== undefined) {
-      latestStat = { date: d.date, mean };
+    const stats = selectedSource === "All" ? d : d.by_source[selectedSource];
+    if (stats) {
+      latestStat = { date: d.date, mean: stats.mean, count: stats.count };
       break;
     }
   }
@@ -421,6 +421,10 @@ export function Dashboard({ dailyScores, initialHeadlines, initialSince }: Dashb
               {new Date(latestStat.date + "T12:00:00Z").toLocaleDateString("en-US", {
                 month: "short", day: "numeric", timeZone: "UTC",
               })}
+              {/* The newest day starts each UTC morning with a handful of
+                  headlines; the count keeps an early reading in proportion. */}
+              {" "}&middot;{" "}
+              {latestStat.count.toLocaleString("en-US")} headline{latestStat.count === 1 ? "" : "s"}
             </span>
           </p>
           {trendData && (

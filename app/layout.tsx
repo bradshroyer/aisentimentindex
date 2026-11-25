@@ -62,6 +62,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${instrumentSerif.variable} ${jetbrainsMono.variable} ${dmSans.variable} antialiased`} suppressHydrationWarning>
       <head>
+        {/* In the head directly rather than metadata.alternates: each page
+            sets its own alternates (canonical), which would drop this. */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="AI Sentiment Index — daily readings"
+          href="/feed.xml"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='light'?false:t==='dark'||true;if(d)document.documentElement.classList.add('dark')}catch(e){}})()`,

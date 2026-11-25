@@ -32,6 +32,24 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/fetch_and_build.py
 
+      # Tell the site new data has landed so pages refresh now instead of
+      # waiting out the 6h ISR window. Optional: skipped until the
+      # REVALIDATE_SECRET repo secret exists (same value as the Vercel env
+      # var), and never fails the run — a missed ping only means the usual
+      # cache delay.
+      - name: Refresh the site
+        continue-on-error: true
+        env:
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+        run: |
+          if [ -z "$REVALIDATE_SECRET" ]; then
+            echo "REVALIDATE_SECRET not set; skipping (site refreshes on its 6h cache)."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 30 \
+            -X POST https://sentimentindex.ai/api/revalidate \
+            -H "Authorization: Bearer $REVALIDATE_SECRET"
+
       # Open a GitHub issue on failure so the dashboard doesn't silently go
       # stale. Deduplicates by label so repeated failures append a comment
       # instead of spawning a new issue each run.

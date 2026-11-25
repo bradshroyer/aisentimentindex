@@ -1,0 +1,26 @@
+# AI Sentiment Index
+
+> A daily index of media sentiment toward AI. Every 6 hours, AI-related headlines from 13 major news outlets (NYT, The Guardian, BBC, Bloomberg, TechCrunch, Wired, The Verge, Ars Technica, MIT Tech Review, CNBC, NPR, ZDNet, Fox News) are scored by Claude Haiku for their stance toward AI on a scale from -1.0 (anti-AI) to +1.0 (pro-AI). A day's index value is the mean across that day's headlines. Data starts January 2025.
+
+The score measures stance toward AI, not the tone of the words: "Anthropic Wins Court Order Pausing Ban" scores positive. Scores within ±0.05 count as neutral. The daily mean is headline-weighted, so outlets that publish more move the index more.
+
+## Pages
+
+- [Dashboard](https://sentimentindex.ai/): the live index, chart and recent headlines
+- [Leaderboard](https://sentimentindex.ai/leaderboard): outlets ranked from most positive to most critical toward AI
+- [Monthly recaps](https://sentimentindex.ai/monthly): one page per month, each linking to a page per day at /day/YYYY-MM-DD
+- [Methodology](https://sentimentindex.ai/methodology): scoring approach, model choice, pipeline, limitations
+- [Data & API](https://sentimentindex.ai/data): endpoint documentation, fields, license
+
+## Data (free, no key, MIT license)
+
+- [Latest reading (JSON)](https://sentimentindex.ai/api/v1/latest)
+- [Full daily series (JSON)](https://sentimentindex.ai/api/v1/daily)
+- [Full daily series (CSV)](https://sentimentindex.ai/api/v1/daily.csv)
+- [Outlet rankings (JSON)](https://sentimentindex.ai/api/v1/outlets)
+- [RSS feed of daily readings](https://sentimentindex.ai/feed.xml)
+- [Every scored headline (CSV/JSON, weekly export)](https://github.com/bradshroyer/aisentimentindex/tree/main/data/export)
+
+## Citing
+
+AI Sentiment Index (sentimentindex.ai), by Brad Shroyer. When quoting a value, include the date it refers to.

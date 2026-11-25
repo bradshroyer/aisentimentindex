@@ -46,6 +46,19 @@ function buildJsonLd(firstDate: string | null, lastDate: string | null) {
         license: "https://spdx.org/licenses/MIT.html",
         // Weekly export committed by .github/workflows/export.yml
         distribution: [
+          // Live, CDN-cached endpoints (documented at /data)
+          {
+            "@type": "DataDownload",
+            name: "Daily index (JSON API)",
+            encodingFormat: "application/json",
+            contentUrl: `${SITE_URL}/api/v1/daily`,
+          },
+          {
+            "@type": "DataDownload",
+            name: "Daily index (CSV)",
+            encodingFormat: "text/csv",
+            contentUrl: `${SITE_URL}/api/v1/daily.csv`,
+          },
           {
             "@type": "DataDownload",
             encodingFormat: "application/json",

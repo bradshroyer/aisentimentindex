@@ -7,7 +7,7 @@ Live: https://sentimentindex.ai (redirects from labs.bradshroyer.com)
 ## Architecture
 
 ```
-Next.js 15 (App Router) → Vercel
+Next.js 16 (App Router) → Vercel
 Supabase (Postgres)     → headlines + daily_scores + feed_health tables
 Python scripts          → fetch/score/export → write to Supabase
 GitHub Actions          → ingest every 6h + weekly dataset export to data/export/
@@ -24,6 +24,35 @@ GitHub Actions          → ingest every 6h + weekly dataset export to data/expo
 - `components/LeaderboardView.tsx` — Outlet ranking; rows for every range are precomputed
   server-side (`lib/leaderboard.ts`) so the page doesn't ship full per-source history
 - `components/DayDetail.tsx` — Click a day → score, source breakdown, top movers
+- `components/content.tsx` — Server-only presentational pieces (breadcrumbs, source
+  table, headline list, JSON-LD) shared by the content pages below
+
+### Content pages (crawlable, zero client JS of their own)
+- `app/day/[date]/page.tsx` — One page per day: reading, generated summary, outlet
+  table, every headline. The dashboard's day panel links here ("Full day page").
+- `app/monthly/page.tsx`, `app/monthly/[month]/page.tsx` — Monthly recaps: calendar
+  linking to each day, outlet table with change vs the prior month, keyword themes
+  (`lib/themes.ts`), the month's strongest headlines, curated events
+  (`data/spike_annotations.json`).
+- `app/data/page.tsx` — Data & API docs.
+- `lib/recaps.ts` — aggregation + the generated sentences (every clause restates a
+  number already on the page; thresholds stop it narrating noise). `lib/format.ts` —
+  shared formatters/validators.
+- Day and month pages use `generateStaticParams() → []` + `dynamicParams`: rendered on
+  first request, then ISR-cached. Nothing is prebuilt, so the build doesn't issue a
+  Supabase query per day. Links into them set `prefetch={false}` for the same reason
+  (a month calendar would otherwise trigger ~30 renders on view).
+- Days with fewer than 5 headlines are `noindex` and left out of the sitemap.
+- `lib/og.tsx` — share cards for day/month pages (edge, plain REST fetch).
+
+### Public API (`app/api/v1/*`, `app/feed.xml`)
+`latest`, `daily`, `daily.csv`, `outlets`, plus an RSS feed. Every route is a **static
+route handler** with `revalidate = 21600`: the CDN serves it, and Supabase sees at
+most one query per route per 6h no matter how many clients call. That is the whole
+cost model — **handlers must not read the request** (query params, headers), which
+would make the route dynamic and put the database behind an open endpoint. Add a new
+static route rather than a parameter. Shared envelope/headers in `lib/api.ts`; CORS is
+also set in `next.config.ts` so cached responses carry it.
 
 ### Data layer
 - `lib/supabase.ts` — Supabase client (isomorphic; NEXT_PUBLIC vars work in the browser)
@@ -40,10 +69,25 @@ missing `[neededSince, loadedSince)` slice from the browser via `fetchHeadlinesR
 and merges it (dedupe by id). `daily_scores` stays all-time (it's one small row/day),
 so the chart renders every range instantly.
 
+Do NOT add `loading.tsx` to any prerendered route. A loading boundary makes Next ship
+the skeleton as the visible HTML with the real content in a `<div hidden>` that an
+inline script swaps in — crawlers that don't run JS (most AI crawlers, link
+previewers) see only the skeleton, every page gets two `<h1>`s, first paint waits for
+the whole document, and `notFound()` returns HTTP 200. The site had this until
+2026-11; check with `curl -s <url> | grep -c 'hidden id="S:'` (must be 0). Static/ISR
+pages gain nothing from a skeleton anyway.
+
 Do NOT reintroduce `useSearchParams()` into the initial render path of any component
 under `app/page.tsx` — combined with the implicit Suspense from `loading.tsx`, it
 silently turns the prerendered HTML into the loading skeleton (no indexable content).
 Deep-link params are applied in a post-mount effect in `Dashboard` instead.
+
+### Refresh after ingest (optional)
+`app/api/revalidate/route.ts` — `POST` with `Authorization: Bearer $REVALIDATE_SECRET`
+marks every page and API route stale; the ingest workflow calls it after writing.
+Inert until the secret exists in **both** Vercel (env var) and GitHub (repo secret);
+without it pages simply wait out the 6h ISR window. The workflow step never fails
+the run.
 
 ### Python scripts (in `scripts/`)
 - `fetch_and_build.py` — RSS fetch + Claude/VADER scoring → upsert to Supabase
@@ -112,6 +156,11 @@ IMPORTANT: Don't `json.dumps()` JSONB fields before upserting — supabase-py ha
 ### Chart interaction
 Click a data point → filters headlines to that day, highlights the point red. Click again or click empty area to deselect. Source filter + time range interact with the selection.
 
+Notable days from `data/spike_annotations.json` are marked with small ▲/▼ triangles on a
+rail **above** the plot (diamond when a week/month holds both directions); the label shows
+in the tooltip, the blurb in the day panel. Keep it that quiet — an earlier version with
+on-chart labels, dots on the line and tooltip blurbs was removed for fighting the data.
+
 ## How to Run
 
 ```bash
@@ -131,6 +180,7 @@ python scripts/fetch_and_build.py
 - `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase publishable key (safe for browser)
 - `SUPABASE_SERVICE_ROLE_KEY` — Supabase secret key (Python writes only)
+- `REVALIDATE_SECRET` — optional; shared secret for `/api/revalidate` (Vercel env + GitHub secret)
 - `ANTHROPIC_API_KEY` — Anthropic API key for Claude Haiku scoring (falls back to VADER if not set)
 
 ## Known Limitations
@@ -145,5 +195,10 @@ python scripts/fetch_and_build.py
 - Per-source pos/neg/neu in `daily_scores.by_source` (would remove the dashboard's
   need for raw headlines when computing source-filtered stacked bars)
 
-Shipped from earlier versions of this list: trend insights line, DayDetail
+- Model-tagged topics at ingest, replacing the keyword themes in `lib/themes.ts`
+  (needs a migration + a one-off backfill, roughly the cost of a full rescore)
+- Per-topic pages once topics are model-tagged
+
+Shipped from earlier versions of this list: per-day pages, monthly recaps, public
+JSON/CSV API, RSS feed of the index, trend insights line, DayDetail
 explainability panel, 7-day moving average, custom domain (sentimentindex.ai).

@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this dataset or the index, please cite it as below."
+title: "AI Sentiment Index: daily media sentiment toward AI"
+type: dataset
+authors:
+  - family-names: Shroyer
+    given-names: Brad
+url: "https://sentimentindex.ai"
+repository-code: "https://github.com/bradshroyer/aisentimentindex"
+license: MIT
+abstract: >-
+  A daily index of how positively or negatively major news outlets cover AI.
+  Headlines about AI from 13 outlets are scored by an LLM (Claude Haiku) for
+  their stance toward AI on a scale from -1.0 to +1.0; the index is the daily
+  mean. Includes every scored headline since January 2025.
+keywords:
+  - AI sentiment
+  - media sentiment analysis
+  - news headlines
+  - artificial intelligence
+  - LLM classification

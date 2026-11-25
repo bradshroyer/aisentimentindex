@@ -18,7 +18,7 @@ Full details on the scoring approach — including how Claude compares to VADER 
 
 ## Stack
 
-- **Frontend:** Next.js 15, Tailwind CSS, Chart.js (react-chartjs-2)
+- **Frontend:** Next.js 16, Tailwind CSS, Chart.js (react-chartjs-2)
 - **Database:** Supabase (Postgres)
 - **Data pipeline:** Python (Claude Haiku scoring, VADER fallback), GitHub Actions (6h cron)
 - **Hosting:** Vercel
@@ -30,6 +30,29 @@ Full details on the scoring approach — including how Claude compares to VADER 
 - Filter by source to compare how individual outlets differ
 - Filter by time range (1W, 1M, 3M, 6M, 1Y, All)
 - Browse the actual headlines with sentiment scores
+- A page for every day ([example](https://sentimentindex.ai/day/2026-11-19)) and a recap for every month ([all months](https://sentimentindex.ai/monthly))
+- An outlet [leaderboard](https://sentimentindex.ai/leaderboard), most positive to most critical
+
+## API
+
+Free, no key, CORS open to any origin. Responses are CDN-cached and refresh every 6 hours with ingestion. Full docs: [sentimentindex.ai/data](https://sentimentindex.ai/data).
+
+| Endpoint | Returns |
+|---|---|
+| [`/api/v1/latest`](https://sentimentindex.ai/api/v1/latest) | Latest reading, 1-day change, 7- and 30-day averages, per-outlet breakdown |
+| [`/api/v1/daily`](https://sentimentindex.ai/api/v1/daily) | Full daily series (JSON) with per-outlet means |
+| [`/api/v1/daily.csv`](https://sentimentindex.ai/api/v1/daily.csv) | Daily series as CSV |
+| [`/api/v1/outlets`](https://sentimentindex.ai/api/v1/outlets) | Outlet rankings for 30 days, 365 days, all time |
+| [`/feed.xml`](https://sentimentindex.ai/feed.xml) | RSS: one item per completed day |
+
+```bash
+curl https://sentimentindex.ai/api/v1/latest
+```
+
+```python
+import pandas as pd
+df = pd.read_csv("https://sentimentindex.ai/api/v1/daily.csv", parse_dates=["date"])
+```
 
 ## Dataset
 
@@ -38,12 +61,15 @@ The full dataset — every scored headline and daily aggregate since January 202
 - `daily_scores.json` — the index: one row per day with mean, counts, and per-source breakdowns
 - `headlines.json` / `headlines.csv` — every scored headline (title, summary, source, date, score, which scorer produced it)
 
-Free to use with attribution (MIT). The export doubles as the project's backup: RSS feeds have no backfill, so the database is otherwise the only copy.
+Field-by-field documentation is in [`data/export/README.md`](data/export/README.md). Free to use with attribution (MIT); see [`CITATION.cff`](CITATION.cff). The export doubles as the project's backup: RSS feeds have no backfill, so the database is otherwise the only copy.
 
 ## Project Structure
 
 ```
 app/                     → Next.js app (App Router)
+  api/v1/                → public JSON/CSV API (static, ISR-cached)
+  day/[date]/            → one page per day
+  monthly/               → monthly recaps
 components/              → React components (chart, table, filters, stats)
 lib/                     → Supabase client, data fetching, types
 data/export/             → weekly dataset export (JSON + CSV)
