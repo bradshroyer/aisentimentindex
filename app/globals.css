@@ -17,8 +17,11 @@
   --color-bg: #FAF9F7;
   --color-card: #FFFFFF;
   --color-text-primary: #1C1917;
-  --color-text-secondary: #78716C;
-  --color-text-tertiary: #A8A29E;
+  /* Secondary and tertiary both clear WCAG AA (4.5:1) on the page
+     background. Tertiary carries real content — nav links, table headers,
+     dates, footnotes — and used to sit at 2.4:1. */
+  --color-text-secondary: #5F5853;
+  --color-text-tertiary: #78716C;
 
   /* Chart tokens (consumed by JS via getComputedStyle) */
   --color-chart-grid: rgba(120, 100, 80, 0.06);
@@ -62,7 +65,7 @@
   --color-card: rgba(255, 245, 235, 0.03);
   --color-text-primary: #F5F0EB;
   --color-text-secondary: #A8A29E;
-  --color-text-tertiary: #57534E;
+  --color-text-tertiary: #8A837C; /* 5.3:1 on the dark background (was 2.6:1) */
   --color-chart-grid: rgba(255, 245, 235, 0.04);
   --color-chart-zero: rgba(255, 245, 235, 0.12);
   --color-chart-line: #F59E0B;
