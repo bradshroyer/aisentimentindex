@@ -381,10 +381,26 @@ export function SentimentChart({
     ? bucketLongLabel(selectedDate, granularity)
     : null;
 
+  // The canvas is opaque to screen readers; give it a one-line summary.
+  // The same numbers are in the headline stat above and the table below.
+  const first = data[0];
+  const last = data[data.length - 1];
+  const chartSummary =
+    first && last
+      ? `Sentiment toward AI by ${granularity}, ${bucketLongLabel(first.date, granularity)} to ${bucketLongLabel(last.date, granularity)}. Latest value ${last.mean >= 0 ? "+" : "−"}${Math.abs(last.mean).toFixed(2)} across ${last.count} headlines. Select a point to list that ${granularity}'s headlines.`
+      : "Sentiment toward AI over time. No data in the selected range.";
+
   return (
     <div className="bg-card border border-border rounded-lg p-3 sm:p-5 min-h-[340px] sm:min-h-[540px] cursor-pointer chart-glow card-glow">
       <div className="h-[280px] sm:h-[500px] relative z-10">
-        <Chart key={isDark ? "dark" : "light"} type="bar" data={chartData} options={options} />
+        <Chart
+          key={isDark ? "dark" : "light"}
+          type="bar"
+          data={chartData}
+          options={options}
+          role="img"
+          aria-label={chartSummary}
+        />
       </div>
       {selectedLabel ? (
         <div className="mt-3 text-center">

@@ -82,6 +82,13 @@ under `app/page.tsx` — combined with the implicit Suspense from `loading.tsx`,
 silently turns the prerendered HTML into the loading skeleton (no indexable content).
 Deep-link params are applied in a post-mount effect in `Dashboard` instead.
 
+### Refresh after ingest (optional)
+`app/api/revalidate/route.ts` — `POST` with `Authorization: Bearer $REVALIDATE_SECRET`
+marks every page and API route stale; the ingest workflow calls it after writing.
+Inert until the secret exists in **both** Vercel (env var) and GitHub (repo secret);
+without it pages simply wait out the 6h ISR window. The workflow step never fails
+the run.
+
 ### Python scripts (in `scripts/`)
 - `fetch_and_build.py` — RSS fetch + Claude/VADER scoring → upsert to Supabase
 - `export_data.py` — dump both tables to `data/export/` (JSON + CSV); run weekly by
@@ -168,6 +175,7 @@ python scripts/fetch_and_build.py
 - `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase publishable key (safe for browser)
 - `SUPABASE_SERVICE_ROLE_KEY` — Supabase secret key (Python writes only)
+- `REVALIDATE_SECRET` — optional; shared secret for `/api/revalidate` (Vercel env + GitHub secret)
 - `ANTHROPIC_API_KEY` — Anthropic API key for Claude Haiku scoring (falls back to VADER if not set)
 
 ## Known Limitations

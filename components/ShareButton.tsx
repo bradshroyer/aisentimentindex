@@ -5,10 +5,19 @@ import { useState } from "react";
 export function ShareButton() {
   const [copied, setCopied] = useState(false);
 
+  const [failed, setFailed] = useState(false);
+
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard access can be denied (permissions policy, insecure
+      // context, unfocused document). Say so instead of failing silently.
+      setFailed(true);
+      setTimeout(() => setFailed(false), 2500);
+    }
   };
 
   return (
@@ -27,9 +36,12 @@ export function ShareButton() {
           <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
         </svg>
       )}
-      {copied && (
-        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-text-primary text-bg px-2 py-1 rounded whitespace-nowrap">
-          Link copied!
+      {(copied || failed) && (
+        <span
+          role="status"
+          className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-text-primary text-bg px-2 py-1 rounded whitespace-nowrap z-30"
+        >
+          {copied ? "Link copied!" : "Copy the URL from the address bar"}
         </span>
       )}
     </button>
