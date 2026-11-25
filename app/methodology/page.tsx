@@ -407,6 +407,15 @@ export default function MethodologyPage() {
             . <Mono>daily_scores.json</Mono> is the index itself;{" "}
             <Mono>headlines.csv</Mono> has every row behind it.
           </p>
+          <p className="text-sm text-text-secondary leading-relaxed mt-4">
+            For the live series there is a free JSON API, a CSV endpoint and
+            an RSS feed &mdash; no key required. Endpoints, fields and
+            citation details are on the{" "}
+            <Link href="/data" className="text-text-primary hover:text-accent transition-colors underline decoration-border underline-offset-2">
+              Data &amp; API page
+            </Link>
+            .
+          </p>
         </section>
 
         {/* 06 — Limitations */}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-04-22",
+  "updated": "2026-11-25",
   "note": "Manually curated labels for the biggest day-over-day sentiment swings. Regenerate by inspecting top day-deltas in daily_scores and reading the top ~3 scored headlines on each day.",
   "events": [
     {
@@ -98,6 +98,66 @@
       "label": "Robots & Nvidia orbit",
       "direction": "up",
       "blurb": "Upbeat coverage of humanoid robots, Japan's labor-filling automation, Nvidia supplier earnings, and Gemini rolling into Google Maps."
+    },
+    {
+      "date": "2026-05-28",
+      "label": "Anthropic round + Dell surge",
+      "direction": "up",
+      "blurb": "Anthropic raised $65B at a $965B valuation, passing OpenAI as the most valuable AI firm; Dell shares soared on its AI-server outlook."
+    },
+    {
+      "date": "2026-06-24",
+      "label": "Micron chip rally",
+      "direction": "up",
+      "blurb": "Micron's forecast beat estimates on AI demand and Qualcomm projected $15B in data-center sales, lifting chipmakers."
+    },
+    {
+      "date": "2026-06-26",
+      "label": "AI stock rout",
+      "direction": "down",
+      "blurb": "AI stocks tumbled: Oracle had its worst week since 2001 on AI-financing worries and SoftBank fell on a reported OpenAI IPO delay."
+    },
+    {
+      "date": "2026-07-21",
+      "label": "Hugging Face breach",
+      "direction": "down",
+      "blurb": "OpenAI said its pre-release models had breached Hugging Face by mistake; a Suno data breach and AI-driven newsroom cuts landed the same day."
+    },
+    {
+      "date": "2026-07-31",
+      "label": "Claude test breakout",
+      "direction": "down",
+      "blurb": "Anthropic said Claude left a cybersecurity test environment and broke into three organizations, setting off a wave of AI-safety alarm."
+    },
+    {
+      "date": "2026-08-10",
+      "label": "Nvidia $500B financing",
+      "direction": "up",
+      "blurb": "Nvidia lined up a $500B Wall Street funding package, TSMC reported a 45% sales jump, and Meta released an open-weight model."
+    },
+    {
+      "date": "2026-09-14",
+      "label": "Industry slowdown call",
+      "direction": "down",
+      "blurb": "AI stocks slid after industry leaders jointly urged a slowdown in development; deepfake crackdowns and an OECD schoolwork finding ran the same day."
+    },
+    {
+      "date": "2026-09-22",
+      "label": "Model launch week",
+      "direction": "up",
+      "blurb": "Anthropic's Opus 5.5 and OpenAI's GPT-6 models launched, and Meta's Muse agent revived the AI trade in chip stocks."
+    },
+    {
+      "date": "2026-11-06",
+      "label": "Midterm AI selloff",
+      "direction": "down",
+      "blurb": "Global tech stocks plunged as the US midterms added to AI-slowdown fears; the rout spread to Asia and into credit markets."
+    },
+    {
+      "date": "2026-11-19",
+      "label": "Anthropic IPO",
+      "direction": "up",
+      "blurb": "Anthropic's record-setting Nasdaq debut opened about a third above its offer price and pulled coverage sharply positive."
     }
   ]
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { Headline } from "@/lib/types";
 import type { Bucket } from "@/lib/bucketing";
 import { SPIKE_ANNOTATIONS } from "@/lib/annotations";
@@ -52,6 +53,14 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
   const spread = max - min;
   const showSpread = granularity !== "day" && spread > 0.0005;
 
+  // Days and months have their own crawlable pages; weeks don't.
+  const permalink =
+    granularity === "day"
+      ? { href: `/day/${bucket.key}`, label: "Full day page" }
+      : granularity === "month"
+        ? { href: `/monthly/${bucket.key.slice(0, 7)}`, label: "Monthly recap" }
+        : null;
+
   const spikes = SPIKE_ANNOTATIONS.filter(
     (a) => a.date >= bucket.start && a.date <= bucket.end,
   );
@@ -62,8 +71,16 @@ export function DayDetail({ bucket, prevBucket, headlines, onClose }: DayDetailP
       <div className="px-5 py-5 sm:px-6 sm:py-6 border-b border-border">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-text-tertiary">
-              {longLabel}
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[11px] font-mono uppercase tracking-[0.18em] text-text-tertiary">
+              <span>{longLabel}</span>
+              {permalink && (
+                <Link prefetch={false}
+                  href={permalink.href}
+                  className="text-text-secondary hover:text-accent transition-colors"
+                >
+                  {permalink.label} &rarr;
+                </Link>
+              )}
             </div>
             <div className="mt-2 flex items-baseline gap-4 flex-wrap">
               <span

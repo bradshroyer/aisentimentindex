@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import type { Headline } from "@/lib/types";
 
 const PAGE_SIZE = 25;
@@ -115,14 +116,24 @@ export function HeadlinesTable({
                     )}
                     {/* Show source inline on mobile */}
                     <span className="block sm:hidden text-xs text-text-tertiary mt-0.5">
-                      {h.source} &middot; {formatShortDate(h.date)}
+                      {h.source} &middot;{" "}
+                      <Link href={`/day/${h.date}`} prefetch={false} className="hover:text-accent transition-colors">
+                        {formatShortDate(h.date)}
+                      </Link>
                     </span>
                   </td>
                   <td className="px-4 py-3 text-sm text-text-secondary hidden sm:table-cell">
                     {h.source}
                   </td>
                   <td className="px-4 py-3 text-sm text-text-tertiary font-mono tabular-nums hidden sm:table-cell whitespace-nowrap">
-                    {formatShortDate(h.date)}
+                    <Link
+                      href={`/day/${h.date}`}
+                      prefetch={false}
+                      className="hover:text-accent transition-colors"
+                      title="See every headline from this day"
+                    >
+                      {formatShortDate(h.date)}
+                    </Link>
                   </td>
                   <td
                     className={`px-4 py-3 text-sm text-right font-mono tabular-nums ${scoreColor(h.score)}`}

@@ -11,12 +11,18 @@ interface SiteHeaderProps {
    * "AI Sentiment Index" should be the h1 only on the homepage.
    */
   pageTitle?: string;
+  /**
+   * Set on pages that render their own visible h1 in the body (day pages,
+   * monthly recaps, /data): the brand becomes a plain paragraph and the
+   * header adds no heading at all.
+   */
+  ownHeading?: boolean;
   /** Extra lines under the tagline (e.g. data freshness on the dashboard). */
   children?: React.ReactNode;
   className?: string;
 }
 
-export function SiteHeader({ tagline, pageTitle, children, className = "mb-8" }: SiteHeaderProps) {
+export function SiteHeader({ tagline, pageTitle, ownHeading = false, children, className = "mb-8" }: SiteHeaderProps) {
   const brandClass = "text-3xl sm:text-4xl font-serif tracking-tight";
   return (
     <header
@@ -25,7 +31,7 @@ export function SiteHeader({ tagline, pageTitle, children, className = "mb-8" }:
       <div>
         {pageTitle && <h1 className="sr-only">{pageTitle}</h1>}
         <Link href="/" className="group inline-block" aria-label="AI Sentiment Index — home">
-          {pageTitle ? (
+          {pageTitle || ownHeading ? (
             <p className={brandClass}>AI Sentiment Index</p>
           ) : (
             <h1 className={brandClass}>AI Sentiment Index</h1>
